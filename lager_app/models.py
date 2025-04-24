@@ -3,7 +3,7 @@ from django.db import models
 
 class Activity(models.Model):
     objects = None
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, null=False, blank=False)
     description = models.TextField()
     image = models.ImageField(upload_to='activities/', blank=True, null=True)
 
@@ -13,7 +13,7 @@ class Activity(models.Model):
 
 class Hotel(models.Model):
     objects = None
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, null=False, blank=False)
     description = models.TextField()
     image = models.ImageField(upload_to='hotels/', blank=True, null=True)
 
@@ -23,7 +23,7 @@ class Hotel(models.Model):
 
 class RecreationZone(models.Model):
     objects = None
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, null=False, blank=False)
     description = models.TextField()
     image = models.ImageField(upload_to='recreation/', blank=True, null=True)
 
@@ -33,7 +33,7 @@ class RecreationZone(models.Model):
 
 class News(models.Model):
     objects = None
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, null=False, blank=False)
     content = models.TextField()
     image = models.ImageField(upload_to='news/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

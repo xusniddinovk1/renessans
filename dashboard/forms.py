@@ -6,21 +6,45 @@ class ActivityForm(forms.ModelForm):
     class Meta:
         model = Activity
         fields = ['title', 'description', 'image']
+        widgets = {
+            "title": forms.TextInput(attrs={"class": "form-control"}),
+            "description": forms.TextInput(attrs={"class": "form-control"}),
+            "image": forms.FileInput(attrs={"class": "form-control",
+                                            "onchange": "loadFile(event)"})
+        }
 
 
 class HotelForm(forms.ModelForm):
     class Meta:
         model = Hotel
         fields = ['name', 'description', 'image']
+        widgets = {
+            "name": forms.TextInput(attrs={"class": "form-control"}),
+            "description": forms.TextInput(attrs={"class": "form-control"}),
+            "image": forms.FileInput(attrs={"class": "form-control",
+                                            "onchange": "loadFile(event)"})
+        }
 
 
 class RecreationForm(forms.ModelForm):
     class Meta:
         model = RecreationZone
         fields = ['title', 'description', 'image']
+        widgets = {
+            "title": forms.TextInput(attrs={"class": "form-control"}),
+            "description": forms.TextInput(attrs={"class": "form-control"}),
+            "image": forms.FileInput(attrs={"class": "form-control",
+                                            "onchange": "loadFile(event)"})
+        }
 
 
 class NewsForm(forms.ModelForm):
     class Meta:
         model = News
         fields = ['title', 'content', 'image']
+        widgets = {
+            "title": forms.TextInput(attrs={"class": "form-control"}),
+            "description": forms.TextInput(attrs={"class": "form-control"}),
+            "image": forms.FileInput(attrs={"class": "form-control",
+                                            "onchange": "loadFile(event)"})
+        }
