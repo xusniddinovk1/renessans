@@ -28,27 +28,29 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nomi</th>
-                                    <th>Text</th>
-                                    <th>Rasm</th>
+                                    <th>Sarlavha</th>
+                                    <th>Matni</th>
+                                    <th>Rasmi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for news in news_section %}
                                 <tr>
                                     <td>{{ news.id }}</td>
+                                    <td><img class="img" src="/media/{{ news.image }}" alt="photo"
+                                             style="width:120px;height:120px;"></td>
                                     <td>{{ news.title }}</td>
                                     <td>{{ news.description }}</td>
                                     <td>{{ news.image }}</td>
                                     <td>
                                         <div class="table-data-feature">
                                             <a class="item" data-toggle="tooltip"
-                                               href="{% url 'education_edit' pk=education.id %}" data-placement="top"
+                                               href="{% url 'news_edit' pk=news.id %}" data-placement="top"
                                                title="" data-original-title="Tahrirlash">
                                                 <i class="zmdi zmdi-edit text-warning"></i>
                                             </a>
                                             <a class="item" data-toggle="tooltip"
-                                               href="{% url 'education_delete' pk=education.id %}" data-placement="top"
+                                               href="{% url 'news_delete' pk=news.id %}" data-placement="top"
                                                title="" data-original-title="O'chirish">
                                                 <i class="zmdi zmdi-delete text-danger"></i>
                                             </a>

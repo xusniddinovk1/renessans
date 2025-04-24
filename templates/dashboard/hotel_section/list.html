@@ -13,8 +13,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="overview-wrap">
-                            <h2 class="title-1">Rasmlar Ro'yhati</h2>
-                            <a class="au-btn au-btn-icon au-btn--blue" href="{% url 'gallery_create' %}">
+                            <h2 class="title-1">Mehmonxonalar Ro'yhati</h2>
+                            <a class="au-btn au-btn-icon au-btn--blue" href="{% url 'hotel_create' %}">
                                 <i class="zmdi zmdi-plus"></i>qo'shish</a>
                         </div>
                     </div>
@@ -29,28 +29,28 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Sarlavha</th>
-                                    <th>Text</th>
-                                    <th>Rasm</th>
+                                    <th>Matni</th>
+                                    <th>Rasmi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for hotel in hotel_section %}
                                 <tr>
                                     <td>{{ hotel.id }}</td>
-                                    <td><img class="img" src="/media/{{ gallery.image }}" alt="photo"
-                                             style="width:180px;height:180;"></td>
+                                    <td><img class="img" src="/media/{{ hotel.image }}" alt="photo"
+                                             style="width:120px;height:120;"></td>
                                     <td>{{ hotel.title }}</td>
                                     <td>{{ hotel.image }}</td>
 
                                     <td>
                                         <div class="table-data-feature">
                                             <a class="item" data-toggle="tooltip"
-                                               href="{% url 'gallery_edit' pk=gallery.id %}" data-placement="top"
+                                               href="{% url 'hotel_edit' pk=hotel.id %}" data-placement="top"
                                                title="" data-original-title="Tahrirlash">
                                                 <i class="zmdi zmdi-edit text-warning"></i>
                                             </a>
                                             <a class="item" data-toggle="tooltip"
-                                               href="{% url 'gallery_delete' pk=gallery.id %}" data-placement="top"
+                                               href="{% url 'hotel_delete' pk=hotel.id %}" data-placement="top"
                                                title="" data-original-title="O'chirish">
                                                 <i class="zmdi zmdi-delete text-danger"></i>
                                             </a>

@@ -28,15 +28,17 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nomi</th>
-                                    <th>Text</th>
-                                    <th>Image</th>
+                                    <th>Sarlavha</th>
+                                    <th>Matni</th>
+                                    <th>Rasmi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for activity in activities %}
                                 <tr>
                                     <td>{{ activity.id }}</td>
+                                    <td><img class="img" src="/media/{{ activity.image }}" alt="photo"
+                                             style="width:120px;height:120px;"></td>
                                     <td>{{ activity.title }}</td>
                                     <td>{{ activity.description }}</td>
                                     <td>{{ activity.image }}</td>
