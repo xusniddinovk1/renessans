@@ -122,8 +122,8 @@ def hotel_create(request):
 
 @login_required_decorator
 def hotel_update(request, pk):
-    hotel = get_object_or_404(Hotel, pk=pk)
-    form = HotelForm(request.POST or None, request.FILES or None, instance=hotel)
+    hotels = get_object_or_404(Hotel, pk=pk)
+    form = HotelForm(request.POST or None, request.FILES or None, instance=hotels)
     if form.is_valid():
         form.save()
         return redirect('hotel_list')
@@ -136,8 +136,8 @@ def hotel_update(request, pk):
 
 @login_required_decorator
 def hotel_delete(request, pk):
-    hotel = get_object_or_404(Hotel, pk=pk)
-    hotel.delete()
+    hotels = get_object_or_404(Hotel, pk=pk)
+    hotels.delete()
     return redirect('hotel_list')
 
 
@@ -166,8 +166,8 @@ def recreation_create(request):
 
 @login_required_decorator
 def recreation_update(request, pk):
-    zone = get_object_or_404(RecreationZone, pk=pk)
-    form = RecreationForm(request.POST or None, request.FILES or None, instance=zone)
+    zones = get_object_or_404(RecreationZone, pk=pk)
+    form = RecreationForm(request.POST or None, request.FILES or None, instance=zones)
     if form.is_valid():
         form.save()
         return redirect('recreation_list')
@@ -180,8 +180,8 @@ def recreation_update(request, pk):
 
 @login_required_decorator
 def recreation_delete(request, pk):
-    zone = get_object_or_404(RecreationZone, pk=pk)
-    zone.delete()
+    zones = get_object_or_404(RecreationZone, pk=pk)
+    zones.delete()
     return redirect('recreation_list')
 
 

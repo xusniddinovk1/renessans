@@ -40,27 +40,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for news in news_section %}
+                                    {% for news1 in news %}
                                     <tr>
                                         <td>{{ forloop.counter }}</td>
                                         <td>
-                                            {% if news.image %}
-                                                <img src="{{ news.image.url }}" alt="photo" style="width: 100px; height: 100px; object-fit: cover; border-radius: 5px;">
+                                            {% if news1.image %}
+                                                <img src="{{ news1.image.url }}" alt="photo" style="width: 100px; height: 100px; object-fit: cover; border-radius: 5px;">
                                             {% else %}
                                                 <span class="text-muted">Rasm yo'q</span>
                                             {% endif %}
                                         </td>
-                                        <td>{{ news.title }}</td>
-                                        <td>{{ news.description }}</td>
+                                        <td>{{ news1.title }}</td>
+                                        <td>{{ news1.content }}</td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <a class="item" data-toggle="tooltip"
-                                                   href="{% url 'news_edit' pk=news.id %}"
+                                                   href="{% url 'news_edit' pk=news1.id %}"
                                                    title="Tahrirlash">
                                                     <i class="zmdi zmdi-edit text-warning"></i>
                                                 </a>
                                                 <a class="item" data-toggle="tooltip"
-                                                   href="{% url 'news_delete' pk=news.id %}"
+                                                   href="{% url 'news_delete' pk=news1.id %}"
                                                    title="O'chirish">
                                                     <i class="zmdi zmdi-delete text-danger"></i>
                                                 </a>

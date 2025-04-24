@@ -40,7 +40,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for hotel in hotel_section %}
+                                    {% for hotel in hotels %}
                                     <tr>
                                         <td>{{ forloop.counter }}</td>
                                         <td>
@@ -50,7 +50,7 @@
                                                 <span class="text-muted">Rasm yo'q</span>
                                             {% endif %}
                                         </td>
-                                        <td>{{ hotel.title }}</td>
+                                        <td>{{ hotel.name }}</td>
                                         <td>{{ hotel.description }}</td>
                                         <td>
                                             <div class="table-data-feature">
