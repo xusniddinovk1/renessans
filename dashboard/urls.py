@@ -5,6 +5,10 @@ urlpatterns = [
     path('login/', views.login_page, name="login_page"),
     path('logout/', views.logout_page, name="logout_page"),
 
+    path('account/', views.account_view, name='account_page'),
+    path('settings/', views.settings_view, name='settings_page'),
+    path('billing/', views.billing_view, name='billing_page'),
+
     path('', views.main_dashboard, name='main_dashboard'),
 
     path('faoliyatlar/', views.activity_list, name='activity_list'),

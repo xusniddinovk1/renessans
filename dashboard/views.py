@@ -24,6 +24,17 @@ def logout_page(request):
     logout(request)
     return redirect("login_page")
 
+@login_required_decorator
+def account_view(request):
+    return render(request, 'dashboard/account.html')
+
+@login_required_decorator
+def settings_view(request):
+    return render(request, 'dashboard/settings.html')
+
+@login_required_decorator
+def billing_view(request):
+    return render(request, 'dashboard/billing.html')
 
 @login_required_decorator
 def main_dashboard(request):
