@@ -1,0 +1,12 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ news.title }} ni o‘chirish</h2>
+    <p>Ishonchingiz komilmi?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Ha, o‘chir</button>
+        <a href="{% url 'news_list' %}" class="btn btn-secondary">Yo‘q</a>
+    </form>
+</div>
+{% endblock %}

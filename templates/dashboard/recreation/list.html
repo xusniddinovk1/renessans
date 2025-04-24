@@ -1,0 +1,34 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Istirohat zonalari</h2>
+    <a href="{% url 'recreation_create' %}" class="btn btn-success mb-3">+ Yangi zona</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Sarlavha</th>
+            <th>Rasm</th>
+            <th>Amallar</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for zone in zones %}
+        <tr>
+            <td>{{ zone.title }}</td>
+            <td>
+                {% if zone.image %}
+                <img src="{{ zone.image.url }}" width="100">
+                {% else %}
+                Rasm yo‘q
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'recreation_update' zone.pk %}" class="btn btn-warning btn-sm">Tahrirlash</a>
+                <a href="{% url 'recreation_delete' zone.pk %}" class="btn btn-danger btn-sm">O‘chirish</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

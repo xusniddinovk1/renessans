@@ -1,0 +1,36 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Yangiliklar</h2>
+    <a href="{% url 'news_create' %}" class="btn btn-success mb-3">+ Yangi yangilik</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sarlavha</th>
+                <th>Sana</th>
+                <th>Rasm</th>
+                <th>Amallar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for news in news_list %}
+            <tr>
+                <td>{{ news.title }}</td>
+                <td>{{ news.created_at|date:"Y-m-d H:i" }}</td>
+                <td>
+                    {% if news.image %}
+                        <img src="{{ news.image.url }}" width="100">
+                    {% else %}
+                        Yo‘q
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'news_update' news.pk %}" class="btn btn-warning btn-sm">Tahrirlash</a>
+                    <a href="{% url 'news_delete' news.pk %}" class="btn btn-danger btn-sm">O‘chirish</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

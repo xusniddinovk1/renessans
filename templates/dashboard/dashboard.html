@@ -1,0 +1,88 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="container mt-4">
+
+    <h3 class="mb-4">👋 Assalomu alaykum, {{ user.username }}!</h3>
+
+    <div class="row">
+        <!-- Cards -->
+        {% include 'dashboard/cards.html' %}
+    </div>
+
+    <div class="row mt-4">
+        <!-- Latest Entries -->
+        <div class="col-md-6">
+            <h5>🆕 So‘nggi faoliyatlar</h5>
+            <ul class="list-group">
+                {% for a in stats.latest_activities %}
+                    <li class="list-group-item">{{ a.title }}</li>
+                {% empty %}
+                    <li class="list-group-item text-muted">Ma'lumot yo‘q</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <h5>🏨 So‘nggi mehmonxonalar</h5>
+            <ul class="list-group">
+                {% for h in stats.latest_hotels %}
+                    <li class="list-group-item">{{ h.name }}</li>
+                {% empty %}
+                    <li class="list-group-item text-muted">Ma'lumot yo‘q</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h5>📰 So‘nggi yangiliklar</h5>
+            <ul class="list-group">
+                {% for n in stats.latest_news %}
+                    <li class="list-group-item">{{ n.title }} - <small>{{ n.created_at|date:"Y-m-d" }}</small></li>
+                {% empty %}
+                    <li class="list-group-item text-muted">Ma'lumot yo‘q</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Chart.js -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h5>📊 Statistika Diagrammasi</h5>
+            <canvas id="statsChart"></canvas>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'logout_page' %}" class="btn btn-outline-danger">🔒 Chiqish</a>
+    </div>
+</div>
+
+<!-- Chart.js script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('statsChart').getContext('2d');
+    const statsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Faoliyat', 'Mehmonxona', 'Zona', 'Yangilik'],
+            datasets: [{
+                label: 'Umumiy soni',
+                data: [{{ stats.activity_count }}, {{ stats.hotel_count }}, {{ stats.recreation_count }}, {{ stats.news_count }}],
+                backgroundColor: ['#007bff', '#28a745', '#ffc107', '#17a2b8']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+{% endblock %}
