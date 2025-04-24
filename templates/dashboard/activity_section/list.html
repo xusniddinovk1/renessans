@@ -2,72 +2,82 @@
 {% load static %}
 {% block content %}
 <div class="page-container">
-    <!-- HEADER DESKTOP-->
-    {%include 'dashboard/userbar.html'%}
-    <!-- HEADER DESKTOP-->
+    <!-- HEADER DESKTOP -->
+    {% include 'dashboard/userbar.html' %}
+    <!-- END HEADER DESKTOP -->
 
-    <!-- MAIN CONTENT-->
+    <!-- MAIN CONTENT -->
     <div class="main-content">
         <div class="section__content section__content--p30">
             <div class="container-fluid">
+
+                <!-- PAGE TITLE -->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="overview-wrap">
                             <h2 class="title-1">Faoliyat Ro'yhatlari</h2>
                             <a class="au-btn au-btn-icon au-btn--blue" href="{% url 'activity_create' %}">
-                                <i class="zmdi zmdi-plus"></i>qo'shish</a>
+                                <i class="zmdi zmdi-plus"></i>Qo'shish
+                            </a>
                         </div>
                     </div>
                 </div>
+
                 <br>
+
+                <!-- DATA TABLE -->
                 <div class="row">
                     <div class="col-md-12">
-                        <!-- DATA TABLE-->
                         <div class="table-responsive m-b-40">
                             <table class="table table-borderless table-data3">
                                 <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Sarlavha</th>
-                                    <th>Matni</th>
-                                    <th>Rasmi</th>
-                                </tr>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Rasmi</th>
+                                        <th>Sarlavha</th>
+                                        <th>Matni</th>
+                                        <th>Amallar</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                {% for activity in activities %}
-                                <tr>
-                                    <td>{{ activity.id }}</td>
-                                    <td><img class="img" src="/media/{{ activity.image }}" alt="photo"
-                                             style="width:120px;height:120px;"></td>
-                                    <td>{{ activity.title }}</td>
-                                    <td>{{ activity.description }}</td>
-                                    <td>{{ activity.image }}</td>
-                                    <td>
-                                        <div class="table-data-feature">
-                                            <a class="item" data-toggle="tooltip"
-                                               href="{% url 'activity_edit' pk=activity.id %}" data-placement="top"
-                                               title="" data-original-title="Tahrirlash">
-                                                <i class="zmdi zmdi-edit text-warning"></i>
-                                            </a>
-                                            <a class="item" data-toggle="tooltip"
-                                               href="{% url 'activity_delete' pk=activity.id %}" data-placement="top"
-                                               title="" data-original-title="O'chirish">
-                                                <i class="zmdi zmdi-delete text-danger"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {% endfor %}
+                                    {% for activity in activities %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>
+                                            {% if activity.image %}
+                                                <img src="{{ activity.image.url }}" alt="photo" style="width: 100px; height: 100px; object-fit: cover; border-radius: 5px;">
+                                            {% else %}
+                                                <span class="text-muted">Rasm yo'q</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ activity.title }}</td>
+                                        <td>{{ activity.description }}</td>
+                                        <td>
+                                            <div class="table-data-feature">
+                                                <a class="item" data-toggle="tooltip"
+                                                   href="{% url 'activity_edit' pk=activity.id %}"
+                                                   title="Tahrirlash">
+                                                    <i class="zmdi zmdi-edit text-warning"></i>
+                                                </a>
+                                                <a class="item" data-toggle="tooltip"
+                                                   href="{% url 'activity_delete' pk=activity.id %}"
+                                                   title="O'chirish">
+                                                    <i class="zmdi zmdi-delete text-danger"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
-                        <!-- END DATA TABLE-->
                     </div>
                 </div>
+                <!-- END DATA TABLE -->
+
             </div>
         </div>
     </div>
-    <!-- END MAIN CONTENT-->
-    <!-- END PAGE CONTAINER-->
+    <!-- END MAIN CONTENT -->
 </div>
 {% endblock %}
