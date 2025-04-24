@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .banner {
+    width: 100%;
+    background-color: #333;  /* Banner fon rangi */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    animation: slideIn 3s ease-out;
+  }
+  
+  .banner h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .banner p {
+    font-size: 18px;
+    margin-top: 0;
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive dizayn */
+  @media (max-width: 768px) {
+    .banner h1 {
+      font-size: 28px;
+    }
+  
+    .banner p {
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .banner h1 {
+      font-size: 22px;
+    }
+  
+    .banner p {
+      font-size: 14px;
+    }
+  }
+  
