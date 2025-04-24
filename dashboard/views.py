@@ -26,31 +26,30 @@ def logout_page(request):
 
 
 @login_required_decorator
-def dashboard(request):
-    stats = {
-        'activity_count': Activity.objects.count(),
-        'hotel_count': Hotel.objects.count(),
-        'recreation_count': RecreationZone.objects.count(),
-        'news_count': News.objects.count(),
-        'latest_activities': Activity.objects.order_by('-id')[:5],
-        'latest_hotels': Hotel.objects.order_by('-id')[:5],
-        'latest_news': News.objects.order_by('-created_at')[:5],
+def main_dashboard(request):
+    activities = Activity.objects.all()
+    hotel_section = Hotel.objects.all()
+    recreation_section = RecreationZone.objects.all()
+    news_section = News.objects.all()
+
+    ctx = {
+        "activities": len(activities),
+        "hotel_section": len(hotel_section),
+        "recreation_section": len(recreation_section),
+        "news_section": len(news_section),
     }
-    return render(request, 'dashboard/dashboard.html', {
-        'stats': stats,
-        'user': request.user,
-    })
 
-
-@login_required_decorator
-def dashboard(request):
-    return render(request, 'dashboard/dashboard.html')
+    return render(request, 'dashboard/index.html', ctx)
 
 
 @login_required_decorator
 def activity_list(request):
     activities = Activity.objects.all()
-    return render(request, 'dashboard/activities/list.html', {'activities': activities})
+
+    ctx = {
+        "activities": activities
+    }
+    return render(request, 'dashboard/activity_section/list.html', ctx)
 
 
 @login_required_decorator
@@ -59,7 +58,11 @@ def activity_create(request):
     if form.is_valid():
         form.save()
         return redirect('activity_list')
-    return render(request, 'dashboard/activities/form.html', {'form': form, 'title': 'Yangi faoliyat qo‘shish'})
+
+    ctx = {
+        'form': form,
+    }
+    return render(request, 'dashboard/activities/form.html', ctx)
 
 
 @login_required_decorator
@@ -69,22 +72,28 @@ def activity_update(request, pk):
     if form.is_valid():
         form.save()
         return redirect('activity_list')
-    return render(request, 'dashboard/activities/form.html', {'form': form, 'title': 'Faoliyatni tahrirlash'})
+
+    ctx = {
+        'form': form
+    }
+    return render(request, 'dashboard/activity_section/form.html', ctx)
 
 
 @login_required_decorator
 def activity_delete(request, pk):
     activity = get_object_or_404(Activity, pk=pk)
-    if request.method == 'POST':
-        activity.delete()
-        return redirect('activity_list')
-    return render(request, 'dashboard/activities/delete_confirm.html', {'activity': activity})
+    activity.delete()
+    return redirect('activity_list')
 
 
 @login_required_decorator
 def hotel_list(request):
     hotels = Hotel.objects.all()
-    return render(request, 'dashboard/hotels/list.html', {'hotels': hotels})
+
+    ctx = {
+        'hotels': hotels
+    }
+    return render(request, 'dashboard/hotel_section/list.html', ctx)
 
 
 @login_required_decorator
@@ -93,7 +102,11 @@ def hotel_create(request):
     if form.is_valid():
         form.save()
         return redirect('hotel_list')
-    return render(request, 'dashboard/hotels/form.html', {'form': form, 'title': 'Yangi mehmonxona qo‘shish'})
+
+    ctx = {
+        'form': form
+    }
+    return render(request, 'dashboard/hotel_section/form.html', ctx)
 
 
 @login_required_decorator
@@ -103,22 +116,28 @@ def hotel_update(request, pk):
     if form.is_valid():
         form.save()
         return redirect('hotel_list')
-    return render(request, 'dashboard/hotels/form.html', {'form': form, 'title': 'Mehmonxonani tahrirlash'})
+
+    ctx = {
+        "form": form
+    }
+    return render(request, 'dashboard/hotel_section/form.html', ctx)
 
 
 @login_required_decorator
 def hotel_delete(request, pk):
     hotel = get_object_or_404(Hotel, pk=pk)
-    if request.method == 'POST':
-        hotel.delete()
-        return redirect('hotel_list')
-    return render(request, 'dashboard/hotels/delete_confirm.html', {'hotel': hotel})
+    hotel.delete()
+    return redirect('hotel_list')
 
 
 @login_required_decorator
 def recreation_list(request):
     zones = RecreationZone.objects.all()
-    return render(request, 'dashboard/recreation/list.html', {'zones': zones})
+
+    ctx = {
+        'zones': zones
+    }
+    return render(request, 'dashboard/recreation_section/list.html', ctx)
 
 
 @login_required_decorator
@@ -127,7 +146,11 @@ def recreation_create(request):
     if form.is_valid():
         form.save()
         return redirect('recreation_list')
-    return render(request, 'dashboard/recreation/form.html', {'form': form, 'title': 'Yangi istirohat zonasi qo‘shish'})
+
+    ctx = {
+        'form': form,
+    }
+    return render(request, 'dashboard/recreation_section/form.html', ctx)
 
 
 @login_required_decorator
@@ -137,22 +160,28 @@ def recreation_update(request, pk):
     if form.is_valid():
         form.save()
         return redirect('recreation_list')
-    return render(request, 'dashboard/recreation/form.html', {'form': form, 'title': 'Istirohat zonasini tahrirlash'})
+
+    ctx = {
+        'form': form
+    }
+    return render(request, 'dashboard/recreation_section/form.html', ctx)
 
 
 @login_required_decorator
 def recreation_delete(request, pk):
     zone = get_object_or_404(RecreationZone, pk=pk)
-    if request.method == 'POST':
-        zone.delete()
-        return redirect('recreation_list')
-    return render(request, 'dashboard/recreation/delete_confirm.html', {'zone': zone})
+    zone.delete()
+    return redirect('recreation_list')
 
 
 @login_required_decorator
 def news_list(request):
-    news_list = News.objects.order_by('-created_at')
-    return render(request, 'dashboard/news/list.html', {'news_list': news_list})
+    news = News.objects.order_by('-created_at')
+
+    ctx = {
+        "news": news
+    }
+    return render(request, 'dashboard/news_section/list.html', ctx)
 
 
 @login_required_decorator
@@ -161,7 +190,11 @@ def news_create(request):
     if form.is_valid():
         form.save()
         return redirect('news_list')
-    return render(request, 'dashboard/news/form.html', {'form': form, 'title': 'Yangi yangilik qo‘shish'})
+
+    ctx = {
+        'form': form
+    }
+    return render(request, 'dashboard/news_section/form.html', ctx)
 
 
 @login_required_decorator
@@ -171,13 +204,15 @@ def news_update(request, pk):
     if form.is_valid():
         form.save()
         return redirect('news_list')
-    return render(request, 'dashboard/news/form.html', {'form': form, 'title': 'Yangilikni tahrirlash'})
+
+    ctx = {
+        "form": form
+    }
+    return render(request, 'dashboard/news_section/form.html', ctx)
 
 
 @login_required_decorator
 def news_delete(request, pk):
     news = get_object_or_404(News, pk=pk)
-    if request.method == 'POST':
-        news.delete()
-        return redirect('news_list')
-    return render(request, 'dashboard/news/delete_confirm.html', {'news': news})
+    news.delete()
+    return redirect('news_list')

@@ -1,0 +1,73 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+<div class="page-container">
+    <!-- HEADER DESKTOP-->
+    {%include 'dashboard/userbar.html'%}
+    <!-- HEADER DESKTOP-->
+
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="overview-wrap">
+                            <h2 class="title-1">Rasmlar Ro'yhati</h2>
+                            <a class="au-btn au-btn-icon au-btn--blue" href="{% url 'gallery_create' %}">
+                                <i class="zmdi zmdi-plus"></i>qo'shish</a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- DATA TABLE-->
+                        <div class="table-responsive m-b-40">
+                            <table class="table table-borderless table-data3">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Rasmi</th>
+                                    <th>Image</th>
+                                    <th>Created At</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for gallery in galleries %}
+                                <tr>
+                                    <td>{{ gallery.id }}</td>
+                                    <td><img class="img" src="/media/{{ gallery.image }}" alt="photo"
+                                             style="width:180px;height:180;"></td>
+                                    <td>{{ gallery.image }}</td>
+                                    <td>{{ gallery.created_at }}</td>
+
+                                    <td>
+                                        <div class="table-data-feature">
+                                            <a class="item" data-toggle="tooltip"
+                                               href="{% url 'gallery_edit' pk=gallery.id %}" data-placement="top"
+                                               title="" data-original-title="Tahrirlash">
+                                                <i class="zmdi zmdi-edit text-warning"></i>
+                                            </a>
+                                            <a class="item" data-toggle="tooltip"
+                                               href="{% url 'gallery_delete' pk=gallery.id %}" data-placement="top"
+                                               title="" data-original-title="O'chirish">
+                                                <i class="zmdi zmdi-delete text-danger"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- END DATA TABLE-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MAIN CONTENT-->
+    <!-- END PAGE CONTAINER-->
+</div>
+{% endblock %}
