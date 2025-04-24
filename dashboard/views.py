@@ -62,7 +62,7 @@ def activity_create(request):
     ctx = {
         'form': form,
     }
-    return render(request, 'dashboard/activities/form.html', ctx)
+    return render(request, 'dashboard/activity_section/form.html', ctx)
 
 
 @login_required_decorator

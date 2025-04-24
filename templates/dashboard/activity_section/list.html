@@ -1,7 +1,7 @@
 {% extends 'dashboard/base.html' %}
 {% load static %}
 {% block content %}
- <div class="page-container">
+<div class="page-container">
     <!-- HEADER DESKTOP-->
     {%include 'dashboard/userbar.html'%}
     <!-- HEADER DESKTOP-->
@@ -26,32 +26,36 @@
                         <div class="table-responsive m-b-40">
                             <table class="table table-borderless table-data3">
                                 <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Nomi</th>
-                                        <th>Image</th>
-                                        <th>Created At</th>
-                                    </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nomi</th>
+                                    <th>Text</th>
+                                    <th>Image</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    {% for activity in activities %}
-                                    <tr>
-                                        <td>{{ activity.id }}</td>
-                                        <td>{{ activity.title }}</td>
-                                        <td>{{ activity.image }}</td>
-                                        <td>{{ activity.created_at }}</td>
-                                        <td>
-                                            <div class="table-data-feature">
-                                                <a class="item" data-toggle="tooltip" href="{% url 'activity_edit' pk=activity.id %}" data-placement="top" title="" data-original-title="Tahrirlash">
-                                                    <i class="zmdi zmdi-edit text-warning"></i>
-                                                </a>
-                                                <a class="item" data-toggle="tooltip" href="{% url 'activity_delete' pk=activity.id %}" data-placement="top" title="" data-original-title="O'chirish">
-                                                    <i class="zmdi zmdi-delete text-danger"></i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
+                                {% for activity in activities %}
+                                <tr>
+                                    <td>{{ activity.id }}</td>
+                                    <td>{{ activity.title }}</td>
+                                    <td>{{ activity.description }}</td>
+                                    <td>{{ activity.image }}</td>
+                                    <td>
+                                        <div class="table-data-feature">
+                                            <a class="item" data-toggle="tooltip"
+                                               href="{% url 'activity_edit' pk=activity.id %}" data-placement="top"
+                                               title="" data-original-title="Tahrirlash">
+                                                <i class="zmdi zmdi-edit text-warning"></i>
+                                            </a>
+                                            <a class="item" data-toggle="tooltip"
+                                               href="{% url 'activity_delete' pk=activity.id %}" data-placement="top"
+                                               title="" data-original-title="O'chirish">
+                                                <i class="zmdi zmdi-delete text-danger"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
                                 </tbody>
                             </table>
                         </div>

@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="overview-wrap">
-                            <h2 class="title-1">O'quv Bo'lim Ro'yhatlari</h2>
+                            <h2 class="title-1">Yangiliklar</h2>
                             <a class="au-btn au-btn-icon au-btn--blue" href="{% url 'education_create' %}">
                                 <i class="zmdi zmdi-plus"></i>qo'shish</a>
                         </div>
@@ -29,17 +29,17 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nomi</th>
-                                    <th>Rasmi</th>
-                                    <th>Created At</th>
+                                    <th>Text</th>
+                                    <th>Rasm</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for education in educations %}
+                                {% for news in news_section %}
                                 <tr>
-                                    <td>{{ education.id }}</td>
-                                    <td>{{ education.title }}</td>
-                                    <td>{{ education.image }}</td>
-                                    <td>{{ education.created_at }}</td>
+                                    <td>{{ news.id }}</td>
+                                    <td>{{ news.title }}</td>
+                                    <td>{{ news.description }}</td>
+                                    <td>{{ news.image }}</td>
                                     <td>
                                         <div class="table-data-feature">
                                             <a class="item" data-toggle="tooltip"

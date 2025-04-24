@@ -28,19 +28,19 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Rasmi</th>
-                                    <th>Image</th>
-                                    <th>Created At</th>
+                                    <th>Sarlavha</th>
+                                    <th>Text</th>
+                                    <th>Rasm</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for gallery in galleries %}
+                                {% for hotel in hotel_section %}
                                 <tr>
-                                    <td>{{ gallery.id }}</td>
+                                    <td>{{ hotel.id }}</td>
                                     <td><img class="img" src="/media/{{ gallery.image }}" alt="photo"
                                              style="width:180px;height:180;"></td>
-                                    <td>{{ gallery.image }}</td>
-                                    <td>{{ gallery.created_at }}</td>
+                                    <td>{{ hotel.title }}</td>
+                                    <td>{{ hotel.image }}</td>
 
                                     <td>
                                         <div class="table-data-feature">
