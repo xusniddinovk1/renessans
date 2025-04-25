@@ -15,4 +15,36 @@ def activity_page(request):
     ctx = {
         "activities": activities
     }
-    return render(request, 'lager/faoliyat.html', ctx)
+    return render(request, 'lager/activity.html', ctx)
+
+
+def news_page(request):
+    news_item = News.objects.all()
+    ctx = {
+        "news_item": news_item
+    }
+    return render(request, 'lager/news_section.html', ctx)
+
+
+def education_page(request):
+    educations = Education.objects.all()
+    ctx = {
+        "educations": educations
+    }
+    return render(request, 'lager/education.html', ctx)
+
+
+def recreation_zone_page(request):
+    rest_ares = RecreationZone.objects.all()
+    ctx = {
+        "rest_ares": rest_ares
+    }
+    return render(request, 'lager/recreation_zone.html', ctx)
+
+
+def hotel_section_page(request):
+    hotels = Hotel.objects.all()
+    ctx = {
+        "hotels": hotels
+    }
+    return render(request, 'lager/hotel_section.html', ctx)

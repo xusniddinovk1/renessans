@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="oquvbolim.css">
+    <link rel="stylesheet" href="{% static 'lager/css/istirohatzona.css' %}">
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -27,9 +27,7 @@
             <ul class="text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Español</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="fr">Français</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="de">Deutsch</li>
+                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="ru">Ruscha</li>
             </ul>
         </div>
     </div>
@@ -37,61 +35,87 @@
     <label for="menu-bar"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
         <ul>
-            <li><a href="index.html" target="_blank">Asosiy</a></li>
+            <li><a href="{% url 'home_page' %}" target="_blank">Asosiy</a></li>
             <li><a href="#">kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="mehmonxona.html" target="_blank">Mehmon xonalar</a></li>
-                    <li><a href="istirohatzona.html" target="_blank">Istirohat zona</a></li>
+                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mehmon xonalar</a></li>
+                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Istirohat zona</a></li>
                 </ul>
             </li>
             <li><a href="#">Tadbirlar<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="faoliyat.html" target="_blank">Faoliyat</a></li>
-                    <li><a href="o'quvbolim.html" target="_blank">O'quv Bo'lim</a></li>
+                    <li><a href="{% url 'activity_page' %}" target="_blank">Faoliyat</a></li>
+                    <li><a href="{% url 'education_page' %}" target="_blank">O'quv Bo'lim</a></li>
                 </ul>
             </li>
-            <li><a href="fotogalareya.html">Yangiliklar</a></li>
+            <li><a href="{% url 'news_page' %}">Yangiliklar</a></li>
         </ul>
     </nav>
 
 </header>
-<!---------------------------------- card oquv bolim-------------------------- -->
+<!------------------------------------- /header --------------------------------- -->
+<!-- ------------------------------card slider  ----------------------------------- -->
+<div class="container">
+    <div class="card__container">
+        <article class="card__article">
+            <img src="istitohat zona/DSC03144.JPG" alt="image" class="card__img">
 
+            <div class="card__data">
+                <span class="card__description">Vancouver Mountains, Canada</span>
+                <h2 class="card__title">The Great Path</h2>
+                <a href="#" class="card__button">Read More</a>
+            </div>
+        </article>
 
-<div class="card-container">
-    <div class="card">
-        <img src="oquv bolim/DSC03158.JPG" alt="Camp Image">
-        <div class="card-content">
-            <h2 class="card-title">O’quv lageri</h2>
-            <p class="card-description">Oromgoh yil davomida uzluksiz, talabalarning individual ehtiyojlariga
-                moslashtirilgan intensiv o’qitish tizimiga ega. Oromgohdagi ushbu ta’lim tizimi o’quvchilarning noyob
-                iqtidorlarini keng namoyon qila olishga imkoniyat berib, har bir o’quvchining o’rganish tezligi va
-                moslashuvchanligiga ko’ra yondashadi. </p>
-        </div>
-    </div>
-    <div class="card">
-        <img src="oquv bolim/DSC03224.JPG" alt="Camp Image">
-        <div class="card-content">
-            <h2 class="card-title">Mediamarkaz</h2>
-            <p class="card-description">So’nggi texnologiyalar bilan boyitilgan ushbu kampus o’quvchilar IT,
-                robototexnika sohalarini o’rganishlari uchun tashkil qilingan. … kv metr hajmdagi ushbu bo’limda … ta
-                kompyuter jihozlari, ……, va ….lar bilan boyitilgan. </p>
-        </div>
-    </div>
-    <div class="card">
-        <img src="oquv bolim/DSC03252.JPG" alt="Camp Image">
-        <div class="card-content">
-            <h2 class="card-title">Kutubxona</h2>
-            <p class="card-description">… kv metr kattalikdagi oromgoh kutubxonasida badiiy, ilmiy, ilmiy-ommabop turli
-                janrdagi 1000dan ortiq kitoblar mavjud. Shu bilan birga, o’quvchilarning dars qilish, mustaqil o’rganish
-                vaqtlarini o’tkazishlari uchun kutubxona kerakli barcha jihozlar bilan ta’minlangan. </p>
-        </div>
+        <article class="card__article">
+            <img src="istitohat zona/DSC03145.JPG" alt="image" class="card__img">
+
+            <div class="card__data">
+                <span class="card__description">Poon Hill, Nepal</span>
+                <h2 class="card__title">Starry Night</h2>
+                <a href="#" class="card__button">Read More</a>
+            </div>
+        </article>
+
+        <article class="card__article">
+            <img src="istitohat zona/DSC03146.JPG" alt="image" class="card__img">
+
+            <div class="card__data">
+                <span class="card__description">Bojcin Forest, Serbia</span>
+                <h2 class="card__title">Path of Peace</h2>
+                <a href="#" class="card__button">Read More</a>
+            </div>
+        </article>
+        <article class="card__article">
+            <img src="istitohat zona/DSC03146.JPG" alt="image" class="card__img">
+
+            <div class="card__data">
+                <span class="card__description">Bojcin Forest, Serbia</span>
+                <h2 class="card__title">Path of Peace</h2>
+                <a href="#" class="card__button">Read More</a>
+            </div>
+        </article>
+        <article class="card__article">
+            <img src="istitohat zona/DSC03146.JPG" alt="image" class="card__img">
+
+            <div class="card__data">
+                <span class="card__description">Bojcin Forest, Serbia</span>
+                <h2 class="card__title">Path of Peace</h2>
+                <a href="#" class="card__button">Read More</a>
+            </div>
+        </article>
+        <article class="card__article">
+            <img src="istitohat zona/DSC03146.JPG" alt="image" class="card__img">
+
+            <div class="card__data">
+                <span class="card__description">Bojcin Forest, Serbia</span>
+                <h2 class="card__title">Path of Peace</h2>
+                <a href="#" class="card__button">Read More</a>
+            </div>
+        </article>
     </div>
 </div>
-
-
-<!---------------------------------- card oquv bolim-------------------------- -->
-
+<!-- ------------------------------/card slider  ----------------------------------- -->
 
 <!-- --------------------------------------footter----------------------------------- -->
 <footer>

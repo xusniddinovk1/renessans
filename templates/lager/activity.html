@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="mehmonxona.css">
+    <link rel="stylesheet" href="{% static 'lager/css/faoliyat.css' %}">
+    <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -15,7 +16,7 @@
 <!------------------------------------- header --------------------------------- -->
 <header>
     <a href="#" class="logo">
-        <img src="IMG_3049.JPG" alt="company logo">
+        <img src="/media/logo.JPG" alt="company logo">
     </a>
     <div class="relative">
         <button id="languageDropdown"
@@ -27,9 +28,7 @@
             <ul class="text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Español</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="fr">Français</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="de">Deutsch</li>
+                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruscha</li>
             </ul>
         </div>
     </div>
@@ -37,85 +36,45 @@
     <label for="menu-bar"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
         <ul>
-            <li><a href="index.html" target="_blank">Asosiy</a></li>
+            <li><a href="{% url 'home_page' %}" target="_blank">Asosiy</a></li>
             <li><a href="#">kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="mehmonxona.html" target="_blank">Mehmon xonalar</a></li>
-                    <li><a href="istirohatzona.html" target="_blank">Istirohat zona</a></li>
+                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mehmon xonalar</a></li>
+                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Istirohat zona</a></li>
                 </ul>
             </li>
             <li><a href="#">Tadbirlar<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="faoliyat.html" target="_blank">Faoliyat</a></li>
-                    <li><a href="o'quvbolim.html" target="_blank">O'quv Bo'lim</a></li>
+                    <li><a href="{% url 'activity_page' %}" target="_blank">Faoliyat</a></li>
+                    <li><a href="{% url 'education_page' %}" target="_blank">O'quv Bo'lim</a></li>
                 </ul>
             </li>
-            <li><a href="fotogalareya.html">Yangiliklar</a></li>
+            <li><a href="{% url 'news_page' %}">Yangiliklar</a></li>
         </ul>
     </nav>
 
 </header>
-<!------------------------------ carusel mehmonxona---------------------------------  -->
-
+<!-- ---------------------------------------carusel ----------------------------- -->
 <div class="carousel">
-    <div class="carousel-track">
-        <div class="carousel-slide"><img src="fotogalareya/DSC03264.JPG" alt="Slide 1"></div>
-        <div class="carousel-slide"><img src="fotogalareya/DSC03207.JPG" alt="Slide 2"></div>
-        <div class="carousel-slide"><img src="fotogalareya/DSC03214.JPG" alt="Slide 3"></div>
+    <div class="carousel-container">
+        {% for activity in activities %}
+            <div class="carousel-slide {% if forloop.first %}active{% endif %}">
+                <img src="{{ activity.image.url }}" alt="{{ activity.title }}" class="event-image">
+                <div class="event-title">{{ activity.title }}</div>
+                <div class="event-description">{{ activity.description }}</div>
+            </div>
+        {% endfor %}
     </div>
     <div class="carousel-buttons">
-        <button class="carousel-button" id="prev">&#10094;</button>
-        <button class="carousel-button" id="next">&#10095;</button>
+        <button id="prev">❮</button>
+        <button id="next">❯</button>
     </div>
 </div>
-
-<script>
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const nextButton = document.getElementById('next');
-    const prevButton = document.getElementById('prev');
-
-    let currentIndex = 0;
-
-    function updateCarousel() {
-        const slideWidth = slides[0].getBoundingClientRect().width;
-        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-    }
-
-    nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel();
-    });
-
-    prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateCarousel();
-    });
-
-    window.addEventListener('resize', updateCarousel);
-</script>
-<!------------------------------/ carusel mehmonxona---------------------------------  -->
-<!-- ---------------------------------maps ---------------------------------->
-
-
-<div class="container">
-    <h1>xarita karochi</h1>
-    <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95985.13840300929!2d69.18832734611418!3d41.25367332672317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae6005c5142bf3%3A0xe04bf246835d2d7f!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0JDRjdGA0L7Qv9C-0YDRgiDQuNC80LXQvdC4INCY0YHQu9Cw0LzQsCDQmtCw0YDQuNC80L7QstCw!5e0!3m2!1sru!2s!4v1743158064308!5m2!1sru!2s"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    <a href="#">view on google maps </a>
-</div>
-
-<!-- ---------------------------------/maps ---------------------------------->
-
-
 <!-- --------------------------------------footter----------------------------------- -->
 <footer>
     <div class="row">
         <div class="col">
-            <img src="Photoroom-20250221_234420.png" alt="" class="logot">
+            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque reprehenderit autem
                 eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
         </div>
@@ -126,7 +85,7 @@
             <p>ITPL road</p>
             <p>manzil</p>
             <p>pocjta indexs</p>
-            <p class="email-id">renessans@gmail.com</p>
+            <p class="email-id">@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
 
@@ -151,8 +110,8 @@
     <p class="copyrigh">2025</p>
     </hr>
 </footer>
-
 <!-- --------------------------------------/footter----------------------------------- -->
+
 
 <script>
     const dropdownButton = document.getElementById('languageDropdown');
@@ -177,6 +136,43 @@
             languageMenu.classList.add('hidden');
         }
     });
+
+
+//------------------------------------ carusel js ------------------------
+// Carousel JS
+const container = document.querySelector('.carousel-container');
+const slides = document.querySelectorAll('.carousel-slide');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+let index = 0;
+
+function updateCarousel() {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+    });
+    container.style.transform = `translateX(-${index * 100}%)`;
+}
+
+nextBtn.addEventListener('click', () => {
+    index = (index + 1) % slides.length;
+    updateCarousel();
+});
+
+prevBtn.addEventListener('click', () => {
+    index = (index - 1 + slides.length) % slides.length;
+    updateCarousel();
+});
+
+// Auto slide every 5 seconds
+setInterval(() => {
+    index = (index + 1) % slides.length;
+    updateCarousel();
+}, 3000);
+
+// Initialize active class
+updateCarousel();
+
+//------------------------------------ carusel js ------------------------
 </script>
 </body>
 </html>

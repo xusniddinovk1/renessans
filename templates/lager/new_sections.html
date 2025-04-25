@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'lager/css/style-fotogalareya.css' %}">
+    <link rel="stylesheet" href="{% static 'lager/css/style-yangiliklar.css' %}">
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -41,20 +41,20 @@
     <label for="menu-bar"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
         <ul>
-            <li><a href="index.html" target="_blank">Asosiy</a></li>
+            <li><a href="{% url 'home_page' %}" target="_blank">Asosiy</a></li>
             <li><a href="#">kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="mehmonxona.html" target="_blank">Mehmon xonalar</a></li>
-                    <li><a href="istirohatzona.html" target="_blank">Istirohat zona</a></li>
+                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mehmon xonalar</a></li>
+                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Istirohat zona</a></li>
                 </ul>
             </li>
             <li><a href="#">Tadbirlar<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="faoliyat.html" target="_blank">Faoliyat</a></li>
-                    <li><a href="o'quvbolim.html" target="_blank">O'quv Bo'lim</a></li>
+                    <li><a href="{% url 'activity_page' %}" target="_blank">Faoliyat</a></li>
+                    <li><a href="{% url 'education_page' %}" target="_blank">O'quv Bo'lim</a></li>
                 </ul>
             </li>
-            <li><a href="fotogalareya.html">Yangiliklar</a></li>
+            <li><a href="{% url 'news_page' %}">Yangiliklar</a></li>
         </ul>
     </nav>
 
@@ -64,35 +64,33 @@
 <div class="swiper news-slider">
     <div class="swiper-wrapper">
         <!-- YANGILIK KARTASI -->
+        {% for news in news_item %}
         <div class="swiper-slide card">
             <div class="swiper inner-swiper">
                 <div class="swiper-wrapper">
-                    {% for image in images %}
                     <div class="swiper-slide">
-                        <img src="{{ image.path.url }}" alt="">
+                        <img src="{{ news.image.url }}" alt="{{ news.title }}">
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>
         <div class="swiper inner-swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="yangilik 1/photo_2025-03-27_11-44-18.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="yangilik 1/photo_2025-03-27_11-44-25.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="yangilik 1/photo_2025-03-27_11-44-30.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="yangilik 1/photo_2025-03-27_11-44-34.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="yangilik 1/photo_2025-03-27_11-44-37.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="{{ news.image.url }}" alt="{{ news.title }}"></div>
             </div>
         </div>
-        <div class="news-title">Prezident yangi farmon chiqardi</div>
-        <div class="news-summary">Ta'lim tizimida tub o‘zgarishlar kutilmoqda.</div>
+        <div class="news-title">{{ news.title }}</div>
+        <div class="news-summary">{{ news.description }}</div>
         <button class="btn"
-                onclick="showModal('Prezident yangi farmon chiqardi', 'Prezident tomonidan chiqarilgan yangi qarorga ko‘ra, barcha oliy ta’lim muassasalarida raqamli texnologiyalarni joriy etish bo‘yicha katta islohotlar boshlanmoqda.')">
+                onclick="showModal('{{ news.title }}', '{{ news.description }}')">
             Batafsil
         </button>
+        {% endfor %}
     </div>
+</div>
 
-    <!-- Ikkinchi karta -->
+
+<!-- Ikkinchi karta -->
 <!--    <div class="swiper-slide card">-->
 <!--        <div class="swiper inner-swiper">-->
 <!--            <div class="swiper-wrapper">-->
@@ -110,7 +108,7 @@
 <!--            Batafsil-->
 <!--        </button>-->
 <!--    </div>-->
-    <!-- YANGILIK KARTASI 3 -->
+<!-- YANGILIK KARTASI 3 -->
 <!--    <div class="swiper-slide card">-->
 <!--        <div class="swiper inner-swiper">-->
 <!--            <div class="swiper-wrapper">-->
@@ -247,6 +245,13 @@
        function closeModal() {
          document.getElementById('newsModal').style.display = 'none';
        }
+function showModal(title, description) {
+    // Modal oynada title va description ni ko'rsatish
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-description').innerText = description;
+    document.getElementById('myModal').style.display = 'block'; // Modalni ochish
+}
+
 </script>
 
 </body>
