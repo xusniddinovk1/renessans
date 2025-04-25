@@ -166,11 +166,11 @@
           var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-              labels: ["Faoliyatlar", "Mexmonxona", "Istirohat Zonalar", "Yangiliklar"],
+              labels: ["Faoliyatlar", "Mexmonxona", "Rasmlar", "O'quv bo'lim", Istirohat Zonalar", "Yangiliklar"],
               datasets: [
                 {
                   label: "Diagramma",
-                  data: [{{ counts.activities }}, {{ counts.hotel_section }}, {{ counts.recreation_section }}, {{ counts.news_section }}],
+                  data: [{{ counts.activities }}, {{ counts.photos }}, {{ counts.educations }}, {{ counts.hotel_section }}, {{ counts.recreation_section }}, {{ counts.news_section }}],
                   borderColor: "rgba(0, 123, 255, 0.9)",
                   borderWidth: "0",
                   backgroundColor: "rgba(0, 123, 255, 0.5)"

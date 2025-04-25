@@ -234,6 +234,16 @@ def news_delete(request, pk):
 
 
 @login_required_decorator
+def photo_list(request):
+    photos = Photos.objects.all()
+
+    ctx = {
+        "photos": photos
+    }
+    return render(request, 'dashboard/photo_section/list.html', ctx)
+
+
+@login_required_decorator
 def photo_create(request):
     form = PhotoForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -268,6 +278,16 @@ def photo_delete(request, pk):
 
 
 @login_required_decorator
+def education_list(request):
+    educations = Education.objects.all()
+
+    ctx = {
+        "educations": educations
+    }
+    return render(request, 'dashboard/education_section/list.html', ctx)
+
+
+@login_required_decorator
 def education_create(request):
     form = EducationForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -282,7 +302,7 @@ def education_create(request):
 
 @login_required_decorator
 def education_update(request, pk):
-    educations = get_object_or_404(Education, pk=pk)
+    education = get_object_or_404(Education, pk=pk)
     form = EducationForm(request.POST or None, request.FILES or None, instance=educations)
     if form.is_valid():
         form.save()
