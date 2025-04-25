@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="oquvbolim.css">
+    <link rel="stylesheet" href="{% static 'lager/css/education.css' %}">
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -15,7 +15,7 @@
 <!------------------------------------- header --------------------------------- -->
 <header>
     <a href="#" class="logo">
-        <img src="IMG_3049.JPG" alt="company logo">
+        <img src="/media/logo.JPG" alt="company logo">
     </a>
     <div class="relative">
         <button id="languageDropdown"
@@ -27,9 +27,7 @@
             <ul class="text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Español</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="fr">Français</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="de">Deutsch</li>
+                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruscha</li>
             </ul>
         </div>
     </div>
@@ -56,8 +54,6 @@
 
 </header>
 <!---------------------------------- card oquv bolim-------------------------- -->
-
-
 <div class="card-container">
     <div class="card">
         {% for education in educations %}
@@ -97,7 +93,7 @@
     <footer>
         <div class="row">
             <div class="col">
-                <img src="Photoroom-20250221_234420.png" alt="" class="logot">
+                <img src="/media/logo_pastki_qism.png" alt="" class="logot">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque reprehenderit
                     autem
                     eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
