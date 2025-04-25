@@ -24,17 +24,21 @@ def logout_page(request):
     logout(request)
     return redirect("login_page")
 
+
 @login_required_decorator
 def account_view(request):
     return render(request, 'dashboard/account.html')
+
 
 @login_required_decorator
 def settings_view(request):
     return render(request, 'dashboard/settings.html')
 
+
 @login_required_decorator
 def billing_view(request):
     return render(request, 'dashboard/billing.html')
+
 
 @login_required_decorator
 def main_dashboard(request):
@@ -227,3 +231,71 @@ def news_delete(request, pk):
     news = get_object_or_404(News, pk=pk)
     news.delete()
     return redirect('news_list')
+
+
+@login_required_decorator
+def photo_create(request):
+    form = PhotoForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect('photos_list')
+
+    ctx = {
+        'form': form
+    }
+    return render(request, 'dashboard/photos_section/form.html', ctx)
+
+
+@login_required_decorator
+def photo_update(request, pk):
+    photos = get_object_or_404(Photos, pk=pk)
+    form = PhotoForm(request.POST or None, request.FILES or None, instance=photos)
+    if form.is_valid():
+        form.save()
+        return redirect('photos_list')
+
+    ctx = {
+        "form": form
+    }
+    return render(request, 'dashboard/photos_section/form.html', ctx)
+
+
+@login_required_decorator
+def photo_delete(request, pk):
+    photo = get_object_or_404(Photos, pk=pk)
+    photo.delete()
+    return redirect('photos_list')
+
+
+@login_required_decorator
+def education_create(request):
+    form = EducationForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect('education_list')
+
+    ctx = {
+        'form': form
+    }
+    return render(request, 'dashboard/education_section/form.html', ctx)
+
+
+@login_required_decorator
+def education_update(request, pk):
+    educations = get_object_or_404(Education, pk=pk)
+    form = EducationForm(request.POST or None, request.FILES or None, instance=educations)
+    if form.is_valid():
+        form.save()
+        return redirect('education_list')
+
+    ctx = {
+        "form": form
+    }
+    return render(request, 'dashboard/education_section/form.html', ctx)
+
+
+@login_required_decorator
+def education_delete(request, pk):
+    education = get_object_or_404(Education, pk=pk)
+    education.delete()
+    return redirect('education_list')

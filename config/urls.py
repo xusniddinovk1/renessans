@@ -5,7 +5,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include('lager_app.urls')),
+    path('', include('lager_app.urls')),
     path('dashboard/', include('dashboard.urls'))
 ]
 

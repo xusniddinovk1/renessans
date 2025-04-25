@@ -1,6 +1,11 @@
 from django.db import models
 
 
+class Photos(models.Model):
+    objects = None
+    image = models.ImageField(upload_to='photos/', blank=True, null=True)
+
+
 class Activity(models.Model):
     objects = None
     title = models.CharField(max_length=100, null=False, blank=False)
@@ -19,6 +24,13 @@ class Hotel(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Education(models.Model):
+    objects = None
+    title = models.CharField(max_length=100, null=False, blank=False)
+    description = models.TextField()
+    image = models.ImageField(upload_to='education/', blank=True, null=True)
 
 
 class RecreationZone(models.Model):
