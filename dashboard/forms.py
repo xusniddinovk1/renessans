@@ -14,7 +14,7 @@ class PhotoForm(forms.ModelForm):
 
 class EducationForm(forms.ModelForm):
     class Meta:
-        model = Activity
+        model = Education
         fields = ['title', 'description', 'image']
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),

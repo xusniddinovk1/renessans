@@ -50,14 +50,15 @@ def main_dashboard(request):
     news = News.objects.all()
 
     ctx = {
-        "photos": len(photos),
-        "educations": len(educations),
-        "activities": len(activities),
-        "hotels": len(hotels),
-        "rest_area": len(rest_area),
-        "news": len(news),
+        "counts": {
+            "photos": len(photos),
+            "educations": len(educations),
+            "activities": len(activities),
+            "hotels": len(hotels),
+            "rest_area": len(rest_area),
+            "news": len(news),
+        }
     }
-
     return render(request, 'dashboard/index.html', ctx)
 
 
