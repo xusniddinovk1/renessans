@@ -30,7 +30,7 @@ class Education(models.Model):
     objects = None
     title = models.CharField(max_length=100, null=False, blank=False)
     description = models.TextField()
-    image = models.ImageField(upload_to='education/', blank=True, null=True)
+    image = models.ImageField(upload_to='education_section/', blank=True, null=True)
 
 
 class RecreationZone(models.Model):

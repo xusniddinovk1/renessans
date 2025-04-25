@@ -252,12 +252,12 @@ def photo_create(request):
     form = PhotoForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('photos_list')
+        return redirect('photo_list')
 
     ctx = {
         'form': form
     }
-    return render(request, 'dashboard/photos_section/form.html', ctx)
+    return render(request, 'dashboard/photo_section/form.html', ctx)
 
 
 @login_required_decorator
@@ -266,19 +266,19 @@ def photo_update(request, pk):
     form = PhotoForm(request.POST or None, request.FILES or None, instance=photos)
     if form.is_valid():
         form.save()
-        return redirect('photos_list')
+        return redirect('photo_list')
 
     ctx = {
         "form": form
     }
-    return render(request, 'dashboard/photos_section/form.html', ctx)
+    return render(request, 'dashboard/photo_section/form.html', ctx)
 
 
 @login_required_decorator
 def photo_delete(request, pk):
     photo = get_object_or_404(Photos, pk=pk)
     photo.delete()
-    return redirect('photos_list')
+    return redirect('photo_list')
 
 
 @login_required_decorator
@@ -307,7 +307,7 @@ def education_create(request):
 @login_required_decorator
 def education_update(request, pk):
     education = get_object_or_404(Education, pk=pk)
-    form = EducationForm(request.POST or None, request.FILES or None, instance=educations)
+    form = EducationForm(request.POST or None, request.FILES or None, instance=education)
     if form.is_valid():
         form.save()
         return redirect('education_list')

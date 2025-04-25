@@ -1,0 +1,83 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+<div class="page-container">
+    <!-- HEADER DESKTOP -->
+    {% include 'dashboard/userbar.html' %}
+    <!-- END HEADER DESKTOP -->
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+
+                <!-- PAGE TITLE -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="overview-wrap">
+                            <h2 class="title-1">O'quv bo'lim Ro'yhatlari</h2>
+                            <a class="au-btn au-btn-icon au-btn--blue" href="{% url 'education_create' %}">
+                                <i class="zmdi zmdi-plus"></i>Qo'shish
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <!-- DATA TABLE -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive m-b-40">
+                            <table class="table table-borderless table-data3">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Rasmi</th>
+                                        <th>Sarlavha</th>
+                                        <th>Matni</th>
+                                        <th>Amallar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for education in educations %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>
+                                            {% if education.image %}
+                                                <img src="{{ education.image.url }}" alt="photo" style="width: 100px; height: 100px; object-fit: cover; border-radius: 5px;">
+                                            {% else %}
+                                                <span class="text-muted">Rasm yo'q</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ education.title }}</td>
+                                        <td>{{ education.description }}</td>
+                                        <td>
+                                            <div class="table-data-feature">
+                                                <a class="item" data-toggle="tooltip"
+                                                   href="{% url 'education_edit' pk=education.id %}"
+                                                   title="Tahrirlash">
+                                                    <i class="zmdi zmdi-edit text-warning"></i>
+                                                </a>
+                                                <a class="item" data-toggle="tooltip"
+                                                   href="{% url 'education_delete' pk=activity.id %}"
+                                                   title="O'chirish">
+                                                    <i class="zmdi zmdi-delete text-danger"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- END DATA TABLE -->
+
+            </div>
+        </div>
+    </div>
+    <!-- END MAIN CONTENT -->
+</div>
+{% endblock %}

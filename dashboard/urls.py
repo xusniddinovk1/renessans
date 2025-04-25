@@ -30,4 +30,14 @@ urlpatterns = [
     path('yangiliklar/yangi/', views.news_create, name='news_create'),
     path('yangiliklar/<int:pk>/tahrirlash/', views.news_update, name='news_edit'),
     path('yangiliklar/<int:pk>/ochirish/', views.news_delete, name='news_delete'),
+
+    path('rasmlar/', views.photo_list, name='photo_list'),
+    path('rasmlar/yangi/', views.photo_create, name='photo_create'),
+    path('rasmlar/<int:pk>/tahrirlash/', views.photo_update, name='photo_edit'),
+    path('rasmlar/<int:pk>/ochirish/', views.photo_delete, name='photo_delete'),
+
+    path('oquvbolim/', views.education_list, name='education_list'),
+    path('oquvbolim/yangi/', views.education_create, name='education_create'),
+    path('oquvbolim/<int:pk>/tahrirlash/', views.education_update, name='education_edit'),
+    path('oquvbolim/<int:pk>/ochirish/', views.education_delete, name='education_delete'),
 ]
