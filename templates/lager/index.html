@@ -36,20 +36,20 @@
     <label for="menu-bar"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
         <ul>
-            <li><a href="index.html" target="_blank">Asosiy</a></li>
+            <li><a href="{% url 'home_page' %}" target="_blank">Asosiy</a></li>
             <li><a href="#">kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="mehmonxona.html" target="_blank">Mexmonxonalar</a></li>
-                    <li><a href="istirohatzona.html" target="_blank">Istirohat zona</a></li>
+                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mexmonxonalar</a></li>
+                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Istirohat zona</a></li>
                 </ul>
             </li>
             <li><a href="#">Tadbirlar<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="faoliyat.html" target="_blank">Faoliyat</a></li>
-                    <li><a href="o'quvbolim.html" target="_blank">O'quv Bo'lim</a></li>
+                    <li><a href="{% url 'activity_page' %}" target="_blank">Faoliyat</a></li>
+                    <li><a href="{% url 'education_page' %}o" target="_blank">O'quv Bo'lim</a></li>
                 </ul>
             </li>
-            <li><a href="fotogalareya.html">Yangiliklar</a></li>
+            <li><a href="{% url 'news_page' %}">Yangiliklar</a></li>
         </ul>
     </nav>
 
@@ -94,15 +94,76 @@
 <!-- -------------------------------------------gap---------------------------------- -->
 <!-- -----------------------------------grid galareya--------------------------------- -->
 <div class="grid-gallery">
-    {% for gallery in galleries %}
+    {% for photo in photos %}
     <div class="grid-item">
-        <a href="{{ gallery.image.url }}" class="grid-link" target="_blank">
-            <img src="{{ gallery.image.url }}" alt="">
+        <a href="#" class="grid-link" onclick="openModal('{{ photo.image.url }}')">
+            <img src="{{ photo.image.url }}" alt="">
             <div class="grid-caption"></div>
         </a>
     </div>
     {% endfor %}
 </div>
+
+<!-- Modal -->
+<div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
+
+<!-- CSS -->
+<style>
+    .modal {
+        display: none; /* Modalni dastlab yashirish */
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.7);
+    }
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+    .close {
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        transition: 0.3s;
+    }
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+
+<!-- JavaScript -->
+<script>
+    // Modalni ochish
+    function openModal(imageUrl) {
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = imageUrl;
+    }
+
+    // Modalni yopish
+    function closeModal() {
+        var modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+    }
+</script>
+
 <!--<div class="grid-gallery">-->
 <!--    <div class="grid-item">-->
 <!--        <a href="" class="grid-link">-->
