@@ -42,16 +42,20 @@ def billing_view(request):
 
 @login_required_decorator
 def main_dashboard(request):
+    photos = Photos.objects.all()
+    educations = Education.objects.all()
     activities = Activity.objects.all()
-    hotel_section = Hotel.objects.all()
-    recreation_section = RecreationZone.objects.all()
-    news_section = News.objects.all()
+    hotels = Hotel.objects.all()
+    rest_area = RecreationZone.objects.all()
+    news = News.objects.all()
 
     ctx = {
+        "photos": len(photos),
+        "educations": len(educations),
         "activities": len(activities),
-        "hotel_section": len(hotel_section),
-        "recreation_section": len(recreation_section),
-        "news_section": len(news_section),
+        "hotels": len(hotels),
+        "rest_area": len(rest_area),
+        "news": len(news),
     }
 
     return render(request, 'dashboard/index.html', ctx)
