@@ -94,10 +94,11 @@ header .navbar ul li ul{
 header .navbar ul li ul li{
     width: 50%;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background: none;
+    background: #1d4ed8;
     border: none;
 }
 header .navbar ul li ul li ul{
+    color: #fff;
     left :200px;
     top:0;
 }
