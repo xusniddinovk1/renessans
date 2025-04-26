@@ -96,9 +96,12 @@ header .navbar ul li ul li{
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     background: #1d4ed8;
     border: none;
+    border-radius: 20px;
 }
 header .navbar ul li ul li ul{
     color: #fff;
+}
+header .navbar ul li ul li ul{
     left :200px;
     top:0;
 }
