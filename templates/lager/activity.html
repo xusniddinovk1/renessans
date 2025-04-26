@@ -37,7 +37,7 @@
     <nav class="navbar">
         <ul>
             <li><a href="{% url 'home_page' %}" target="_blank">Asosiy</a></li>
-            <li><a href="#">kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <li><a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
                     <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mehmonxonalar</a></li>
                     <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Istirohat zona</a></li>
@@ -58,11 +58,11 @@
 <div class="carousel">
     <div class="carousel-container">
         {% for activity in activities %}
-            <div class="carousel-slide {% if forloop.first %}active{% endif %}">
-                <img src="{{ activity.image.url }}" alt="{{ activity.title }}" class="event-image">
-                <div class="event-title">{{ activity.title }}</div>
-                <div class="event-description">{{ activity.description }}</div>
-            </div>
+        <div class="carousel-slide {% if forloop.first %}active{% endif %}">
+            <img src="{{ activity.image.url }}" alt="{{ activity.title }}" class="event-image">
+            <div class="event-title">{{ activity.title }}</div>
+            <div class="event-description">{{ activity.description }}</div>
+        </div>
         {% endfor %}
     </div>
     <div class="carousel-buttons">
@@ -71,6 +71,16 @@
     </div>
 </div>
 <!-- --------------------------------------footter----------------------------------- -->
+<div class="container">
+    <h1>Renessans Oromgohi manzili</h1>
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95985.13840300929!2d69.18832734611418!3d41.25367332672317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae6005c5142bf3%3A0xe04bf246835d2d7f!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0JDRjdGA0L7Qv9C-0YDRgiDQuNC80LXQvdC4INCY0YHQu9Cw0LzQsCDQmtCw0YDQuNC80L7QstCw!5e0!3m2!1sru!2s!4v1743158064308!5m2!1sru!2s"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <a href="#">view on google maps </a>
+</div>
+
 <footer>
     <div class="row">
         <div class="col">
