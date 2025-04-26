@@ -35,9 +35,9 @@ def education_page(request):
 
 
 def recreation_zone_page(request):
-    rest_ares = RecreationZone.objects.all()
+    rest_areas = RecreationZone.objects.all()
     ctx = {
-        "rest_ares": rest_ares
+        "rest_areas": rest_areas
     }
     return render(request, 'lager/recreation_zone.html', ctx)
 

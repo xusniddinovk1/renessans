@@ -57,62 +57,16 @@
 <!-- ------------------------------card slider  ----------------------------------- -->
 <div class="container">
     <div class="card__container">
+        {% for rest_area in rest_areas %}
         <article class="card__article">
-            <img src="istitohat zona/DSC03144.JPG" alt="image" class="card__img">
-
+            <img src="{{ rest_area.image.url }}" alt="image" class="card__img">
             <div class="card__data">
-                <span class="card__description">Vancouver Mountains, Canada</span>
-                <h2 class="card__title">The Great Path</h2>
+                <span class="card__description">{{ rest_area.description }}</span>
+                <h2 class="card__title">{{ card.rest_area }}</h2>
                 <a href="#" class="card__button">Read More</a>
             </div>
         </article>
-
-        <article class="card__article">
-            <img src="istitohat zona/DSC03145.JPG" alt="image" class="card__img">
-
-            <div class="card__data">
-                <span class="card__description">Poon Hill, Nepal</span>
-                <h2 class="card__title">Starry Night</h2>
-                <a href="#" class="card__button">Read More</a>
-            </div>
-        </article>
-
-        <article class="card__article">
-            <img src="istitohat zona/DSC03146.JPG" alt="image" class="card__img">
-
-            <div class="card__data">
-                <span class="card__description">Bojcin Forest, Serbia</span>
-                <h2 class="card__title">Path of Peace</h2>
-                <a href="#" class="card__button">Read More</a>
-            </div>
-        </article>
-        <article class="card__article">
-            <img src="istitohat zona/DSC03146.JPG" alt="image" class="card__img">
-
-            <div class="card__data">
-                <span class="card__description">Bojcin Forest, Serbia</span>
-                <h2 class="card__title">Path of Peace</h2>
-                <a href="#" class="card__button">Read More</a>
-            </div>
-        </article>
-        <article class="card__article">
-            <img src="istitohat zona/DSC03146.JPG" alt="image" class="card__img">
-
-            <div class="card__data">
-                <span class="card__description">Bojcin Forest, Serbia</span>
-                <h2 class="card__title">Path of Peace</h2>
-                <a href="#" class="card__button">Read More</a>
-            </div>
-        </article>
-        <article class="card__article">
-            <img src="istitohat zona/DSC03146.JPG" alt="image" class="card__img">
-
-            <div class="card__data">
-                <span class="card__description">Bojcin Forest, Serbia</span>
-                <h2 class="card__title">Path of Peace</h2>
-                <a href="#" class="card__button">Read More</a>
-            </div>
-        </article>
+        {% endfor %}
     </div>
 </div>
 <!-- ------------------------------/card slider  ----------------------------------- -->
@@ -121,7 +75,7 @@
 <footer>
     <div class="row">
         <div class="col">
-            <img src="Photoroom-20250221_234420.png" alt="" class="logot">
+            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque reprehenderit autem
                 eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
         </div>
