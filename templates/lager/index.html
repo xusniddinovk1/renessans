@@ -58,6 +58,9 @@
 <!-- -------------------------------------- main ---------------------------->
 <!-- Banner -->
 <div class="banner">
+    <div class="banner" style="background-image: url('media/asosy_rasm.JPG');background-size: cover;
+    background-position: center;">
+    </div>
     <div class="banner-text">Quvonch, Do`stlik va unutilmas damlar maskani</div>
     <!-- Batafsil tugmasi pastda joylashadi -->
     <button class="banner-button" id="bannerButton"><a href="{% url 'education_page' %}">more</a></button>
@@ -255,5 +258,38 @@
     
 })
 </script>
+<script>
+ new Swiper(".news-slider", {
+  slidesPerView: 1,
+  spaceBetween: 20,
+  breakpoints: {
+    640: { slidesPerView: 1 }, // kichik mobilda 1 ta
+    768: { slidesPerView: 2 }, // planshetlarda 2 ta
+    1024: { slidesPerView: 3 } // katta ekranda 3 ta
+  }
+});
+
+
+    document.querySelectorAll(".inner-swiper").forEach(el => {
+      new Swiper(el, {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false
+        }
+      });
+    });
+
+    function showModal(title, text) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalText').innerText = text;
+      document.getElementById('newsModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('newsModal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
