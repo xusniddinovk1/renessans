@@ -61,73 +61,50 @@
 </header>
 <!------------------------------------- /header --------------------------------- -->
 <!------------------------------------------ yangilikar-----------------------------  -->
+<!--<div class="swiper news-slider">-->
+<!--    <div class="swiper-wrapper">-->
+<!--        &lt;!&ndash; YANGILIK KARTASI &ndash;&gt;-->
+<!--        {% for news in news_item %}-->
+<!--        <div class="swiper-slide card">-->
+<!--            <div class="swiper inner-swiper">-->
+<!--                <div class="swiper-wrapper">-->
+<!--                    <div class="swiper-slide">-->
+<!--                        <img src="{{ news.image.url }}" alt="{{ news.title }}">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="swiper inner-swiper">-->
+<!--            <div class="swiper-wrapper">-->
+<!--                <div class="swiper-slide"><img src="{{ news.image.url }}" alt="{{ news.title }}"></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="news-title">{{ news.title }}</div>-->
+<!--        <div class="news-summary">{{ news.description }}</div>-->
+<!--        <button class="btn"-->
+<!--                onclick="showModal('{{ news.title }}', '{{ news.description }}')">-->
+<!--            Batafsil-->
+<!--        </button>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+<!--</div>-->
 <div class="swiper news-slider">
     <div class="swiper-wrapper">
-        <!-- YANGILIK KARTASI -->
         {% for news in news_item %}
         <div class="swiper-slide card">
             <div class="swiper inner-swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="{{ news.image.url }}" alt="{{ news.title }}">
+                        <img src="{{ news.image.url }}" alt="">
                     </div>
                 </div>
             </div>
+            <div class="news-title">{{ news.title }}</div>
+            <div class="news-summary"> {{ news.content|truncatechars:50 }}...</div>
+            <button class="btn" onclick="showModal('{{ news.title }}', '{{ news.content|escapejs }}')">Batafsil</button>
         </div>
-        <div class="swiper inner-swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="{{ news.image.url }}" alt="{{ news.title }}"></div>
-            </div>
-        </div>
-        <div class="news-title">{{ news.title }}</div>
-        <div class="news-summary">{{ news.description }}</div>
-        <button class="btn"
-                onclick="showModal('{{ news.title }}', '{{ news.description }}')">
-            Batafsil
-        </button>
         {% endfor %}
     </div>
-</div>
-
-
-<!-- Ikkinchi karta -->
-<!--    <div class="swiper-slide card">-->
-<!--        <div class="swiper inner-swiper">-->
-<!--            <div class="swiper-wrapper">-->
-<!--                <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-38.jpg" alt=""></div>-->
-<!--                <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-39.jpg" alt=""></div>-->
-<!--                <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-41.jpg" alt=""></div>-->
-<!--                <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-42.jpg" alt=""></div>-->
-<!--                <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-43.jpg" alt=""></div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="news-title">Yangi AI texnologiya taqdim etildi</div>-->
-<!--        <div class="news-summary">Sun’iy intellekt hayotimizga kirib kelyapti.</div>-->
-<!--        <button class="btn"-->
-<!--                onclick="showModal('Yangi AI texnologiya taqdim etildi', 'Bugungi texnologik forumda yangi AI texnologiyasi taqdim etildi. Bu texnologiya sog‘liqni saqlash, ta’lim va moliya sohalariga jiddiy ta’sir ko‘rsatishi kutilmoqda.')">-->
-<!--            Batafsil-->
-<!--        </button>-->
-<!--    </div>-->
-<!-- YANGILIK KARTASI 3 -->
-<!--    <div class="swiper-slide card">-->
-<!--        <div class="swiper inner-swiper">-->
-<!--            <div class="swiper-wrapper">-->
-<!--                <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-48.jpg" alt=""></div>-->
-<!--                <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-49.jpg" alt=""></div>-->
-<!--                <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-50.jpg" alt=""></div>-->
-<!--                <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-51.jpg" alt=""></div>-->
-<!--                <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-54.jpg" alt=""></div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="news-title">Prezident yangi farmon chiqardi</div>-->
-<!--        <div class="news-summary">Ta'lim tizimida tub o‘zgarishlar kutilmoqda.</div>-->
-<!--        <button class="btn"-->
-<!--                onclick="showModal('Prezident yangi farmon chiqardi', 'Prezident tomonidan chiqarilgan yangi qarorga ko‘ra, barcha oliy ta’lim muassasalarida raqamli texnologiyalarni joriy etish bo‘yicha katta islohotlar boshlanmoqda.')">-->
-<!--            Batafsil-->
-<!--        </button>-->
-<!--    </div>-->
-
-</div>
 </div>
 
 <!-- MODAL -->
@@ -255,13 +232,6 @@
        function closeModal() {
          document.getElementById('newsModal').style.display = 'none';
        }
-function showModal(title, description) {
-    // Modal oynada title va description ni ko'rsatish
-    document.getElementById('modal-title').innerText = title;
-    document.getElementById('modal-description').innerText = description;
-    document.getElementById('myModal').style.display = 'block'; // Modalni ochish
-}
-
 </script>
 
 </body>
