@@ -94,12 +94,8 @@ header .navbar ul li ul{
 header .navbar ul li ul li{
     width: 50%;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background: #1d4ed8;
+    background: none;
     border: none;
-    border-radius: 20px;
-}
-header .navbar ul li ul li ul{
-    color: #fff;
 }
 header .navbar ul li ul li ul{
     left :200px;
@@ -129,7 +125,7 @@ header label{
     position: relative;
     width: 100%;
     height: 400px; /* Banner balandligi */
-    background-image: url('/media/logo/logo.JPG'); /* Orqa fon rasm */
+    background-image: url(DSC03136.JPG); /* Orqa fon rasm */
     background-size: cover;
     background-position: center;
     color: white;
@@ -234,54 +230,6 @@ header label{
 
 
 /* ------------------------------/main------------------------------- */
-    .container{
-        position: bottom;
-        max-width: 90%;
-        margin: 0 auto;
-        height: 500px;
-        padding: 40px 20px;
-        background-color: #fff;
-        box-shadow: 0 4px  8px rgba(0, 0, 0.1);
-        border-radius: 10px;
-        /* margin-bottom: 20px; */
-    }
-    .container h1{
-        text-align: center;
-        flex: 28px;
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 30px;
-    }
-    .container .map-container{
-        position: relative;
-        width: 100%;
-        height: 50%;
-        padding-bottom: 26.25%;
-    }
-    .container .map-container iframe{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 90%;
-        border: none;
-        border-radius: 10px;
-    }
-    .container a{
-        display: inline-block;
-        background: #4caf50;
-        color: #fff;
-        padding: 10px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        transition: background-color 0.3s ease-in-out;
-
-    }
-    .container a:hover{
-        background-color: #45a049;
-
 /* ---------------------labguage----------------------------- */
 .language-button {
     transition: transform 0.3s ease, background-color 0.3s ease;
@@ -304,7 +252,7 @@ header label{
     font-size: 18px;
     font-weight: bold;
     color: #333;
-   
+
 }
 .text-box p {
     font-size: 15px;
@@ -317,7 +265,7 @@ header label{
     padding: 10px;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.1); /* Matn orqa foniga shaffof oq effekt */
-    display: inline-block; 
+    display: inline-block;
 }
 /* .text-box h1{
     color: #40E0D0; /* Yorqin ko‘k-yashil (Turquoise) */
@@ -340,7 +288,7 @@ header label{
 .grid-gallery .grid-item{
     position: relative;
     overflow: hidden;
-   
+
 }
 .grid-gallery .grid-item:nth-child(6n+2){
     grid-row: span;
@@ -488,7 +436,7 @@ hr{
 }
 .copyrigh{
     text-align: center;
-    
+
 }
 .underline{
     width: 100%;
@@ -525,7 +473,7 @@ hr{
     /* --------------------------------res header------------------------- */
     header{
         padding: 20px;
-    
+
     }
     header label{
         display: initial;
@@ -548,14 +496,14 @@ hr{
         width: 100%;
         list-style-type: none;
         padding: 0;
-        
-    
+
+
     }
     header .navbar  ul li ul li{
         background: #eee;
         display: block;
         margin-bottom: 3px;
-        
+
 
     }
     header .navbar  ul li ul li ul{
@@ -574,19 +522,19 @@ hr{
             width: 100%; /* Kenglikni ekranga mos qiladi */
             padding: 15px; /* Paddingni kamaytiradi */
         }
-    
+
         .text-box p {
             font-size: 18px; /* Matn hajmini kichikroq qiladi */
             padding: 8px; /* Matn atrofidagi bo‘shliqni kamaytiradi */
         }
     }
-    
+
     /* === Responsive: 480px dan kichik ekranlar uchun (mobil) === */
     @media (max-width: 480px) {
         .text-box {
             padding: 12px; /* Juda kichik ekranda paddingni kamaytirish */
         }
-    
+
         .text-box p {
             font-size: 16px; /* Mobil uchun matnni kichikroq qilish */
             letter-spacing: 0.5px;
@@ -616,7 +564,7 @@ hr{
     main .back .img-text h2 {
         font-size: 20px;
     }
-   
+
 }
 @media (max-width: 768px) {
     .animated-text {
@@ -646,9 +594,8 @@ hr{
         flex-basis: 100%;
 
     }
-        
-    }
-    
-    /* ---------------------- /footer--------------- */
 
     }
+
+    /* ---------------------- /footer--------------- */
+
