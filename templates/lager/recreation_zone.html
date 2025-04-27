@@ -71,7 +71,6 @@
         {% endfor %}
     </div>
 </div>
-<!-- modal  -->
 <div class="modal" id="newsModal">
     <div class="modal-content" id="modalContent">
         <span class="modal-close" onclick="closeModal()">&times;</span>
@@ -84,74 +83,74 @@
         </div>
     </div>
 </div>
-<!-- ------------------------------/card slider  ----------------------------------- -->
+    <!-- ------------------------------/card slider  ----------------------------------- -->
 
-<!-- --------------------------------------footter----------------------------------- -->
-<footer>
-    <div class="row">
-        <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque reprehenderit
-                autem
-                eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
-        </div>
-        <div class="col">
-            <h3>office
-                <div class="underline"><span></span></div>
-            </h3>
-            <p>ITPL road</p>
-            <p>Manzil</p>
-            <p>Pochta Indeksi</p>
-            <p class="email-id">renessans@gmail.com</p>
-            <h4>+99800000000</h4>
-        </div>
+    <!-- --------------------------------------footter----------------------------------- -->
+    <footer>
+        <div class="row">
+            <div class="col">
+                <img src="/media/logo_pastki_qism.png" alt="" class="logot">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque reprehenderit
+                    autem
+                    eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
+            </div>
+            <div class="col">
+                <h3>office
+                    <div class="underline"><span></span></div>
+                </h3>
+                <p>ITPL road</p>
+                <p>Manzil</p>
+                <p>Pochta Indeksi</p>
+                <p class="email-id">renessans@gmail.com</p>
+                <h4>+99800000000</h4>
+            </div>
 
-        <div class="col">
-            <h3>NEWsletter
-                <div class="underline"><span></span></div>
-            </h3>
-            <form>
-                <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-            </form>
-            <div class="social-icons">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-telegram"></i>
-                <i class="fa-brands fa-twitter"></i>
+            <div class="col">
+                <h3>NEWsletter
+                    <div class="underline"><span></span></div>
+                </h3>
+                <form>
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+                <div class="social-icons">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-telegram"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
             </div>
         </div>
-    </div>
-    <hr>
-    <p class="copyrigh">2025</p>
-    </hr>
-</footer>
-<!-- --------------------------------------/footter----------------------------------- -->
+        <hr>
+        <p class="copyrigh">2025</p>
+        </hr>
+    </footer>
+    <!-- --------------------------------------/footter----------------------------------- -->
 
-<script>
-    const dropdownButton = document.getElementById('languageDropdown');
-    const languageMenu = document.getElementById('languageMenu');
-    const languageItems = languageMenu.querySelectorAll('li');
+    <script>
+        const dropdownButton = document.getElementById('languageDropdown');
+        const languageMenu = document.getElementById('languageMenu');
+        const languageItems = languageMenu.querySelectorAll('li');
 
-    dropdownButton.addEventListener('click', () => {
-        languageMenu.classList.toggle('hidden');
-    });
-
-    languageItems.forEach(item => {
-        item.addEventListener('click', (event) => {
-            const selectedLang = event.target.getAttribute('data-lang');
-            alert(`Language switched to: ${selectedLang}`);
-            languageMenu.classList.add('hidden');
+        dropdownButton.addEventListener('click', () => {
+            languageMenu.classList.toggle('hidden');
         });
-    });
 
-    // Close menu if clicked outside
-    document.addEventListener('click', (event) => {
-        if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
-            languageMenu.classList.add('hidden');
-        }
-    });
-</script>
+        languageItems.forEach(item => {
+            item.addEventListener('click', (event) => {
+                const selectedLang = event.target.getAttribute('data-lang');
+                alert(`Language switched to: ${selectedLang}`);
+                languageMenu.classList.add('hidden');
+            });
+        });
+
+        // Close menu if clicked outside
+        document.addEventListener('click', (event) => {
+            if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
+                languageMenu.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
