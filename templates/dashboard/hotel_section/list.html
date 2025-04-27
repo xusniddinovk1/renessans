@@ -51,7 +51,7 @@
                                             {% endif %}
                                         </td>
                                         <td>{{ hotel.name }}</td>
-                                        <td>{{ hotel.description }}</td>
+                                        <td>{{ hotel.description |truncatechars:20}}</td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <a class="item" data-toggle="tooltip"

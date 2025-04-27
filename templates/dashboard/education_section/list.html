@@ -51,7 +51,7 @@
                                             {% endif %}
                                         </td>
                                         <td>{{ education.title }}</td>
-                                        <td>{{ education.description }}</td>
+                                        <td>{{ education.description |truncatechars:20}}</td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <a class="item" data-toggle="tooltip"
