@@ -234,53 +234,53 @@ header label{
 
 
 /* ------------------------------/main------------------------------- */
-.container{
-    position: bottom;
-    max-width: 90%;
-    margin: 0 auto;
-    height: 500px;
-    padding: 40px 20px;
-    background-color: #fff;
-    box-shadow: 0 4px  8px rgba(0, 0, 0.1);
-    border-radius: 10px;
-    /* margin-bottom: 20px; */
-}
-.container h1{
-    text-align: center;
-    flex: 28px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 30px;
-}
-.container .map-container{
-    position: relative;
-    width: 100%;
-    height: 50%;
-    padding-bottom: 26.25%;
-}
-.container .map-container iframe{
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 90%;
-     border: none;
-     border-radius: 10px;
-}
-.container a{
-    display: inline-block;
-    background: #4caf50;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    transition: background-color 0.3s ease-in-out;
+    .container{
+        position: bottom;
+        max-width: 90%;
+        margin: 0 auto;
+        height: 500px;
+        padding: 40px 20px;
+        background-color: #fff;
+        box-shadow: 0 4px  8px rgba(0, 0, 0.1);
+        border-radius: 10px;
+        /* margin-bottom: 20px; */
+    }
+    .container h1{
+        text-align: center;
+        flex: 28px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 30px;
+    }
+    .container .map-container{
+        position: relative;
+        width: 100%;
+        height: 50%;
+        padding-bottom: 26.25%;
+    }
+    .container .map-container iframe{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 90%;
+        border: none;
+        border-radius: 10px;
+    }
+    .container a{
+        display: inline-block;
+        background: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        transition: background-color 0.3s ease-in-out;
 
-}
-.container a:hover{
-    background-color: #45a049;
+    }
+    .container a:hover{
+        background-color: #45a049;
 
 /* ---------------------labguage----------------------------- */
 .language-button {
@@ -651,3 +651,4 @@ hr{
     
     /* ---------------------- /footer--------------- */
 
+    }
