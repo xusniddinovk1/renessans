@@ -15,7 +15,7 @@
 <!------------------------------------- header --------------------------------- -->
 <header>
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo">
+        <img src=/media/logo/logo.JPG" alt="company logo">
     </a>
     <div class="relative">
         <button id="languageDropdown"
@@ -27,7 +27,7 @@
             <ul class="text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="ru">Ruscha</li>
+                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruscha</li>
             </ul>
         </div>
     </div>
@@ -36,7 +36,7 @@
     <nav class="navbar">
         <ul>
             <li><a href="{% url 'home_page' %}" target="_blank">Asosiy</a></li>
-            <li><a href="#">kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <li><a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
                     <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mehmon xonalar</a></li>
                     <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Istirohat zona</a></li>
@@ -70,62 +70,64 @@
         </article>
         {% endfor %}
     </div>
-</div>
-<div class="modal" id="newsModal">
-    <div class="modal-content" id="modalContent">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <h2 id="modalTitle"></h2>
-        <p id="modalText"></p>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
+    <!-- modal  -->
+    <div class="modal" id="newsModal">
+        <div class="modal-content" id="modalContent">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalText"></p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
         </div>
     </div>
-</div>
+
     <!-- ------------------------------/card slider  ----------------------------------- -->
 
     <!-- --------------------------------------footter----------------------------------- -->
-    <footer>
-        <div class="row">
-            <div class="col">
-                <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque reprehenderit
-                    autem
-                    eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
-            </div>
-            <div class="col">
-                <h3>office
-                    <div class="underline"><span></span></div>
-                </h3>
-                <p>ITPL road</p>
-                <p>Manzil</p>
-                <p>Pochta Indeksi</p>
-                <p class="email-id">renessans@gmail.com</p>
-                <h4>+99800000000</h4>
-            </div>
+    <div class="kenglik">
+        <footer>
+            <div class="row">
+                <div class="col">
+                    <img src="/media/logo_pastki_qism.png" alt="" class="logot">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque
+                        reprehenderit autem eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
+                </div>
+                <div class="col">
+                    <h3>office
+                        <div class="underline"><span></span></div>
+                    </h3>
+                    <p>ITPL road</p>
+                    <p>manzil</p>
+                    <p>pocjta indexs</p>
+                    <p class="email-id">renessans@gmail.com</p>
+                    <h4>+99800000000</h4>
+                </div>
 
-            <div class="col">
-                <h3>NEWsletter
-                    <div class="underline"><span></span></div>
-                </h3>
-                <form>
-                    <i class="fa-solid fa-envelope"></i>
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-                </form>
-                <div class="social-icons">
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                    <i class="fa-brands fa-telegram"></i>
-                    <i class="fa-brands fa-twitter"></i>
+                <div class="col">
+                    <h3>NEWsletter
+                        <div class="underline"><span></span></div>
+                    </h3>
+                    <form>
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="enter you email" required>
+                        <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                    </form>
+                    <div class="social-icons">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-telegram"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr>
-        <p class="copyrigh">2025</p>
-        </hr>
-    </footer>
+            <hr>
+            <p class="copyrigh">2025</p>
+            </hr>
+        </footer>
+    </div>
     <!-- --------------------------------------/footter----------------------------------- -->
 
     <script>
@@ -140,7 +142,7 @@
         languageItems.forEach(item => {
             item.addEventListener('click', (event) => {
                 const selectedLang = event.target.getAttribute('data-lang');
-                alert(`Language switched to: ${selectedLang}`);
+                alert(Language switched to: ${selectedLang});
                 languageMenu.classList.add('hidden');
             });
         });
@@ -152,5 +154,40 @@
             }
         });
     </script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
+    <script>
+        new Swiper(".news-slider", {
+         slidesPerView: 1,
+         spaceBetween: 20,
+         breakpoints: {
+           640: { slidesPerView: 1 }, // kichik mobilda 1 ta
+           768: { slidesPerView: 2 }, // planshetlarda 2 ta
+           1024: { slidesPerView: 3 } // katta ekranda 3 ta
+         }
+       });
+
+
+           document.querySelectorAll(".inner-swiper").forEach(el => {
+             new Swiper(el, {
+               slidesPerView: 1,
+               loop: true,
+               autoplay: {
+                 delay: 2500,
+                 disableOnInteraction: false
+               }
+             });
+           });
+
+           function showModal(title, text) {
+             document.getElementById('modalTitle').innerText = title;
+             document.getElementById('modalText').innerText = text;
+             document.getElementById('newsModal').style.display = 'flex';
+           }
+
+           function closeModal() {
+             document.getElementById('newsModal').style.display = 'none';
+           }
+    </script>
+
 </body>
 </html>
