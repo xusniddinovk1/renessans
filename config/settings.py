@@ -22,9 +22,6 @@ INSTALLED_APPS = [
 
     'django.contrib.humanize',
 
-    'modeltranslation',
-    'modeltranslation.admin',
-
     'dashboard',
     'lager_app',
 ]
@@ -80,13 +77,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'uz'
+LANGUAGE_CODE = 'en-uz'
 
-LANGUAGES = (
-    ('uz', "O'zbek"),
-    ('ru', 'Русский'),
-    ('en', 'English'),
-)
 
 TIME_ZONE = 'UTC'
 
@@ -102,7 +94,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
-LOGIN_REDIRECT_URL = '/dashboard/'  # Login qilinganidan so'ng dashboard sahifasiga yo'naltirish
-LOGOUT_REDIRECT_URL = '/login/'  # Logoutdan so'ng login sahifasiga qaytadi
+LOGIN_REDIRECT_URL = '/dashboard/'
+LOGOUT_REDIRECT_URL = '/login/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

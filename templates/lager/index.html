@@ -19,15 +19,20 @@
         <img src="/media/logo/logo.JPG" alt="company logo">
     </a>
         <!-- 🔽 Til tanlash dropdown formasi shu yerda -->
-    <form action="{% url 'set_language' %}" method="post" class="absolute mt-2 right-4">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ request.path }}">
-        <select name="language" onchange="this.form.submit()" class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg">
-            <option value="uz" {% if LANGUAGE_CODE == 'uz' %}selected{% endif %}>O'zbek</option>
-            <option value="ru" {% if LANGUAGE_CODE == 'ru' %}selected{% endif %}>Русский</option>
-            <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
-        </select>
-    </form>
+    <div class="relative">
+        <button id="languageDropdown"
+                class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
+            🌐 Language
+        </button>
+
+        <div id="languageMenu" class="absolute hidden bg-white shadow-lg rounded-lg mt-2 w-48">
+            <ul class="text-gray-700">
+                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
+                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
+                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="ru">Ruscha</li>
+            </ul>
+        </div>
+    </div>
     <input type="checkbox" id="menu-bar">
     <label for="menu-bar"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">

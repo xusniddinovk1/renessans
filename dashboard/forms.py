@@ -15,11 +15,7 @@ class PhotoForm(forms.ModelForm):
 class EducationForm(forms.ModelForm):
     class Meta:
         model = Education
-        fields = [
-            'title_uz', 'title_ru', 'title_en',
-            'description_uz', 'description_ru', 'description_en',
-            'image'
-        ]
+        fields = ["title", "description", "image"]
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
             "description": forms.TextInput(attrs={"class": "form-control"}),
@@ -31,12 +27,7 @@ class EducationForm(forms.ModelForm):
 class ActivityForm(forms.ModelForm):
     class Meta:
         model = Activity
-        fields = [
-            'title_uz', 'title_ru', 'title_en',
-            'description_uz', 'description_ru', 'description_en',
-            'image'
-        ]
-
+        fields = ["title", "description", "image"]
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
             "description": forms.TextInput(attrs={"class": "form-control"}),
@@ -48,11 +39,7 @@ class ActivityForm(forms.ModelForm):
 class HotelForm(forms.ModelForm):
     class Meta:
         model = Hotel
-        fields = [
-            'title_uz', 'title_ru', 'title_en',
-            'description_uz', 'description_ru', 'description_en',
-            'image'
-        ]
+        fields = ["name", "description", "image"]
         widgets = {
             "name": forms.TextInput(attrs={"class": "form-control"}),
             "description": forms.TextInput(attrs={"class": "form-control"}),
@@ -64,11 +51,7 @@ class HotelForm(forms.ModelForm):
 class RecreationForm(forms.ModelForm):
     class Meta:
         model = RecreationZone
-        fields = [
-            'title_uz', 'title_ru', 'title_en',
-            'description_uz', 'description_ru', 'description_en',
-            'image'
-        ]
+        fields = ["title", "description", "image"]
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
             "description": forms.TextInput(attrs={"class": "form-control"}),
@@ -80,11 +63,7 @@ class RecreationForm(forms.ModelForm):
 class NewsForm(forms.ModelForm):
     class Meta:
         model = News
-        fields = [
-            'title_uz', 'title_ru', 'title_en',
-            'content_uz', 'content_ru', 'content_en',
-            'image'
-        ]
+        fields = ["title", "content", "image"]
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
             "content": forms.TextInput(attrs={"class": "form-control"}),
