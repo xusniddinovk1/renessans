@@ -34,12 +34,28 @@
                                     {% csrf_token %}
 
                                     <div class="form-group">
-                                        <label for="id_title" class="form-control-label">Sarlavha</label>
+                                        <label for="id_title_uz" class="form-control-label">Sarlavha</label>
+                                        {{ form.title|add_class:"form-control" }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_title_ru" class="form-control-label">Sarlavha</label>
+                                        {{ form.title|add_class:"form-control" }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_title_en" class="form-control-label">Sarlavha</label>
                                         {{ form.title|add_class:"form-control" }}
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="id_description" class="form-control-label">Tavsif</label>
+                                        <label for="id_description_uz" class="form-control-label">Tavsif</label>
+                                        {{ form.description|add_class:"form-control" }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_description_ru" class="form-control-label">Tavsif</label>
+                                        {{ form.description|add_class:"form-control" }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_description_en" class="form-control-label">Tavsif</label>
                                         {{ form.description|add_class:"form-control" }}
                                     </div>
 
@@ -50,9 +66,9 @@
 
                                     <div class="form-group text-right mt-4">
                                         {% if model %}
-                                            <button type="submit" class="btn btn-warning">Saqlash</button>
+                                        <button type="submit" class="btn btn-warning">Saqlash</button>
                                         {% else %}
-                                            <button type="submit" class="btn btn-success">Qo'shish</button>
+                                        <button type="submit" class="btn btn-success">Qo'shish</button>
                                         {% endif %}
                                     </div>
                                 </form>

@@ -22,6 +22,9 @@ INSTALLED_APPS = [
 
     'django.contrib.humanize',
 
+    'modeltranslation',
+    'modeltranslation.admin',
+
     'dashboard',
     'lager_app',
 ]
@@ -77,7 +80,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uz'
+
+LANGUAGES = (
+    ('uz', "O'zbek"),
+    ('ru', 'Русский'),
+    ('en', 'English'),
+)
 
 TIME_ZONE = 'UTC'
 

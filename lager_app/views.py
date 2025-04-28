@@ -1,11 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import *
-
+from django.utils.translation import get_language
 
 def home_page(request):
     photos = Photos.objects.all()
+    language_code = get_language()
     ctx = {
-        "photos": photos
+        "photos": photos,
+        'LANGUAGE_CODE': language_code
     }
     return render(request, 'lager/index.html', ctx)
 
