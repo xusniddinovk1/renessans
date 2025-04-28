@@ -5,15 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'lager/css/style-news.css' %}">
+    <link rel="stylesheet" href="{% static 'lager/css/style_news.css' %}">
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-
-            crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
     <title>Document</title>
 </head>
@@ -21,7 +15,7 @@
 <!------------------------------------- header --------------------------------- -->
 <header>
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo">
+        <img src=/media/logo/logo.JPG" alt="company logo">
     </a>
     <div class="relative">
         <button id="languageDropdown"
@@ -33,7 +27,7 @@
             <ul class="text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="ru">Ruscha</li>
+                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruscha</li>
             </ul>
         </div>
     </div>
@@ -42,7 +36,7 @@
     <nav class="navbar">
         <ul>
             <li><a href="{% url 'home_page' %}" target="_blank">Asosiy</a></li>
-            <li><a href="#">kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <li><a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
                     <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mehmon xonalar</a></li>
                     <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Istirohat zona</a></li>
@@ -60,152 +54,140 @@
 
 </header>
 <!------------------------------------- /header --------------------------------- -->
-<!------------------------------------------ yangilikar-----------------------------  -->
-<div class="swiper news-slider">
-    <div class="swiper-wrapper">
+<!-- ------------------------------card slider  ----------------------------------- -->
+<div class="container">
+    <div class="card__container">
         {% for news in news_item %}
-        <div class="swiper-slide card">
-            <div class="swiper inner-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="{{ news.image.url }}" alt="">
+        <article class="card__article">
+            <img src="{{ news.image.url }}" alt="image" class="card__img">
+            <div class="card__data">
+                <span class="card__description">{{ news.description|truncatechars:20 }}</span>
+                <h2 class="card__title">{{ news.title }}</h2>
+                <button class="btn"
+                        onclick="showModal('{{ news.title }}', '{{ news.description|escapejs }}')">Batafsil
+                </button>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    <!-- modal  -->
+    <div class="modal" id="newsModal">
+        <div class="modal-content" id="modalContent">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalText"></p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ------------------------------/card slider  ----------------------------------- -->
+
+    <!-- --------------------------------------footter----------------------------------- -->
+    <div class="kenglik">
+        <footer>
+            <div class="row">
+                <div class="col">
+                    <img src="/media/logo_pastki_qism.png" alt="" class="logot">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque
+                        reprehenderit autem eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
+                </div>
+                <div class="col">
+                    <h3>office
+                        <div class="underline"><span></span></div>
+                    </h3>
+                    <p>ITPL road</p>
+                    <p>manzil</p>
+                    <p>pocjta indexs</p>
+                    <p class="email-id">renessans@gmail.com</p>
+                    <h4>+99800000000</h4>
+                </div>
+
+                <div class="col">
+                    <h3>NEWsletter
+                        <div class="underline"><span></span></div>
+                    </h3>
+                    <form>
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type=" email" placeholder="enter you email" required>
+                        <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                    </form>
+                    <div class="social-icons">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-telegram"></i>
+                        <i class="fa-brands fa-twitter"></i>
                     </div>
                 </div>
             </div>
-            <div class="news-title">{{ news.title }}</div>
-            <div class="news-summary"> {{ news.content|truncatechars:20 }}...</div>
-            <button class="btn" onclick="showModal('{{ news.title }}', '{{ news.content|escapejs }}')">Batafsil</button>
-        </div>
-        {% endfor %}
+            <hr>
+            <p class="copyrigh">2025</p>
+            </hr>
+        </footer>
     </div>
-</div>
+    <!-- --------------------------------------/footter----------------------------------- -->
 
-<!-- MODAL -->
-<div class="modal" id="newsModal">
-    <div class="modal-content" id="modalContent">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <h2 id="modalTitle"></h2>
-        <p id="modalText"></p>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-        </div>
-    </div>
-</div>
-<!-- -----------------------------------/Xarita ---------------------------------- -->
-<!--<div class="container">-->
-<!--    <h1>Renessasn Oromgohi manzili</h1>-->
-<!--    <div class="map-container">-->
-<!--        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95985.13840300929!2d69.18832734611418!3d41.25367332672317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae6005c5142bf3%3A0xe04bf246835d2d7f!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0JDRjdGA0L7Qv9C-0YDRgiDQuNC80LXQvdC4INCY0YHQu9Cw0LzQsCDQmtCw0YDQuNC80L7QstCw!5e0!3m2!1sru!2s!4v1743158064308!5m2!1sru!2s"-->
-<!--                width="600" height="450" style="border:0;"-->
-<!--                allowfullscreen=""-->
-<!--                loading="lazy"-->
-<!--                referrerpolicy="no-referrer-when-downgrade">-->
-<!--        </iframe>-->
-<!--    </div>-->
-<!--    <a href="#">View on Google Maps </a>-->
-<!--</div>-->
-<!-- --------------------------------------footter----------------------------------- -->
-<footer>
-    <div class="row">
-        <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque reprehenderit autem
-                eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
-        </div>
-        <div class="col">
-            <h3>office
-                <div class="underline"><span></span></div>
-            </h3>
-            <p>ITPL road</p>
-            <p>Manzil</p>
-            <p>Pochta Indeksi</p>
-            <p class="email-id">renessans@gmail.com</p>
-            <h4>+99800000000</h4>
-        </div>
+    <script>
+        const dropdownButton = document.getElementById('languageDropdown');
+        const languageMenu = document.getElementById('languageMenu');
+        const languageItems = languageMenu.querySelectorAll('li');
 
-        <div class="col">
-            <h3>NEWsletter
-                <div class="underline"><span></span></div>
-            </h3>
-            <form>
-                <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-            </form>
-            <div class="social-icons">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-telegram"></i>
-                <i class="fa-brands fa-twitter"></i>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <p class="copyrigh">2025</p>
-    </hr>
-</footer>
-<!-- --------------------------------------/footter----------------------------------- -->
-
-<script>
-    const dropdownButton = document.getElementById('languageDropdown');
-    const languageMenu = document.getElementById('languageMenu');
-    const languageItems = languageMenu.querySelectorAll('li');
-
-    dropdownButton.addEventListener('click', () => {
-        languageMenu.classList.toggle('hidden');
-    });
-
-    languageItems.forEach(item => {
-        item.addEventListener('click', (event) => {
-            const selectedLang = event.target.getAttribute('data-lang');
-            alert(`Language switched to: ${selectedLang}`);
-            languageMenu.classList.add('hidden');
+        dropdownButton.addEventListener('click', () => {
+            languageMenu.classList.toggle('hidden');
         });
-    });
 
-    // Close menu if clicked outside
-    document.addEventListener('click', (event) => {
-        if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
-            languageMenu.classList.add('hidden');
-        }
-    });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script>
-    new Swiper(".news-slider", {
-     slidesPerView: 1,
-     spaceBetween: 20,
-     breakpoints: {
-       640: { slidesPerView: 1 }, // kichik mobilda 1 ta
-       768: { slidesPerView: 2 }, // planshetlarda 2 ta
-       1024: { slidesPerView: 3 } // katta ekranda 3 ta
-     }
-   });
+        languageItems.forEach(item => {
+            item.addEventListener('click', (event) => {
+                const selectedLang = event.target.getAttribute('data-lang');
+                alert(Language switched to: ${selectedLang});
+                languageMenu.classList.add('hidden');
+            });
+        });
 
-
-       document.querySelectorAll(".inner-swiper").forEach(el => {
-         new Swiper(el, {
-           slidesPerView: 1,
-           loop: true,
-           autoplay: {
-             delay: 2500,
-             disableOnInteraction: false
-           }
-         });
+        // Close menu if clicked outside
+        document.addEventListener('click', (event) => {
+            if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
+                languageMenu.classList.add('hidden');
+            }
+        });
+    </script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
+    <script>
+        new Swiper(".news-slider", {
+         slidesPerView: 1,
+         spaceBetween: 20,
+         breakpoints: {
+           640: { slidesPerView: 1 }, // kichik mobilda 1 ta
+           768: { slidesPerView: 2 }, // planshetlarda 2 ta
+           1024: { slidesPerView: 3 } // katta ekranda 3 ta
+         }
        });
 
-       function showModal(title, text) {
-         document.getElementById('modalTitle').innerText = title;
-         document.getElementById('modalText').innerText = text;
-         document.getElementById('newsModal').style.display = 'flex';
-       }
 
-       function closeModal() {
-         document.getElementById('newsModal').style.display = 'none';
-       }
-</script>
+           document.querySelectorAll(".inner-swiper").forEach(el => {
+             new Swiper(el, {
+               slidesPerView: 1,
+               loop: true,
+               autoplay: {
+                 delay: 2500,
+                 disableOnInteraction: false
+               }
+             });
+           });
+
+           function showModal(title, text) {
+             document.getElementById('modalTitle').innerText = title;
+             document.getElementById('modalText').innerText = text;
+             document.getElementById('newsModal').style.display = 'flex';
+           }
+
+           function closeModal() {
+             document.getElementById('newsModal').style.display = 'none';
+           }
+    </script>
 
 </body>
 </html>

@@ -1,3 +1,4 @@
+Asadbek, [28/04/2025 22:58]
 * {
     margin:0;
     padding: 0;
@@ -131,6 +132,7 @@ header label{
 /* ----------------------------------card slider ---------------------------*/
 /* card */
 .container{
+    /* width: 100%; */
     /* justify-content: center; */
     margin-top: 70px;
     /* margin-right: 50px; */
@@ -200,6 +202,7 @@ header label{
 
 /* Naming animations in hover */
 
+Asadbek, [28/04/2025 22:58]
 .card__article:hover .card__data{
     animation: show-data 1s forwards;
     opacity: 1;
@@ -226,7 +229,7 @@ header label{
         transform: rotateY(-7rem);
 
     }
-
+    
 }
 @keyframes remove-overflow {
     to{
@@ -242,7 +245,7 @@ header label{
     }
     100%{
         transform: translateY(.3rem);
-    }
+    } 
 }
 @keyframes show-overflow{
     0%{
@@ -266,7 +269,7 @@ header label{
 @media screen and (min-width:1120px){
     .container{
        height: 100vh;
-
+       
     }
     .card__container{
         grid-template-columns: repeat(3, 1fr);
@@ -280,7 +283,6 @@ header label{
 
     }
 }
-/* ----------------------------------/card slider ---------------------------*/
 .btn {
     background-color: black;
     color: white;
@@ -320,7 +322,12 @@ header label{
     opacity: 0;
     animation: slideIn 0.5s forwards;
     position: relative;
-  }
+    word-wrap: break-word;
+    word-break: break-word; 
+    overflow-wrap: break-word; 
+    white-space: normal; 
+      
+        }
 
   .modal-close {
     position: absolute;
@@ -356,8 +363,14 @@ header label{
   .social-icons a:hover {
     color: #555;
   }
+/* ----------------------------------/card slider ---------------------------*/
+
 /* --------------------------------footer--------------------------------------------------- */
+.kenglik{
+ width: 1280px
+}
 footer{
+    /* display: block; */
     width: 100%;
     position: bottom;
     bottom: 0;
@@ -416,6 +429,7 @@ form .fa-solid{
     font-size: 18px;
     margin-right: 10px;
 
+Asadbek, [28/04/2025 22:58]
 }
 form input{
     width: 100%;
@@ -458,7 +472,7 @@ hr{
 }
 .copyrigh{
     text-align: center;
-
+    
 }
 .underline{
     width: 100%;
@@ -566,4 +580,3 @@ hr{
     }
     
     /* ---------------------- /footer--------------- */
-
