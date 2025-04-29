@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'lager/css/education.css' %}">
+    <link rel="stylesheet" href="{% static 'lager/css/education.css'%}">
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -15,8 +15,9 @@
 <!------------------------------------- header --------------------------------- -->
 <header>
     <a href="#" class="logo">
-        <img src=/media/logo/logo.JPG" alt="company logo">
+        <img src="/media/logo/logo.JPG" alt="company logo">
     </a>
+
     <div class="relative">
         <button id="languageDropdown"
                 class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
@@ -27,7 +28,7 @@
             <ul class="text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruscha</li>
+                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="ru">Ruscha</li>
             </ul>
         </div>
     </div>
@@ -38,7 +39,7 @@
             <li><a href="{% url 'home_page' %}" target="_blank">Asosiy</a></li>
             <li><a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mehmon xonalar</a></li>
+                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mexmonxonalar</a></li>
                     <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Istirohat zona</a></li>
                 </ul>
             </li>
@@ -55,16 +56,23 @@
 </header>
 <!---------------------------------- card oquv bolim-------------------------- -->
 <div class="card-container">
+    {% for education in educations %}
     <div class="card">
-        {% for education in educations %}
-        <img src="{{ education.image.url }}" alt="{{ education.title }}">
+        <!-- Rasmni chiqaramiz -->
+        <img src="{{ education.image.url }}" alt="Camp Image">
+
         <div class="card-content">
+            <!-- Ta'lim nomini chiqaramiz -->
             <h2 class="card-title">{{ education.title }}</h2>
-            <p class="card-description">{{ education.description|truncatechars:20 }}</p>
+
+            <!-- Ta'lim tavsifini chiqaramiz -->
+            <p class="card-description">{{ education.description }}</p>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
 </div>
+
+
 <!---------------------------------- card oquv bolim-------------------------- -->
 
 
@@ -134,6 +142,5 @@
         }
     });
 </script>
-</div>
 </body>
 </html>
