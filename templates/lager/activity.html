@@ -70,118 +70,109 @@
         <button id="next">❯</button>
     </div>
 </div>
-<!-- --------------------------------------footter----------------------------------- -->
-<!--<div class="container">-->
-<!--    <h1>Renessans Oromgohi manzili</h1>-->
-<!--    <div class="map-container">-->
-<!--        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95985.13840300929!2d69.18832734611418!3d41.25367332672317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae6005c5142bf3%3A0xe04bf246835d2d7f!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0JDRjdGA0L7Qv9C-0YDRgiDQuNC80LXQvdC4INCY0YHQu9Cw0LzQsCDQmtCw0YDQuNC80L7QstCw!5e0!3m2!1sru!2s!4v1743158064308!5m2!1sru!2s"-->
-<!--                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"-->
-<!--                referrerpolicy="no-referrer-when-downgrade"></iframe>-->
-<!--    </div>-->
-<!--    <a href="#">view on google maps </a>-->
-<!--</div>-->
-<footer>
-    <div class="row">
-        <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-            <p>Ixtisoslashtirilgan taʼlim muassasalari agentligi
-            </p>
-        </div>
-        <div class="col">
-            <h3>office
-                <div class="underline"><span></span></div>
-            </h3>
-            <p>ITPL road</p>
-            <p>Manzil</p>
-            <p>Pochta Indeksi</p>
-            <p class="email-id">renessans@gmail.com</p>
-            <h4>+99800000000</h4>
-        </div>
+    <!-- --------------------------------------footter----------------------------------- -->
+    <footer>
+        <div class="row">
+            <div class="col">
+                <img src="/media/logo_pastki_qism.png" alt="" class="logot">
+                <p>Ixtisoslashtirilgan taʼlim muassasalari agentligi
+                </p>
+            </div>
+            <div class="col">
+                <h3>office
+                    <div class="underline"><span></span></div>
+                </h3>
+                <p>ITPL road</p>
+                <p>Manzil</p>
+                <p>Pochta Indeksi</p>
+                <p class="email-id">renessans@gmail.com</p>
+                <h4>+99800000000</h4>
+            </div>
 
-        <div class="col">
-            <h3>NEWsletter
-                <div class="underline"><span></span></div>
-            </h3>
-            <form>
-                <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-            </form>
-            <div class="social-icons">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-telegram"></i>
-                <i class="fa-brands fa-twitter"></i>
+            <div class="col">
+                <h3>NEWsletter
+                    <div class="underline"><span></span></div>
+                </h3>
+                <form>
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+                <div class="social-icons">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-telegram"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
             </div>
         </div>
-    </div>
-    <hr>
-    <p class="copyrigh">2025</p>
-    </hr>
-</footer>
-<!-- --------------------------------------/footter----------------------------------- -->
+        <hr>
+        <p class="copyrigh">2025</p>
+        </hr>
+    </footer>
+    <!-- --------------------------------------/footter----------------------------------- -->
 
 
-<script>
-    const dropdownButton = document.getElementById('languageDropdown');
-    const languageMenu = document.getElementById('languageMenu');
-    const languageItems = languageMenu.querySelectorAll('li');
+    <script>
+        const dropdownButton = document.getElementById('languageDropdown');
+        const languageMenu = document.getElementById('languageMenu');
+        const languageItems = languageMenu.querySelectorAll('li');
 
-    dropdownButton.addEventListener('click', () => {
-        languageMenu.classList.toggle('hidden');
-    });
-
-    languageItems.forEach(item => {
-        item.addEventListener('click', (event) => {
-            const selectedLang = event.target.getAttribute('data-lang');
-            alert(`Language switched to: ${selectedLang}`);
-            languageMenu.classList.add('hidden');
+        dropdownButton.addEventListener('click', () => {
+            languageMenu.classList.toggle('hidden');
         });
+
+        languageItems.forEach(item => {
+            item.addEventListener('click', (event) => {
+                const selectedLang = event.target.getAttribute('data-lang');
+                alert(`Language switched to: ${selectedLang}`);
+                languageMenu.classList.add('hidden');
+            });
+        });
+
+        // Close menu if clicked outside
+        document.addEventListener('click', (event) => {
+            if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
+                languageMenu.classList.add('hidden');
+            }
+        });
+
+
+    //------------------------------------ carusel js ------------------------
+    // Carousel JS
+    const container = document.querySelector('.carousel-container');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    let index = 0;
+
+    function updateCarousel() {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+        container.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        index = (index + 1) % slides.length;
+        updateCarousel();
     });
 
-    // Close menu if clicked outside
-    document.addEventListener('click', (event) => {
-        if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
-            languageMenu.classList.add('hidden');
-        }
+    prevBtn.addEventListener('click', () => {
+        index = (index - 1 + slides.length) % slides.length;
+        updateCarousel();
     });
 
+    // Auto slide every 5 seconds
+    setInterval(() => {
+        index = (index + 1) % slides.length;
+        updateCarousel();
+    }, 3000);
 
-//------------------------------------ carusel js ------------------------
-// Carousel JS
-const container = document.querySelector('.carousel-container');
-const slides = document.querySelectorAll('.carousel-slide');
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
-let index = 0;
-
-function updateCarousel() {
-    slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-    });
-    container.style.transform = `translateX(-${index * 100}%)`;
-}
-
-nextBtn.addEventListener('click', () => {
-    index = (index + 1) % slides.length;
+    // Initialize active class
     updateCarousel();
-});
 
-prevBtn.addEventListener('click', () => {
-    index = (index - 1 + slides.length) % slides.length;
-    updateCarousel();
-});
-
-// Auto slide every 5 seconds
-setInterval(() => {
-    index = (index + 1) % slides.length;
-    updateCarousel();
-}, 3000);
-
-// Initialize active class
-updateCarousel();
-
-//------------------------------------ carusel js ------------------------
-</script>
+    //------------------------------------ carusel js ------------------------
+    </script>
 </body>
 </html>

@@ -129,9 +129,10 @@ header label{
 }
 /* -------------------------------------labguage----------------------- */
 /* -----------------------------carusel css -----------------------------*/
+/* Carousel konteyner */
 .carousel {
     width: 100%;
-    /* max-width: 600px; */
+    max-width: 600px;
     height: 600px;
     position: relative;
     overflow: hidden;
@@ -180,7 +181,7 @@ header label{
 .event-title {
     color: #00093c;
     margin-top: 300px;
-    /* margin-left: 50%; */
+    margin-left: 50%;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -188,10 +189,15 @@ header label{
 }
 .event-description {
     color: #00093c;
-    /* margin-left: 50%; */
+    margin-left: 50%;
     margin-top: 300px;
     font-size: 20px;
     /* z-index: -1; */
+}
+.event-image {
+    width: 300px;
+    height: auto;
+    border: 2px solid red; /* test uchun ko‘rinib turishi uchun */
 }
 .carousel-buttons {
     position: absolute;

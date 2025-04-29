@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from .models import *
-from django.utils.translation import get_language
+from lager_app.models import *
 
 def home_page(request):
     photos = Photos.objects.all()
