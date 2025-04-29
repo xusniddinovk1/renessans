@@ -61,8 +61,8 @@
         <article class="card__article">
             <img src="{{ rest_area.image.url }}" alt="image" class="card__img">
             <div class="card__data">
-                <span class="card__description">{{ rest_area.description|truncatechars:20 }}</span>
-                <h2 class="card__title">{{ rest_area.title }}</h2>
+                <span class="card__description">{{ rest_area.title }}</span>
+                <h2 class="card__title">{{ rest_area.description|truncatechars:20 }}</h2>
                 <button class="btn"
                         onclick="showModal('{{ rest_area.title }}', '{{ rest_area.description|escapejs }}')">Batafsil
                 </button>

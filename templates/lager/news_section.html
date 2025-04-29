@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load static %}
+{% load humanize %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -61,60 +63,26 @@
 <!------------------------------------------ yangilikar-----------------------------  -->
 <div class="swiper news-slider">
     <div class="swiper-wrapper">
-        <!-- YANGILIK KARTASI -->
+        {% for news in news_item %}
         <div class="swiper-slide card">
             <div class="swiper inner-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="yangilik 1/photo_2025-03-27_11-44-18.jpg" alt=""></div>
+                    <div class="swiper-slide">
+                        <img src="{{ image.image.url }}" alt="">
+                    </div>
                 </div>
             </div>
-            <div class="news-title">Prezident yangi farmon chiqardi</div>
-            <div class="news-summary">Ta'lim tizimida tub o‘zgarishlar kutilmoqda.</div>
+            <div class="news-title">{{ news.title }}</div>
+            <div class="news-summary">{{ news.content|truncatechars:20 }}</div>
             <button class="btn"
-                    onclick="showModal('Prezident yangi farmon chiqardi', 'Prezident tomonidan chiqarilgan yangi qarorga ko‘ra, barcha oliy ta’lim muassasalarida raqamli texnologiyalarni joriy etish bo‘yicha katta islohotlar boshlanmoqda.')">
+                    onclick="showModal('{{ news.title }}', '{{ news.content|escapejs }}')">
                 Batafsil
             </button>
         </div>
-
-        <!-- Ikkinchi karta -->
-        <div class="swiper-slide card">
-            <div class="swiper inner-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-38.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-39.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-41.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-42.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-43.jpg" alt=""></div>
-                </div>
-            </div>
-            <div class="news-title">Yangi AI texnologiya taqdim etildi</div>
-            <div class="news-summary">Sun’iy intellekt hayotimizga kirib kelyapti.</div>
-            <button class="btn"
-                    onclick="showModal('Yangi AI texnologiya taqdim etildi', 'Bugungi texnologik forumda yangi AI texnologiyasi taqdim etildi. Bu texnologiya sog‘liqni saqlash, ta’lim va moliya sohalariga jiddiy ta’sir ko‘rsatishi kutilmoqda.')">
-                Batafsil
-            </button>
-        </div>
-        <!-- YANGILIK KARTASI 3 -->
-        <div class="swiper-slide card">
-            <div class="swiper inner-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-48.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-49.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-50.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-51.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-54.jpg" alt=""></div>
-                </div>
-            </div>
-            <div class="news-title">Prezident yangi farmon chiqardi</div>
-            <div class="news-summary">Ta'lim tizimida tub o‘zgarishlar kutilmoqda.</div>
-            <button class="btn"
-                    onclick="showModal('Prezident yangi farmon chiqardi', 'Prezident tomonidan chiqarilgan yangi qarorga ko‘ra, barcha oliy ta’lim muassasalarida raqamli texnologiyalarni joriy etish bo‘yicha katta islohotlar boshlanmoqda.')">
-                Batafsil
-            </button>
-        </div>
-
+        {% endfor %}
     </div>
 </div>
+
 
 <!-- MODAL -->
 <div class="modal" id="newsModal">
@@ -123,7 +91,7 @@
         <h2 id="modalTitle"></h2>
         <p id="modalText"></p>
         <div class="social-icons">
-            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="t.me/piimauz"><i class="fab fa-telegram">Telegram</i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-facebook"></i></a>
         </div>
@@ -136,7 +104,7 @@
 <footer>
     <div class="row">
         <div class="col">
-            <img src="Photoroom-20250221_234420.png" alt="" class="logot">
+            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque reprehenderit autem
                 eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
         </div>

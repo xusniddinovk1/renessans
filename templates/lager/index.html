@@ -180,8 +180,8 @@
     <div class="row">
         <div class="col">
             <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque reprehenderit autem
-                eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
+            <p>Ixtisoslashtirilgan taʼlim muassasalari agentligi
+            </p>
         </div>
         <div class="col">
             <h3>office
@@ -205,7 +205,7 @@
             </form>
             <div class="social-icons">
                 <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-instagram"> Telegram</i>
                 <i class="fa-brands fa-telegram"></i>
                 <i class="fa-brands fa-twitter"></i>
             </div>
@@ -256,37 +256,37 @@
 })
 </script>
 <script>
- new Swiper(".news-slider", {
-  slidesPerView: 1,
-  spaceBetween: 20,
-  breakpoints: {
-    640: { slidesPerView: 1 }, // kichik mobilda 1 ta
-    768: { slidesPerView: 2 }, // planshetlarda 2 ta
-    1024: { slidesPerView: 3 } // katta ekranda 3 ta
-  }
-});
+    new Swiper(".news-slider", {
+     slidesPerView: 1,
+     spaceBetween: 20,
+     breakpoints: {
+       640: { slidesPerView: 1 }, // kichik mobilda 1 ta
+       768: { slidesPerView: 2 }, // planshetlarda 2 ta
+       1024: { slidesPerView: 3 } // katta ekranda 3 ta
+     }
+   });
 
 
-    document.querySelectorAll(".inner-swiper").forEach(el => {
-      new Swiper(el, {
-        slidesPerView: 1,
-        loop: true,
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false
-        }
-      });
-    });
+       document.querySelectorAll(".inner-swiper").forEach(el => {
+         new Swiper(el, {
+           slidesPerView: 1,
+           loop: true,
+           autoplay: {
+             delay: 2500,
+             disableOnInteraction: false
+           }
+         });
+       });
 
-    function showModal(title, text) {
-      document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalText').innerText = text;
-      document.getElementById('newsModal').style.display = 'flex';
-    }
+       function showModal(title, text) {
+         document.getElementById('modalTitle').innerText = title;
+         document.getElementById('modalText').innerText = text;
+         document.getElementById('newsModal').style.display = 'flex';
+       }
 
-    function closeModal() {
-      document.getElementById('newsModal').style.display = 'none';
-    }
-  </script>
+       function closeModal() {
+         document.getElementById('newsModal').style.display = 'none';
+       }
+</script>
 </body>
 </html>
