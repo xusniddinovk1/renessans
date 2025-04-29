@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-{% load static %}
-{% load humanize %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'lager/css/style_news.css' %}">
+    <link rel="stylesheet" href="{% static 'lager/css/style-news.css' %}">
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+
+            crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
     <title>Document</title>
 </head>
@@ -54,140 +58,180 @@
 
 </header>
 <!------------------------------------- /header --------------------------------- -->
-<!-- ------------------------------card slider  ----------------------------------- -->
-<div class="container">
-    <div class="card__container">
-        {% for news in news_item %}
-        <article class="card__article">
-            <img src="{{ news.image.url }}" alt="image" class="card__img">
-            <div class="card__data">
-                <span class="card__description">{{ news.description|truncatechars:20 }}</span>
-                <h2 class="card__title">{{ news.title }}</h2>
-                <button class="btn"
-                        onclick="showModal('{{ news.title }}', '{{ news.description|escapejs }}')">Batafsil
-                </button>
+<!------------------------------------------ yangilikar-----------------------------  -->
+<div class="swiper news-slider">
+    <div class="swiper-wrapper">
+        <!-- YANGILIK KARTASI -->
+        <div class="swiper-slide card">
+            <div class="swiper inner-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="yangilik 1/photo_2025-03-27_11-44-18.jpg" alt=""></div>
+                </div>
             </div>
-        </article>
-        {% endfor %}
+            <div class="news-title">Prezident yangi farmon chiqardi</div>
+            <div class="news-summary">Ta'lim tizimida tub o‘zgarishlar kutilmoqda.</div>
+            <button class="btn"
+                    onclick="showModal('Prezident yangi farmon chiqardi', 'Prezident tomonidan chiqarilgan yangi qarorga ko‘ra, barcha oliy ta’lim muassasalarida raqamli texnologiyalarni joriy etish bo‘yicha katta islohotlar boshlanmoqda.')">
+                Batafsil
+            </button>
+        </div>
+
+        <!-- Ikkinchi karta -->
+        <div class="swiper-slide card">
+            <div class="swiper inner-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-38.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-39.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-41.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-42.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="yangilik 2/photo_2025-03-27_22-49-43.jpg" alt=""></div>
+                </div>
+            </div>
+            <div class="news-title">Yangi AI texnologiya taqdim etildi</div>
+            <div class="news-summary">Sun’iy intellekt hayotimizga kirib kelyapti.</div>
+            <button class="btn"
+                    onclick="showModal('Yangi AI texnologiya taqdim etildi', 'Bugungi texnologik forumda yangi AI texnologiyasi taqdim etildi. Bu texnologiya sog‘liqni saqlash, ta’lim va moliya sohalariga jiddiy ta’sir ko‘rsatishi kutilmoqda.')">
+                Batafsil
+            </button>
+        </div>
+        <!-- YANGILIK KARTASI 3 -->
+        <div class="swiper-slide card">
+            <div class="swiper inner-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-48.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-49.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-50.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-51.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="yangilik 3/photo_2025-03-28_16-41-54.jpg" alt=""></div>
+                </div>
+            </div>
+            <div class="news-title">Prezident yangi farmon chiqardi</div>
+            <div class="news-summary">Ta'lim tizimida tub o‘zgarishlar kutilmoqda.</div>
+            <button class="btn"
+                    onclick="showModal('Prezident yangi farmon chiqardi', 'Prezident tomonidan chiqarilgan yangi qarorga ko‘ra, barcha oliy ta’lim muassasalarida raqamli texnologiyalarni joriy etish bo‘yicha katta islohotlar boshlanmoqda.')">
+                Batafsil
+            </button>
+        </div>
+
     </div>
-    <!-- modal  -->
-    <div class="modal" id="newsModal">
-        <div class="modal-content" id="modalContent">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <p id="modalText"></p>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="newsModal">
+    <div class="modal-content" id="modalContent">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalText"></p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
+</div>
+<!-- -----------------------------------/Yangiliklar ---------------------------------- -->
+
+
+<!-- --------------------------------------footter----------------------------------- -->
+<footer>
+    <div class="row">
+        <div class="col">
+            <img src="Photoroom-20250221_234420.png" alt="" class="logot">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque reprehenderit autem
+                eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
+        </div>
+        <div class="col">
+            <h3>office
+                <div class="underline"><span></span></div>
+            </h3>
+            <p>ITPL road</p>
+            <p>manzil</p>
+            <p>pocjta indexs</p>
+            <p class="email-id">renessans@gmail.com</p>
+            <h4>+99800000000</h4>
+        </div>
+
+        <div class="col">
+            <h3>NEWsletter
+                <div class="underline"><span></span></div>
+            </h3>
+            <form>
+                <i class="fa-solid fa-envelope"></i>
+                <input type=" email" placeholder="enter you email" required>
+                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+            </form>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-twitter"></i>
             </div>
         </div>
     </div>
+    <hr>
+    <p class="copyrigh">2025</p>
+    </hr>
+</footer>
+<!-- --------------------------------------/footter----------------------------------- -->
 
-    <!-- ------------------------------/card slider  ----------------------------------- -->
+<script>
+    const dropdownButton = document.getElementById('languageDropdown');
+    const languageMenu = document.getElementById('languageMenu');
+    const languageItems = languageMenu.querySelectorAll('li');
 
-    <!-- --------------------------------------footter----------------------------------- -->
-    <div class="kenglik">
-        <footer>
-            <div class="row">
-                <div class="col">
-                    <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque
-                        reprehenderit autem eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
-                </div>
-                <div class="col">
-                    <h3>office
-                        <div class="underline"><span></span></div>
-                    </h3>
-                    <p>ITPL road</p>
-                    <p>manzil</p>
-                    <p>pocjta indexs</p>
-                    <p class="email-id">renessans@gmail.com</p>
-                    <h4>+99800000000</h4>
-                </div>
+    dropdownButton.addEventListener('click', () => {
+        languageMenu.classList.toggle('hidden');
+    });
 
-                <div class="col">
-                    <h3>NEWsletter
-                        <div class="underline"><span></span></div>
-                    </h3>
-                    <form>
-                        <i class="fa-solid fa-envelope"></i>
-                        <input type=" email" placeholder="enter you email" required>
-                        <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-                    </form>
-                    <div class="social-icons">
-                        <i class="fa-brands fa-facebook"></i>
-                        <i class="fa-brands fa-instagram"></i>
-                        <i class="fa-brands fa-telegram"></i>
-                        <i class="fa-brands fa-twitter"></i>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <p class="copyrigh">2025</p>
-            </hr>
-        </footer>
-    </div>
-    <!-- --------------------------------------/footter----------------------------------- -->
-
-    <script>
-        const dropdownButton = document.getElementById('languageDropdown');
-        const languageMenu = document.getElementById('languageMenu');
-        const languageItems = languageMenu.querySelectorAll('li');
-
-        dropdownButton.addEventListener('click', () => {
-            languageMenu.classList.toggle('hidden');
+    languageItems.forEach(item => {
+        item.addEventListener('click', (event) => {
+            const selectedLang = event.target.getAttribute('data-lang');
+            alert(`Language switched to: ${selectedLang}`);
+            languageMenu.classList.add('hidden');
         });
+    });
 
-        languageItems.forEach(item => {
-            item.addEventListener('click', (event) => {
-                const selectedLang = event.target.getAttribute('data-lang');
-                alert(Language switched to: ${selectedLang});
-                languageMenu.classList.add('hidden');
-            });
-        });
+    // Close menu if clicked outside
+    document.addEventListener('click', (event) => {
+        if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
+            languageMenu.classList.add('hidden');
+        }
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+    new Swiper(".news-slider", {
+     slidesPerView: 1,
+     spaceBetween: 20,
+     breakpoints: {
+       640: { slidesPerView: 1 }, // kichik mobilda 1 ta
+       768: { slidesPerView: 2 }, // planshetlarda 2 ta
+       1024: { slidesPerView: 3 } // katta ekranda 3 ta
+     }
+   });
 
-        // Close menu if clicked outside
-        document.addEventListener('click', (event) => {
-            if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
-                languageMenu.classList.add('hidden');
-            }
-        });
-    </script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
-    <script>
-        new Swiper(".news-slider", {
-         slidesPerView: 1,
-         spaceBetween: 20,
-         breakpoints: {
-           640: { slidesPerView: 1 }, // kichik mobilda 1 ta
-           768: { slidesPerView: 2 }, // planshetlarda 2 ta
-           1024: { slidesPerView: 3 } // katta ekranda 3 ta
-         }
+
+       document.querySelectorAll(".inner-swiper").forEach(el => {
+         new Swiper(el, {
+           slidesPerView: 1,
+           loop: true,
+           autoplay: {
+             delay: 2500,
+             disableOnInteraction: false
+           }
+         });
        });
 
+       function showModal(title, text) {
+         document.getElementById('modalTitle').innerText = title;
+         document.getElementById('modalText').innerText = text;
+         document.getElementById('newsModal').style.display = 'flex';
+       }
 
-           document.querySelectorAll(".inner-swiper").forEach(el => {
-             new Swiper(el, {
-               slidesPerView: 1,
-               loop: true,
-               autoplay: {
-                 delay: 2500,
-                 disableOnInteraction: false
-               }
-             });
-           });
-
-           function showModal(title, text) {
-             document.getElementById('modalTitle').innerText = title;
-             document.getElementById('modalText').innerText = text;
-             document.getElementById('newsModal').style.display = 'flex';
-           }
-
-           function closeModal() {
-             document.getElementById('newsModal').style.display = 'none';
-           }
-    </script>
+       function closeModal() {
+         document.getElementById('newsModal').style.display = 'none';
+       }
+</script>
 
 </body>
 </html>
