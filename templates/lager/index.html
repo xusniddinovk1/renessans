@@ -101,59 +101,40 @@
 
 <!-- -------------------------------------------gap---------------------------------- -->
 <!-- -----------------------------------grid galareya--------------------------------- -->
+<!--<div class="grid-gallery">-->
+<!--    {% for photo in photos %}-->
+<!--    <div class="grid-item">-->
+<!--        <a href="#" class="grid-link" onclick="openModal('{{ photo.image.url }}')">-->
+<!--            <img src="{{ photo.image.url }}" alt="">-->
+<!--            <div class="grid-caption"></div>-->
+<!--        </a>-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<!--<div id="imageModal" class="modal">-->
+<!--    <span class="close" onclick="closeModal()">&times;</span>-->
+<!--    <img class="modal-content" id="modalImage">-->
+<!--</div>-->
 <div class="grid-gallery">
-    {% for photo in photos %}
-    <div class="grid-item">
-        <a href="#" class="grid-link" onclick="openModal('{{ photo.image.url }}')">
-            <img src="{{ photo.image.url }}" alt="">
-            <div class="grid-caption"></div>
-        </a>
-    </div>
-    {% endfor %}
+  {% for photo in photos %}
+  <div class="grid-item">
+    <a href="#" class="grid-link">
+      <img src="{{ photo.image.url }}" alt="rasm yo'q">
+    </a>
+  </div>
+  {% endfor %}
 </div>
 
-<!-- Modal -->
-<div id="imageModal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="modalImage">
+<div class="overlay">
+  <span class="close">&times;</span>
+  <img src="" alt="Gallery Image" id="overlayImage">
+  <div class="controls">
+    <button id="prevBtn">&#8592;</button>
+    <button id="nextBtn">&#8594;</button>
+  </div>
 </div>
-
-<!-- CSS -->
-<style>
-    .modal {
-        display: none; /* Modalni dastlab yashirish */
-        position: fixed;
-        z-index: 1;
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.7);
-    }
-    .modal-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-    }
-    .close {
-        color: white;
-        font-size: 30px;
-        font-weight: bold;
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        transition: 0.3s;
-    }
-    .close:hover,
-    .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
-    }
-</style>
 
 <!-- JavaScript -->
 <script>
@@ -239,22 +220,6 @@
             languageMenu.classList.add('hidden');
         }
     });
-    $(document).ready(function () {
-    $(".grid-gallery").sortable({
-        items:".grid-item",
-        handle:".grid-link",
-        cursor:"grabbing",
-        containment: "parent",
-        tolerance:"pointer",
-
-    })
-
-    
-    $(".grid-gallery").disableSelection();
-    
-})
-</script>
-<script>
     new Swiper(".news-slider", {
      slidesPerView: 1,
      spaceBetween: 20,
@@ -286,6 +251,52 @@
        function closeModal() {
          document.getElementById('newsModal').style.display = 'none';
        }
+  const images = document.querySelectorAll('.grid-link img');
+  const overlay = document.querySelector('.overlay');
+  const overlayImage = document.getElementById('overlayImage');
+  const closeBtn = document.querySelector('.overlay .close');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  let currentIndex = 0;
+
+  function showImage(index) {
+    overlayImage.src = images[index].src;
+    overlay.style.display = 'flex';
+    currentIndex = index;
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener('click', (event) => {
+      event.preventDefault();
+      showImage(index);
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    overlay.style.display = 'none';
+  });
+
+  nextBtn.addEventListener('click', nextImage);
+  prevBtn.addEventListener('click', prevImage);
+
+  document.addEventListener('keydown', (event) => {
+    if (overlay.style.display === 'flex') {
+      if (event.key === 'ArrowRight') nextImage();
+      if (event.key === 'ArrowLeft') prevImage();
+      if (event.key === 'Escape') overlay.style.display = 'none';
+    }
+  });
 </script>
 </body>
 </html>

@@ -274,62 +274,73 @@ header label{
 /* } */
 /* ------------------------------/text-box------------------------------- */
 /* ----------------------------------------grid-gallarey------------------------------ */
-.grid-gallery{
-    width: 100%;
-    max-width: 1350px;
-    margin: 0 auto;
-    padding: 120px 20px ;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    grid-auto-rows: 250px;
-    grid-auto-flow: dense;
-    gap: 20px;
 }
-.grid-gallery .grid-item{
-    position: relative;
-    overflow: hidden;
-
-}
-.grid-gallery .grid-item:nth-child(6n+2){
-    grid-row: span;
-    grid-column: span 2;
-
-
-}
-.grid-gallery .grid-item .grid-link{
-    display: block;
-    width: 100%;
-    height: 100%;
-
-}
-.grid-gallery .grid-item .grid-link img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-.grid-gallery .grid-item .grid-link:hover img{
-    transform: scale(1.1);
-
-}
-.grid-gallery .grid-item .grid-link .grid-caption{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-.grid-gallery .grid-item .grid-link:hover .grid-caption{
-    opacity: 1;
-
-}
-
-
+    .grid-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      padding: 20px;
+    }
+    .grid-item {
+      position: relative;
+    }
+    .grid-link img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .grid-caption {
+      text-align: center;
+      margin-top: 5px;
+      font-size: 14px;
+      color: #555;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .overlay img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 8px;
+    }
+    .overlay .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .overlay .controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .overlay .controls button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+      padding: 10px 20px;
+      opacity: 0.7;
+    }
+    .overlay .controls button:hover {
+      opacity: 1;
+    }
 /* ----------------------------------------grid-gallarey------------------------------ */
 
 
