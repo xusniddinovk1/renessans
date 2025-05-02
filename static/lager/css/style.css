@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     text-transform: capitalize;
-    text-decoration: none;    
+    text-decoration: none;
     }
 body{
     min-height: 100vh;
@@ -36,13 +36,13 @@ header .logo{
 }
 header .navbar ul{
     list-style: none;
-    
+
 }
 header .navbar ul li{
      position: relative;
      float: left;
      margin: auto;
-     
+
 
 }
 header .navbar ul li a{
@@ -53,21 +53,21 @@ header .navbar ul li a{
     transition: transform 1s ease, background-color 01s ease ;
     border-radius: 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-   
+
 }
 header .navbar ul li a:before,header .navbar ul li a:after{
-    
+
     content: "";
     position: absolute;
     height: 3px;
     width: 0;
     background-color: #000;
-    transition: 0.5s;    
+    transition: 0.5s;
 }
 header .navbar ul li a:after{
     left: 0;
     bottom: -3px;
-    
+
 }
 header .navbar ul li a:before{
     right: 0;
@@ -86,20 +86,28 @@ header .navbar ul li ul{
     position: absolute;
     left: 0;
     width: 200px;
-    background: none;
+    background:none;
     display: none;
     padding: 3px;
+    /* color: #fff; */
+
+
 
 }
 header .navbar ul li ul li{
     width: 50%;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background: none;
+    background: #1d4ed8;
     border: none;
+    border-radius: 20px;
+}
+header .navbar ul li ul li a{
+    color: #fff;
 }
 header .navbar ul li ul li ul{
     left :200px;
     top:0;
+    /* color:#fff */
 }
 header .navbar ul li:focus-within > ul,
 header .navbar ul li:hover > ul{
@@ -125,7 +133,7 @@ header label{
     position: relative;
     width: 100%;
     height: 400px; /* Banner balandligi */
-    background-image: url('asosy_rasm.JPG'); /* Orqa fon rasm */
+    background-image: url('/media/banner/home_photo.JPG'); /* Orqa fon rasm */
     background-size: cover;
     background-position: center;
     color: white;
@@ -136,10 +144,13 @@ header label{
     opacity: 0;
     animation: fadeIn 2s forwards;
     flex-direction: column; /* Matn va tugma vertikal tarzda joylashadi */
+
   }
 
   /* Banner matni - Rang o'zgarishi va animatsiya */
   .banner-text {
+    background: rgba(255, 255, 255, 0.3); /* Shaffof oq fon */
+    backdrop-filter: blur(10px); /* Xiralik darajasi */
     font-size: 2.5em;
     font-weight: bold;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
@@ -181,8 +192,7 @@ header label{
       opacity: 1;
     }
   }
-
-  /* Button (Agar kerak bo'lsa, Bannerda tugma qo'shish) */
+/* Button (Agar kerak bo'lsa, Bannerda tugma qo'shish) */
   .banner-button {
     padding: 10px 20px;
     background-color: #555;
@@ -274,74 +284,127 @@ header label{
 /* } */
 /* ------------------------------/text-box------------------------------- */
 /* ----------------------------------------grid-gallarey------------------------------ */
-}
-    .grid-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
-      padding: 20px;
-    }
-    .grid-item {
-      position: relative;
-    }
-    .grid-link img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .grid-caption {
-      text-align: center;
-      margin-top: 5px;
-      font-size: 14px;
-      color: #555;
-    }
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-    .overlay img {
-      max-width: 90%;
-      max-height: 80%;
-      border-radius: 8px;
-    }
-    .overlay .close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 24px;
-      color: #fff;
-      cursor: pointer;
-    }
-    .overlay .controls {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-    }
-    .overlay .controls button {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 32px;
-      cursor: pointer;
-      padding: 10px 20px;
-      opacity: 0.7;
-    }
-    .overlay .controls button:hover {
-      opacity: 1;
-    }
+.grid-gallery {
+    display: grid;
+/*  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
+    width: 33%;
+    gap: 10px;
+    padding: 20px;
+  }
+  .grid-item {
+    position: relative;
+  }
+  .grid-link img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .grid-caption {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+  }
+  .custom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10000;
+  }
+  .custom-overlay img {
+    width: 90%;
+    height: 600px;
+    border-radius: 8px;
+  }
+  .custom-overlay .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .custom-overlay .controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  .custom-overlay .controls button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 10px 20px;
+    opacity: 0.7;
+  }
+  .custom-overlay .controls button:hover {
+    opacity: 1;
+  }
 /* ----------------------------------------grid-gallarey------------------------------ */
+/* -----------------------------------------map css----------------------------- */
+.container{
+    position: bottom;
+    max-width: 90%;
+    margin: 0 auto;
+    height: 500px;
+    padding: 40px 20px;
+    background-color: #fff;
+    box-shadow: 0 4px  8px rgba(0, 0, 0.1);
+    border-radius: 10px;
+    /* margin-bottom: 20px; */
+}
+.container h1{
+    text-align: center;
+    flex: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+.container .map-container{
+    position: relative;
+    width: 100%;
+    height: 50%;
+    padding-bottom: 26.25%;
+}
+.container .map-container iframe{
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 90%;
+     border: none;
+     border-radius: 10px;
+
+}
+.container a{
+    display: inline-block;
+    background: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease-in-out;
+
+}
+.container a:hover{
+    background-color: #45a049;
+
+}
+/* -----------------------------------------/map css----------------------------- */
 
 
 
@@ -478,13 +541,12 @@ hr{
     }
 }
 /* --------------------------------footer--------------------------------------------------- */
-
 /*========================================= responsive================================= */
 @media(max-width:991px){
     /* --------------------------------res header------------------------- */
     header{
         padding: 20px;
-
+    
     }
     header label{
         display: initial;
@@ -507,14 +569,14 @@ hr{
         width: 100%;
         list-style-type: none;
         padding: 0;
-
-
+        
+    
     }
     header .navbar  ul li ul li{
         background: #eee;
         display: block;
         margin-bottom: 3px;
-
+        
 
     }
     header .navbar  ul li ul li ul{
@@ -533,19 +595,19 @@ hr{
             width: 100%; /* Kenglikni ekranga mos qiladi */
             padding: 15px; /* Paddingni kamaytiradi */
         }
-
+    
         .text-box p {
             font-size: 18px; /* Matn hajmini kichikroq qiladi */
             padding: 8px; /* Matn atrofidagi bo‘shliqni kamaytiradi */
         }
     }
-
+    
     /* === Responsive: 480px dan kichik ekranlar uchun (mobil) === */
     @media (max-width: 480px) {
         .text-box {
             padding: 12px; /* Juda kichik ekranda paddingni kamaytirish */
         }
-
+    
         .text-box p {
             font-size: 16px; /* Mobil uchun matnni kichikroq qilish */
             letter-spacing: 0.5px;
@@ -575,7 +637,7 @@ hr{
     main .back .img-text h2 {
         font-size: 20px;
     }
-
+   
 }
 @media (max-width: 768px) {
     .animated-text {
@@ -605,8 +667,7 @@ hr{
         flex-basis: 100%;
 
     }
-
+        
     }
-
+    
     /* ---------------------- /footer--------------- */
-

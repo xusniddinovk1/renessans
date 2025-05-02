@@ -9,21 +9,15 @@
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
+
     <title>Document</title>
-    <style>
-        .banner {
-            margin-top: 75px;
-        }
-    </style>
 </head>
 <body>
-
 <!------------------------------------- header --------------------------------- -->
 <header>
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo">
+        <img src=/media/logo/logo.JPG" alt="company logo">
     </a>
-
     <div class="relative">
         <button id="languageDropdown"
                 class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
@@ -34,7 +28,7 @@
             <ul class="text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="ru">Ruscha</li>
+                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruscha</li>
             </ul>
         </div>
     </div>
@@ -45,7 +39,7 @@
             <li><a href="{% url 'home_page' %}" target="_blank">Asosiy</a></li>
             <li><a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mexmon xonalar</a></li>
+                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mehmon xonalar</a></li>
                     <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Istirohat zona</a></li>
                 </ul>
             </li>
@@ -64,11 +58,9 @@
 <!-- -------------------------------------- main ---------------------------->
 <!-- Banner -->
 <div class="banner">
-    <div class="banner">
-    </div>
     <div class="banner-text">Quvonch, Do`stlik va unutilmas damlar maskani</div>
     <!-- Batafsil tugmasi pastda joylashadi -->
-    <button class="banner-button" id="bannerButton"><a href="{% url 'education_page' %}">more</a></button>
+    <button class="banner-button" id="bannerButton"><a href="o'quvbolim.html">more</a></button>
 </div>
 
 <!-- ---------------------------------------/main----------------------------------- -->
@@ -95,66 +87,37 @@
         havzasi, 2 ta kiyinish va yuvinish binosi, sportzal, futbol maydoni, sport maydonchasi, 3 ta 12 o’rinli
         xojatxona, qorovulxona, omborxona, 4 ta xo’jalik binosi, jami 14 ta ayvon, 6 ta favvora, qozonxona, xodimlar va
         mehmonlar uchun alohida avtoturargoh.
+
     </p>
 </div>
-
-
 <!-- -------------------------------------------gap---------------------------------- -->
 <!-- -----------------------------------grid galareya--------------------------------- -->
-<!--<div class="grid-gallery">-->
-<!--    {% for photo in photos %}-->
-<!--    <div class="grid-item">-->
-<!--        <a href="#" class="grid-link" onclick="openModal('{{ photo.image.url }}')">-->
-<!--            <img src="{{ photo.image.url }}" alt="">-->
-<!--            <div class="grid-caption"></div>-->
-<!--        </a>-->
-<!--    </div>-->
-<!--    {% endfor %}-->
-<!--</div>-->
-
-<!--&lt;!&ndash; Modal &ndash;&gt;-->
-<!--<div id="imageModal" class="modal">-->
-<!--    <span class="close" onclick="closeModal()">&times;</span>-->
-<!--    <img class="modal-content" id="modalImage">-->
-<!--</div>-->
 <div class="grid-gallery">
-  {% for photo in photos %}
-  <div class="grid-item">
-    <a href="#" class="grid-link">
-      <img src="{{ photo.image.url }}" alt="rasm yo'q">
-    </a>
-  </div>
-  {% endfor %}
+    {% for photo in photos %}
+    <div class="grid-item">
+        <a href="#" class="grid-link" onclick="openModal('{{ photo.image.url }}')">
+            <img src="{{ photo.image.url }}" alt="">
+        </a>
+    </div>
+    {% endfor %}
+</div>
+<div class="custom-overlay">
+    <span class="close">&times;</span>
+    <img src="" alt="Gallery Image" id="overlayImage">
+    <div class="controls">
+        <button id="prevBtn">&#8592;</button>
+        <button id="nextBtn">&#8594;</button>
+    </div>
 </div>
 
-<div class="overlay">
-  <span class="close">&times;</span>
-  <img src="" alt="Gallery Image" id="overlayImage">
-  <div class="controls">
-    <button id="prevBtn">&#8592;</button>
-    <button id="nextBtn">&#8594;</button>
-  </div>
-</div>
-
-<!-- JavaScript -->
-<script>
-    // Modalni ochish
-    function openModal(imageUrl) {
-        var modal = document.getElementById("imageModal");
-        var modalImg = document.getElementById("modalImage");
-        modal.style.display = "block";
-        modalImg.src = imageUrl;
-    }
-
-    // Modalni yopish
-    function closeModal() {
-        var modal = document.getElementById("imageModal");
-        modal.style.display = "none";
-    }
-</script>
 <!-- -----------------------------------grid galareya--------------------------------- -->
-
-
+<!-- <div class="container">
+        <h1>xarita karochi</h1>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95985.13840300929!2d69.18832734611418!3d41.25367332672317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae6005c5142bf3%3A0xe04bf246835d2d7f!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0JDRjdGA0L7Qv9C-0YDRgiDQuNC80LXQvdC4INCY0YHQu9Cw0LzQsCDQmtCw0YDQuNC80L7QstCw!5e0!3m2!1sru!2s!4v1743158064308!5m2!1sru!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <a href="#" >view on google maps </a>
+</div> -->
 <!-- --------------------------------------footter----------------------------------- -->
 <footer>
     <div class="row">
@@ -198,105 +161,58 @@
 <!-- --------------------------------------/footter----------------------------------- -->
 
 <script>
-    const dropdownButton = document.getElementById('languageDropdown');
-    const languageMenu = document.getElementById('languageMenu');
-    const languageItems = languageMenu.querySelectorAll('li');
+    const images = document.querySelectorAll('.grid-link img');
+    const overlay = document.querySelector('.custom-overlay');
+    const overlayImage = document.getElementById('overlayImage');
+    const closeBtn = document.querySelector('.custom-overlay .close');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
-    dropdownButton.addEventListener('click', () => {
-        languageMenu.classList.toggle('hidden');
-    });
+    let currentIndex = 0;
 
-    languageItems.forEach(item => {
-        item.addEventListener('click', (event) => {
-            const selectedLang = event.target.getAttribute('data-lang');
-            alert(`Language switched to: ${selectedLang}`);
-            languageMenu.classList.add('hidden');
-        });
-    });
-
-    // Close menu if clicked outside
-    document.addEventListener('click', (event) => {
-        if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
-            languageMenu.classList.add('hidden');
-        }
-    });
-    new Swiper(".news-slider", {
-     slidesPerView: 1,
-     spaceBetween: 20,
-     breakpoints: {
-       640: { slidesPerView: 1 }, // kichik mobilda 1 ta
-       768: { slidesPerView: 2 }, // planshetlarda 2 ta
-       1024: { slidesPerView: 3 } // katta ekranda 3 ta
-     }
-   });
-
-
-       document.querySelectorAll(".inner-swiper").forEach(el => {
-         new Swiper(el, {
-           slidesPerView: 1,
-           loop: true,
-           autoplay: {
-             delay: 2500,
-             disableOnInteraction: false
-           }
-         });
-       });
-
-       function showModal(title, text) {
-         document.getElementById('modalTitle').innerText = title;
-         document.getElementById('modalText').innerText = text;
-         document.getElementById('newsModal').style.display = 'flex';
-       }
-
-       function closeModal() {
-         document.getElementById('newsModal').style.display = 'none';
-       }
-  const images = document.querySelectorAll('.grid-link img');
-  const overlay = document.querySelector('.overlay');
-  const overlayImage = document.getElementById('overlayImage');
-  const closeBtn = document.querySelector('.overlay .close');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-
-  let currentIndex = 0;
-
-  function showImage(index) {
-    overlayImage.src = images[index].src;
-    overlay.style.display = 'flex';
-    currentIndex = index;
-  }
-
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
-  }
-
-  function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage(currentIndex);
-  }
-
-  images.forEach((img, index) => {
-    img.addEventListener('click', (event) => {
-      event.preventDefault();
-      showImage(index);
-    });
-  });
-
-  closeBtn.addEventListener('click', () => {
-    overlay.style.display = 'none';
-  });
-
-  nextBtn.addEventListener('click', nextImage);
-  prevBtn.addEventListener('click', prevImage);
-
-  document.addEventListener('keydown', (event) => {
-    if (overlay.style.display === 'flex') {
-      if (event.key === 'ArrowRight') nextImage();
-      if (event.key === 'ArrowLeft') prevImage();
-      if (event.key === 'Escape') overlay.style.display = 'none';
+    function showImage(index) {
+      overlayImage.src = images[index].src;
+      overlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Skrollni bloklash
+      currentIndex = index;
     }
-  });
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    }
+
+    images.forEach((img, index) => {
+      img.addEventListener('click', (event) => {
+        event.preventDefault();
+        showImage(index);
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Skrollni tiklash
+    });
+
+    nextBtn.addEventListener('click', nextImage);
+    prevBtn.addEventListener('click', prevImage);
+
+    document.addEventListener('keydown', (event) => {
+      if (overlay.style.display === 'flex') {
+        if (event.key === 'ArrowRight') nextImage();
+        if (event.key === 'ArrowLeft') prevImage();
+        if (event.key === 'Escape') {
+          overlay.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      }
+    });
+
 </script>
 </body>
 </html>
