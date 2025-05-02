@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'lager/css/activity.css' %}">
+    <link rel="stylesheet" href="{% static 'lager/css/activity.css'%}">
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,6 +18,7 @@
     <a href="#" class="logo">
         <img src="/media/logo/logo.JPG" alt="company logo">
     </a>
+
     <div class="relative">
         <button id="languageDropdown"
                 class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
@@ -28,7 +29,7 @@
             <ul class="text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruscha</li>
+                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="ru">Ruscha</li>
             </ul>
         </div>
     </div>
@@ -39,7 +40,7 @@
             <li><a href="{% url 'home_page' %}" target="_blank">Asosiy</a></li>
             <li><a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mehmonxonalar</a></li>
+                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mexmonxonalar</a></li>
                     <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Istirohat zona</a></li>
                 </ul>
             </li>
@@ -54,12 +55,13 @@
     </nav>
 
 </header>
+
 <!-- ---------------------------------------carusel ----------------------------- -->
 <div class="carousel">
     <div class="carousel-container">
         {% for activity in activities %}
         <div class="carousel-slide {% if forloop.first %}active{% endif %}">
-            <img src="{{ activity.image.url }}" alt="{{ activity.title }}" class="event-image">
+            <div class="event-image" style="background-image: url('{{ activity.image.url }}');"></div>
             <div class="event-title">{{ activity.title }}</div>
             <div class="event-description">{{ activity.description }}</div>
         </div>
@@ -70,109 +72,110 @@
         <button id="next">❯</button>
     </div>
 </div>
-    <!-- --------------------------------------footter----------------------------------- -->
-    <footer>
-        <div class="row">
-            <div class="col">
-                <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-                <p>Ixtisoslashtirilgan taʼlim muassasalari agentligi
-                </p>
-            </div>
-            <div class="col">
-                <h3>office
-                    <div class="underline"><span></span></div>
-                </h3>
-                <p>ITPL road</p>
-                <p>Manzil</p>
-                <p>Pochta Indeksi</p>
-                <p class="email-id">renessans@gmail.com</p>
-                <h4>+99800000000</h4>
-            </div>
 
-            <div class="col">
-                <h3>NEWsletter
-                    <div class="underline"><span></span></div>
-                </h3>
-                <form>
-                    <i class="fa-solid fa-envelope"></i>
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-                </form>
-                <div class="social-icons">
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                    <i class="fa-brands fa-telegram"></i>
-                    <i class="fa-brands fa-twitter"></i>
-                </div>
+<!--------------------------------- /carusel  ------------------------------------5-->
+
+<!-- --------------------------------------footter----------------------------------- -->
+<footer>
+    <div class="row">
+        <div class="col">
+            <img src="Photoroom-20250221_234420.png" alt="" class="logot">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus corrupti, atque reprehenderit autem
+                eveniet repellat aut? Fugit iure aliquam quod, ducimus amet, d</p>
+        </div>
+        <div class="col">
+            <h3>office
+                <div class="underline"><span></span></div>
+            </h3>
+            <p>ITPL road</p>
+            <p>manzil</p>
+            <p>pocjta indexs</p>
+            <p class="email-id">renessans@gmail.com</p>
+            <h4>+99800000000</h4>
+        </div>
+
+        <div class="col">
+            <h3>NEWsletter
+                <div class="underline"><span></span></div>
+            </h3>
+            <form>
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="enter you email" required>
+                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+            <div class="social-icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-twitter"></i>
             </div>
         </div>
-        <hr>
-        <p class="copyrigh">2025</p>
-        </hr>
-    </footer>
-    <!-- --------------------------------------/footter----------------------------------- -->
+    </div>
+    <hr>
+    <p class="copyrigh">2025</p>
+    </hr>
+</footer>
+<!-- --------------------------------------/footter----------------------------------- -->
 
 
-    <script>
-        const dropdownButton = document.getElementById('languageDropdown');
-        const languageMenu = document.getElementById('languageMenu');
-        const languageItems = languageMenu.querySelectorAll('li');
+<script>
+    const dropdownButton = document.getElementById('languageDropdown');
+    const languageMenu = document.getElementById('languageMenu');
+    const languageItems = languageMenu.querySelectorAll('li');
 
-        dropdownButton.addEventListener('click', () => {
-            languageMenu.classList.toggle('hidden');
+    dropdownButton.addEventListener('click', () => {
+        languageMenu.classList.toggle('hidden');
+    });
+
+    languageItems.forEach(item => {
+        item.addEventListener('click', (event) => {
+            const selectedLang = event.target.getAttribute('data-lang');
+            alert(`Language switched to: ${selectedLang}`);
+            languageMenu.classList.add('hidden');
         });
+    });
 
-        languageItems.forEach(item => {
-            item.addEventListener('click', (event) => {
-                const selectedLang = event.target.getAttribute('data-lang');
-                alert(`Language switched to: ${selectedLang}`);
-                languageMenu.classList.add('hidden');
+    // Close menu if clicked outside
+    document.addEventListener('click', (event) => {
+        if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
+            languageMenu.classList.add('hidden');
+        }
+    });
+
+
+//------------------------------------ carusel js ------------------------
+const container = document.querySelector('.carousel-container');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        let index = 0;
+
+        function updateCarousel() {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
             });
+            container.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            index = (index + 1) % slides.length;
+            updateCarousel();
         });
 
-        // Close menu if clicked outside
-        document.addEventListener('click', (event) => {
-            if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
-                languageMenu.classList.add('hidden');
-            }
+        prevBtn.addEventListener('click', () => {
+            index = (index - 1 + slides.length) % slides.length;
+            updateCarousel();
         });
 
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            index = (index + 1) % slides.length;
+            updateCarousel();
+        }, 3000);
 
-    //------------------------------------ carusel js ------------------------
-    // Carousel JS
-    const container = document.querySelector('.carousel-container');
-    const slides = document.querySelectorAll('.carousel-slide');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    let index = 0;
-
-    function updateCarousel() {
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
-        });
-        container.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    nextBtn.addEventListener('click', () => {
-        index = (index + 1) % slides.length;
+        // Initialize active class
         updateCarousel();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        index = (index - 1 + slides.length) % slides.length;
-        updateCarousel();
-    });
-
-    // Auto slide every 5 seconds
-    setInterval(() => {
-        index = (index + 1) % slides.length;
-        updateCarousel();
-    }, 3000);
-
-    // Initialize active class
-    updateCarousel();
-
-    //------------------------------------ carusel js ------------------------
-    </script>
+//------------------------------------ carusel js ------------------------
+</script>
 </body>
 </html>

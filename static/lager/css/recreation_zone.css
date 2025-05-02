@@ -1,11 +1,10 @@
-Asadbek, [28/04/2025 22:58]
 * {
     margin:0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     text-transform: capitalize;
-    text-decoration: none;    
+    text-decoration: none;
     }
 body{
     min-height: 100vh;
@@ -37,13 +36,13 @@ header .logo{
 }
 header .navbar ul{
     list-style: none;
-    
+
 }
 header .navbar ul li{
      position: relative;
      float: left;
      margin: auto;
-     
+
 
 }
 header .navbar ul li a{
@@ -54,21 +53,21 @@ header .navbar ul li a{
     transition: transform 1s ease, background-color 01s ease ;
     border-radius: 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-   
+
 }
 header .navbar ul li a:before,header .navbar ul li a:after{
-    
+
     content: "";
     position: absolute;
     height: 3px;
     width: 0;
     background-color: #000;
-    transition: 0.5s;    
+    transition: 0.5s;
 }
 header .navbar ul li a:after{
     left: 0;
     bottom: -3px;
-    
+
 }
 header .navbar ul li a:before{
     right: 0;
@@ -201,12 +200,10 @@ header label{
 }
 
 /* Naming animations in hover */
-
-Asadbek, [28/04/2025 22:58]
 .card__article:hover .card__data{
     animation: show-data 1s forwards;
     opacity: 1;
-    transition: opacity .3s;
+    transition: opacity .3s ease-in;
 }
 
 .card__article:hover{
@@ -229,7 +226,7 @@ Asadbek, [28/04/2025 22:58]
         transform: rotateY(-7rem);
 
     }
-    
+
 }
 @keyframes remove-overflow {
     to{
@@ -245,7 +242,7 @@ Asadbek, [28/04/2025 22:58]
     }
     100%{
         transform: translateY(.3rem);
-    } 
+    }
 }
 @keyframes show-overflow{
     0%{
@@ -269,7 +266,7 @@ Asadbek, [28/04/2025 22:58]
 @media screen and (min-width:1120px){
     .container{
        height: 100vh;
-       
+
     }
     .card__container{
         grid-template-columns: repeat(3, 1fr);
@@ -323,11 +320,19 @@ Asadbek, [28/04/2025 22:58]
     animation: slideIn 0.5s forwards;
     position: relative;
     word-wrap: break-word;
-    word-break: break-word; 
-    overflow-wrap: break-word; 
-    white-space: normal; 
-      
-        }
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+
+    }
+    .modalimg {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        display: none;
+      }
 
   .modal-close {
     position: absolute;
@@ -366,9 +371,7 @@ Asadbek, [28/04/2025 22:58]
 /* ----------------------------------/card slider ---------------------------*/
 
 /* --------------------------------footer--------------------------------------------------- */
-.kenglik{
- width: 1280px
-}
+
 footer{
     /* display: block; */
     width: 100%;
@@ -423,13 +426,11 @@ form{
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
     margin-bottom: 50px;
-
 }
 form .fa-solid{
     font-size: 18px;
     margin-right: 10px;
 
-Asadbek, [28/04/2025 22:58]
 }
 form input{
     width: 100%;
