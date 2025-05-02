@@ -286,8 +286,7 @@ header label{
 /* ----------------------------------------grid-gallarey------------------------------ */
 .grid-gallery {
     display: grid;
-/*  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
-    width: 33%;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     gap: 10px;
     padding: 20px;
   }
