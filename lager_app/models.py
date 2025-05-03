@@ -1,6 +1,14 @@
 from django.db import models
 
 
+class AboutUs(models.Model):
+    objects = None
+    context = models.TextField()
+
+    def __str__(self):
+        return self.context
+
+
 class Photos(models.Model):
     objects = None
     image = models.ImageField(upload_to='photos/', blank=True, null=True)
@@ -18,12 +26,10 @@ class Activity(models.Model):
 
 class Hotel(models.Model):
     objects = None
-    name = models.CharField(max_length=100, null=False, blank=False)
-    description = models.TextField()
     image = models.ImageField(upload_to='hotels/', blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.image
 
 
 class Education(models.Model):

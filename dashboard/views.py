@@ -42,6 +42,7 @@ def billing_view(request):
 
 @login_required_decorator
 def main_dashboard(request):
+    about_us = AboutUs.objects.all()
     photos = Photos.objects.all()
     educations = Education.objects.all()
     activities = Activity.objects.all()
@@ -60,6 +61,49 @@ def main_dashboard(request):
         }
     }
     return render(request, 'dashboard/index.html', ctx)
+
+
+@login_required_decorator
+def about_us_list(request):
+    text = AboutUs.objects.all()
+
+    ctx = {
+        "text": text
+    }
+    return render(request, 'dashboard/about_us/list.html', ctx)
+
+
+@login_required_decorator
+def about_us_create(request):
+    form = AboutUsForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('about_us_list')
+    ctx = {
+        "form": form
+    }
+    return render(request, 'lager/about_us/form.html', ctx)
+
+
+@login_required_decorator
+def about_us_update(request, pk):
+    text = get_object_or_404(AboutUs, pk=pk)
+    form = ActivityForm(request.POST or None, instance=text)
+    if form.is_valid():
+        form.save()
+        return redirect('about_us_list')
+
+    ctx = {
+        'form': form
+    }
+    return render(request, 'dashboard/about_us/form.html', ctx)
+
+
+@login_required_decorator
+def about_us_delete(request, pk):
+    text = get_object_or_404(AboutUs, pk=pk)
+    text.delete()
+    return redirect('about_us_list')
 
 
 @login_required_decorator

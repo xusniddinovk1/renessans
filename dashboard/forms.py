@@ -2,6 +2,15 @@ from django import forms
 from lager_app.models import *
 
 
+class AboutUsForm(forms.ModelForm):
+    class Meta:
+        model = AboutUs
+        fields = ['context']
+        widgets = {
+            "context": forms.TextInput(attrs={"class": "form-control"})
+        }
+
+
 class PhotoForm(forms.ModelForm):
     class Meta:
         model = Photos
