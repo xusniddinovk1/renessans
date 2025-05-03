@@ -82,7 +82,7 @@ def about_us_create(request):
     ctx = {
         "form": form
     }
-    return render(request, 'lager/about_us/form.html', ctx)
+    return render(request, 'dashboard/about_us/form.html', ctx)
 
 
 @login_required_decorator

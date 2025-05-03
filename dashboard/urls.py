@@ -11,6 +11,11 @@ urlpatterns = [
 
     path('', views.main_dashboard, name='main_dashboard'),
 
+    path('bizhaqimizda/', views.about_us_list, name='about_us_list'),
+    path('bizhaqimizda/yangi/', views.about_us_create, name='about_us_create'),
+    path('bizhaqimizda/<int:pk>/tahrirlash/', views.about_us_update, name='about_us_update'),
+    path('bizhaqimizda/<int:pk>/ochirish/', views.about_us_delete, name='about_us_delete'),
+
     path('faoliyatlar/', views.activity_list, name='activity_list'),
     path('faoliyatlar/yangi/', views.activity_create, name='activity_create'),
     path('faoliyatlar/<int:pk>/tahrirlash/', views.activity_update, name='activity_edit'),

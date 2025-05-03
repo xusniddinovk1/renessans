@@ -1,10 +1,19 @@
 from django.shortcuts import render
 from lager_app.models import *
 
+
 def home_page(request):
     photos = Photos.objects.all()
     ctx = {
         "photos": photos,
+    }
+    return render(request, 'lager/index.html', ctx)
+
+
+def about_us_page(request):
+    text = AboutUs.objects.all()
+    ctx = {
+        "text": text
     }
     return render(request, 'lager/index.html', ctx)
 

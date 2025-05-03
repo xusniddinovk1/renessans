@@ -26,10 +26,12 @@ class Activity(models.Model):
 
 class Hotel(models.Model):
     objects = None
+    name = models.CharField(max_length=100, null=False, blank=False)
+    description = models.TextField()
     image = models.ImageField(upload_to='hotels/', blank=True, null=True)
 
     def __str__(self):
-        return self.image
+        return self.name
 
 
 class Education(models.Model):
