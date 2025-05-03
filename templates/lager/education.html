@@ -17,7 +17,6 @@
     <a href="#" class="logo">
         <img src="/media/logo/logo.JPG" alt="company logo">
     </a>
-
     <div class="relative">
         <button id="languageDropdown"
                 class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
@@ -28,7 +27,7 @@
             <ul class="text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="ru">Ruscha</li>
+                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruscha</li>
             </ul>
         </div>
     </div>
@@ -70,12 +69,21 @@
         </div>
     </div>
     {% endfor %}
+    <!-- modal  -->
+    <div class="modal" id="newsModal">
+        <div class="modal-content" id="modalContent">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalText"></p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </div>
 </div>
-
-
 <!---------------------------------- card oquv bolim-------------------------- -->
-
-
 <!-- --------------------------------------footter----------------------------------- -->
 <footer>
     <div class="row">
@@ -130,7 +138,7 @@
     languageItems.forEach(item => {
         item.addEventListener('click', (event) => {
             const selectedLang = event.target.getAttribute('data-lang');
-            alert(`Language switched to: ${selectedLang}`);
+            alert(Language switched to: ${selectedLang});
             languageMenu.classList.add('hidden');
         });
     });
@@ -141,6 +149,18 @@
             languageMenu.classList.add('hidden');
         }
     });
+ // Modal funksiyasi
+
+ function showModal(title, text) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalText').innerText = text;
+      document.getElementById('newsModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('newsModal').style.display = 'none';
+    }
+
 </script>
 </body>
 </html>

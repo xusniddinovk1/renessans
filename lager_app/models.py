@@ -6,7 +6,7 @@ class AboutUs(models.Model):
     context = models.TextField()
 
     def __str__(self):
-        return self.context
+        return self.context[:50]
 
 
 class Photos(models.Model):

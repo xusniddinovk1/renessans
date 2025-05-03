@@ -3,17 +3,11 @@ from lager_app.models import *
 
 
 def home_page(request):
+    text = AboutUs.objects.first()
     photos = Photos.objects.all()
     ctx = {
+        "text": text,
         "photos": photos,
-    }
-    return render(request, 'lager/index.html', ctx)
-
-
-def about_us_page(request):
-    text = AboutUs.objects.all()
-    ctx = {
-        "text": text
     }
     return render(request, 'lager/index.html', ctx)
 

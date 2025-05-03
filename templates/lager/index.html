@@ -66,29 +66,12 @@
 <!-- ---------------------------------------/main----------------------------------- -->
 <!-- -------------------------------------------gap---------------------------------- -->
 <div id="linkkeladi" class="text-box">
-    <h1>
-        Biz haqimizda
-    </h1>
-    <p>
-        “Renessans” sog’lomlashtirish oromgohi Toshkent viloyatining Bo’stonliq tumani, “Yoshlik” bolalar
-        sog’lomlashtirish oromgohi negizida tashkil etilgan.
-
-        Oromgoh davlat muassasasi hisoblanadi. Oromgohning kelgusi 10 yil davomida faoliyatini yuritish va saqlashga oid
-        xarajatlar “O’zmetkombinat” AJ tomonidan ajratiladigan homiylik xayriyalari hisobidan qoplash belgilangan.
-
-        Ushbu chora-tadbirlar O’zbekiston Respublikasi Prezidentining 2021-yil 19-iyuldagi PQ¬¬—5188-son “Prezident,
-        ijod va ixtisoslashtirilgan maktablar faoliyatini yanada takomillashtirish bo’yicha qo’shimcha chora-tadbirlar
-        to’g’risida”gi qarorining 13-bandiga muvofiq tashkil etilgan.
-
-        Oromgoh hududidagi bino va inshootlar
-
-        2 ta ma’muriyat binosi, konferensiyalar zali, mehmonxona, hodimlar binosi, yoshlar o’quv ustaxonalari, o’quv
-        binosi, oshxona, 4 ta yotoqxona binosi, hayvonot burchagi, estrada tribunasi, yopiq suv havzasi, 2 ta ochiq suv
-        havzasi, 2 ta kiyinish va yuvinish binosi, sportzal, futbol maydoni, sport maydonchasi, 3 ta 12 o’rinli
-        xojatxona, qorovulxona, omborxona, 4 ta xo’jalik binosi, jami 14 ta ayvon, 6 ta favvora, qozonxona, xodimlar va
-        mehmonlar uchun alohida avtoturargoh.
-
-    </p>
+    <h1>Biz haqimizda</h1>
+    {% if text %}
+        <p>{{ text.context|linebreaks }}</p>
+    {% else %}
+        <p>Ma'lumot topilmadi.</p>
+    {% endif %}
 </div>
 <!-- -------------------------------------------gap---------------------------------- -->
 <!-- -----------------------------------grid galareya--------------------------------- -->
