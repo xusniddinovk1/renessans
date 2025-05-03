@@ -377,7 +377,6 @@ header label{
 /* --------------------------------footer--------------------------------------------------- */
 
 footer{
-    /* display: block; */
     width: 100%;
     position: bottom;
     bottom: 0;
@@ -430,6 +429,7 @@ form{
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
     margin-bottom: 50px;
+
 }
 form .fa-solid{
     font-size: 18px;
@@ -477,7 +477,7 @@ hr{
 }
 .copyrigh{
     text-align: center;
-    
+
 }
 .underline{
     width: 100%;
