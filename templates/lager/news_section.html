@@ -72,8 +72,8 @@
                     </div>
                 </div>
             </div>
-            <div class="news-title">{{ news.title }}</div>
-            <div class="news-summary">{{ news.content|truncatechars:20 }}</div>
+            <div class="news-title">{{ news.title|truncatechars:30 }}</div>
+            <div class="news-summary">{{ news.content|truncatechars:40 }}</div>
             <button class="btn"
                     onclick="showModal('{{ news.title }}', '{{ news.content|escapejs }}')">
                 Batafsil
@@ -81,22 +81,9 @@
         </div>
         {% endfor %}
     </div>
+
 </div>
 
-
-<!-- MODAL -->
-<div class="modal" id="newsModal">
-    <div class="modal-content" id="modalContent">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <h2 id="modalTitle"></h2>
-        <p id="modalText"></p>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-        </div>
-    </div>
-</div>
 <!-- -----------------------------------/Yangiliklar ---------------------------------- -->
 
 
@@ -202,4 +189,16 @@
 </script>
 
 </body>
+<div class="modal" id="newsModal">
+    <div class="modal-content" id="modalContent">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalText"></p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
+</div>
 </html>

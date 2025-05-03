@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'lager/css/education.css'%}">
+    <link rel="stylesheet" href="{% static 'lager/css/education.css' %}">
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -53,36 +53,24 @@
     </nav>
 
 </header>
+
 <!---------------------------------- card oquv bolim-------------------------- -->
 <div class="card-container">
     {% for education in educations %}
     <div class="card">
-        <!-- Rasmni chiqaramiz -->
         <img src="{{ education.image.url }}" alt="Camp Image">
-
         <div class="card-content">
-            <!-- Ta'lim nomini chiqaramiz -->
-            <h2 class="card-title">{{ education.title }}</h2>
-
-            <!-- Ta'lim tavsifini chiqaramiz -->
-            <p class="card-description">{{ education.description }}</p>
+            <h2 class="card-title">{{ education.title|truncatechars:30 }}</h2>
+            <p class="card-description">{{ education.description|truncatechars:40 }}</p>
+            <button class="btn"
+                    onclick="showModal('{{ education.title }}', '{{ education.description|escapejs }}')">
+                Batafsil
+            </button>
         </div>
     </div>
     {% endfor %}
-    <!-- modal  -->
-    <div class="modal" id="newsModal">
-        <div class="modal-content" id="modalContent">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <p id="modalText"></p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-            </div>
-        </div>
-    </div>
 </div>
+
 <!---------------------------------- card oquv bolim-------------------------- -->
 <!-- --------------------------------------footter----------------------------------- -->
 <footer>
@@ -138,7 +126,7 @@
     languageItems.forEach(item => {
         item.addEventListener('click', (event) => {
             const selectedLang = event.target.getAttribute('data-lang');
-            alert(Language switched to: ${selectedLang});
+            alert(`Language switched to: ${selectedLang}`);
             languageMenu.classList.add('hidden');
         });
     });
@@ -163,4 +151,16 @@
 
 </script>
 </body>
+<div class="modal" id="newsModal">
+    <div class="modal-content" id="modalContent">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalText"></p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
+</div>
 </html>
