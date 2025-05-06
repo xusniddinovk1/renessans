@@ -128,7 +128,7 @@
     languageItems.forEach(item => {
         item.addEventListener('click', (event) => {
             const selectedLang = event.target.getAttribute('data-lang');
-            alert(Language switched to: ${selectedLang});
+            alert(`Language switched to: ${selectedLang}`);
             languageMenu.classList.add('hidden');
         });
     });
@@ -140,40 +140,39 @@
         }
     });
 
+    //------------------------------------ carousel js ------------------------
+    const container = document.querySelector('.carousel-container');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    let index = 0;
 
-//------------------------------------ carusel js ------------------------
-const container = document.querySelector('.carousel-container');
-        const slides = document.querySelectorAll('.carousel-slide');
-        const prevBtn = document.getElementById('prev');
-        const nextBtn = document.getElementById('next');
-        let index = 0;
-
-        function updateCarousel() {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            container.style.transform = translateX(-${index * 100}%);
-        }
-
-        nextBtn.addEventListener('click', () => {
-            index = (index + 1) % slides.length;
-            updateCarousel();
+    function updateCarousel() {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
         });
+        container.style.transform = `translateX(-${index * 100}%)`;
+    }
 
-        prevBtn.addEventListener('click', () => {
-            index = (index - 1 + slides.length) % slides.length;
-            updateCarousel();
-        });
-
-        // Auto slide every 5 seconds
-        setInterval(() => {
-            index = (index + 1) % slides.length;
-            updateCarousel();
-        }, 3000);
-
-        // Initialize active class
+    nextBtn.addEventListener('click', () => {
+        index = (index + 1) % slides.length;
         updateCarousel();
-//------------------------------------ carusel js ------------------------
+    });
+
+    prevBtn.addEventListener('click', () => {
+        index = (index - 1 + slides.length) % slides.length;
+        updateCarousel();
+    });
+
+    // Auto slide every 3 seconds
+    setInterval(() => {
+        index = (index + 1) % slides.length;
+        updateCarousel();
+    }, 3000);
+
+    // Initialize active class
+    updateCarousel();
 </script>
+
 </body>
 </html>
