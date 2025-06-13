@@ -55,22 +55,23 @@
 </header>
 
 <!---------------------------------- card oquv bolim-------------------------- -->
-<div class="card-container">
-    {% for education in educations %}
-    <div class="card">
-        <img src="{{ education.image.url }}" alt="Camp Image">
-        <div class="card-content">
-            <h2 class="card-title">{{ education.title|truncatechars:30 }}</h2>
-            <p class="card-description">{{ education.description|truncatechars:40 }}</p>
-            <button class="btn"
-                    onclick="showModal('{{ education.title }}', '{{ education.description|escapejs }}')">
-                Batafsil
-            </button>
+<div class="wrapper">
+    <div class="card-container">
+        {% for education in educations %}
+        <div class="card">
+            <img src="{{ education.image.url }}" alt="Camp Image">
+            <div class="card-content">
+                <h2 class="card-title">{{ education.title|truncatechars:30 }}</h2>
+                <p class="card-description">{{ education.description|truncatechars:40 }}</p>
+                <button class="btn"
+                        onclick="showModal('{{ education.title }}', '{{ education.description|escapejs }}')">
+                    Batafsil
+                </button>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
-
 <!---------------------------------- card oquv bolim-------------------------- -->
 <!-- --------------------------------------footter----------------------------------- -->
 <footer>
