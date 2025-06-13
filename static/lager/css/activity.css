@@ -94,8 +94,12 @@ header .navbar ul li ul{
 header .navbar ul li ul li{
     width: 50%;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background: none;
+    background: #1d4ed8;
     border: none;
+    border-radius: 20px;
+}
+header .navbar ul li ul li a{
+    color: #fff;
 }
 header .navbar ul li ul li ul{
     left :200px;
