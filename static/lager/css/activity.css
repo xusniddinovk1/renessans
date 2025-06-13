@@ -190,8 +190,8 @@ header label{
 } */
 .event-title {
     position: absolute;
-    bottom: 75%;
-    left: 80%;
+    bottom: 20%;
+    left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
