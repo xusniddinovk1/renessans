@@ -59,14 +59,13 @@
     <div class="card-container">
         {% for education in educations %}
         <div class="card">
-            <img src="{{ education.image.url }}" alt="Camp Image">
+            <a href="{% url 'education_detail' education.id %}">
+                <img src="{{ education.image.url }}" alt="Camp Image" style="width: 400px; height: 300px;">
+            </a>
             <div class="card-content">
                 <h2 class="card-title">{{ education.title|truncatechars:30 }}</h2>
                 <p class="card-description">{{ education.description|truncatechars:40 }}</p>
-                <button class="btn"
-                        onclick="showModal('{{ education.title }}', '{{ education.description|escapejs }}')">
-                    Batafsil
-                </button>
+                <a href="{% url 'education_detail' education.id %}" class="btn">Batafsil</a>
             </div>
         </div>
         {% endfor %}

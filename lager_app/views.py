@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from lager_app.models import *
 
 
@@ -34,6 +34,14 @@ def education_page(request):
         "educations": educations
     }
     return render(request, 'lager/education.html', ctx)
+
+
+def education_detail(request, id):
+    education = get_object_or_404(Education, pk=id)
+    ctx = {
+        'education': education
+    }
+    return render(request, 'lager/education_detail.html', ctx)
 
 
 def recreation_zone_page(request):
