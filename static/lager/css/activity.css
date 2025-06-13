@@ -133,97 +133,90 @@ header label{
 }
 /* -------------------------------------labguage----------------------- */
 /* -----------------------------carusel css -----------------------------*/
-.carousel {
-    width: 100%;
-    /* max-width: 600px; */
-    height: 600px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.carousel-container {
-    display: flex;
-    transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-.carousel-slide {
-    min-width: 100%;
-    height: 600px;
-    box-sizing: border-box;
-    text-align: center;
-    color: white;
+.container {
+    max-width: 900px;
+    margin: 100px auto 40px;
     padding: 20px;
-    opacity: 0.5;
-    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    gap: 30px;
+    background: #2563ebcc; /* to'qroq ko‘k (blue-600) opacity 80% */
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.5);
+    border-radius: 15px;
+    overflow: hidden;
+    color: #000; /* qora matn uchun asosiy rang */
     position: relative;
-    min-width: 100%;
-    text-align: center;
+}
 
+.image-wrapper {
+    flex-shrink: 0;
+    width: 50%;
+    height: 600px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+    cursor: pointer;
 }
-.event-image {
-    width: 100%;
-    height: auto;
-  }
-.carousel-slide.active {
-    opacity: 1;
-}
-.carousel-slide::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+
+.image-wrapper img {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
     border-radius: 15px;
+    filter: brightness(0.9); /* rasmni biroz ochroq qilish */
 }
-/* .carousel-slide:nth-child(1)::before {
-    background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('fotogalareya/DSC03264.JPG');
-}
-.carousel-slide:nth-child(2)::before {
-    background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('fotogalareya/DSC03237.JPG');
-}
-.carousel-slide:nth-child(3)::before {
-    background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('fotogalareya/DSC03207.JPG');
-} */
-.event-title {
-    position: absolute;
-    bottom: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-  }
 
-  .event-description {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 5px 15px;
-    border-radius: 8px;
-  }
-.carousel-buttons {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
+.image-wrapper:hover img {
+    transform: scale(1.05);
+    filter: brightness(1); /* hoverda rasm yorqinroq bo‘lsin */
 }
-.carousel-buttons button {
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
+
+.content {
+    flex: 1;
+    position: relative;
+    padding: 40px 30px;
+    background: #ffffff; /* matn orqasi oq */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #000000; /* matn qora rang */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #000000; /* qora rang */
+    text-shadow: none;
+}
+
+.content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #000000; /* qora rang */
+    white-space: pre-line;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        margin: 80px 20px 20px;
+        padding: 15px;
+    }
+    .image-wrapper {
+        width: 100%;
+        height: 300px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+    }
+    .content {
+        padding: 20px;
+    }
 }
 /* --------------------------------footer--------------------------------------------------- */
 footer{

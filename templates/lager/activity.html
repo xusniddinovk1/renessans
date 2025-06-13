@@ -3,27 +3,64 @@
 {% load humanize %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'lager/css/activity.css' %}">
-    <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="{% static 'lager/css/activity.css' %}"/>
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-
     <title>Document</title>
+    <style>
+        /* Modal CSS */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.75);
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+        }
+        .modal.flex {
+            display: flex;
+        }
+        .modal img {
+            max-width: 95vw;    /* Ekranning 95% gacha kenglik */
+            max-height: 95vh;   /* Ekranning 95% gacha balandlik */
+            min-width: 500px;   /* Minimum kenglik */
+            min-height: 400px;  /* Minimum balandlik */
+            width: auto;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+        .modal #closeModal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+        }
+        /* Cursor pointer for images */
+        .image-wrapper img {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+
 <!------------------------------------- header --------------------------------- -->
-<header>
+<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-7 flex items-center justify-between">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo">
+        <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain"/>
     </a>
+
     <div class="relative">
         <button id="languageDropdown"
                 class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
             🌐 Language
         </button>
-
         <div id="languageMenu" class="absolute hidden bg-white shadow-lg rounded-lg mt-2 w-48">
             <ul class="text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
@@ -32,91 +69,112 @@
             </ul>
         </div>
     </div>
-    <input type="checkbox" id="menu-bar">
-    <label for="menu-bar"><i class="fa-solid fa-bars"></i></label>
-    <nav class="navbar">
-        <ul>
-            <li><a href="{% url 'home_page' %}" target="_blank">Asosiy</a></li>
-            <li><a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                <ul>
-                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mehmon xonalar</a></li>
-                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Istirohat zona</a></li>
+
+    <input type="checkbox" id="menu-bar" class="hidden"/>
+    <label for="menu-bar" class="text-2xl text-gray-700 cursor-pointer md:hidden"><i
+            class="fa-solid fa-bars"></i></label>
+
+    <nav class="navbar hidden md:block">
+        <ul class="flex space-x-6">
+            <li><a href="{% url 'home_page' %}" target="_blank" rel="noopener noreferrer"
+                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Asosiy</a></li>
+            <li class="relative group">
+                <a href="#"
+                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
+                    Kampus <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+                </a>
+                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
+                    <li><a href="{% url 'hotel_section_page' %}" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Mehmon xonalar</a></li>
+                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Istirohat zona</a></li>
                 </ul>
             </li>
-            <li><a href="#">Tadbirlar<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                <ul>
-                    <li><a href="{% url 'activity_page' %}" target="_blank">Faoliyat</a></li>
-                    <li><a href="{% url 'education_page' %}" target="_blank">O'quv Bo'lim</a></li>
+            <li class="relative group">
+                <a href="#"
+                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
+                    Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+                </a>
+                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
+                    <li><a href="{% url 'activity_page' %}" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Faoliyat</a></li>
+                    <li><a href="{% url 'education_page' %}" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">O'quv Bo'lim</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'news_page' %}">Yangiliklar</a></li>
+            <li><a href="{% url 'news_page' %}"
+                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Yangiliklar</a></li>
         </ul>
     </nav>
-
 </header>
-<!-- ---------------------------------------carusel ----------------------------- -->
-<div class="carousel">
-    <div class="carousel-container">
-        {% for activity in activities %}
-        <div class="carousel-slide {% if forloop.first %}active{% endif %}">
-            <img src="{{ activity.image.url }}" alt="{{ activity.title }} rasmi" class="event-image">
-            <div class="event-title">{{ activity.title }}</div>
-            <div class="event-description">{{ activity.description }}</div>
+
+<!-- --------------------------------------- content (activities) ----------------------------- -->
+<div class="mt-[140px]"> <!-- margin top so header doesn't overlap -->
+
+    {% for activity in activities %}
+    <div class="container mb-10">
+        <div class="image-wrapper" id="imageThumb-{{ forloop.counter }}">
+            <img src="{{ activity.image.url }}" alt="{{ activity.title }}"/>
         </div>
-        {% endfor %}
+        <div class="content mt-4">
+            <h1 class="text-3xl font-semibold">{{ activity.title }}</h1>
+            <p class="text-gray-700 mt-2">{{ activity.description }}</p>
+        </div>
     </div>
-    <div class="carousel-buttons">
-        <button id="prev">❮</button>
-        <button id="next">❯</button>
-    </div>
+    {% endfor %}
 </div>
 
-<!--------------------------------- /carusel  ------------------------------------5-->
+<!-- Modal for image preview -->
+<div id="imageModal" class="modal hidden">
+    <span id="closeModal">&times;</span>
+    <img id="modalImage" src="" alt="Katta rasm"/>
+</div>
 
-<!-- --------------------------------------footter----------------------------------- -->
-<footer>
-    <div class="row">
-        <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-            <p>Ixtisoslashtirilgan taʼlim muassasalari agentligi
-            </p>
+<!-- -------------------------------------- footer ----------------------------------- -->
+<footer class="bg-gradient-to-r from-[#00093c] to-[#2d0b00] text-white py-16 px-6 rounded-t-[125px] text-xs leading-5">
+    <div class="row max-w-7xl mx-auto flex flex-wrap justify-between">
+        <div class="col flex-1 min-w-[250px] mb-8">
+            <img src="/media/logo_pastki_qism.png" alt="Logo" class="logot w-20 mb-8"/>
+            <p>Ixtisoslashtirilgan taʼlim muassasalari agentligi</p>
         </div>
-        <div class="col">
-            <h3>office
-                <div class="underline"><span></span></div>
+        <div class="col flex-1 min-w-[250px] mb-8">
+            <h3 class="relative w-fit mb-10 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[5px] after:bg-gray-500 after:rounded-sm">
+                office
             </h3>
             <p>ITPL road</p>
             <p>Manzil</p>
             <p>Pochta Indeksi</p>
-            <p class="email-id">renessans@gmail.com</p>
+            <p class="email-id border-b border-gray-400 my-5">renessans@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
-
-        <div class="col">
-            <h3>NEWsletter
-                <div class="underline"><span></span></div>
+        <div class="col flex-1 min-w-[250px] mb-8">
+            <h3 class="relative w-fit mb-10 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[5px] after:bg-gray-500 after:rounded-sm">
+                NEWsletter
             </h3>
-            <form>
-                <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+            <form class="flex items-center border-b border-gray-400 mb-12 pb-4">
+                <i class="fa-solid fa-envelope mr-3 text-lg"></i>
+                <input type="email" placeholder="Enter your email" required
+                       class="bg-transparent outline-none flex-grow text-gray-300"/>
+                <button type="submit" class="outline-none ml-3 cursor-pointer">
+                    <i class="fa-solid fa-arrow-right text-gray-300"></i>
+                </button>
             </form>
-            <div class="social-icons">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-telegram"></i>
-                <i class="fa-brands fa-twitter"></i>
+            <div class="social-icons flex space-x-4">
+                <i class="fa-brands fa-facebook cursor-pointer w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-xl"></i>
+                <i class="fa-brands fa-instagram cursor-pointer w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-xl"></i>
+                <i class="fa-brands fa-telegram cursor-pointer w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-xl"></i>
+                <i class="fa-brands fa-twitter cursor-pointer w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-xl"></i>
             </div>
         </div>
     </div>
-    <hr>
-    <p class="copyrigh">2025</p>
-    </hr>
+    <hr class="my-4 border-gray-400 w-11/12 mx-auto"/>
+    <p class="copyrigh text-center">2025</p>
 </footer>
-<!-- --------------------------------------/footter----------------------------------- -->
 
+<!-- -------------------------------------- /footer ----------------------------------- -->
 
 <script>
+    // Language dropdown
     const dropdownButton = document.getElementById('languageDropdown');
     const languageMenu = document.getElementById('languageMenu');
     const languageItems = languageMenu.querySelectorAll('li');
@@ -140,38 +198,34 @@
         }
     });
 
-    //------------------------------------ carousel js ------------------------
-    const container = document.querySelector('.carousel-container');
-    const slides = document.querySelectorAll('.carousel-slide');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    let index = 0;
+    // Modal Image Preview
+    const imageWrappers = document.querySelectorAll('.image-wrapper img');
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModal = document.getElementById('closeModal');
 
-    function updateCarousel() {
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
+    imageWrappers.forEach(img => {
+        img.addEventListener('click', () => {
+            modalImg.src = img.src;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
         });
-        container.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    nextBtn.addEventListener('click', () => {
-        index = (index + 1) % slides.length;
-        updateCarousel();
     });
 
-    prevBtn.addEventListener('click', () => {
-        index = (index - 1 + slides.length) % slides.length;
-        updateCarousel();
+    closeModal.addEventListener('click', () => {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+        modalImg.src = '';
     });
 
-    // Auto slide every 3 seconds
-    setInterval(() => {
-        index = (index + 1) % slides.length;
-        updateCarousel();
-    }, 3000);
-
-    // Initialize active class
-    updateCarousel();
+    // Click outside modal image closes modal
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            modalImg.src = '';
+        }
+    });
 </script>
 
 </body>
