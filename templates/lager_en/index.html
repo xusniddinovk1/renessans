@@ -210,7 +210,21 @@
         }
       }
     });
+document.querySelectorAll('#languageMenu li').forEach(item => {
+  item.addEventListener('click', () => {
+    const lang = item.textContent.trim().toLowerCase().substring(0,2); // 'uz', 'en', 'ru' kabi oladi
+    let path = window.location.pathname;
 
+    // URL dan til prefiksini olib tashlash
+    path = path.replace(/^\/(uz|en|ru)/, '');
+
+    if (lang !== 'uz') {
+      window.location.href = '/' + lang + path;
+    } else {
+      window.location.href = path;
+    }
+  });
+});
 </script>
 </body>
 </html>

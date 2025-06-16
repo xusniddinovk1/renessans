@@ -3,12 +3,10 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('', include('lager_app.urls')),
+    path('uz/', include('lager_app.urls')),
     path('ru/', include('lager_app_ru.urls')),
     path('en/', include('lager_app_en.urls')),
     path('admin/', include('dashboard.urls')),
-    path('ru/admin/', include('dashboard.urls')),
-    path('en/admin/', include('dashboard.urls')),
 ]
 
 if settings.DEBUG:
