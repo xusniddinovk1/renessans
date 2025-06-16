@@ -7,7 +7,9 @@ urlpatterns = [
     path('uz/', include('lager_app.urls')),
     path('ru/', include('lager_app_ru.urls')),
     path('en/', include('lager_app_en.urls')),
-    path('admin/', include('dashboard.urls')),
+    path('uz/admin/', include('dashboard.urls')),
+    path('ru/admin/', include('dashboard_ru.urls')),
+    path('en/admin/', include('dashboard_en.urls')),
 ]
 
 if settings.DEBUG:
