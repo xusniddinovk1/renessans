@@ -3,63 +3,66 @@
 {% load humanize %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'lager/css/recreation_zone.css' %}">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'lager/css/recreation_zone.css' %}"/>
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
     <title>Document</title>
 </head>
 <body>
-<!------------------------------------- header --------------------------------- -->
+<!-- ------------------------------------- header --------------------------------- -->
 <header>
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo">
+        <img src="/media/logo/logo.JPG" alt="Company logo"/>
     </a>
     <div class="relative">
         <button id="languageDropdown"
                 class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
-            🌐 Language
+            🌐 Язык
         </button>
 
         <div id="languageMenu" class="absolute hidden bg-white shadow-lg rounded-lg mt-2 w-48">
             <ul class="text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruscha</li>
+                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="ru">Ruscha</li>
             </ul>
         </div>
     </div>
-    <input type="checkbox" id="menu-bar">
+    <input type="checkbox" id="menu-bar"/>
     <label for="menu-bar"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
         <ul>
-            <li><a href="{% url 'home_page' %}" target="_blank">Asosiy</a></li>
-            <li><a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <li><a href="{% url 'home_page' %}" target="_blank">Основной</a></li>
+            <li>
+                <a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mehmon xonalar</a></li>
-                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Istirohat zona</a></li>
+                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Гостиницы</a></li>
+                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Зона отдыха</a></li>
                 </ul>
             </li>
-            <li><a href="#">Tadbirlar<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <li>
+                <a href="#">События<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="{% url 'activity_page' %}" target="_blank">Faoliyat</a></li>
-                    <li><a href="{% url 'education_page' %}" target="_blank">O'quv Bo'lim</a></li>
+                    <li><a href="{% url 'activity_page' %}" target="_blank">Деятельность</a></li>
+                    <li><a href="{% url 'education_page' %}" target="_blank">Академический отдел</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'news_page' %}">Yangiliklar</a></li>
+            <li><a href="{% url 'news_page' %}">Новости</a></li>
         </ul>
     </nav>
-
 </header>
-<!------------------------------------- /header --------------------------------- -->
+<!-- ------------------------------------- /header --------------------------------- -->
+
 <!-- ------------------------------card slider  ----------------------------------- -->
 <div class="container">
     <div class="card__container">
         {% for rest_area in rest_areas %}
         <article class="card__article">
-            <img src="{{ rest_area.image.url }}" alt="image" class="card__img">
+            <img src="{{ rest_area.image.url }}" alt="image" class="card__img"/>
             <div class="card__data">
                 <span class="card__description">{{ rest_area.title }}</span>
                 <h2 class="card__title">{{ rest_area.description|truncatechars:20 }}</h2>
@@ -70,13 +73,16 @@
         </article>
         {% endfor %}
     </div>
+
     <!-- modal  -->
-    <div class="modal" id="newsModal">
-        <div class="modal-content" id="modalContent">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
+    <div class="modal" id="newsModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+         background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
+        <div class="modal-content" id="modalContent"
+             style="background:#fff; padding:20px; border-radius:8px; max-width:500px; width:90%;">
+            <span class="modal-close" onclick="closeModal()" style="cursor:pointer; float:right; font-size:24px;">&times;</span>
             <h2 id="modalTitle"></h2>
             <p id="modalText"></p>
-            <div class="social-icons">
+            <div class="social-icons" style="margin-top:15px; display:flex; gap:10px;">
                 <a href="#"><i class="fab fa-telegram"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-facebook"></i></a>
@@ -86,47 +92,45 @@
 
     <!-- ------------------------------/card slider  ----------------------------------- -->
 
-    <!-- --------------------------------------footter----------------------------------- -->
-<footer>
-    <div class="row">
-        <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-            <p>Ixtisoslashtirilgan taʼlim muassasalari agentligi
-            </p>
-        </div>
-        <div class="col">
-            <h3>office
-                <div class="underline"><span></span></div>
-            </h3>
-            <p>ITPL road</p>
-            <p>Manzil</p>
-            <p>Pochta Indeksi</p>
-            <p class="email-id">renessans@gmail.com</p>
-            <h4>+99800000000</h4>
-        </div>
+    <!-- --------------------------------------footer----------------------------------- -->
+    <footer>
+        <div class="row">
+            <div class="col">
+                <img src="/media/logo_pastki_qism.png" alt="Footer logo" class="logot"/>
+                <p>Агентство специализированных образовательных учреждений</p>
+            </div>
+            <div class="col">
+                <h3>office
+                    <div class="underline"><span></span></div>
+                </h3>
+                <p>ITPL road</p>
+                <p>Manzil</p>
+                <p>Pochta Indeksi</p>
+                <p class="email-id">renessans@gmail.com</p>
+                <h4>+99800000000</h4>
+            </div>
 
-        <div class="col">
-            <h3>NEWsletter
-                <div class="underline"><span></span></div>
-            </h3>
-            <form>
-                <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-            </form>
-            <div class="social-icons">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-telegram"></i>
-                <i class="fa-brands fa-twitter"></i>
+            <div class="col">
+                <h3>NEWsletter
+                    <div class="underline"><span></span></div>
+                </h3>
+                <form>
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="Enter your email" required/>
+                    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+                <div class="social-icons">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-telegram"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
             </div>
         </div>
-    </div>
-    <hr>
-    <p class="copyrigh">2025</p>
-    </hr>
-</footer>
-    <!-- --------------------------------------/footter----------------------------------- -->
+        <hr/>
+        <p class="copyright">2025</p>
+    </footer>
+    <!-- --------------------------------------/footer----------------------------------- -->
 
     <script>
         const dropdownButton = document.getElementById('languageDropdown');
@@ -140,7 +144,7 @@
         languageItems.forEach(item => {
             item.addEventListener('click', (event) => {
                 const selectedLang = event.target.getAttribute('data-lang');
-                alert(Language switched to: ${selectedLang});
+                alert(`Language switched to: ${selectedLang}`);
                 languageMenu.classList.add('hidden');
             });
         });
@@ -151,40 +155,39 @@
                 languageMenu.classList.add('hidden');
             }
         });
-    </script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
-    <script>
+
+        // Swiper sliders
         new Swiper(".news-slider", {
-         slidesPerView: 1,
-         spaceBetween: 20,
-         breakpoints: {
-           640: { slidesPerView: 1 }, // kichik mobilda 1 ta
-           768: { slidesPerView: 2 }, // planshetlarda 2 ta
-           1024: { slidesPerView: 3 } // katta ekranda 3 ta
-         }
-       });
+            slidesPerView: 1,
+            spaceBetween: 20,
+            breakpoints: {
+                640: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+            }
+        });
 
+        document.querySelectorAll(".inner-swiper").forEach(el => {
+            new Swiper(el, {
+                slidesPerView: 1,
+                loop: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }
+            });
+        });
 
-           document.querySelectorAll(".inner-swiper").forEach(el => {
-             new Swiper(el, {
-               slidesPerView: 1,
-               loop: true,
-               autoplay: {
-                 delay: 2500,
-                 disableOnInteraction: false
-               }
-             });
-           });
+        function showModal(title, text) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalText').innerText = text;
+            document.getElementById('newsModal').style.display = 'flex';
+        }
 
-           function showModal(title, text) {
-             document.getElementById('modalTitle').innerText = title;
-             document.getElementById('modalText').innerText = text;
-             document.getElementById('newsModal').style.display = 'flex';
-           }
-
-           function closeModal() {
-             document.getElementById('newsModal').style.display = 'none';
-           }
+        function closeModal() {
+            document.getElementById('newsModal').style.display = 'none';
+        }
     </script>
+</div>
 </body>
 </html>

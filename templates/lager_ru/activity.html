@@ -53,14 +53,14 @@
 <!------------------------------------- header --------------------------------- -->
 <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-7 flex items-center justify-between">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain"/>
+        <img src="/media/logo/logo.JPG" alt="company logo">
     </a>
-
     <div class="relative">
         <button id="languageDropdown"
                 class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
-            🌐 Language
+            🌐 Язык
         </button>
+
         <div id="languageMenu" class="absolute hidden bg-white shadow-lg rounded-lg mt-2 w-48">
             <ul class="text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
@@ -69,43 +69,27 @@
             </ul>
         </div>
     </div>
-
-    <input type="checkbox" id="menu-bar" class="hidden"/>
-    <label for="menu-bar" class="text-2xl text-gray-700 cursor-pointer md:hidden"><i
-            class="fa-solid fa-bars"></i></label>
-
-    <nav class="navbar hidden md:block">
-        <ul class="flex space-x-6">
-            <li><a href="{% url 'home_page' %}" target="_blank" rel="noopener noreferrer"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Asosiy</a></li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Kampus <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'hotel_section_page' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Mehmon xonalar</a></li>
-                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Istirohat zona</a></li>
+    <input type="checkbox" id="menu-bar">
+    <label for="menu-bar"><i class="fa-solid fa-bars"></i></label>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'home_page' %}" target="_blank">Основной</a></li>
+            <li><a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul>
+                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Гостиницы</a></li>
+                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Зона отдыха</a></li>
                 </ul>
             </li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'activity_page' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Faoliyat</a></li>
-                    <li><a href="{% url 'education_page' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">O'quv Bo'lim</a></li>
+            <li><a href="#">События<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul>
+                    <li><a href="{% url 'activity_page' %}" target="_blank">Деятельность</a></li>
+                    <li><a href="{% url 'education_page' %}" target="_blank">Академический отдел</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'news_page' %}"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Yangiliklar</a></li>
+            <li><a href="{% url 'news_page' %}">Новости</a></li>
         </ul>
     </nav>
+
 </header>
 
 <!-- --------------------------------------- content (activities) ----------------------------- -->
@@ -135,7 +119,7 @@
     <div class="row max-w-7xl mx-auto flex flex-wrap justify-between">
         <div class="col flex-1 min-w-[250px] mb-8">
             <img src="/media/logo_pastki_qism.png" alt="Logo" class="logot w-20 mb-8"/>
-            <p>Ixtisoslashtirilgan taʼlim muassasalari agentligi</p>
+            <p>Агентство специализированных образовательных учреждений</p>
         </div>
         <div class="col flex-1 min-w-[250px] mb-8">
             <h3 class="relative w-fit mb-10 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[5px] after:bg-gray-500 after:rounded-sm">
