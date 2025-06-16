@@ -3,11 +3,11 @@ from lager_app_ru.views import activity_page, home_page, news_page, education_pa
     recreation_zone_page, education_detail
 
 urlpatterns = [
-    path('', home_page, name='home_page'),
-    path('faoliyat/', activity_page, name='activity_page'),
-    path('oquvbolim/', education_page, name='education_page'),
-    path('oquvbolim/<int:id>/', education_detail, name='education_detail'),
-    path('mexmonxonalar/', hotel_section_page, name='hotel_section_page'),
-    path('yangiliklar/', news_page, name='news_page'),
-    path('istirohatzona/', recreation_zone_page, name='recreation_zone_page'),
+    path('', home_page, name='основной'),
+    path('деятельность/', activity_page, name='деятельность'),
+    path('академический-отдел/', education_page, name='академический_отдел'),
+    path('академический-отдел/<int:id>/', education_detail, name='академический_отдел_1'),
+    path('гостиницы/', hotel_section_page, name='гостиницы'),
+    path('новости/', news_page, name='новости'),
+    path('зона-отдыха/', recreation_zone_page, name='зона_отдыха'),
 ]

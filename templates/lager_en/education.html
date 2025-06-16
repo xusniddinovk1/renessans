@@ -38,7 +38,7 @@
 
     <nav class="navbar hidden md:block">
         <ul class="flex space-x-6">
-            <li><a href="{% url 'home_page' %}" target="_blank" rel="noopener noreferrer"
+            <li><a href="{% url 'en:home_page' %}" target="_blank" rel="noopener noreferrer"
                    class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Main</a></li>
             <li class="relative group">
                 <a href="#"
@@ -46,9 +46,9 @@
                     Kampus <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
                 </a>
                 <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'hotel_section_page' %}" target="_blank" rel="noopener noreferrer"
+                    <li><a href="{% url 'en:hotel_section_page' %}" target="_blank" rel="noopener noreferrer"
                            class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Hotels</a></li>
-                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank" rel="noopener noreferrer"
+                    <li><a href="{% url 'en:recreation_zone_page' %}" target="_blank" rel="noopener noreferrer"
                            class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Recreation Zones</a></li>
                 </ul>
             </li>
@@ -58,13 +58,13 @@
                     Actions <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
                 </a>
                 <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'activity_page' %}" target="_blank" rel="noopener noreferrer"
+                    <li><a href="{% url 'en:activity_page' %}" target="_blank" rel="noopener noreferrer"
                            class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Events</a></li>
-                    <li><a href="{% url 'education_page' %}" target="_blank" rel="noopener noreferrer"
+                    <li><a href="{% url 'en:education_page' %}" target="_blank" rel="noopener noreferrer"
                            class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Academic Department</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'news_page' %}"
+            <li><a href="{% url 'en:news_page' %}"
                    class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">News</a></li>
         </ul>
     </nav>

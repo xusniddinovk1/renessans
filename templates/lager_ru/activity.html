@@ -51,7 +51,7 @@
 <body>
 
 <!------------------------------------- header --------------------------------- -->
-<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-7 flex items-center justify-between">
+<header>
     <a href="#" class="logo">
         <img src="/media/logo/logo.JPG" alt="company logo">
     </a>
@@ -73,20 +73,20 @@
     <label for="menu-bar"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
         <ul>
-            <li><a href="{% url 'home_page' %}" target="_blank">Основной</a></li>
+            <li><a href="{% url 'ru:основной' %}" target="_blank">Основной</a></li>
             <li><a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Гостиницы</a></li>
-                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Зона отдыха</a></li>
+                    <li><a href="{% url 'ru:гостиницы' %}" target="_blank">Гостиницы</a></li>
+                    <li><a href="{% url 'ru:зона_отдыха' %}" target="_blank">Зона отдыха</a></li>
                 </ul>
             </li>
             <li><a href="#">События<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="{% url 'activity_page' %}" target="_blank">Деятельность</a></li>
-                    <li><a href="{% url 'education_page' %}" target="_blank">Академический отдел</a></li>
+                    <li><a href="{% url 'ru:деятельность' %}" target="_blank">Деятельность</a></li>
+                    <li><a href="{% url 'ru:академический_отдел' %}" target="_blank">Академический отдел</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'news_page' %}">Новости</a></li>
+            <li><a href="{% url 'ru:новости' %}">Новости</a></li>
         </ul>
     </nav>
 

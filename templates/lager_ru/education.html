@@ -35,20 +35,20 @@
     <label for="menu-bar"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
         <ul>
-            <li><a href="{% url 'home_page' %}" target="_blank">Основной</a></li>
+            <li><a href="{% url 'ru:основной' %}" target="_blank">Основной</a></li>
             <li><a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Гостиницы</a></li>
-                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Зона отдыха</a></li>
+                    <li><a href="{% url 'ru:гостиницы' %}" target="_blank">Гостиницы</a></li>
+                    <li><a href="{% url 'ru:зона_отдыха' %}" target="_blank">Зона отдыха</a></li>
                 </ul>
             </li>
             <li><a href="#">События<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul>
-                    <li><a href="{% url 'activity_page' %}" target="_blank">Деятельность</a></li>
-                    <li><a href="{% url 'education_page' %}" target="_blank">Академический отдел</a></li>
+                    <li><a href="{% url 'ru:деятельность' %}" target="_blank">Деятельность</a></li>
+                    <li><a href="{% url 'ru:академический_отдел' %}" target="_blank">Академический отдел</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'news_page' %}">Новости</a></li>
+            <li><a href="{% url 'ru:новости' %}">Новости</a></li>
         </ul>
     </nav>
 
@@ -59,13 +59,13 @@
     <div class="card-container">
         {% for education in educations %}
         <div class="card">
-            <a href="{% url 'education_detail' education.id %}">
+            <a href="{% url 'ru:академический_отдел_1' education.id %}">
                 <img src="{{ education.image.url }}" alt="Camp Image" style="width: 400px; height: 300px;">
             </a>
             <div class="card-content">
                 <h2 class="card-title">{{ education.title|truncatechars:30 }}</h2>
                 <p class="card-description">{{ education.description|truncatechars:40 }}</p>
-                <a href="{% url 'education_detail' education.id %}" class="btn">Batafsil</a>
+                <a href="{% url 'ru:академический_отдел_1' education.id %}" class="btn">Batafsil</a>
             </div>
         </div>
         {% endfor %}
