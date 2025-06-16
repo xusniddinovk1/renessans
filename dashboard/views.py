@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import *
+from dashboard.forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 
@@ -42,7 +42,6 @@ def billing_view(request):
 
 @login_required_decorator
 def main_dashboard(request):
-    about_us = AboutUs.objects.all()
     photos = Photos.objects.all()
     educations = Education.objects.all()
     activities = Activity.objects.all()
