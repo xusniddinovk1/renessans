@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .forms import *
+from django.shortcuts import redirect, get_object_or_404
+from dashboard_en.forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 
@@ -368,6 +368,8 @@ def education_delete(request, pk):
     education = get_object_or_404(Education, pk=pk)
     education.delete()
     return redirect('education_list')
+
+
 from django.shortcuts import render
 
 # Create your views here.
