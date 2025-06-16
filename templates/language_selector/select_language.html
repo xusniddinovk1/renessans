@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Tilni tanlang</title>
+    <style>
+        /* Tana uchun oddiy fon va shrift */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('/media/asosiy_rasm.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+
+        /* Konteyner */
+.container {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 40px 60px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+
+    /* Blur efekti kamaytirilgan: */
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px); /* Safari uchun */
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.container h1 {
+    color: #1e40af; /* Chuqur ko‘k rang */
+    /* Yoki istalgan boshqa ko‘k rangni yozishingiz mumkin */
+    /* Masalan, color: blue; */
+}
+
+        }
+
+        /* Sarlavha */
+        h1 {
+            margin-bottom: 30px;
+            font-weight: 700;
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+        }
+
+        /* Tugmalar */
+        form button {
+            background: rgba(255, 255, 255, 0.85);
+            border: none;
+            color: #2575fc;
+            font-weight: 600;
+            padding: 15px 30px;
+            margin: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease, color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.4);
+        }
+
+        form button:hover {
+            background: #2575fc;
+            color: white;
+            box-shadow: 0 6px 20px rgba(37, 117, 252, 0.7);
+        }
+
+        /* Responsive uchun kichik ekranlarda tugmalar blok sifatida */
+        @media (max-width: 480px) {
+            form button {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Sayt tilini tanlang</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="language" value="uz">O'zbekcha</button>
+        <button type="submit" name="language" value="ru">Русский</button>
+        <button type="submit" name="language" value="en">English</button>
+    </form>
+</div>
+</body>
+</html>
