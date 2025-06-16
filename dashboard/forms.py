@@ -1,5 +1,5 @@
 from django import forms
-from lager_app.models import *
+from lager_app.models import AboutUs, Photos, Education, Activity, Hotel, RecreationZone, News
 
 
 class AboutUsForm(forms.ModelForm):
@@ -7,7 +7,7 @@ class AboutUsForm(forms.ModelForm):
         model = AboutUs
         fields = ['context']
         widgets = {
-            "context": forms.TextInput(attrs={"class": "form-control"})
+            "context": forms.Textarea(attrs={"class": "form-control", "rows": 5, "placeholder": "Biz haqimizda matn..."}),
         }
 
 
@@ -16,8 +16,7 @@ class PhotoForm(forms.ModelForm):
         model = Photos
         fields = ['image']
         widgets = {
-            "image": forms.FileInput(attrs={"class": "form-control",
-                                            "onchange": "loadFile(event)"})
+            "image": forms.FileInput(attrs={"class": "form-control", "onchange": "loadFile(event)"}),
         }
 
 
@@ -26,10 +25,9 @@ class EducationForm(forms.ModelForm):
         model = Education
         fields = ["title", "description", "image"]
         widgets = {
-            "title": forms.TextInput(attrs={"class": "form-control"}),
-            "description": forms.TextInput(attrs={"class": "form-control"}),
-            "image": forms.FileInput(attrs={"class": "form-control",
-                                            "onchange": "loadFile(event)"})
+            "title": forms.TextInput(attrs={"class": "form-control", "placeholder": "Sarlavha kiriting"}),
+            "description": forms.Textarea(attrs={"class": "form-control", "rows": 4, "placeholder": "Ta’rif yozing"}),
+            "image": forms.FileInput(attrs={"class": "form-control", "onchange": "loadFile(event)"}),
         }
 
 
@@ -38,10 +36,9 @@ class ActivityForm(forms.ModelForm):
         model = Activity
         fields = ["title", "description", "image"]
         widgets = {
-            "title": forms.TextInput(attrs={"class": "form-control"}),
-            "description": forms.TextInput(attrs={"class": "form-control"}),
-            "image": forms.FileInput(attrs={"class": "form-control",
-                                            "onchange": "loadFile(event)"})
+            "title": forms.TextInput(attrs={"class": "form-control", "placeholder": "Faoliyat nomi"}),
+            "description": forms.Textarea(attrs={"class": "form-control", "rows": 4, "placeholder": "Faoliyat haqida"}),
+            "image": forms.FileInput(attrs={"class": "form-control", "onchange": "loadFile(event)"}),
         }
 
 
@@ -50,10 +47,9 @@ class HotelForm(forms.ModelForm):
         model = Hotel
         fields = ["name", "description", "image"]
         widgets = {
-            "name": forms.TextInput(attrs={"class": "form-control"}),
-            "description": forms.TextInput(attrs={"class": "form-control"}),
-            "image": forms.FileInput(attrs={"class": "form-control",
-                                            "onchange": "loadFile(event)"})
+            "name": forms.TextInput(attrs={"class": "form-control", "placeholder": "Mehmonxona nomi"}),
+            "description": forms.Textarea(attrs={"class": "form-control", "rows": 4, "placeholder": "Mehmonxona haqida"}),
+            "image": forms.FileInput(attrs={"class": "form-control", "onchange": "loadFile(event)"}),
         }
 
 
@@ -62,10 +58,9 @@ class RecreationForm(forms.ModelForm):
         model = RecreationZone
         fields = ["title", "description", "image"]
         widgets = {
-            "title": forms.TextInput(attrs={"class": "form-control"}),
-            "description": forms.TextInput(attrs={"class": "form-control"}),
-            "image": forms.FileInput(attrs={"class": "form-control",
-                                            "onchange": "loadFile(event)"})
+            "title": forms.TextInput(attrs={"class": "form-control", "placeholder": "Zona nomi"}),
+            "description": forms.Textarea(attrs={"class": "form-control", "rows": 4, "placeholder": "Zona haqida"}),
+            "image": forms.FileInput(attrs={"class": "form-control", "onchange": "loadFile(event)"}),
         }
 
 
@@ -74,8 +69,7 @@ class NewsForm(forms.ModelForm):
         model = News
         fields = ["title", "content", "image"]
         widgets = {
-            "title": forms.TextInput(attrs={"class": "form-control"}),
-            "content": forms.TextInput(attrs={"class": "form-control"}),
-            "image": forms.FileInput(attrs={"class": "form-control",
-                                            "onchange": "loadFile(event)"})
+            "title": forms.TextInput(attrs={"class": "form-control", "placeholder": "Yangilik sarlavhasi"}),
+            "content": forms.Textarea(attrs={"class": "form-control", "rows": 5, "placeholder": "Yangilik matni"}),
+            "image": forms.FileInput(attrs={"class": "form-control", "onchange": "loadFile(event)"}),
         }
