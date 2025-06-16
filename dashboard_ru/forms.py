@@ -1,5 +1,5 @@
 from django import forms
-from lager_app.models import *
+from lager_app_ru.models import *
 
 
 class AboutUsForm(forms.ModelForm):

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from lager_app.models import *
+from lager_app_en.models import *
 
 
 def home_page(request):
