@@ -13,16 +13,16 @@
 </head>
 <body>
 <!------------------------------------- header --------------------------------- -->
-<header>
+<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-7 flex items-center justify-between">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo">
+        <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain"/>
     </a>
+
     <div class="relative">
         <button id="languageDropdown"
                 class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
             🌐 Language
         </button>
-
         <div id="languageMenu" class="absolute hidden bg-white shadow-lg rounded-lg mt-2 w-48">
             <ul class="text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
@@ -31,29 +31,44 @@
             </ul>
         </div>
     </div>
-    <input type="checkbox" id="menu-bar">
-    <label for="menu-bar"><i class="fa-solid fa-bars"></i></label>
-    <nav class="navbar">
-        <ul>
-            <li><a href="{% url 'home_page' %}" target="_blank">Asosiy</a></li>
-            <li><a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                <ul>
-                    <li><a href="{% url 'hotel_section_page' %}" target="_blank">Mehmon xonalar</a></li>
-                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank">Istirohat zona</a></li>
+
+    <input type="checkbox" id="menu-bar" class="hidden"/>
+    <label for="menu-bar" class="text-2xl text-gray-700 cursor-pointer md:hidden"><i
+            class="fa-solid fa-bars"></i></label>
+
+    <nav class="navbar hidden md:block">
+        <ul class="flex space-x-6">
+            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer"
+                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Asosiy</a></li>
+            <li class="relative group">
+                <a href="#"
+                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
+                    Kampus <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+                </a>
+                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
+                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Mehmon xonalar</a></li>
+                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Istirohat zona</a></li>
                 </ul>
             </li>
-            <li><a href="#">Tadbirlar<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                <ul>
-                    <li><a href="{% url 'activity_page' %}" target="_blank">Faoliyat</a></li>
-                    <li><a href="{% url 'education_page' %}" target="_blank">O'quv Bo'lim</a></li>
+            <li class="relative group">
+                <a href="#"
+                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
+                    Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+                </a>
+                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
+                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Faoliyat</a></li>
+                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">O'quv Bo'lim</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'news_page' %}">Yangiliklar</a></li>
+            <li><a href="{% url 'uz:yangiliklar' %}"
+                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Yangiliklar</a></li>
         </ul>
     </nav>
-
 </header>
-
 <!---------------------------------- card oquv bolim-------------------------- -->
 <div class="wrapper">
     <div class="card-container">

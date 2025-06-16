@@ -76,7 +76,7 @@
 
     <nav class="navbar hidden md:block">
         <ul class="flex space-x-6">
-            <li><a href="{% url 'home_page' %}" target="_blank" rel="noopener noreferrer"
+            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer"
                    class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Asosiy</a></li>
             <li class="relative group">
                 <a href="#"
@@ -84,9 +84,9 @@
                     Kampus <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
                 </a>
                 <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'hotel_section_page' %}" target="_blank" rel="noopener noreferrer"
+                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer"
                            class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Mehmon xonalar</a></li>
-                    <li><a href="{% url 'recreation_zone_page' %}" target="_blank" rel="noopener noreferrer"
+                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer"
                            class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Istirohat zona</a></li>
                 </ul>
             </li>
@@ -96,17 +96,18 @@
                     Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
                 </a>
                 <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'activity_page' %}" target="_blank" rel="noopener noreferrer"
+                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer"
                            class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Faoliyat</a></li>
-                    <li><a href="{% url 'education_page' %}" target="_blank" rel="noopener noreferrer"
+                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer"
                            class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">O'quv Bo'lim</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'news_page' %}"
+            <li><a href="{% url 'uz:yangiliklar' %}"
                    class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Yangiliklar</a></li>
         </ul>
     </nav>
 </header>
+
 
 <!-- --------------------------------------- content (activities) ----------------------------- -->
 <div class="mt-[140px]"> <!-- margin top so header doesn't overlap -->

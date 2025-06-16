@@ -6,11 +6,11 @@ app_name = 'lager_app'
 
 
 urlpatterns = [
-    path('', home_page, name='home_page'),
-    path('faoliyat/', activity_page, name='activity_page'),
-    path('oquvbolim/', education_page, name='education_page'),
-    path('oquvbolim/<int:id>/', education_detail, name='education_detail'),
-    path('mexmonxonalar/', hotel_section_page, name='hotel_section_page'),
-    path('yangiliklar/', news_page, name='news_page'),
-    path('istirohatzona/', recreation_zone_page, name='recreation_zone_page'),
+    path('', home_page, name='asosiy_sahifa'),
+    path('faoliyat/', activity_page, name='faoliyat'),
+    path('oquvbolim/', education_page, name='oquvbolim'),
+    path('oquvbolim/<int:id>/', education_detail, name='oquvbolim_sahifa'),
+    path('mexmonxonalar/', hotel_section_page, name='mexmonxonalar'),
+    path('yangiliklar/', news_page, name='yangiliklar'),
+    path('istirohatzona/', recreation_zone_page, name='istirohat_zona'),
 ]
