@@ -95,7 +95,7 @@ header .navbar ul li ul{
 
 }
 header .navbar ul li ul li{
-    width: 50%;
+    width: 100%;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     background: #1d4ed8;
     border: none;
@@ -133,7 +133,7 @@ header label{
     position: relative;
     width: 100%;
     height: 400px; /* Banner balandligi */
-    background-image: url('/media/banner/home_photo.JPG'); /* Orqa fon rasm */
+    background-image: url('/media/asosiy_rasm.JPG'); /* Orqa fon rasm */
     background-size: cover;
     background-position: center;
     color: white;
