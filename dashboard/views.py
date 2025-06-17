@@ -42,24 +42,59 @@ def billing_view(request):
 
 @login_required_decorator
 def main_dashboard(request):
-    photos = Photos.objects.all()
-    educations = Education.objects.all()
-    activities = Activity.objects.all()
-    hotels = Hotel.objects.all()
-    rest_area = RecreationZone.objects.all()
-    news = News.objects.all()
+    stats = [
+        {
+            "label": "Rasmlar",
+            "count": Photos.objects.count(),
+            "icon": "fa-user",
+            "color": "c2"
+        },
+        {
+            "label": "O'quv bo'limi",
+            "count": Education.objects.count(),
+            "icon": "fa-user",
+            "color": "c2"
+        },
+        {
+            "label": "Faoliyatlar",
+            "count": Activity.objects.count(),
+            "icon": "fa-list-alt",
+            "color": "c1"
+        },
+        {
+            "label": "Mehmonxona",
+            "count": Hotel.objects.count(),
+            "icon": "fa-list-alt",
+            "color": "c2"
+        },
+        {
+            "label": "Istirohat Zona",
+            "count": RecreationZone.objects.count(),
+            "icon": "fa-list-alt",
+            "color": "c1"
+        },
+        {
+            "label": "Yangiliklar",
+            "count": News.objects.count(),
+            "icon": "fa-user",
+            "color": "c2"
+        },
+    ]
 
-    ctx = {
-        "counts": {
-            "photos": len(photos),
-            "educations": len(educations),
-            "activities": len(activities),
-            "hotels": len(hotels),
-            "rest_area": len(rest_area),
-            "news": len(news),
-        }
+    # Chart uchun counts dictionary
+    counts = {
+        "photos": stats[0]["count"],
+        "educations": stats[1]["count"],
+        "activities": stats[2]["count"],
+        "hotels": stats[3]["count"],
+        "rest_area": stats[4]["count"],
+        "news": stats[5]["count"],
     }
-    return render(request, 'dashboard/index.html', ctx)
+
+    return render(request, 'dashboard/index.html', {
+        "stats": stats,
+        "counts": counts
+    })
 
 
 @login_required_decorator

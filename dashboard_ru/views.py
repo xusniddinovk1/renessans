@@ -42,24 +42,59 @@ def billing_view(request):
 
 @login_required_decorator
 def main_dashboard(request):
-    photos = Photos2.objects.all()
-    educations = Education2.objects.all()
-    activities = Activity2.objects.all()
-    hotels = Hotel2.objects.all()
-    rest_area = RecreationZone2.objects.all()
-    news = News2.objects.all()
+    stats = [
+        {
+            "label": "Фотографии",
+            "count": Photos2.objects.count(),
+            "icon": "fa-user",
+            "color": "c2"
+        },
+        {
+            "label": "Академический отдел",
+            "count": Education2.objects.count(),
+            "icon": "fa-user",
+            "color": "c2"
+        },
+        {
+            "label": "События",
+            "count": Activity2.objects.count(),
+            "icon": "fa-list-alt",
+            "color": "c1"
+        },
+        {
+            "label": "Гостиницы",
+            "count": Hotel2.objects.count(),
+            "icon": "fa-list-alt",
+            "color": "c2"
+        },
+        {
+            "label": "Зона отдыха",
+            "count": RecreationZone2.objects.count(),
+            "icon": "fa-list-alt",
+            "color": "c1"
+        },
+        {
+            "label": "Новости",
+            "count": News2.objects.count(),
+            "icon": "fa-user",
+            "color": "c2"
+        },
+    ]
 
-    ctx = {
-        "counts": {
-            "photos": len(photos),
-            "educations": len(educations),
-            "activities": len(activities),
-            "hotels": len(hotels),
-            "rest_area": len(rest_area),
-            "news": len(news),
-        }
+    # Chart uchun counts dictionary
+    counts = {
+        "photos": stats[0]["count"],
+        "educations": stats[1]["count"],
+        "activities": stats[2]["count"],
+        "hotels": stats[3]["count"],
+        "rest_area": stats[4]["count"],
+        "news": stats[5]["count"],
     }
-    return render(request, 'dashboard_ru/index.html', ctx)
+
+    return render(request, 'dashboard_ru/index.html', {
+        "stats": stats,
+        "counts": counts
+    })
 
 
 @login_required_decorator

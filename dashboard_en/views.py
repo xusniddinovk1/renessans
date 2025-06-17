@@ -54,31 +54,31 @@ def main_dashboard(request):
             "color": "c2"
         },
         {
-            "label": "O'quv bo'limi",
+            "label": "Education",
             "count": Education1.objects.count(),
             "icon": "fa-user",
             "color": "c2"
         },
         {
-            "label": "Faoliyatlar",
+            "label": "Activity",
             "count": Activity1.objects.count(),
             "icon": "fa-list-alt",
             "color": "c1"
         },
         {
-            "label": "Mehmonxona",
+            "label": "Hotels",
             "count": Hotel1.objects.count(),
             "icon": "fa-list-alt",
             "color": "c2"
         },
         {
-            "label": "Istirohat Zona",
+            "label": "Recreation Zones",
             "count": RecreationZone1.objects.count(),
             "icon": "fa-list-alt",
             "color": "c1"
         },
         {
-            "label": "Yangiliklar",
+            "label": "News",
             "count": News1.objects.count(),
             "icon": "fa-user",
             "color": "c2"
