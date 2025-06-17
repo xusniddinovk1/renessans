@@ -12,7 +12,7 @@ urlpatterns = [
     path('settings/', settings_view, name='settings_page'),
     path('billing/', billing_view, name='billing_page'),
 
-    path('', main_dashboard, name='main_dashboard'),
+    path('', dashboard, name='main_dashboard'),
 
     path('about-us/', about_us_list, name='about_us_list'),
     path('about-us/yangi/', about_us_create, name='about_us_create'),

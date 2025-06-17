@@ -4,63 +4,101 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 
 
-def login_required_decorator(func):
-    return login_required(func, login_url="en-admin:login_page")
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
 
+def login_required_decorator(func):
+    # Bu yerda login_url URL manzili bo'lishi kerak (string)
+    return login_required(func, login_url='en-admin:login_page')
 
 def login_page(request):
-    if request.POST:
-        username = request.POST.get("username", None)
-        password = request.POST.get("password", None)
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("en-admin:main_dashboard")
+            return redirect("en-admin:dashboard")  # URL namespacing bo'yicha yo'naltirish
+        else:
+            context = {'error': "Username yoki parol noto'g'ri"}
+            return render(request, "dashboard_en/login.html", context)
     return render(request, "dashboard_en/login.html")
-
 
 @login_required_decorator
 def logout_page(request):
     logout(request)
     return redirect("en-admin:login_page")
 
-
 @login_required_decorator
 def account_view(request):
     return render(request, 'dashboard_en/account.html')
 
-
 @login_required_decorator
 def settings_view(request):
     return render(request, 'dashboard_en/settings.html')
-
 
 @login_required_decorator
 def billing_view(request):
     return render(request, 'dashboard_en/billing.html')
 
 
+
 @login_required_decorator
-def main_dashboard(request):
-    photos = Photos1.objects.all()
-    educations = Education1.objects.all()
-    activities = Activity1.objects.all()
-    hotels = Hotel1.objects.all()
-    rest_area = RecreationZone1.objects.all()
-    news = News1.objects.all()
+def dashboard(request):
+    stats = [
+        {
+            "label": "Photos",
+            "count": Photos1.objects.count(),
+            "icon": "fa-user",
+            "color": "c2"
+        },
+        {
+            "label": "O'quv bo'limi",
+            "count": Education1.objects.count(),
+            "icon": "fa-user",
+            "color": "c2"
+        },
+        {
+            "label": "Faoliyatlar",
+            "count": Activity1.objects.count(),
+            "icon": "fa-list-alt",
+            "color": "c1"
+        },
+        {
+            "label": "Mehmonxona",
+            "count": Hotel1.objects.count(),
+            "icon": "fa-list-alt",
+            "color": "c2"
+        },
+        {
+            "label": "Istirohat Zona",
+            "count": RecreationZone1.objects.count(),
+            "icon": "fa-list-alt",
+            "color": "c1"
+        },
+        {
+            "label": "Yangiliklar",
+            "count": News1.objects.count(),
+            "icon": "fa-user",
+            "color": "c2"
+        },
+    ]
 
-    ctx = {
-        "counts": {
-            "photos": len(photos),
-            "educations": len(educations),
-            "activities": len(activities),
-            "hotels": len(hotels),
-            "rest_area": len(rest_area),
-            "news": len(news),
-        }
+    # Chart uchun counts dictionary
+    counts = {
+        "photos": stats[0]["count"],
+        "educations": stats[1]["count"],
+        "activities": stats[2]["count"],
+        "hotels": stats[3]["count"],
+        "rest_area": stats[4]["count"],
+        "news": stats[5]["count"],
     }
-    return render(request, 'dashboard_en/index.html', ctx)
 
+    return render(request, 'dashboard_en/index.html', {
+        "stats": stats,
+        "counts": counts
+    })
 
 @login_required_decorator
 def about_us_list(request):
@@ -367,4 +405,3 @@ def education_delete(request, pk):
     education = get_object_or_404(Education1, pk=pk)
     education.delete()
     return redirect('en-admin:education_list')
-

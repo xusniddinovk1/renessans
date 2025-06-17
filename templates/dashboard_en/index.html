@@ -3,482 +3,34 @@
 {% load humanize %}
 {%block content %}
 <div class="page-container">
-    {%include 'dashboard_en/userbar.html'%}
-    <!-- HEADER DESKTOP-->
+    {% include 'dashboard_en/userbar.html' %}
 
-    <!-- MAIN CONTENT-->
     <div class="main-content">
         <div class="section__content section__content--p30">
             <div class="container-fluid">
                 <div class="row m-t-25">
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c2">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="icon">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h2>{{ counts.photos | intcomma }}</h2>
-                                        <span>Photos</span>
-                                    </div>
-                                </div>
-                                <div class="overview-chart">
-                                    <div
-                                            class="chartjs-size-monitor"
-                                            style="
-                      position: absolute;
-                      inset: 0px;
-                      overflow: hidden;
-                      pointer-events: none;
-                      visibility: hidden;
-                      z-index: -1;
-                    "
-                                    >
-                                        <div
-                                                class="chartjs-size-monitor-expand"
-                                                style="
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        overflow: hidden;
-                        pointer-events: none;
-                        visibility: hidden;
-                        z-index: -1;
-                      "
-                                        >
-                                            <div
-                                                    style="
-                          position: absolute;
-                          width: 1000000px;
-                          height: 1000000px;
-                          left: 0;
-                          top: 0;
-                        "
-                                            ></div>
+                    {% for item in stats %}
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="overview-item overview-item--{{ item.color }}">
+                                <div class="overview__inner">
+                                    <div class="overview-box clearfix">
+                                        <div class="icon">
+                                            <i class="fa {{ item.icon }}"></i>
                                         </div>
-                                        <div
-                                                class="chartjs-size-monitor-shrink"
-                                                style="
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        overflow: hidden;
-                        pointer-events: none;
-                        visibility: hidden;
-                        z-index: -1;
-                      "
-                                        >
-                                            <div
-                                                    style="
-                          position: absolute;
-                          width: 200%;
-                          height: 200%;
-                          left: 0;
-                          top: 0;
-                        "
-                                            ></div>
+                                        <div class="text">
+                                            <h2>{{ item.count | intcomma }}</h2>
+                                            <span>{{ item.label }}</span>
                                         </div>
+                                    </div>
+                                    <div class="overview-chart">
+                                        <canvas id="chart-{{ loop.index }}"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c2">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="icon">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h2>{{ counts.educations | intcomma }}</h2>
-                                        <span>O'quv bo'limi</span>
-                                    </div>
-                                </div>
-                                <div class="overview-chart">
-                                    <div
-                                            class="chartjs-size-monitor"
-                                            style="
-                      position: absolute;
-                      inset: 0px;
-                      overflow: hidden;
-                      pointer-events: none;
-                      visibility: hidden;
-                      z-index: -1;
-                    "
-                                    >
-                                        <div
-                                                class="chartjs-size-monitor-expand"
-                                                style="
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        overflow: hidden;
-                        pointer-events: none;
-                        visibility: hidden;
-                        z-index: -1;
-                      "
-                                        >
-                                            <div
-                                                    style="
-                          position: absolute;
-                          width: 1000000px;
-                          height: 1000000px;
-                          left: 0;
-                          top: 0;
-                        "
-                                            ></div>
-                                        </div>
-                                        <div
-                                                class="chartjs-size-monitor-shrink"
-                                                style="
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        overflow: hidden;
-                        pointer-events: none;
-                        visibility: hidden;
-                        z-index: -1;
-                      "
-                                        >
-                                            <div
-                                                    style="
-                          position: absolute;
-                          width: 200%;
-                          height: 200%;
-                          left: 0;
-                          top: 0;
-                        "
-                                            ></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c1">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="icon">
-                                        <i class="fa fa-list-alt"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h2>{{ counts.activities|intcomma }}</h2>
-                                        <span>Faoliyatlar</span>
-                                    </div>
-                                </div>
-                                <div class="overview-chart">
-                                    <div
-                                            class="chartjs-size-monitor"
-                                            style="
-                      position: absolute;
-                      inset: 0px;
-                      overflow: hidden;
-                      pointer-events: none;
-                      visibility: hidden;
-                      z-index: -1;
-                    "
-                                    >
-                                        <div
-                                                class="chartjs-size-monitor-expand"
-                                                style="
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        overflow: hidden;
-                        pointer-events: none;
-                        visibility: hidden;
-                        z-index: -1;
-                      "
-                                        >
-                                            <div
-                                                    style="
-                          position: absolute;
-                          width: 1000000px;
-                          height: 1000000px;
-                          left: 0;
-                          top: 0;
-                        "
-                                            ></div>
-                                        </div>
-                                        <div
-                                                class="chartjs-size-monitor-shrink"
-                                                style="
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        overflow: hidden;
-                        pointer-events: none;
-                        visibility: hidden;
-                        z-index: -1;
-                      "
-                                        >
-                                            <div
-                                                    style="
-                          position: absolute;
-                          width: 200%;
-                          height: 200%;
-                          left: 0;
-                          top: 0;
-                        "
-                                            ></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c2">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="icon">
-                                        <i class="fa fa-list-alt"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h2>{{ counts.hotels | intcomma }}</h2>
-                                        <span>Mexmonxona</span>
-                                    </div>
-                                </div>
-                                <div class="overview-chart">
-                                    <div
-                                            class="chartjs-size-monitor"
-                                            style="
-                      position: absolute;
-                      inset: 0px;
-                      overflow: hidden;
-                      pointer-events: none;
-                      visibility: hidden;
-                      z-index: -1;
-                    "
-                                    >
-                                        <div
-                                                class="chartjs-size-monitor-expand"
-                                                style="
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        overflow: hidden;
-                        pointer-events: none;
-                        visibility: hidden;
-                        z-index: -1;
-                      "
-                                        >
-                                            <div
-                                                    style="
-                          position: absolute;
-                          width: 1000000px;
-                          height: 1000000px;
-                          left: 0;
-                          top: 0;
-                        "
-                                            ></div>
-                                        </div>
-                                        <div
-                                                class="chartjs-size-monitor-shrink"
-                                                style="
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        overflow: hidden;
-                        pointer-events: none;
-                        visibility: hidden;
-                        z-index: -1;
-                      "
-                                        >
-                                            <div
-                                                    style="
-                          position: absolute;
-                          width: 200%;
-                          height: 200%;
-                          left: 0;
-                          top: 0;
-                        "
-                                            ></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c1">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="icon">
-                                        <i class="fa fa-list-alt"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h2>{{ counts.rest_area|intcomma }}</h2>
-                                        <span>Istirohat Zona</span>
-                                    </div>
-                                </div>
-                                <div class="overview-chart">
-                                    <div
-                                            class="chartjs-size-monitor"
-                                            style="
-                      position: absolute;
-                      inset: 0px;
-                      overflow: hidden;
-                      pointer-events: none;
-                      visibility: hidden;
-                      z-index: -1;
-                    "
-                                    >
-                                        <div
-                                                class="chartjs-size-monitor-expand"
-                                                style="
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        overflow: hidden;
-                        pointer-events: none;
-                        visibility: hidden;
-                        z-index: -1;
-                      "
-                                        >
-                                            <div
-                                                    style="
-                          position: absolute;
-                          width: 1000000px;
-                          height: 1000000px;
-                          left: 0;
-                          top: 0;
-                        "
-                                            ></div>
-                                        </div>
-                                        <div
-                                                class="chartjs-size-monitor-shrink"
-                                                style="
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        overflow: hidden;
-                        pointer-events: none;
-                        visibility: hidden;
-                        z-index: -1;
-                      "
-                                        >
-                                            <div
-                                                    style="
-                          position: absolute;
-                          width: 200%;
-                          height: 200%;
-                          left: 0;
-                          top: 0;
-                        "
-                                            ></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c2">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="icon">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h2>{{ counts.news | intcomma }}</h2>
-                                        <span>Yangiliklar</span>
-                                    </div>
-                                </div>
-                                <div class="overview-chart">
-                                    <div
-                                            class="chartjs-size-monitor"
-                                            style="
-                      position: absolute;
-                      inset: 0px;
-                      overflow: hidden;
-                      pointer-events: none;
-                      visibility: hidden;
-                      z-index: -1;
-                    "
-                                    >
-                                        <div
-                                                class="chartjs-size-monitor-expand"
-                                                style="
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        overflow: hidden;
-                        pointer-events: none;
-                        visibility: hidden;
-                        z-index: -1;
-                      "
-                                        >
-                                            <div
-                                                    style="
-                          position: absolute;
-                          width: 1000000px;
-                          height: 1000000px;
-                          left: 0;
-                          top: 0;
-                        "
-                                            ></div>
-                                        </div>
-                                        <div
-                                                class="chartjs-size-monitor-shrink"
-                                                style="
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        overflow: hidden;
-                        pointer-events: none;
-                        visibility: hidden;
-                        z-index: -1;
-                      "
-                                        >
-                                            <div
-                                                    style="
-                          position: absolute;
-                          width: 200%;
-                          height: 200%;
-                          left: 0;
-                          top: 0;
-                        "
-                                            ></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
+
                 <div class="row canvas">
                     <div class="col-md-12">
                         <div class="overview-wrap">
@@ -486,6 +38,7 @@
                         </div>
                     </div>
                 </div>
+
                 <br/><br/>
                 <div class="row">
                     <div class="col-md-12"></div>
@@ -493,74 +46,78 @@
             </div>
         </div>
     </div>
-    <!-- END MAIN CONTENT-->
-    <!-- END PAGE CONTAINER-->
 </div>
 {% endblock %}
 
 {% block javascript %}
 <script>
-    (function ($){
-      try {
-        var ctx = document.getElementById("Chart1");
-        if (ctx) {
-          ctx.height = 150;
-          var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: [
-                "Biz haqimizda",
-                "Faoliyatlar",
-                "Mexmonxona",
-                "Rasmlar",
-                "O'quv bo'lim",
-                "Istirohat Zonalar",
-                "Yangiliklar"
+  (function ($) {
+    try {
+      var ctx = document.getElementById("Chart1");
+      if (ctx) {
+        ctx.height = 150;
+        var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: [
+              "Faoliyatlar",
+              "Mehmonxona",
+              "Rasmlar",
+              "O'quv bo'limi",
+              "Istirohat Zonalar",
+              "Yangiliklar"
+            ],
+            datasets: [{
+              label: "Diagramma",
+              data: [
+                {{ counts.activities }},
+                {{ counts.hotels }},
+                {{ counts.photos }},
+                {{ counts.educations }},
+                {{ counts.rest_area }},
+                {{ counts.news }}
               ],
-              datasets: [
-                {
-                  label: "Diagramma",
-                  data: [
-                    {{ counts.about_us }},
-                    {{ counts.activities }},
-                    {{ counts.hotels }},
-                    {{ counts.photos }},
-                    {{ counts.educations }},
-                    {{ counts.rest_area }},
-                    {{ counts.news }}
-                  ],
-                  borderColor: "rgba(0, 123, 255, 0.9)",
-                  borderWidth: 0,
-                  backgroundColor: "rgba(0, 123, 255, 0.5)"
-                }
-              ]
-            },
-            options: {
+              backgroundColor: "rgba(0, 123, 255, 0.5)",
+              borderColor: "rgba(0, 123, 255, 0.9)",
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
               legend: {
                 position: 'top',
                 labels: {
-                  fontFamily: 'Poppins'
+                  font: {
+                    family: 'Poppins'
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                ticks: {
+                  font: {
+                    family: 'Poppins'
+                  }
                 }
               },
-              scales: {
-                xAxes: [{
-                  ticks: {
-                    fontFamily: "Poppins"
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  font: {
+                    family: 'Poppins'
                   }
-                }],
-                yAxes: [{
-                  ticks: {
-                    beginAtZero: true,
-                    fontFamily: "Poppins"
-                  }
-                }]
+                }
               }
             }
-          });
-        }
-      } catch (error) {
-        console.log(error);
+          }
+        });
       }
-    })(jQuery);
+    } catch (error) {
+      console.log(error);
+    }
+  })(jQuery);
 </script>
 {% endblock %}
+
