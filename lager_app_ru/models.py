@@ -1,18 +1,18 @@
 from django.db import models
 
 
-class AboutUs(models.Model):
+class AboutUs2(models.Model):
     context = models.TextField()
 
     def __str__(self):
         return self.context[:50]
 
 
-class Photos(models.Model):
+class Photos2(models.Model):
     image = models.ImageField(upload_to='photos/', blank=True, null=True)
 
 
-class Activity(models.Model):
+class Activity2(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
     description = models.TextField()
     image = models.ImageField(upload_to='activities/', blank=True, null=True)
@@ -21,7 +21,7 @@ class Activity(models.Model):
         return self.title
 
 
-class Hotel(models.Model):
+class Hotel2(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
     description = models.TextField()
     image = models.ImageField(upload_to='hotels/', blank=True, null=True)
@@ -30,13 +30,13 @@ class Hotel(models.Model):
         return self.name
 
 
-class Education(models.Model):
+class Education2(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
     description = models.TextField()
     image = models.ImageField(upload_to='educations/', blank=True, null=True)
 
 
-class RecreationZone(models.Model):
+class RecreationZone2(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
     description = models.TextField()
     image = models.ImageField(upload_to='recreation/', blank=True, null=True)
@@ -45,7 +45,7 @@ class RecreationZone(models.Model):
         return self.title
 
 
-class News(models.Model):
+class News2(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     content = models.TextField()
     image = models.ImageField(upload_to='news/', blank=True, null=True)

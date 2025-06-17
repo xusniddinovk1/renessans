@@ -4,7 +4,7 @@ from lager_app_en.models import *
 
 class AboutUsForm(forms.ModelForm):
     class Meta:
-        model = AboutUs
+        model = AboutUs1
         fields = ['context']
         widgets = {
             "context": forms.TextInput(attrs={"class": "form-control"})
@@ -13,7 +13,7 @@ class AboutUsForm(forms.ModelForm):
 
 class PhotoForm(forms.ModelForm):
     class Meta:
-        model = Photos
+        model = Photos1
         fields = ['image']
         widgets = {
             "image": forms.FileInput(attrs={"class": "form-control",
@@ -23,7 +23,7 @@ class PhotoForm(forms.ModelForm):
 
 class EducationForm(forms.ModelForm):
     class Meta:
-        model = Education
+        model = Education1
         fields = ["title", "description", "image"]
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
@@ -35,7 +35,7 @@ class EducationForm(forms.ModelForm):
 
 class ActivityForm(forms.ModelForm):
     class Meta:
-        model = Activity
+        model = Activity1
         fields = ["title", "description", "image"]
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
@@ -47,7 +47,7 @@ class ActivityForm(forms.ModelForm):
 
 class HotelForm(forms.ModelForm):
     class Meta:
-        model = Hotel
+        model = Hotel1
         fields = ["name", "description", "image"]
         widgets = {
             "name": forms.TextInput(attrs={"class": "form-control"}),
@@ -59,7 +59,7 @@ class HotelForm(forms.ModelForm):
 
 class RecreationForm(forms.ModelForm):
     class Meta:
-        model = RecreationZone
+        model = RecreationZone1
         fields = ["title", "description", "image"]
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
@@ -71,7 +71,7 @@ class RecreationForm(forms.ModelForm):
 
 class NewsForm(forms.ModelForm):
     class Meta:
-        model = News
+        model = News1
         fields = ["title", "content", "image"]
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),

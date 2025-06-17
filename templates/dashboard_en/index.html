@@ -3,30 +3,30 @@
 {% load humanize %}
 {%block content %}
 <div class="page-container">
-  {%include 'dashboard_en/userbar.html'%}
-  <!-- HEADER DESKTOP-->
+    {%include 'dashboard_en/userbar.html'%}
+    <!-- HEADER DESKTOP-->
 
-  <!-- MAIN CONTENT-->
-  <div class="main-content">
-    <div class="section__content section__content--p30">
-      <div class="container-fluid">
-        <div class="row m-t-25">
-          <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c2">
-              <div class="overview__inner">
-                <div class="overview-box clearfix">
-                  <div class="icon">
-                    <i class="fa fa-user"></i>
-                  </div>
-                  <div class="text">
-                    <h2>{{ counts.photos | intcomma }}</h2>
-                    <span>Rasmlar</span>
-                  </div>
-                </div>
-                <div class="overview-chart">
-                  <div
-                    class="chartjs-size-monitor"
-                    style="
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row m-t-25">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="overview-item overview-item--c2">
+                            <div class="overview__inner">
+                                <div class="overview-box clearfix">
+                                    <div class="icon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h2>{{ counts.photos | intcomma }}</h2>
+                                        <span>Photos</span>
+                                    </div>
+                                </div>
+                                <div class="overview-chart">
+                                    <div
+                                            class="chartjs-size-monitor"
+                                            style="
                       position: absolute;
                       inset: 0px;
                       overflow: hidden;
@@ -34,10 +34,10 @@
                       visibility: hidden;
                       z-index: -1;
                     "
-                  >
-                    <div
-                      class="chartjs-size-monitor-expand"
-                      style="
+                                    >
+                                        <div
+                                                class="chartjs-size-monitor-expand"
+                                                style="
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -48,20 +48,20 @@
                         visibility: hidden;
                         z-index: -1;
                       "
-                    >
-                      <div
-                        style="
+                                        >
+                                            <div
+                                                    style="
                           position: absolute;
                           width: 1000000px;
                           height: 1000000px;
                           left: 0;
                           top: 0;
                         "
-                      ></div>
-                    </div>
-                    <div
-                      class="chartjs-size-monitor-shrink"
-                      style="
+                                            ></div>
+                                        </div>
+                                        <div
+                                                class="chartjs-size-monitor-shrink"
+                                                style="
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -72,39 +72,39 @@
                         visibility: hidden;
                         z-index: -1;
                       "
-                    >
-                      <div
-                        style="
+                                        >
+                                            <div
+                                                    style="
                           position: absolute;
                           width: 200%;
                           height: 200%;
                           left: 0;
                           top: 0;
                         "
-                      ></div>
+                                            ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c2">
-              <div class="overview__inner">
-                <div class="overview-box clearfix">
-                  <div class="icon">
-                    <i class="fa fa-user"></i>
-                  </div>
-                  <div class="text">
-                    <h2>{{ counts.educations | intcomma }}</h2>
-                    <span>O'quv bo'limi</span>
-                  </div>
-                </div>
-                <div class="overview-chart">
-                  <div
-                    class="chartjs-size-monitor"
-                    style="
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="overview-item overview-item--c2">
+                            <div class="overview__inner">
+                                <div class="overview-box clearfix">
+                                    <div class="icon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h2>{{ counts.educations | intcomma }}</h2>
+                                        <span>O'quv bo'limi</span>
+                                    </div>
+                                </div>
+                                <div class="overview-chart">
+                                    <div
+                                            class="chartjs-size-monitor"
+                                            style="
                       position: absolute;
                       inset: 0px;
                       overflow: hidden;
@@ -112,10 +112,10 @@
                       visibility: hidden;
                       z-index: -1;
                     "
-                  >
-                    <div
-                      class="chartjs-size-monitor-expand"
-                      style="
+                                    >
+                                        <div
+                                                class="chartjs-size-monitor-expand"
+                                                style="
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -126,20 +126,20 @@
                         visibility: hidden;
                         z-index: -1;
                       "
-                    >
-                      <div
-                        style="
+                                        >
+                                            <div
+                                                    style="
                           position: absolute;
                           width: 1000000px;
                           height: 1000000px;
                           left: 0;
                           top: 0;
                         "
-                      ></div>
-                    </div>
-                    <div
-                      class="chartjs-size-monitor-shrink"
-                      style="
+                                            ></div>
+                                        </div>
+                                        <div
+                                                class="chartjs-size-monitor-shrink"
+                                                style="
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -150,39 +150,39 @@
                         visibility: hidden;
                         z-index: -1;
                       "
-                    >
-                      <div
-                        style="
+                                        >
+                                            <div
+                                                    style="
                           position: absolute;
                           width: 200%;
                           height: 200%;
                           left: 0;
                           top: 0;
                         "
-                      ></div>
+                                            ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c1">
-              <div class="overview__inner">
-                <div class="overview-box clearfix">
-                  <div class="icon">
-                    <i class="fa fa-list-alt"></i>
-                  </div>
-                  <div class="text">
-                    <h2>{{ counts.activities|intcomma }}</h2>
-                    <span>Faoliyatlar</span>
-                  </div>
-                </div>
-                <div class="overview-chart">
-                  <div
-                    class="chartjs-size-monitor"
-                    style="
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="overview-item overview-item--c1">
+                            <div class="overview__inner">
+                                <div class="overview-box clearfix">
+                                    <div class="icon">
+                                        <i class="fa fa-list-alt"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h2>{{ counts.activities|intcomma }}</h2>
+                                        <span>Faoliyatlar</span>
+                                    </div>
+                                </div>
+                                <div class="overview-chart">
+                                    <div
+                                            class="chartjs-size-monitor"
+                                            style="
                       position: absolute;
                       inset: 0px;
                       overflow: hidden;
@@ -190,10 +190,10 @@
                       visibility: hidden;
                       z-index: -1;
                     "
-                  >
-                    <div
-                      class="chartjs-size-monitor-expand"
-                      style="
+                                    >
+                                        <div
+                                                class="chartjs-size-monitor-expand"
+                                                style="
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -204,20 +204,20 @@
                         visibility: hidden;
                         z-index: -1;
                       "
-                    >
-                      <div
-                        style="
+                                        >
+                                            <div
+                                                    style="
                           position: absolute;
                           width: 1000000px;
                           height: 1000000px;
                           left: 0;
                           top: 0;
                         "
-                      ></div>
-                    </div>
-                    <div
-                      class="chartjs-size-monitor-shrink"
-                      style="
+                                            ></div>
+                                        </div>
+                                        <div
+                                                class="chartjs-size-monitor-shrink"
+                                                style="
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -228,39 +228,39 @@
                         visibility: hidden;
                         z-index: -1;
                       "
-                    >
-                      <div
-                        style="
+                                        >
+                                            <div
+                                                    style="
                           position: absolute;
                           width: 200%;
                           height: 200%;
                           left: 0;
                           top: 0;
                         "
-                      ></div>
+                                            ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c2">
-              <div class="overview__inner">
-                <div class="overview-box clearfix">
-                  <div class="icon">
-                    <i class="fa fa-list-alt"></i>
-                  </div>
-                  <div class="text">
-                    <h2>{{ counts.hotels | intcomma }}</h2>
-                    <span>Mexmonxona</span>
-                  </div>
-                </div>
-                <div class="overview-chart">
-                  <div
-                    class="chartjs-size-monitor"
-                    style="
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="overview-item overview-item--c2">
+                            <div class="overview__inner">
+                                <div class="overview-box clearfix">
+                                    <div class="icon">
+                                        <i class="fa fa-list-alt"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h2>{{ counts.hotels | intcomma }}</h2>
+                                        <span>Mexmonxona</span>
+                                    </div>
+                                </div>
+                                <div class="overview-chart">
+                                    <div
+                                            class="chartjs-size-monitor"
+                                            style="
                       position: absolute;
                       inset: 0px;
                       overflow: hidden;
@@ -268,10 +268,10 @@
                       visibility: hidden;
                       z-index: -1;
                     "
-                  >
-                    <div
-                      class="chartjs-size-monitor-expand"
-                      style="
+                                    >
+                                        <div
+                                                class="chartjs-size-monitor-expand"
+                                                style="
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -282,20 +282,20 @@
                         visibility: hidden;
                         z-index: -1;
                       "
-                    >
-                      <div
-                        style="
+                                        >
+                                            <div
+                                                    style="
                           position: absolute;
                           width: 1000000px;
                           height: 1000000px;
                           left: 0;
                           top: 0;
                         "
-                      ></div>
-                    </div>
-                    <div
-                      class="chartjs-size-monitor-shrink"
-                      style="
+                                            ></div>
+                                        </div>
+                                        <div
+                                                class="chartjs-size-monitor-shrink"
+                                                style="
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -306,39 +306,39 @@
                         visibility: hidden;
                         z-index: -1;
                       "
-                    >
-                      <div
-                        style="
+                                        >
+                                            <div
+                                                    style="
                           position: absolute;
                           width: 200%;
                           height: 200%;
                           left: 0;
                           top: 0;
                         "
-                      ></div>
+                                            ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c1">
-              <div class="overview__inner">
-                <div class="overview-box clearfix">
-                  <div class="icon">
-                    <i class="fa fa-list-alt"></i>
-                  </div>
-                  <div class="text">
-                    <h2>{{ counts.rest_area|intcomma }}</h2>
-                    <span>Istirohat Zona</span>
-                  </div>
-                </div>
-                <div class="overview-chart">
-                  <div
-                    class="chartjs-size-monitor"
-                    style="
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="overview-item overview-item--c1">
+                            <div class="overview__inner">
+                                <div class="overview-box clearfix">
+                                    <div class="icon">
+                                        <i class="fa fa-list-alt"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h2>{{ counts.rest_area|intcomma }}</h2>
+                                        <span>Istirohat Zona</span>
+                                    </div>
+                                </div>
+                                <div class="overview-chart">
+                                    <div
+                                            class="chartjs-size-monitor"
+                                            style="
                       position: absolute;
                       inset: 0px;
                       overflow: hidden;
@@ -346,10 +346,10 @@
                       visibility: hidden;
                       z-index: -1;
                     "
-                  >
-                    <div
-                      class="chartjs-size-monitor-expand"
-                      style="
+                                    >
+                                        <div
+                                                class="chartjs-size-monitor-expand"
+                                                style="
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -360,20 +360,20 @@
                         visibility: hidden;
                         z-index: -1;
                       "
-                    >
-                      <div
-                        style="
+                                        >
+                                            <div
+                                                    style="
                           position: absolute;
                           width: 1000000px;
                           height: 1000000px;
                           left: 0;
                           top: 0;
                         "
-                      ></div>
-                    </div>
-                    <div
-                      class="chartjs-size-monitor-shrink"
-                      style="
+                                            ></div>
+                                        </div>
+                                        <div
+                                                class="chartjs-size-monitor-shrink"
+                                                style="
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -384,39 +384,39 @@
                         visibility: hidden;
                         z-index: -1;
                       "
-                    >
-                      <div
-                        style="
+                                        >
+                                            <div
+                                                    style="
                           position: absolute;
                           width: 200%;
                           height: 200%;
                           left: 0;
                           top: 0;
                         "
-                      ></div>
+                                            ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c2">
-              <div class="overview__inner">
-                <div class="overview-box clearfix">
-                  <div class="icon">
-                    <i class="fa fa-user"></i>
-                  </div>
-                  <div class="text">
-                    <h2>{{ counts.news | intcomma }}</h2>
-                    <span>Yangiliklar</span>
-                  </div>
-                </div>
-                <div class="overview-chart">
-                  <div
-                    class="chartjs-size-monitor"
-                    style="
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="overview-item overview-item--c2">
+                            <div class="overview__inner">
+                                <div class="overview-box clearfix">
+                                    <div class="icon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h2>{{ counts.news | intcomma }}</h2>
+                                        <span>Yangiliklar</span>
+                                    </div>
+                                </div>
+                                <div class="overview-chart">
+                                    <div
+                                            class="chartjs-size-monitor"
+                                            style="
                       position: absolute;
                       inset: 0px;
                       overflow: hidden;
@@ -424,10 +424,10 @@
                       visibility: hidden;
                       z-index: -1;
                     "
-                  >
-                    <div
-                      class="chartjs-size-monitor-expand"
-                      style="
+                                    >
+                                        <div
+                                                class="chartjs-size-monitor-expand"
+                                                style="
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -438,20 +438,20 @@
                         visibility: hidden;
                         z-index: -1;
                       "
-                    >
-                      <div
-                        style="
+                                        >
+                                            <div
+                                                    style="
                           position: absolute;
                           width: 1000000px;
                           height: 1000000px;
                           left: 0;
                           top: 0;
                         "
-                      ></div>
-                    </div>
-                    <div
-                      class="chartjs-size-monitor-shrink"
-                      style="
+                                            ></div>
+                                        </div>
+                                        <div
+                                                class="chartjs-size-monitor-shrink"
+                                                style="
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -462,91 +462,105 @@
                         visibility: hidden;
                         z-index: -1;
                       "
-                    >
-                      <div
-                        style="
+                                        >
+                                            <div
+                                                    style="
                           position: absolute;
                           width: 200%;
                           height: 200%;
                           left: 0;
                           top: 0;
                         "
-                      ></div>
+                                            ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+                <div class="row canvas">
+                    <div class="col-md-12">
+                        <div class="overview-wrap">
+                            <canvas id="Chart1"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+                <div class="row">
+                    <div class="col-md-12"></div>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="row canvas">
-          <div class="col-md-12">
-            <div class="overview-wrap">
-              <canvas id="Chart1"></canvas>
-            </div>
-          </div>
-        </div>
-        <br /><br />
-        <div class="row">
-          <div class="col-md-12"></div>
-        </div>
-      </div>
     </div>
-  </div>
-  <!-- END MAIN CONTENT-->
-  <!-- END PAGE CONTAINER-->
+    <!-- END MAIN CONTENT-->
+    <!-- END PAGE CONTAINER-->
 </div>
 {% endblock %}
 
 {% block javascript %}
 <script>
-
-  (function ($){
-    try {
-
-      var ctx = document.getElementById("Chart1");
-      if (ctx) {
-        ctx.height = 150;
-        var myChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ["Biz haqimizda", "Faoliyatlar", "Mexmonxona", "Rasmlar", "O'quv bo'lim", "Istirohat Zonalar", "Yangiliklar"],
-            datasets: [
-              {
-                label: "Diagramma",
-                data: [{{ counts.activities }}, {{ counts.photos }}, {{ counts.educations }}, {{ counts.hotel_section }}, {{ counts.recreation_section }}, {{ counts.news_section }}],
-                borderColor: "rgba(0, 123, 255, 0.9)";
-                borderWidth: "0";
-                backgroundColor: "rgba(0, 123, 255, 0.5)"
-              }
-          options: 
-            legend: {
-              position: 'top',
-              labels: {
-                fontFamily: 'Poppins'
-              }
-
+    (function ($){
+      try {
+        var ctx = document.getElementById("Chart1");
+        if (ctx) {
+          ctx.height = 150;
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: [
+                "Biz haqimizda",
+                "Faoliyatlar",
+                "Mexmonxona",
+                "Rasmlar",
+                "O'quv bo'lim",
+                "Istirohat Zonalar",
+                "Yangiliklar"
+              ],
+              datasets: [
+                {
+                  label: "Diagramma",
+                  data: [
+                    {{ counts.about_us }},
+                    {{ counts.activities }},
+                    {{ counts.hotels }},
+                    {{ counts.photos }},
+                    {{ counts.educations }},
+                    {{ counts.rest_area }},
+                    {{ counts.news }}
+                  ],
+                  borderColor: "rgba(0, 123, 255, 0.9)",
+                  borderWidth: 0,
+                  backgroundColor: "rgba(0, 123, 255, 0.5)"
+                }
+              ]
             },
-            scales: {
-              xAxes: [{
-                ticks: {
-                  fontFamily: "Poppins"
-
+            options: {
+              legend: {
+                position: 'top',
+                labels: {
+                  fontFamily: 'Poppins'
                 }
-              }],
-              yAxes: [{
-                ticks: {
-                  beginAtZero: true,
-                  fontFamily: "Poppins"
-                }
-              }]
+              },
+              scales: {
+                xAxes: [{
+                  ticks: {
+                    fontFamily: "Poppins"
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true,
+                    fontFamily: "Poppins"
+                  }
+                }]
+              }
             }
-          }
-        });
+          });
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  })(jQuery);
+    })(jQuery);
 </script>
 {% endblock %}

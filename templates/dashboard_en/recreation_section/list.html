@@ -16,7 +16,7 @@
                     <div class="col-md-12">
                         <div class="overview-wrap">
                             <h2 class="title-1">Istirohat Zona Ro'yhatlari</h2>
-                            <a class="au-btn au-btn-icon au-btn--blue" href="{% url 'recreation_create' %}">
+                            <a class="au-btn au-btn-icon au-btn--blue" href="{% url 'en-admin:recreation_create' %}">
                                 <i class="zmdi zmdi-plus"></i>Qo'shish
                             </a>
                         </div>
@@ -55,12 +55,12 @@
                                         <td>
                                             <div class="table-data-feature">
                                                 <a class="item" data-toggle="tooltip"
-                                                   href="{% url 'recreation_edit' pk=rest_area.id %}"
+                                                   href="{% url 'en-admin:recreation_edit' pk=rest_area.id %}"
                                                    title="Tahrirlash">
                                                     <i class="zmdi zmdi-edit text-warning"></i>
                                                 </a>
                                                 <a class="item" data-toggle="tooltip"
-                                                   href="{% url 'recreation_delete' pk=rest_area.id %}"
+                                                   href="{% url 'en-admin:recreation_delete' pk=rest_area.id %}"
                                                    title="O'chirish">
                                                     <i class="zmdi zmdi-delete text-danger"></i>
                                                 </a>

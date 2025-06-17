@@ -42,13 +42,12 @@ def billing_view(request):
 
 @login_required_decorator
 def main_dashboard(request):
-    about_us = AboutUs.objects.all()
-    photos = Photos.objects.all()
-    educations = Education.objects.all()
-    activities = Activity.objects.all()
-    hotels = Hotel.objects.all()
-    rest_area = RecreationZone.objects.all()
-    news = News.objects.all()
+    photos = Photos2.objects.all()
+    educations = Education2.objects.all()
+    activities = Activity2.objects.all()
+    hotels = Hotel2.objects.all()
+    rest_area = RecreationZone2.objects.all()
+    news = News2.objects.all()
 
     ctx = {
         "counts": {
@@ -65,7 +64,7 @@ def main_dashboard(request):
 
 @login_required_decorator
 def about_us_list(request):
-    text = AboutUs.objects.all()
+    text = AboutUs2.objects.all()
 
     ctx = {
         "text": text
@@ -87,7 +86,7 @@ def about_us_create(request):
 
 @login_required_decorator
 def about_us_update(request, pk):
-    text = get_object_or_404(AboutUs, pk=pk)
+    text = get_object_or_404(AboutUs2, pk=pk)
     form = ActivityForm(request.POST or None, instance=text)
     if form.is_valid():
         form.save()
@@ -101,14 +100,14 @@ def about_us_update(request, pk):
 
 @login_required_decorator
 def about_us_delete(request, pk):
-    text = get_object_or_404(AboutUs, pk=pk)
+    text = get_object_or_404(AboutUs2, pk=pk)
     text.delete()
     return redirect('about_us_list')
 
 
 @login_required_decorator
 def activity_list(request):
-    activities = Activity.objects.all()
+    activities = Activity2.objects.all()
 
     ctx = {
         "activities": activities
@@ -131,7 +130,7 @@ def activity_create(request):
 
 @login_required_decorator
 def activity_update(request, pk):
-    activity = get_object_or_404(Activity, pk=pk)
+    activity = get_object_or_404(Activity2, pk=pk)
     form = ActivityForm(request.POST or None, request.FILES or None, instance=activity)
     if form.is_valid():
         form.save()
@@ -145,14 +144,14 @@ def activity_update(request, pk):
 
 @login_required_decorator
 def activity_delete(request, pk):
-    activity = get_object_or_404(Activity, pk=pk)
+    activity = get_object_or_404(Activity2, pk=pk)
     activity.delete()
     return redirect('activity_list')
 
 
 @login_required_decorator
 def hotel_list(request):
-    hotels = Hotel.objects.all()
+    hotels = Hotel2.objects.all()
 
     ctx = {
         'hotels': hotels
@@ -175,7 +174,7 @@ def hotel_create(request):
 
 @login_required_decorator
 def hotel_update(request, pk):
-    hotels = get_object_or_404(Hotel, pk=pk)
+    hotels = get_object_or_404(Hotel2, pk=pk)
     form = HotelForm(request.POST or None, request.FILES or None, instance=hotels)
     if form.is_valid():
         form.save()
@@ -189,14 +188,14 @@ def hotel_update(request, pk):
 
 @login_required_decorator
 def hotel_delete(request, pk):
-    hotels = get_object_or_404(Hotel, pk=pk)
+    hotels = get_object_or_404(Hotel2, pk=pk)
     hotels.delete()
     return redirect('hotel_list')
 
 
 @login_required_decorator
 def recreation_list(request):
-    zones = RecreationZone.objects.all()
+    zones = RecreationZone2.objects.all()
 
     ctx = {
         'zones': zones
@@ -219,7 +218,7 @@ def recreation_create(request):
 
 @login_required_decorator
 def recreation_update(request, pk):
-    zones = get_object_or_404(RecreationZone, pk=pk)
+    zones = get_object_or_404(RecreationZone2, pk=pk)
     form = RecreationForm(request.POST or None, request.FILES or None, instance=zones)
     if form.is_valid():
         form.save()
@@ -233,14 +232,14 @@ def recreation_update(request, pk):
 
 @login_required_decorator
 def recreation_delete(request, pk):
-    zones = get_object_or_404(RecreationZone, pk=pk)
+    zones = get_object_or_404(RecreationZone2, pk=pk)
     zones.delete()
     return redirect('recreation_list')
 
 
 @login_required_decorator
 def news_list(request):
-    news = News.objects.order_by('-created_at')
+    news = News2.objects.order_by('-created_at')
 
     ctx = {
         "news": news
@@ -263,7 +262,7 @@ def news_create(request):
 
 @login_required_decorator
 def news_update(request, pk):
-    news = get_object_or_404(News, pk=pk)
+    news = get_object_or_404(News2, pk=pk)
     form = NewsForm(request.POST or None, request.FILES or None, instance=news)
     if form.is_valid():
         form.save()
@@ -277,14 +276,14 @@ def news_update(request, pk):
 
 @login_required_decorator
 def news_delete(request, pk):
-    news = get_object_or_404(News, pk=pk)
+    news = get_object_or_404(News2, pk=pk)
     news.delete()
     return redirect('news_list')
 
 
 @login_required_decorator
 def photo_list(request):
-    photos = Photos.objects.all()
+    photos = Photos2.objects.all()
 
     ctx = {
         "photos": photos
@@ -307,7 +306,7 @@ def photo_create(request):
 
 @login_required_decorator
 def photo_update(request, pk):
-    photos = get_object_or_404(Photos, pk=pk)
+    photos = get_object_or_404(Photos2, pk=pk)
     form = PhotoForm(request.POST or None, request.FILES or None, instance=photos)
     if form.is_valid():
         form.save()
@@ -321,14 +320,14 @@ def photo_update(request, pk):
 
 @login_required_decorator
 def photo_delete(request, pk):
-    photo = get_object_or_404(Photos, pk=pk)
+    photo = get_object_or_404(Photos2, pk=pk)
     photo.delete()
     return redirect('photo_list')
 
 
 @login_required_decorator
 def education_list(request):
-    educations = Education.objects.all()
+    educations = Education2.objects.all()
 
     ctx = {
         "educations": educations
@@ -351,7 +350,7 @@ def education_create(request):
 
 @login_required_decorator
 def education_update(request, pk):
-    education = get_object_or_404(Education, pk=pk)
+    education = get_object_or_404(Education2, pk=pk)
     form = EducationForm(request.POST or None, request.FILES or None, instance=education)
     if form.is_valid():
         form.save()
@@ -365,6 +364,6 @@ def education_update(request, pk):
 
 @login_required_decorator
 def education_delete(request, pk):
-    education = get_object_or_404(Education, pk=pk)
+    education = get_object_or_404(Education2, pk=pk)
     education.delete()
     return redirect('education_list')

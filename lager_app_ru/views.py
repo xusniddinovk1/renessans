@@ -3,8 +3,8 @@ from lager_app_ru.models import *
 
 
 def home_page(request):
-    text = AboutUs.objects.first()
-    photos = Photos.objects.all()
+    text = AboutUs2.objects.first()
+    photos = Photos2.objects.all()
     ctx = {
         "text": text,
         "photos": photos,
@@ -13,7 +13,7 @@ def home_page(request):
 
 
 def activity_page(request):
-    activities = Activity.objects.all()
+    activities = Activity2.objects.all()
     ctx = {
         "activities": activities
     }
@@ -21,7 +21,7 @@ def activity_page(request):
 
 
 def news_page(request):
-    news_item = News.objects.all()
+    news_item = News2.objects.all()
     ctx = {
         "news_item": news_item
     }
@@ -29,7 +29,7 @@ def news_page(request):
 
 
 def education_page(request):
-    educations = Education.objects.all()
+    educations = Education2.objects.all()
     ctx = {
         "educations": educations
     }
@@ -37,7 +37,7 @@ def education_page(request):
 
 
 def education_detail(request, id):
-    education = get_object_or_404(Education, pk=id)
+    education = get_object_or_404(Education2, pk=id)
     ctx = {
         'education': education
     }
@@ -45,7 +45,7 @@ def education_detail(request, id):
 
 
 def recreation_zone_page(request):
-    rest_areas = RecreationZone.objects.all()
+    rest_areas = RecreationZone2.objects.all()
     ctx = {
         "rest_areas": rest_areas
     }
@@ -53,7 +53,7 @@ def recreation_zone_page(request):
 
 
 def hotel_section_page(request):
-    hotels = Hotel.objects.all()
+    hotels = Hotel2.objects.all()
     ctx = {
         "hotels": hotels
     }
