@@ -1,9 +1,9 @@
-{% extends 'dashboard_en/base.html' %}
+{% extends 'dashboard_ru/base.html' %}
 {% load static %}
 {% block content %}
 <div class="page-container">
     <!-- HEADER DESKTOP -->
-    {% include 'dashboard_en/userbar.html' %}
+    {% include 'dashboard_ru/userbar.html' %}
     <!-- END HEADER DESKTOP -->
 
     <!-- MAIN CONTENT -->
@@ -16,7 +16,7 @@
                     <div class="col-md-12">
                         <div class="overview-wrap">
                             <h2 class="title-1">Faoliyat Ro'yhatlari</h2>
-                            <a class="au-btn au-btn-icon au-btn--blue" href="{% url 'en-admin:activity_create' %}">
+                            <a class="au-btn au-btn-icon au-btn--blue" href="{% url 'ru-admin:activity_create' %}">
                                 <i class="zmdi zmdi-plus"></i>Qo'shish
                             </a>
                         </div>
@@ -55,12 +55,12 @@
                                         <td>
                                             <div class="table-data-feature">
                                                 <a class="item" data-toggle="tooltip"
-                                                   href="{% url 'en-admin:activity_edit' pk=activity.id %}"
+                                                   href="{% url 'ru-admin:activity_edit' pk=activity.id %}"
                                                    title="Tahrirlash">
                                                     <i class="zmdi zmdi-edit text-warning"></i>
                                                 </a>
                                                 <a class="item" data-toggle="tooltip"
-                                                   href="{% url 'en-admin:activity_delete' pk=activity.id %}"
+                                                   href="{% url 'ru-admin:activity_delete' pk=activity.id %}"
                                                    title="O'chirish">
                                                     <i class="zmdi zmdi-delete text-danger"></i>
                                                 </a>

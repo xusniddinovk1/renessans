@@ -5,7 +5,7 @@ from django.contrib.auth import login, logout, authenticate
 
 
 def login_required_decorator(func):
-    return login_required(func, login_url="login_page")
+    return login_required(func, login_url="ru-admin:login_page")
 
 
 def login_page(request):
@@ -15,29 +15,29 @@ def login_page(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("main_dashboard")
-    return render(request, "dashboard/login.html")
+            return redirect("ru-admin:main_dashboard")
+    return render(request, "dashboard_ru/login.html")
 
 
 @login_required_decorator
 def logout_page(request):
     logout(request)
-    return redirect("login_page")
+    return redirect("ru-admin:login_page")
 
 
 @login_required_decorator
 def account_view(request):
-    return render(request, 'dashboard/account.html')
+    return render(request, 'dashboard_ru/account.html')
 
 
 @login_required_decorator
 def settings_view(request):
-    return render(request, 'dashboard/settings.html')
+    return render(request, 'dashboard_ru/settings.html')
 
 
 @login_required_decorator
 def billing_view(request):
-    return render(request, 'dashboard/billing.html')
+    return render(request, 'dashboard_ru/billing.html')
 
 
 @login_required_decorator
@@ -59,7 +59,7 @@ def main_dashboard(request):
             "news": len(news),
         }
     }
-    return render(request, 'dashboard/index.html', ctx)
+    return render(request, 'dashboard_ru/index.html', ctx)
 
 
 @login_required_decorator
@@ -69,7 +69,7 @@ def about_us_list(request):
     ctx = {
         "text": text
     }
-    return render(request, 'dashboard/about_us/list.html', ctx)
+    return render(request, 'dashboard_ru/about_us/list.html', ctx)
 
 
 @login_required_decorator
@@ -77,11 +77,11 @@ def about_us_create(request):
     form = AboutUsForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('about_us_list')
+        return redirect('ru-admin:about_us_list')
     ctx = {
         "form": form
     }
-    return render(request, 'dashboard/about_us/form.html', ctx)
+    return render(request, 'dashboard_ru/about_us/form.html', ctx)
 
 
 @login_required_decorator
@@ -90,19 +90,19 @@ def about_us_update(request, pk):
     form = ActivityForm(request.POST or None, instance=text)
     if form.is_valid():
         form.save()
-        return redirect('about_us_list')
+        return redirect('ru-admin:about_us_list')
 
     ctx = {
         'form': form
     }
-    return render(request, 'dashboard/about_us/form.html', ctx)
+    return render(request, 'dashboard_ru/about_us/form.html', ctx)
 
 
 @login_required_decorator
 def about_us_delete(request, pk):
     text = get_object_or_404(AboutUs2, pk=pk)
     text.delete()
-    return redirect('about_us_list')
+    return redirect('ru-admin:about_us_list')
 
 
 @login_required_decorator
@@ -112,7 +112,7 @@ def activity_list(request):
     ctx = {
         "activities": activities
     }
-    return render(request, 'dashboard/activity_section/list.html', ctx)
+    return render(request, 'dashboard_ru/activity_section/list.html', ctx)
 
 
 @login_required_decorator
@@ -120,12 +120,12 @@ def activity_create(request):
     form = ActivityForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('activity_list')
+        return redirect('ru-admin:activity_list')
 
     ctx = {
         'form': form,
     }
-    return render(request, 'dashboard/activity_section/form.html', ctx)
+    return render(request, 'dashboard_ru/activity_section/form.html', ctx)
 
 
 @login_required_decorator
@@ -134,19 +134,19 @@ def activity_update(request, pk):
     form = ActivityForm(request.POST or None, request.FILES or None, instance=activity)
     if form.is_valid():
         form.save()
-        return redirect('activity_list')
+        return redirect('ru-admin:activity_list')
 
     ctx = {
         'form': form
     }
-    return render(request, 'dashboard/activity_section/form.html', ctx)
+    return render(request, 'dashboard_ru/activity_section/form.html', ctx)
 
 
 @login_required_decorator
 def activity_delete(request, pk):
     activity = get_object_or_404(Activity2, pk=pk)
     activity.delete()
-    return redirect('activity_list')
+    return redirect('ru-admin:activity_list')
 
 
 @login_required_decorator
@@ -156,7 +156,7 @@ def hotel_list(request):
     ctx = {
         'hotels': hotels
     }
-    return render(request, 'dashboard/hotel_section/list.html', ctx)
+    return render(request, 'dashboard_ru/hotel_section/list.html', ctx)
 
 
 @login_required_decorator
@@ -164,12 +164,12 @@ def hotel_create(request):
     form = HotelForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('hotel_list')
+        return redirect('ru-admin:hotel_list')
 
     ctx = {
         'form': form
     }
-    return render(request, 'dashboard/hotel_section/form.html', ctx)
+    return render(request, 'dashboard_ru/hotel_section/form.html', ctx)
 
 
 @login_required_decorator
@@ -178,19 +178,19 @@ def hotel_update(request, pk):
     form = HotelForm(request.POST or None, request.FILES or None, instance=hotels)
     if form.is_valid():
         form.save()
-        return redirect('hotel_list')
+        return redirect('ru-admin:hotel_list')
 
     ctx = {
         "form": form
     }
-    return render(request, 'dashboard/hotel_section/form.html', ctx)
+    return render(request, 'dashboard_ru/hotel_section/form.html', ctx)
 
 
 @login_required_decorator
 def hotel_delete(request, pk):
     hotels = get_object_or_404(Hotel2, pk=pk)
     hotels.delete()
-    return redirect('hotel_list')
+    return redirect('ru-admin:hotel_list')
 
 
 @login_required_decorator
@@ -200,7 +200,7 @@ def recreation_list(request):
     ctx = {
         'zones': zones
     }
-    return render(request, 'dashboard/recreation_section/list.html', ctx)
+    return render(request, 'dashboard_ru/recreation_section/list.html', ctx)
 
 
 @login_required_decorator
@@ -208,12 +208,12 @@ def recreation_create(request):
     form = RecreationForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('recreation_list')
+        return redirect('ru-admin:recreation_list')
 
     ctx = {
         'form': form,
     }
-    return render(request, 'dashboard/recreation_section/form.html', ctx)
+    return render(request, 'dashboard_ru/recreation_section/form.html', ctx)
 
 
 @login_required_decorator
@@ -222,19 +222,19 @@ def recreation_update(request, pk):
     form = RecreationForm(request.POST or None, request.FILES or None, instance=zones)
     if form.is_valid():
         form.save()
-        return redirect('recreation_list')
+        return redirect('ru-admin:recreation_list')
 
     ctx = {
         'form': form
     }
-    return render(request, 'dashboard/recreation_section/form.html', ctx)
+    return render(request, 'dashboard_ru/recreation_section/form.html', ctx)
 
 
 @login_required_decorator
 def recreation_delete(request, pk):
     zones = get_object_or_404(RecreationZone2, pk=pk)
     zones.delete()
-    return redirect('recreation_list')
+    return redirect('ru-admin:recreation_list')
 
 
 @login_required_decorator
@@ -244,7 +244,7 @@ def news_list(request):
     ctx = {
         "news": news
     }
-    return render(request, 'dashboard/news_section/list.html', ctx)
+    return render(request, 'dashboard_ru/news_section/list.html', ctx)
 
 
 @login_required_decorator
@@ -252,12 +252,12 @@ def news_create(request):
     form = NewsForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('news_list')
+        return redirect('ru-admin:news_list')
 
     ctx = {
         'form': form
     }
-    return render(request, 'dashboard/news_section/form.html', ctx)
+    return render(request, 'dashboard_ru/news_section/form.html', ctx)
 
 
 @login_required_decorator
@@ -266,19 +266,19 @@ def news_update(request, pk):
     form = NewsForm(request.POST or None, request.FILES or None, instance=news)
     if form.is_valid():
         form.save()
-        return redirect('news_list')
+        return redirect('ru-admin:news_list')
 
     ctx = {
         "form": form
     }
-    return render(request, 'dashboard/news_section/form.html', ctx)
+    return render(request, 'dashboard_ru/news_section/form.html', ctx)
 
 
 @login_required_decorator
 def news_delete(request, pk):
     news = get_object_or_404(News2, pk=pk)
     news.delete()
-    return redirect('news_list')
+    return redirect('ru-admin:news_list')
 
 
 @login_required_decorator
@@ -288,7 +288,7 @@ def photo_list(request):
     ctx = {
         "photos": photos
     }
-    return render(request, 'dashboard/photo_section/list.html', ctx)
+    return render(request, 'dashboard_ru/photo_section/list.html', ctx)
 
 
 @login_required_decorator
@@ -296,12 +296,12 @@ def photo_create(request):
     form = PhotoForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('photo_list')
+        return redirect('ru-admin:photo_list')
 
     ctx = {
         'form': form
     }
-    return render(request, 'dashboard/photo_section/form.html', ctx)
+    return render(request, 'dashboard_ru/photo_section/form.html', ctx)
 
 
 @login_required_decorator
@@ -310,19 +310,19 @@ def photo_update(request, pk):
     form = PhotoForm(request.POST or None, request.FILES or None, instance=photos)
     if form.is_valid():
         form.save()
-        return redirect('photo_list')
+        return redirect('ru-admin:photo_list')
 
     ctx = {
         "form": form
     }
-    return render(request, 'dashboard/photo_section/form.html', ctx)
+    return render(request, 'dashboard_ru/photo_section/form.html', ctx)
 
 
 @login_required_decorator
 def photo_delete(request, pk):
     photo = get_object_or_404(Photos2, pk=pk)
     photo.delete()
-    return redirect('photo_list')
+    return redirect('ru-admin:photo_list')
 
 
 @login_required_decorator
@@ -332,7 +332,7 @@ def education_list(request):
     ctx = {
         "educations": educations
     }
-    return render(request, 'dashboard/education_section/list.html', ctx)
+    return render(request, 'dashboard_ru/education_section/list.html', ctx)
 
 
 @login_required_decorator
@@ -340,12 +340,12 @@ def education_create(request):
     form = EducationForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('education_list')
+        return redirect('ru-admin:education_list')
 
     ctx = {
         'form': form
     }
-    return render(request, 'dashboard/education_section/form.html', ctx)
+    return render(request, 'dashboard_ru/education_section/form.html', ctx)
 
 
 @login_required_decorator
@@ -354,16 +354,16 @@ def education_update(request, pk):
     form = EducationForm(request.POST or None, request.FILES or None, instance=education)
     if form.is_valid():
         form.save()
-        return redirect('education_list')
+        return redirect('ru-admin:education_list')
 
     ctx = {
         "form": form
     }
-    return render(request, 'dashboard/education_section/form.html', ctx)
+    return render(request, 'dashboard_ru/education_section/form.html', ctx)
 
 
 @login_required_decorator
 def education_delete(request, pk):
     education = get_object_or_404(Education2, pk=pk)
     education.delete()
-    return redirect('education_list')
+    return redirect('ru-admin:education_list')
