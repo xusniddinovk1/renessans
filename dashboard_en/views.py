@@ -1,16 +1,13 @@
-from django.shortcuts import redirect, get_object_or_404, render
+from django.shortcuts import get_object_or_404
 from dashboard_en.forms import *
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, logout, authenticate
-
-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
+
 def login_required_decorator(func):
-    # Bu yerda login_url URL manzili bo'lishi kerak (string)
     return login_required(func, login_url='en-admin:login_page')
+
 
 def login_page(request):
     if request.method == "POST":
@@ -19,33 +16,36 @@ def login_page(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("en-admin:dashboard")  # URL namespacing bo'yicha yo'naltirish
+            return redirect("en-admin:main_dashboard")
         else:
             context = {'error': "Username yoki parol noto'g'ri"}
             return render(request, "dashboard_en/login.html", context)
     return render(request, "dashboard_en/login.html")
+
 
 @login_required_decorator
 def logout_page(request):
     logout(request)
     return redirect("en-admin:login_page")
 
+
 @login_required_decorator
 def account_view(request):
     return render(request, 'dashboard_en/account.html')
 
+
 @login_required_decorator
 def settings_view(request):
     return render(request, 'dashboard_en/settings.html')
+
 
 @login_required_decorator
 def billing_view(request):
     return render(request, 'dashboard_en/billing.html')
 
 
-
 @login_required_decorator
-def dashboard(request):
+def main_dashboard(request):
     stats = [
         {
             "label": "Photos",
@@ -99,6 +99,7 @@ def dashboard(request):
         "stats": stats,
         "counts": counts
     })
+
 
 @login_required_decorator
 def about_us_list(request):

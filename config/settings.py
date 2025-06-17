@@ -23,6 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 
     'dashboard',
+    'dashboard_en',
+    'dashboard_ru',
     'lager_app',
     'lager_app_ru',
     'lager_app_en',

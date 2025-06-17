@@ -1,0 +1,123 @@
+{% extends 'dashboard_en/base.html' %}
+{% load static %}
+{% load humanize %}
+{%block content %}
+<div class="page-container">
+    {% include 'dashboard_en/userbar.html' %}
+
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row m-t-25">
+                    {% for item in stats %}
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="overview-item overview-item--{{ item.color }}">
+                                <div class="overview__inner">
+                                    <div class="overview-box clearfix">
+                                        <div class="icon">
+                                            <i class="fa {{ item.icon }}"></i>
+                                        </div>
+                                        <div class="text">
+                                            <h2>{{ item.count | intcomma }}</h2>
+                                            <span>{{ item.label }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="overview-chart">
+                                        <canvas id="chart-{{ loop.index }}"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="row canvas">
+                    <div class="col-md-12">
+                        <div class="overview-wrap">
+                            <canvas id="Chart1"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <br/><br/>
+                <div class="row">
+                    <div class="col-md-12"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+  (function ($) {
+    try {
+      var ctx = document.getElementById("Chart1");
+      if (ctx) {
+        ctx.height = 150;
+        var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: [
+              "Faoliyatlar",
+              "Mehmonxona",
+              "Rasmlar",
+              "O'quv bo'limi",
+              "Istirohat Zonalar",
+              "Yangiliklar"
+            ],
+            datasets: [{
+              label: "Diagramma",
+              data: [
+                {{ counts.activities }},
+                {{ counts.hotels }},
+                {{ counts.photos }},
+                {{ counts.educations }},
+                {{ counts.rest_area }},
+                {{ counts.news }}
+              ],
+              backgroundColor: "rgba(0, 123, 255, 0.5)",
+              borderColor: "rgba(0, 123, 255, 0.9)",
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'top',
+                labels: {
+                  font: {
+                    family: 'Poppins'
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                ticks: {
+                  font: {
+                    family: 'Poppins'
+                  }
+                }
+              },
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  font: {
+                    family: 'Poppins'
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  })(jQuery);
+</script>
+{% endblock %}
+

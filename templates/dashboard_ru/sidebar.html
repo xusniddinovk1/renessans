@@ -1,0 +1,41 @@
+{% load static %}
+<!-- MENU SIDEBAR-->
+<aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+        <a href="#">
+            <img class='login_logo' src="/media/logo/logo.JPG" alt="RenessansAdmin" , width="90px" height="90px">
+        </a>
+    </div>
+    <div class="menu-sidebar__content js-scrollbar1">
+        <nav class="navbar-sidebar">
+            <ul class="list-unstyled navbar__list">
+                <li class="active">
+                    <a href="/en{% url 'en-admin:main_dashboard' %}"><i class="fas fa-tachometer-alt"></i>Admin Panel</a>
+                </li>
+                <li>
+                    <a href="/en{% url 'en-admin:about_us_list' %}"><i class="fas fa-chart-bar"></i>About Us</a>
+                </li>
+                <li>
+                    <a href="/en{% url 'en-admin:photo_list' %}"><i class="fas fa-chart-bar"></i>Photos</a>
+                </li>
+                <li>
+                    <a href="/en{% url 'en-admin:education_list' %}"><i class="fas fa-chart-bar"></i>Education</a>
+                </li>
+                <li>
+                    <a href="/en{% url 'en-admin:activity_list' %}"><i class="fas fa-chart-bar"></i>Activities</a>
+                </li>
+                <li>
+                    <a href="/en{% url 'en-admin:hotel_list' %}"><i class="fas fa-chart-bar"></i>Hotels</a>
+                </li>
+                <li>
+                    <a href="/en{% url 'en-admin:recreation_list' %}"><i class="fas fa-chart-bar"></i>Recreation Zones</a>
+                </li>
+                <li>
+                    <a href="/en{% url 'en-admin:news_list' %}"><i class="fas fa-chart-bar"></i>News</a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</aside>
+<!-- END MENU SIDEBAR-->
