@@ -87,6 +87,7 @@ header .navbar ul li ul{
     left: 0;
     width: 200px;
     background:none;
+    life-style-type: none;
     display: none;
     padding: 3px;
     /* color: #fff; */
@@ -100,6 +101,7 @@ header .navbar ul li ul li{
     background: #1d4ed8;
     border: none;
     border-radius: 20px;
+    margin-bottom: 3px;
 }
 header .navbar ul li ul li a{
     color: #fff;

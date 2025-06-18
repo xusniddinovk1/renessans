@@ -90,6 +90,7 @@ header .navbar ul li ul{
     position: absolute;
     left: 0;
     width: 200px;
+    life-style-type: none;
     background: none;
     display: none;
     padding: 3px;
@@ -101,6 +102,7 @@ header .navbar ul li ul li{
     background: #1d4ed8;
     border: none;
     border-radius: 20px;
+    margin-bottom: 3px;
 }
 header .navbar ul li ul li a{
     color: #fff;
