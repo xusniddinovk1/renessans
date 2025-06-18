@@ -221,135 +221,126 @@ header label{
     }
 }
 /* --------------------------------footer--------------------------------------------------- */
-footer{
-    width: 100%;
-    position: bottom;
-    bottom: 0;
-    background: linear-gradient(to right,#00093c,#2d0b00);
-    color: #fff;
-    padding: 100px 0 30px;
-    border-top-left-radius: 125px;
-    font-size: 13px;
-    line-height: 20px;
+.modern-footer {
+  background: linear-gradient(
+    135deg,
+    #0f2027,
+    #203a43,
+    #2c5364
+  ); /* gradient fon */
+  color: #ddd;
+  padding: 80px 20px 30px;
+  font-family: "Segoe UI", sans-serif;
+  position: relative;
+  overflow: hidden;
 
-
+  /* YUMALOQ yuqori & yonlar, PASTI TEKIS */
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
-footer .row{
-    width: 85%;
-    margin: auto;
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-about,
+.footer-links,
+.footer-social {
+  flex: 1 1 250px;
+}
+
+.footer-about h2 {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.footer-about p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-links h3,
+.footer-social h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+  color: #fff;
+}
+
+.social-icons {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-footer .row .col{
-    flex-basis: 25%;
-    padding: 10px;
-
-}
-footer .row .col:nth-child(2)footer .row .col:nth-child(3){
-    flex-basis: 15%;
-
+    gap: 15px;
+    margin-top: 10px;
 }
 
-footer .row .col .logot{
-    width: 80px;
-    margin-bottom: 30px;
-}
-.col h3{
-    width: fit-content;
-    margin-bottom: 40px;
-    position: relative;
-
-}
-.email-id{
-    width: fit-content;
-    border-bottom: 1px solid #ccc;
-    margin: 20px 0;
-}
-form{
-    padding-bottom: 15px;
-    display: flex;
+.social-icons a {
+    display: inline-flex;
+    width: 38px;
+    height: 38px;
+    background: #fff;
+    color: #111;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 50px;
-
-}
-form .fa-solid{
-    font-size: 18px;
-    margin-right: 10px;
-
-}
-form input{
-    width: 100%;
-     background: transparent;
-     color: #ccc;
-     border: 0;
-     outline: none;
-
-
-}
-form button{
-    background: transparent;
-    border: 0;
-    outline: none;
-    cursor: pointer;
-
-}
-form button .fa-arrow-right{
-    font-size: 16px;
-    color: #ccc;
-}
-.social-icons .fa-brands {
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
-    font-size: 20px;
-    color: #000;
-    background: #fff;
-    margin-right: 15px;
-    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    transition: transform 0.3s, background 0.3s;
 }
-hr{
-    width: 90%;
-    border: 0;
-    border-bottom: 1px solid #ccc;
-    margin: 2px auto;
-}
-.copyrigh{
-    text-align: center;
 
+.social-icons a:hover {
+    background: #ddd;
+    transform: scale(1.1);
 }
-.underline{
-    width: 100%;
-    height: 5px;
-    background: #767676;
-    border-radius: 3px;
-     position: absolute;
-     top: 25px;
-     left: 0;
-     overflow: hidden;
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #aaa;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
 }
-.underline span{
-    width: 15px;
-    height: 100%;
-    background: #fff;
-    border-radius: 3px;
-    position: absolute;
-    top: 0;
-    left: 10px;
-    animation: moving 2s linear infinite;
-}
-@keyframes moving{
-    0%{
-        left:-20px
-    }
-    100%{
-        left:100%;
-    }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-about,
+  .footer-links,
+  .footer-social {
+    margin-bottom: 30px;
+  }
 }
 /* --------------------------------footer--------------------------------------------------- */
 
