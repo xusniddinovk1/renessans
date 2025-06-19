@@ -98,109 +98,109 @@
             </div>
         </div>
     </div>
+</div>
+<!-- ------------------------------/card slider  ----------------------------------- -->
 
-    <!-- ------------------------------/card slider  ----------------------------------- -->
-
-    <!-- --------------------------------------footter----------------------------------- -->
-    <footer class="modern-footer">
-        <div class="footer-content">
-            <div class="footer-about">
-                <h2>Renessans</h2>
-                <p>
-                    Ixtisoslashtirilgan taʼlim muassasalari agentligi — raqamli avlod
-                    uchun bilim markazi.
-                </p>
-            </div>
-
-            <div class="footer-links">
-                <h3>Bog'lanish</h3>
-                <ul>
-                    <li><a href="#">ITPL ko‘chasi, Toshkent</a></li>
-                    <li>
-                        <a href="mailto:renessans@gmail.com">renessans@gmail.com</a>
-                    </li>
-                    <li><a href="tel:+99800000000">+998 00 000 00 00</a></li>
-                </ul>
-            </div>
-
-            <div class="social-icons">
-                <a href="https://facebook.com/" target="_blank"
-                ><i class="fa-brands fa-facebook-f"></i
-                ></a>
-                <a href="https://instagram.com/" target="_blank"
-                ><i class="fa-brands fa-instagram"></i
-                ></a>
-                <a href="https://t.me/" target="_blank"
-                ><i class="fa-brands fa-telegram"></i
-                ></a>
-                <a href="https://twitter.com/" target="_blank"
-                ><i class="fa-brands fa-x-twitter"></i
-                ></a>
-            </div>
+<!-- --------------------------------------footter----------------------------------- -->
+<footer class="modern-footer">
+    <div class="footer-content">
+        <div class="footer-about">
+            <h2>Renessans</h2>
+            <p>
+                Ixtisoslashtirilgan taʼlim muassasalari agentligi — raqamli avlod
+                uchun bilim markazi.
+            </p>
         </div>
 
-        <div class="footer-bottom">
-            <p>© 2025 Renessans. Barcha huquqlar himoyalangan.</p>
+        <div class="footer-links">
+            <h3>Bog'lanish</h3>
+            <ul>
+                <li><a href="#">ITPL ko‘chasi, Toshkent</a></li>
+                <li>
+                    <a href="mailto:renessans@gmail.com">renessans@gmail.com</a>
+                </li>
+                <li><a href="tel:+99800000000">+998 00 000 00 00</a></li>
+            </ul>
         </div>
-    </footer>    <!-- --------------------------------------/footter----------------------------------- -->
 
-    <script>
-        const dropdownButton = document.getElementById('languageDropdown');
-        const languageMenu = document.getElementById('languageMenu');
-        const languageItems = languageMenu.querySelectorAll('li');
+        <div class="social-icons">
+            <a href="https://facebook.com/" target="_blank"
+            ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a href="https://instagram.com/" target="_blank"
+            ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="https://t.me/" target="_blank"
+            ><i class="fa-brands fa-telegram"></i
+            ></a>
+            <a href="https://twitter.com/" target="_blank"
+            ><i class="fa-brands fa-x-twitter"></i
+            ></a>
+        </div>
+    </div>
 
-        dropdownButton.addEventListener('click', () => {
-            languageMenu.classList.toggle('hidden');
+    <div class="footer-bottom">
+        <p>© 2025 Renessans. Barcha huquqlar himoyalangan.</p>
+    </div>
+</footer>    <!-- --------------------------------------/footter----------------------------------- -->
+
+<script>
+    const dropdownButton = document.getElementById('languageDropdown');
+    const languageMenu = document.getElementById('languageMenu');
+    const languageItems = languageMenu.querySelectorAll('li');
+
+    dropdownButton.addEventListener('click', () => {
+        languageMenu.classList.toggle('hidden');
+    });
+
+    languageItems.forEach(item => {
+        item.addEventListener('click', (event) => {
+            const selectedLang = event.target.getAttribute('data-lang');
+            alert(Language switched to: ${selectedLang});
+            languageMenu.classList.add('hidden');
         });
+    });
 
-        languageItems.forEach(item => {
-            item.addEventListener('click', (event) => {
-                const selectedLang = event.target.getAttribute('data-lang');
-                alert(Language switched to: ${selectedLang});
-                languageMenu.classList.add('hidden');
-            });
-        });
+    // Close menu if clicked outside
+    document.addEventListener('click', (event) => {
+        if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
+            languageMenu.classList.add('hidden');
+        }
+    });
+</script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
+<script>
+    new Swiper(".news-slider", {
+     slidesPerView: 1,
+     spaceBetween: 20,
+     breakpoints: {
+       640: { slidesPerView: 1 }, // kichik mobilda 1 ta
+       768: { slidesPerView: 2 }, // planshetlarda 2 ta
+       1024: { slidesPerView: 3 } // katta ekranda 3 ta
+     }
+   });
 
-        // Close menu if clicked outside
-        document.addEventListener('click', (event) => {
-            if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
-                languageMenu.classList.add('hidden');
-            }
-        });
-    </script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
-    <script>
-        new Swiper(".news-slider", {
-         slidesPerView: 1,
-         spaceBetween: 20,
-         breakpoints: {
-           640: { slidesPerView: 1 }, // kichik mobilda 1 ta
-           768: { slidesPerView: 2 }, // planshetlarda 2 ta
-           1024: { slidesPerView: 3 } // katta ekranda 3 ta
-         }
+
+       document.querySelectorAll(".inner-swiper").forEach(el => {
+         new Swiper(el, {
+           slidesPerView: 1,
+           loop: true,
+           autoplay: {
+             delay: 2500,
+             disableOnInteraction: false
+           }
+         });
        });
 
+       function showModal(title, text) {
+         document.getElementById('modalTitle').innerText = title;
+         document.getElementById('modalText').innerText = text;
+         document.getElementById('newsModal').style.display = 'flex';
+       }
 
-           document.querySelectorAll(".inner-swiper").forEach(el => {
-             new Swiper(el, {
-               slidesPerView: 1,
-               loop: true,
-               autoplay: {
-                 delay: 2500,
-                 disableOnInteraction: false
-               }
-             });
-           });
-
-           function showModal(title, text) {
-             document.getElementById('modalTitle').innerText = title;
-             document.getElementById('modalText').innerText = text;
-             document.getElementById('newsModal').style.display = 'flex';
-           }
-
-           function closeModal() {
-             document.getElementById('newsModal').style.display = 'none';
-           }
-    </script>
+       function closeModal() {
+         document.getElementById('newsModal').style.display = 'none';
+       }
+</script>
 </body>
 </html>
