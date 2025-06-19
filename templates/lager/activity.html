@@ -7,226 +7,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="{% static 'lager/css/activity.css' %}"/>
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
-    <style>
-        /* Modal CSS */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.75);
-            justify-content: center;
-            align-items: center;
-            z-index: 50;
-        }
-        .modal.flex {
-            display: flex;
-        }
-        .modal img {
-            max-width: 95vw;    /* Ekranning 95% gacha kenglik */
-            max-height: 95vh;   /* Ekranning 95% gacha balandlik */
-            min-width: 500px;   /* Minimum kenglik */
-            min-height: 400px;  /* Minimum balandlik */
-            width: auto;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-        }
-        .modal #closeModal {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            user-select: none;
-        }
-        /* Cursor pointer for images */
-        .image-wrapper img {
-            cursor: pointer;
-        }
-    </style>
+    <title>Activities</title>
 </head>
 <body>
 
-<!------------------------------------- header --------------------------------- -->
-<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-7 flex items-center justify-between">
+<!-- Header -->
+<header class="header">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain"/>
+        <img src="/media/logo/logo.JPG" alt="Company Logo"/>
     </a>
-
-    <div class="relative">
-        <button id="languageDropdown"
-                class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
+    <div class="language-selector">
+        <button id="languageDropdown" aria-haspopup="true" aria-expanded="false">
             🌐 Language
         </button>
-        <div id="languageMenu" class="absolute hidden bg-white shadow-lg rounded-lg mt-2 w-48">
-            <ul class="text-gray-700">
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruscha</li>
-            </ul>
-        </div>
+        <ul id="languageMenu" class="hidden">
+            <li data-lang="en" tabindex="0">English</li>
+            <li data-lang="uz" tabindex="0">O'zbek</li>
+            <li data-lang="es" tabindex="0">Ruscha</li>
+        </ul>
     </div>
-
     <input type="checkbox" id="menu-bar" class="hidden"/>
-    <label for="menu-bar" class="text-2xl text-gray-700 cursor-pointer md:hidden"><i
-            class="fa-solid fa-bars"></i></label>
-
-    <nav class="navbar hidden md:block">
-        <ul class="flex space-x-6">
-            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Asosiy</a></li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Kampus <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Mehmon xonalar</a></li>
-                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Istirohat zona</a></li>
+    <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank">Asosiy</a></li>
+            <li>
+                <a href="#">Kampus</a>
+                <ul>
+                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank">Mehmon xonalar</a></li>
+                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank">Istirohat zona</a></li>
                 </ul>
             </li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Faoliyat</a></li>
-                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">O'quv Bo'lim</a></li>
+            <li>
+                <a href="#">Tadbirlar</a>
+                <ul>
+                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank">Faoliyat</a></li>
+                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank">O'quv Bo'lim</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'uz:yangiliklar' %}"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Yangiliklar</a></li>
+            <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
         </ul>
     </nav>
 </header>
 
-
-<!-- --------------------------------------- content (activities) ----------------------------- -->
-<div class="mt-[140px]"> <!-- margin top so header doesn't overlap -->
-
+<!-- Main Content -->
+<main class="activities-container">
     {% for activity in activities %}
-    <div class="container mb-10">
-        <div class="image-wrapper" id="imageThumb-{{ forloop.counter }}">
-            <img src="{{ activity.image.url }}" alt="{{ activity.title }}"/>
+    <div class="activity-card">
+        <div class="activity-image">
+            <img src="{{ activity.image.url }}" alt="{{ activity.title|default:'Activity image' }}"
+                 onclick="openModal(this)">
         </div>
-        <div class="content mt-4">
-            <h1 class="text-3xl font-semibold">{{ activity.title }}</h1>
-            <p class="text-gray-700 mt-2">{{ activity.description }}</p>
+        <div class="activity-text">
+            <h1>{{ activity.title }}</h1>
+            <p>{{ activity.description }}</p>
         </div>
     </div>
+    {% empty %}
+    <p class="no-activity">Hech qanday faoliyat mavjud emas.</p>
     {% endfor %}
+</main>
+
+<!-- Modal Image Preview -->
+<div id="imageModal" class="modal hidden" role="dialog" tabindex="-1">
+    <span id="closeModal" role="button" aria-label="Close Modal" tabindex="0">&times;</span>
+    <img id="modalImg" class="modal-content" alt="Katta rasm">
 </div>
 
-<!-- Modal for image preview -->
-<div id="imageModal" class="modal hidden">
-    <span id="closeModal">&times;</span>
-    <img id="modalImage" src="" alt="Katta rasm"/>
-</div>
-
-<!-- -------------------------------------- footer ----------------------------------- -->
-<footer>
-    <div class="row">
-        <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-            <p>Specialized educational institutions agency
-            </p>
+<!-- Footer -->
+<footer class="modern-footer">
+    <div class="footer-content">
+        <div class="footer-about">
+            <img src="/media/logo_pastki_qism.png" alt="Footer Logo" class="footer-logo"/>
+            <p>Specialized educational institutions agency</p>
         </div>
-        <div class="col">
-            <h3>office
-                <div class="underline"><span></span></div>
-            </h3>
+        <div class="footer-links">
+            <h3>Office</h3>
             <p>ITPL road</p>
             <p>Address</p>
             <p>Pochta Indeksi</p>
             <p class="email-id">renessans@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
-
-        <div class="col">
-            <h3>NEWsletter
-                <div class="underline"><span></span></div>
-            </h3>
-            <form>
-                <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Enter your email" required>
+        <div class="footer-social">
+            <h3>Newsletter</h3>
+            <form action="#" method="post" onsubmit="return false;">
+                <input type="email" placeholder="Enter your email" required/>
                 <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
             </form>
             <div class="social-icons">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-telegram"></i>
-                <i class="fa-brands fa-twitter"></i>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
             </div>
         </div>
     </div>
-    <hr>
-    <p class="copyrigh">2025</p>
-    </hr>
+    <p class="footer-bottom">&copy; 2025</p>
 </footer>
-<!-- -------------------------------------- /footer ----------------------------------- -->
 
+<!-- JavaScript -->
 <script>
     // Language dropdown
     const dropdownButton = document.getElementById('languageDropdown');
     const languageMenu = document.getElementById('languageMenu');
-    const languageItems = languageMenu.querySelectorAll('li');
-
     dropdownButton.addEventListener('click', () => {
-        languageMenu.classList.toggle('hidden');
+      const expanded = dropdownButton.getAttribute('aria-expanded') === 'true';
+      dropdownButton.setAttribute('aria-expanded', !expanded);
+      languageMenu.classList.toggle('hidden');
     });
-
-    languageItems.forEach(item => {
-        item.addEventListener('click', (event) => {
-            const selectedLang = event.target.getAttribute('data-lang');
-            alert(`Language switched to: ${selectedLang}`);
-            languageMenu.classList.add('hidden');
-        });
-    });
-
-    // Close menu if clicked outside
     document.addEventListener('click', (event) => {
-        if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
-            languageMenu.classList.add('hidden');
-        }
+      if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
+        languageMenu.classList.add('hidden');
+        dropdownButton.setAttribute('aria-expanded', false);
+      }
+    });
+    document.querySelectorAll('#languageMenu li').forEach(item => {
+      item.addEventListener('click', (e) => {
+        alert(`Language switched to: ${e.target.dataset.lang}`);
+        languageMenu.classList.add('hidden');
+        dropdownButton.setAttribute('aria-expanded', false);
+      });
     });
 
-    // Modal Image Preview
-    const imageWrappers = document.querySelectorAll('.image-wrapper img');
+    // Modal functionality
     const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
+    const modalImg = document.getElementById('modalImg');
     const closeModal = document.getElementById('closeModal');
 
-    imageWrappers.forEach(img => {
-        img.addEventListener('click', () => {
-            modalImg.src = img.src;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        });
-    });
-
+    function openModal(img) {
+      modalImg.src = img.src;
+      modal.classList.remove('hidden');
+      modal.classList.add('modal-open');
+      modal.focus();
+    }
     closeModal.addEventListener('click', () => {
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
-        modalImg.src = '';
+      modal.classList.remove('modal-open');
+      modal.classList.add('hidden');
+      modalImg.src = '';
     });
-
-    // Click outside modal image closes modal
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-            modalImg.src = '';
-        }
+      if (e.target === modal) {
+        closeModal.click();
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal.click();
+      }
     });
 </script>
-
 </body>
 </html>
