@@ -7,7 +7,8 @@ class AboutUsForm(forms.ModelForm):
         model = AboutUs
         fields = ['context']
         widgets = {
-            "context": forms.Textarea(attrs={"class": "form-control", "rows": 5, "placeholder": "Biz haqimizda matn..."}),
+            "context": forms.Textarea(
+                attrs={"class": "form-control", "rows": 5, "placeholder": "Biz haqimizda matn..."}),
         }
 
 
@@ -48,7 +49,8 @@ class HotelForm(forms.ModelForm):
         fields = ["name", "description", "image"]
         widgets = {
             "name": forms.TextInput(attrs={"class": "form-control", "placeholder": "Mehmonxona nomi"}),
-            "description": forms.Textarea(attrs={"class": "form-control", "rows": 4, "placeholder": "Mehmonxona haqida"}),
+            "description": forms.Textarea(
+                attrs={"class": "form-control", "rows": 4, "placeholder": "Mehmonxona haqida"}),
             "image": forms.FileInput(attrs={"class": "form-control", "onchange": "loadFile(event)"}),
         }
 
