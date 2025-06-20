@@ -1,24 +1,27 @@
 /* === Reset === */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-transform: capitalize;
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* === Body === */
 body {
-    min-height: 100vh;
-    background: #f8fafc;
+  min-height: 100vh;
+  background: #f8fafc;
 }
 
-/* === Global Image === */
 img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* === Header === */
@@ -159,10 +162,9 @@ nav.navbar ul li ul li a:hover {
     padding: 0.5rem 1rem;
   }
 }
-
 a {
   text-decoration: none;
-  color: inherit;
+  color: inherit; /* agar kerak bo'lsa: matn rangi elementdan meros bo'lsin */
 }
 
 /* Menyudagi linklar */
@@ -173,15 +175,22 @@ nav.navbar ul li a {
   transition: color 0.3s ease;
 }
 
+/* Hover holatda ham chiziq chiqmasin, faqat rang o'zgaradi */
 nav.navbar ul li a:hover {
   text-decoration: none;
   color: #000000;
 }
 
-/* Footer ichidagi linklar */
+/* Footer ichidagi linklar (agar kerak bo‘lsa) */
 footer a {
   text-decoration: none;
   color: inherit;
+}
+
+/* Banner ichidagi tugma (link bo'lsa) */
+.banner-button a {
+  text-decoration: none;
+  color: white;
 }
 
 /* Dropdown menyularidagi linklar */
@@ -190,116 +199,134 @@ nav.navbar ul li ul li a {
   color: white;
 }
 
+/* Dropdown link hover */
 nav.navbar ul li ul li a:hover {
   background-color: #1e3a8a;
   text-decoration: none;
 }
-
 /* === Cards === */
 .wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8rem 1rem 2rem;
 }
 
 .card-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 ta kartani qatorga chiqarish */
-    gap: 1.5rem;
-    width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
 .card {
-    background-color: #fff;
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    transition: transform 0.3s ease;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 .card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .card-content {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1f2937;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
 }
 
 .card-description {
-    font-size: 1rem;
-    color: #4b5563;
-    margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #4b5563;
+  margin: 0.5rem 0;
 }
 
 .btn {
-    background-color: #000;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    display: inline-block;
-    margin-top: 0.5rem;
-    transition: background-color 0.3s ease;
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: inline-block;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid black;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid black;
+}
+
+@media (max-width: 900px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* === Modal === */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 50;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    justify-content: center;
-    align-items: center;
+  display: none;
+  position: fixed;
+  z-index: 50;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-    background: white;
-    padding: 2rem;
-    max-width: 500px;
-    width: 90%;
-    border-radius: 1rem;
-    text-align: center;
-    position: relative;
-    animation: slideIn 0.4s ease-out forwards;
+  background: white;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 1rem;
+  text-align: center;
+  position: relative;
+  animation: slideIn 0.4s ease-out forwards;
 }
 
 .modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1.25rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #333;
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
 }
 
 @keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 500px) {
+  .modal-content {
+    width: 95%;
+    padding: 1.25rem;
+  }
 }
 
 /* === Footer === */
@@ -375,7 +402,7 @@ footer form input[type="email"] {
   outline: none;
 }
 
-footer form input[type="submit"] {
+footer form button {
   background-color: #2563eb;
   color: white;
   padding: 0.5rem 1rem;
@@ -387,26 +414,34 @@ footer form input[type="submit"] {
   transition: background-color 0.3s ease;
 }
 
-footer form input[type="submit"]:hover {
+footer form button:hover {
   background-color: #1e40af;
 }
 
-/* Responsive Footer */
+footer .social-icons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+footer .social-icons i {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+footer hr {
+  border: none;
+  border-top: 1px solid #475569;
+  margin-top: 2rem;
+}
+
+footer .copyrigh {
+  text-align: center;
+  margin-top: 1rem;
+}
+
 @media (max-width: 768px) {
   footer .row {
     flex-direction: column;
-  }
-}
-
-/* === Responsive for cards === */
-@media (max-width: 900px) {
-  .card-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .card-container {
-    grid-template-columns: 1fr;
   }
 }

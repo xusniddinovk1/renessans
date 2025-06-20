@@ -11,48 +11,40 @@
     <title>O'quv bo'limi</title>
 </head>
 <body>
-<!------------------------------------- header --------------------------------- -->
-<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-7 flex items-center justify-between">
+
+<!-- ======================= Header ======================= -->
+<header class="header">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain"/>
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img"/>
     </a>
     <input type="checkbox" id="menu-bar" class="hidden"/>
-    <label for="menu-bar" class="text-2xl text-gray-700 cursor-pointer md:hidden"><i
-            class="fa-solid fa-bars"></i></label>
-    <nav class="navbar hidden md:block">
-        <ul class="flex space-x-6">
-            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Asosiy</a></li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Kampus <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Mehmon xonalar</a></li>
-                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Istirohat zona</a></li>
+    <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer">Asosiy</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer">Mehmon
+                        xonalar</a></li>
+                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer">Istirohat
+                        zona</a></li>
                 </ul>
             </li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Faoliyat</a></li>
-                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">O'quv Bo'lim</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer">Faoliyat</a></li>
+                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer">O'quv Bo'lim</a>
+                    </li>
                 </ul>
             </li>
-            <li><a href="{% url 'uz:yangiliklar' %}"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Yangiliklar</a></li>
+            <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
         </ul>
     </nav>
 </header>
-<!---------------------------------- card oquv bolim-------------------------- -->
+
+<!-- ======================= Card Section ======================= -->
 <div class="wrapper">
     <div class="card-container">
         {% for education in educations %}
@@ -69,9 +61,11 @@
         {% endfor %}
     </div>
 </div>
-<div class="modal" id="newsModal">
+
+<!-- ======================= Modal ======================= -->
+<div class="modal" id="newsModal" role="dialog" aria-hidden="true">
     <div class="modal-content" id="modalContent">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <span class="modal-close" onclick="closeModal()" aria-label="Close Modal">&times;</span>
         <h2 id="modalTitle"></h2>
         <p id="modalText"></p>
         <div class="social-icons">
@@ -81,26 +75,24 @@
         </div>
     </div>
 </div>
-<!---------------------------------- card oquv bolim-------------------------- -->
-<!-- --------------------------------------footter----------------------------------- -->
+
+<!-- ======================= Footer ======================= -->
 <footer>
     <div class="row">
         <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-            <p>Specialized educational institutions agency
-            </p>
+            <img src="/media/logo_pastki_qism.png" alt="footer logo" class="logot">
+            <p>Specialized educational institutions agency</p>
         </div>
         <div class="col">
-            <h3>office
+            <h3>Office
                 <div class="underline"><span></span></div>
             </h3>
             <p>Address</p>
             <p class="email-id">renessans@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
-
         <div class="col">
-            <h3>NEWsletter
+            <h3>Newsletter
                 <div class="underline"><span></span></div>
             </h3>
             <form>
@@ -118,36 +110,11 @@
     </div>
     <hr>
     <p class="copyrigh">2025</p>
-    </hr>
 </footer>
-<!-- --------------------------------------/footter----------------------------------- -->
 
+<!-- ======================= Scripts ======================= -->
 <script>
-    const dropdownButton = document.getElementById('languageDropdown');
-    const languageMenu = document.getElementById('languageMenu');
-    const languageItems = languageMenu.querySelectorAll('li');
-
-    dropdownButton.addEventListener('click', () => {
-        languageMenu.classList.toggle('hidden');
-    });
-
-    languageItems.forEach(item => {
-        item.addEventListener('click', (event) => {
-            const selectedLang = event.target.getAttribute('data-lang');
-            alert(`Language switched to: ${selectedLang}`);
-            languageMenu.classList.add('hidden');
-        });
-    });
-
-    // Close menu if clicked outside
-    document.addEventListener('click', (event) => {
-        if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
-            languageMenu.classList.add('hidden');
-        }
-    });
- // Modal funksiyasi
-
- function showModal(title, text) {
+    function showModal(title, text) {
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalText').innerText = text;
       document.getElementById('newsModal').style.display = 'flex';
@@ -157,6 +124,31 @@
       document.getElementById('newsModal').style.display = 'none';
     }
 
+    // Language dropdown handler (if used in future)
+    const dropdownButton = document.getElementById('languageDropdown');
+    const languageMenu = document.getElementById('languageMenu');
+
+    if (dropdownButton && languageMenu) {
+      const languageItems = languageMenu.querySelectorAll('li');
+
+      dropdownButton.addEventListener('click', () => {
+        languageMenu.classList.toggle('hidden');
+      });
+
+      languageItems.forEach(item => {
+        item.addEventListener('click', (event) => {
+          const selectedLang = event.target.getAttribute('data-lang');
+          alert(`Language switched to: ${selectedLang}`);
+          languageMenu.classList.add('hidden');
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
+          languageMenu.classList.add('hidden');
+        }
+      });
+    }
 </script>
 </body>
 </html>
