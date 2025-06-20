@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="{% static 'lager/css/activity.css' %}"/>
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>Activities</title>
     <style>
         /* Modal CSS */
         .modal {
@@ -50,26 +49,11 @@
 </head>
 <body>
 
-<!------------------------------------- header --------------------------------- -->
-<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-7 flex items-center justify-between">
+<!-- Header -->
+<header class="header">
     <a href="#" class="logo">
         <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain"/>
     </a>
-
-    <div class="relative">
-        <button id="languageDropdown"
-                class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
-            🌐 Language
-        </button>
-        <div id="languageMenu" class="absolute hidden bg-white shadow-lg rounded-lg mt-2 w-48">
-            <ul class="text-gray-700">
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruusia</li>
-            </ul>
-        </div>
-    </div>
-
     <input type="checkbox" id="menu-bar" class="hidden"/>
     <label for="menu-bar" class="text-2xl text-gray-700 cursor-pointer md:hidden"><i
             class="fa-solid fa-bars"></i></label>
@@ -108,125 +92,128 @@
     </nav>
 </header>
 
-<!-- --------------------------------------- content (activities) ----------------------------- -->
-<div class="mt-[140px]"> <!-- margin top so header doesn't overlap -->
-
+<!-- Main Content -->
+<main class="activities-container">
     {% for activity in activities %}
-    <div class="container mb-10">
-        <div class="image-wrapper" id="imageThumb-{{ forloop.counter }}">
-            <img src="{{ activity.image.url }}" alt="{{ activity.title }}"/>
+    <div class="activity-card">
+        <div class="activity-image">
+            <img src="{{ activity.image.url }}" alt="{{ activity.title|default:'Activity image' }}" loading="lazy"
+                 onclick="openModal(this)">
         </div>
-        <div class="content mt-4">
-            <h1 class="text-3xl font-semibold">{{ activity.title }}</h1>
-            <p class="text-gray-700 mt-2">{{ activity.description }}</p>
+        <div class="activity-text">
+            <h1>{{ activity.title }}</h1>
+            <p>{{ activity.description }}</p>
         </div>
     </div>
+    {% empty %}
+    <p class="no-activity">Hech qanday faoliyat mavjud emas.</p>
     {% endfor %}
+</main>
+<!-- Modal -->
+<div id="imageModal" class="modal hidden" role="dialog" aria-modal="true" tabindex="-1">
+    <span id="closeModal" role="button" aria-label="Close Modal" tabindex="0">&times;</span>
+    <img id="modalImg" class="modal-content" alt="Katta rasm">
 </div>
 
-<!-- Modal for image preview -->
-<div id="imageModal" class="modal hidden">
-    <span id="closeModal">&times;</span>
-    <img id="modalImage" src="" alt="Katta rasm"/>
-</div>
-
-<!-- -------------------------------------- footer ----------------------------------- -->
-<footer class="bg-gradient-to-r from-[#00093c] to-[#2d0b00] text-white py-16 px-6 rounded-t-[125px] text-xs leading-5">
-    <div class="row max-w-7xl mx-auto flex flex-wrap justify-between">
-        <div class="col flex-1 min-w-[250px] mb-8">
-            <img src="/media/logo_pastki_qism.png" alt="Logo" class="logot w-20 mb-8"/>
+<!-- Footer -->
+<footer>
+    <div class="row">
+        <div class="col">
+            <img src="/media/logo_pastki_qism.png" alt="Logo" class="logot">
             <p>Specialized educational institutions agency</p>
         </div>
-        <div class="col flex-1 min-w-[250px] mb-8">
-            <h3 class="relative w-fit mb-10 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[5px] after:bg-gray-500 after:rounded-sm">
-                office
+        <div class="col">
+            <h3>Office
+                <div class="underline"><span></span></div>
             </h3>
-            <p>ITPL road</p>
             <p>Address</p>
-            <p>Pochta index</p>
-            <p class="email-id border-b border-gray-400 my-5">renessans@gmail.com</p>
+            <p class="email-id">renessans@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
-        <div class="col flex-1 min-w-[250px] mb-8">
-            <h3 class="relative w-fit mb-10 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[5px] after:bg-gray-500 after:rounded-sm">
-                NEWsletter
+        <div class="col">
+            <h3>Newsletter
+                <div class="underline"><span></span></div>
             </h3>
-            <form class="flex items-center border-b border-gray-400 mb-12 pb-4">
-                <i class="fa-solid fa-envelope mr-3 text-lg"></i>
-                <input type="email" placeholder="Enter your email" required
-                       class="bg-transparent outline-none flex-grow text-gray-300"/>
-                <button type="submit" class="outline-none ml-3 cursor-pointer">
-                    <i class="fa-solid fa-arrow-right text-gray-300"></i>
-                </button>
+            <form>
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
             </form>
-            <div class="social-icons flex space-x-4">
-                <i class="fa-brands fa-facebook cursor-pointer w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-xl"></i>
-                <i class="fa-brands fa-instagram cursor-pointer w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-xl"></i>
-                <i class="fa-brands fa-telegram cursor-pointer w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-xl"></i>
-                <i class="fa-brands fa-twitter cursor-pointer w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-xl"></i>
+            <div class="social-icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-twitter"></i>
             </div>
         </div>
     </div>
-    <hr class="my-4 border-gray-400 w-11/12 mx-auto"/>
-    <p class="copyrigh text-center">2025</p>
+    <hr>
+    <p class="copyright">©2025</p>
 </footer>
 
-<!-- -------------------------------------- /footer ----------------------------------- -->
-
+<!-- JavaScript -->
 <script>
-    // Language dropdown
     const dropdownButton = document.getElementById('languageDropdown');
     const languageMenu = document.getElementById('languageMenu');
-    const languageItems = languageMenu.querySelectorAll('li');
 
-    dropdownButton.addEventListener('click', () => {
-        languageMenu.classList.toggle('hidden');
-    });
-
-    languageItems.forEach(item => {
-        item.addEventListener('click', (event) => {
-            const selectedLang = event.target.getAttribute('data-lang');
-            alert(`Language switched to: ${selectedLang}`);
-            languageMenu.classList.add('hidden');
+    if (dropdownButton && languageMenu) {
+        dropdownButton.addEventListener('click', () => {
+            const expanded = dropdownButton.getAttribute('aria-expanded') === 'true';
+            dropdownButton.setAttribute('aria-expanded', !expanded);
+            languageMenu.classList.toggle('hidden');
         });
-    });
 
-    // Close menu if clicked outside
-    document.addEventListener('click', (event) => {
-        if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
-            languageMenu.classList.add('hidden');
-        }
-    });
+        document.addEventListener('click', (event) => {
+            if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
+                languageMenu.classList.add('hidden');
+                dropdownButton.setAttribute('aria-expanded', false);
+            }
+        });
 
-    // Modal Image Preview
-    const imageWrappers = document.querySelectorAll('.image-wrapper img');
+        document.querySelectorAll('#languageMenu li').forEach(item => {
+            item.addEventListener('click', (e) => {
+                alert(`Til tanlandi: ${e.target.dataset.lang}`);
+                languageMenu.classList.add('hidden');
+                dropdownButton.setAttribute('aria-expanded', false);
+            });
+        });
+    }
+
     const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
+    const modalImg = document.getElementById('modalImg');
     const closeModal = document.getElementById('closeModal');
 
-    imageWrappers.forEach(img => {
-        img.addEventListener('click', () => {
-            modalImg.src = img.src;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        });
-    });
+    function openModal(img) {
+        modalImg.src = img.src;
+        modal.classList.remove('hidden');
+        modal.classList.add('modal-open');
+        modal.focus();
+    }
 
     closeModal.addEventListener('click', () => {
-        modal.classList.remove('flex');
+        modal.classList.remove('modal-open');
         modal.classList.add('hidden');
         modalImg.src = '';
     });
 
-    // Click outside modal image closes modal
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-            modalImg.src = '';
+            closeModal.click();
         }
     });
-</script>
 
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal.click();
+        }
+    });
+
+    // Yopish menyuni link bosilganda
+    document.querySelectorAll('nav.navbar a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('menu-bar').checked = false;
+        });
+    });
+</script>
 </body>
 </html>

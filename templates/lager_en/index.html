@@ -1,134 +1,97 @@
 <!DOCTYPE html>
 {% load static %}
-{% load humanize %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'lager/css/style.css'%}">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'lager/css/style.css' %}" />
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-
-    <title>Document</title>
+    <title>Renessans</title>
 </head>
 <body>
-<!------------------------------------- header --------------------------------- -->
-<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-7 flex items-center justify-between">
+
+<header class="header">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain"/>
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img" />
     </a>
-
-    <div class="relative">
-        <button id="languageDropdown"
-                class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
-            🌐 Language
-        </button>
-        <div id="languageMenu" class="absolute hidden bg-white shadow-lg rounded-lg mt-2 w-48">
-            <ul class="text-gray-700">
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruusia</li>
-            </ul>
-        </div>
-    </div>
-
-    <input type="checkbox" id="menu-bar" class="hidden"/>
-    <label for="menu-bar" class="text-2xl text-gray-700 cursor-pointer md:hidden"><i
-            class="fa-solid fa-bars"></i></label>
-
-    <nav class="navbar hidden md:block">
-        <ul class="flex space-x-6">
-            <li><a href="{% url 'en:home_page' %}" target="_blank" rel="noopener noreferrer"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Main</a></li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Kampus <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'en:hotel_section_page' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Hotels</a></li>
-                    <li><a href="{% url 'en:recreation_zone_page' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Recreation Zones</a></li>
+    <input type="checkbox" id="menu-bar" class="hidden" />
+    <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer">Asosiy</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer">Mehmon xonalar</a></li>
+                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer">Istirohat zona</a></li>
                 </ul>
             </li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Actions <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'en:activity_page' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Events</a></li>
-                    <li><a href="{% url 'en:education_page' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Academic Department</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer">Faoliyat</a></li>
+                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer">O'quv Bo'lim</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'en:news_page' %}"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">News</a></li>
+            <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
         </ul>
     </nav>
 </header>
-<!-- -------------------------------------- main ---------------------------->
+
 <!-- Banner -->
 <div class="banner">
-    <div class="banner-text">The home of happiness, friendship, and unforgettable times</div>
-    <!-- Batafsil tugmasi pastda joylashadi -->
-    <button class="banner-button" id="bannerButton"><a href="{% url 'en:education_page' %}">more</a></button>
+    <div class="banner-text">A place of joy, friendship, and unforgettable moments</div>
+    <button class="banner-button"><a href="{% url 'uz:oquvbolim' %}">more</a></button>
 </div>
 
-<!-- ---------------------------------------/main----------------------------------- -->
-<!-- -------------------------------------------gap---------------------------------- -->
+<!-- Biz haqimizda -->
 <div id="linkkeladi" class="text-box">
-    <h1>About us</h1>
+    <h1>About lager</h1>
     {% if text %}
         <p>{{ text.context|linebreaks }}</p>
     {% else %}
-        <p>Ma'lumot topilmadi.</p>
+        <p>Information not found</p>
     {% endif %}
 </div>
-<!-- -------------------------------------------gap---------------------------------- -->
-<!-- -----------------------------------grid galareya--------------------------------- -->
+
+<!-- Grid galereya -->
 <div class="grid-gallery">
     {% for photo in photos %}
     <div class="grid-item">
-        <a href="#" class="grid-link" onclick="openModal('{{ photo.image.url }}')">
-            <img src="{{ photo.image.url }}" alt="">
+        <a href="#" class="grid-link" onclick="openModal('{{ photo.image.url }}'); return false;">
+            <img src="{{ photo.image.url }}" alt="Gallery Image {{ forloop.counter }}" />
         </a>
     </div>
     {% endfor %}
 </div>
-<div class="custom-overlay">
+
+<!-- Overlay -->
+<div class="custom-overlay" style="display: none;">
     <span class="close">&times;</span>
-    <img src="" alt="Gallery Image" id="overlayImage">
+    <img src="" alt="Gallery Image" id="overlayImage" />
     <div class="controls">
         <button id="prevBtn">&#8592;</button>
         <button id="nextBtn">&#8594;</button>
     </div>
 </div>
 
-<!-- --------------------------------------footter----------------------------------- -->
+<!-- Footer -->
 <footer>
     <div class="row">
         <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-            <p>Specialized educational institutions agency
-            </p>
+            <img src="/media/logo_pastki_qism.png" alt="Logo" class="logot">
+            <p>Specialized educational institutions agency</p>
         </div>
         <div class="col">
-            <h3>office
+            <h3>Office
                 <div class="underline"><span></span></div>
             </h3>
-            <p>ITPL road</p>
             <p>Address</p>
-            <p>Pochta Indeksi</p>
             <p class="email-id">renessans@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
-
         <div class="col">
-            <h3>NEWsletter
+            <h3>Newsletter
                 <div class="underline"><span></span></div>
             </h3>
             <form>
@@ -145,10 +108,8 @@
         </div>
     </div>
     <hr>
-    <p class="copyrigh">2025</p>
-    </hr>
+    <p class="copyright">©2025</p>
 </footer>
-<!-- --------------------------------------/footter----------------------------------- -->
 
 <script>
     const images = document.querySelectorAll('.grid-link img');
@@ -163,7 +124,7 @@
     function showImage(index) {
       overlayImage.src = images[index].src;
       overlay.style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // Skrollni bloklash
+      document.body.style.overflow = 'hidden';
       currentIndex = index;
     }
 
@@ -186,7 +147,7 @@
 
     closeBtn.addEventListener('click', () => {
       overlay.style.display = 'none';
-      document.body.style.overflow = 'auto'; // Skrollni tiklash
+      document.body.style.overflow = 'auto';
     });
 
     nextBtn.addEventListener('click', nextImage);
@@ -202,21 +163,16 @@
         }
       }
     });
-document.querySelectorAll('#languageMenu li').forEach(item => {
-  item.addEventListener('click', () => {
-    const lang = item.textContent.trim().toLowerCase().substring(0,2); // 'uz', 'en', 'ru' kabi oladi
-    let path = window.location.pathname;
 
-    // URL dan til prefiksini olib tashlash
-    path = path.replace(/^\/(uz|en|ru)/, '');
-
-    if (lang !== 'uz') {
-      window.location.href = '/' + lang + path;
-    } else {
-      window.location.href = path;
+    function openModal(imageUrl) {
+        const index = Array.from(images).findIndex(img => img.src === imageUrl);
+        if(index !== -1) showImage(index);
+        else {
+            overlayImage.src = imageUrl;
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
     }
-  });
-});
 </script>
 </body>
 </html>

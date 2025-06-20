@@ -13,25 +13,10 @@
 </head>
 <body>
 <!------------------------------------- header --------------------------------- -->
-<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-7 flex items-center justify-between">
+<header class="header">
     <a href="#" class="logo">
         <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain"/>
     </a>
-
-    <div class="relative">
-        <button id="languageDropdown"
-                class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
-            🌐 Language
-        </button>
-        <div id="languageMenu" class="absolute hidden bg-white shadow-lg rounded-lg mt-2 w-48">
-            <ul class="text-gray-700">
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruusia</li>
-            </ul>
-        </div>
-    </div>
-
     <input type="checkbox" id="menu-bar" class="hidden"/>
     <label for="menu-bar" class="text-2xl text-gray-700 cursor-pointer md:hidden"><i
             class="fa-solid fa-bars"></i></label>
@@ -98,30 +83,26 @@
             </div>
         </div>
     </div>
+</div>
+<!-- ------------------------------/card slider  ----------------------------------- -->
 
-    <!-- ------------------------------/card slider  ----------------------------------- -->
-
-    <!-- --------------------------------------footter----------------------------------- -->
+<!-- --------------------------------------footter----------------------------------- -->
 <footer>
     <div class="row">
         <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-            <p>Specialized educational institutions agency
-            </p>
+            <img src="/media/logo_pastki_qism.png" alt="Logo" class="logot">
+            <p>Specialized educational institutions agency</p>
         </div>
         <div class="col">
-            <h3>office
+            <h3>Office
                 <div class="underline"><span></span></div>
             </h3>
-            <p>ITPL road</p>
             <p>Address</p>
-            <p>Pochta index</p>
             <p class="email-id">renessans@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
-
         <div class="col">
-            <h3>NEWsletter
+            <h3>Newsletter
                 <div class="underline"><span></span></div>
             </h3>
             <form>
@@ -138,68 +119,67 @@
         </div>
     </div>
     <hr>
-    <p class="copyrigh">2025</p>
-    </hr>
+    <p class="copyright">©2025</p>
 </footer>
-    <!-- --------------------------------------/footter----------------------------------- -->
+<!-- --------------------------------------/footter----------------------------------- -->
 
-    <script>
-        const dropdownButton = document.getElementById('languageDropdown');
-        const languageMenu = document.getElementById('languageMenu');
-        const languageItems = languageMenu.querySelectorAll('li');
+<script>
+    const dropdownButton = document.getElementById('languageDropdown');
+    const languageMenu = document.getElementById('languageMenu');
+    const languageItems = languageMenu.querySelectorAll('li');
 
-        dropdownButton.addEventListener('click', () => {
-            languageMenu.classList.toggle('hidden');
+    dropdownButton.addEventListener('click', () => {
+        languageMenu.classList.toggle('hidden');
+    });
+
+    languageItems.forEach(item => {
+        item.addEventListener('click', (event) => {
+            const selectedLang = event.target.getAttribute('data-lang');
+            alert(Language switched to: ${selectedLang});
+            languageMenu.classList.add('hidden');
         });
+    });
 
-        languageItems.forEach(item => {
-            item.addEventListener('click', (event) => {
-                const selectedLang = event.target.getAttribute('data-lang');
-                alert(Language switched to: ${selectedLang});
-                languageMenu.classList.add('hidden');
-            });
-        });
+    // Close menu if clicked outside
+    document.addEventListener('click', (event) => {
+        if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
+            languageMenu.classList.add('hidden');
+        }
+    });
+</script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
+<script>
+    new Swiper(".news-slider", {
+     slidesPerView: 1,
+     spaceBetween: 20,
+     breakpoints: {
+       640: { slidesPerView: 1 }, // kichik mobilda 1 ta
+       768: { slidesPerView: 2 }, // planshetlarda 2 ta
+       1024: { slidesPerView: 3 } // katta ekranda 3 ta
+     }
+   });
 
-        // Close menu if clicked outside
-        document.addEventListener('click', (event) => {
-            if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
-                languageMenu.classList.add('hidden');
-            }
-        });
-    </script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
-    <script>
-        new Swiper(".news-slider", {
-         slidesPerView: 1,
-         spaceBetween: 20,
-         breakpoints: {
-           640: { slidesPerView: 1 }, // kichik mobilda 1 ta
-           768: { slidesPerView: 2 }, // planshetlarda 2 ta
-           1024: { slidesPerView: 3 } // katta ekranda 3 ta
-         }
+
+       document.querySelectorAll(".inner-swiper").forEach(el => {
+         new Swiper(el, {
+           slidesPerView: 1,
+           loop: true,
+           autoplay: {
+             delay: 2500,
+             disableOnInteraction: false
+           }
+         });
        });
 
+       function showModal(title, text) {
+         document.getElementById('modalTitle').innerText = title;
+         document.getElementById('modalText').innerText = text;
+         document.getElementById('newsModal').style.display = 'flex';
+       }
 
-           document.querySelectorAll(".inner-swiper").forEach(el => {
-             new Swiper(el, {
-               slidesPerView: 1,
-               loop: true,
-               autoplay: {
-                 delay: 2500,
-                 disableOnInteraction: false
-               }
-             });
-           });
-
-           function showModal(title, text) {
-             document.getElementById('modalTitle').innerText = title;
-             document.getElementById('modalText').innerText = text;
-             document.getElementById('newsModal').style.display = 'flex';
-           }
-
-           function closeModal() {
-             document.getElementById('newsModal').style.display = 'none';
-           }
-    </script>
+       function closeModal() {
+         document.getElementById('newsModal').style.display = 'none';
+       }
+</script>
 </body>
 </html>
