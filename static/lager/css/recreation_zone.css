@@ -1,4 +1,4 @@
-/* Header */
+/* ================== HEADER ================== */
 header {
   position: fixed;
   top: 0;
@@ -20,12 +20,10 @@ header .logo img {
   object-fit: contain;
 }
 
-/* Menu toggle checkbox */
 #menu-bar {
   display: none;
 }
 
-/* Hamburger icon (mobil uchun) */
 .menu-icon {
   font-size: 1.75rem;
   color: #475569;
@@ -33,7 +31,6 @@ header .logo img {
   display: none;
 }
 
-/* NAVBAR Desktop */
 nav.navbar {
   display: flex;
   gap: 1.5rem;
@@ -43,6 +40,8 @@ nav.navbar ul {
   display: flex;
   gap: 1.5rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 nav.navbar ul li {
@@ -55,14 +54,16 @@ nav.navbar ul li a {
   font-weight: 600;
   color: #00093c;
   border-radius: 0.5rem;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
 }
 
 nav.navbar ul li a:hover {
   background-color: #e0e7ff;
+  color: #000000;
 }
 
-/* Submenu */
+/* Dropdown */
 nav.navbar ul li ul {
   position: absolute;
   top: 100%;
@@ -89,7 +90,7 @@ nav.navbar ul li ul li a:hover {
   background-color: #1e3a8a;
 }
 
-/* ========== Responsive ========== */
+/* ========== Responsive Header ========== */
 @media (max-width: 768px) {
   .menu-icon {
     display: block;
@@ -98,11 +99,11 @@ nav.navbar ul li ul li a:hover {
   nav.navbar {
     display: none;
     flex-direction: column;
-    width: 100%;
-    background: white;
     position: absolute;
+    width: 100%;
     top: 96px;
     left: 0;
+    background: white;
     padding: 1rem;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   }
@@ -116,16 +117,10 @@ nav.navbar ul li ul li a:hover {
     gap: 0.5rem;
   }
 
-  nav.navbar ul li {
-    margin-bottom: 0.5rem;
-  }
-
   nav.navbar ul li ul {
     position: static;
     background: #1e40af;
-    margin-top: 0.25rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem 0;
+    margin-left: 1rem;
     display: none;
   }
 
@@ -133,145 +128,115 @@ nav.navbar ul li ul li a:hover {
   nav.navbar ul li:focus-within > ul {
     display: block;
   }
-
-  nav.navbar ul li ul li a {
-    padding: 0.5rem 1rem;
-  }
-}
-a {
-  text-decoration: none;
-  color: inherit; /* agar kerak bo'lsa: matn rangi elementdan meros bo'lsin */
 }
 
-/* Menyudagi linklar */
-nav.navbar ul li a {
-  text-decoration: none;
-  color: #00093c;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-/* Hover holatda ham chiziq chiqmasin, faqat rang o'zgaradi */
-nav.navbar ul li a:hover {
-  text-decoration: none;
-  color: #000000;
-}
-
-/* Footer ichidagi linklar (agar kerak bo‘lsa) */
-footer a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Banner ichidagi tugma (link bo'lsa) */
-.banner-button a {
-  text-decoration: none;
-  color: white;
-}
-
-/* Dropdown menyularidagi linklar */
-nav.navbar ul li ul li a {
-  text-decoration: none;
-  color: white;
-}
-
-/* Dropdown link hover */
-nav.navbar ul li ul li a:hover {
-  background-color: #1e3a8a;
-  text-decoration: none;
-}
-
-
+/* ================== CARD SECTION ================== */
 .container {
-    margin-top: 70px;
-    display: grid;
-    place-items: center;
-    margin-inline: 1rem;
-    padding-block: 5rem;
-  }
+  margin-top: 120px;
+  padding: 2rem;
+}
 
+.card__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-items: center;
+}
+
+@media (max-width: 1024px) {
   .card__container {
-    display: grid;
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  .card__article {
-    position: relative;
-    overflow: hidden;
+@media (max-width: 640px) {
+  .card__container {
+    grid-template-columns: 1fr;
   }
+}
 
-  .card__img {
-    height: 200px;
-    width: 328px;
-    border-radius: 1.5rem;
+.card__article {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 350px;
+}
+
+.card__img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 1.5rem;
+}
+
+.card__data {
+  width: 90%;
+  background: linear-gradient(to right, #00093c, #2d0b00);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  color: white;
+  opacity: 0.3;
+  transition: all 0.5s ease;
+}
+
+.card__article:hover .card__data {
+  bottom: 0.5rem;
+  opacity: 1;
+}
+
+/* ================== MODAL ================== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  border-radius: 15px;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-
-  .card__data {
-    width: 200px;
-    background: linear-gradient(to right, #00093c, #2d0b00);
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    position: absolute;
-    bottom: -2rem;
-    left: 0;
-    right: 0;
-    margin-inline: auto;
-    color: white;
-    opacity: 0.3;
-    transition: all 0.5s ease;
-  }
-
-  .card__article:hover .card__data {
-    bottom: 0.5rem;
+  to {
     opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  /* ======= MODAL ======= */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-  }
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
 
-  .modal-content {
-    background: white;
-    padding: 20px;
-    max-width: 500px;
-    width: 90%;
-    border-radius: 15px;
-    text-align: center;
-    position: relative;
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-
-  @media screen and (max-width: 768px) {
-    .card__container {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media screen and (max-width: 480px) {
-    .card__container {
-      grid-template-columns: 1fr;
-    }
-  }
-
-
-/* Footer */
+/* ================== FOOTER ================== */
 footer {
-  background-color: #1e293b; /* dark slate */
+  background-color: #1e293b;
   color: white;
   padding: 3rem 1rem 2rem;
   font-size: 0.9rem;
@@ -299,26 +264,14 @@ footer .col img.logot {
 footer .col h3 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
-  position: relative;
-  padding-bottom: 0.25rem;
-}
-
-footer .underline span {
-  display: block;
-  height: 3px;
-  width: 40px;
-  background-color: #2563eb;
-  border-radius: 5px;
 }
 
 footer .email-id {
-  margin-top: 0.25rem;
   font-weight: 600;
   color: #93c5fd;
 }
 
 footer h4 {
-  margin-top: 0.25rem;
   font-weight: 700;
   color: #60a5fa;
 }
@@ -327,11 +280,6 @@ footer form {
   display: flex;
   align-items: center;
   margin-top: 1rem;
-}
-
-footer form i {
-  margin-right: 0.5rem;
-  color: #60a5fa;
 }
 
 footer form input[type="email"] {
@@ -382,43 +330,4 @@ footer p.copyright {
   text-align: center;
   font-size: 0.875rem;
   color: #94a3b8;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  nav.navbar {
-    display: none;
-  }
-  #menu-bar:checked + label + nav.navbar {
-    display: block;
-    position: absolute;
-    background: white;
-    top: 96px;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  }
-  nav.navbar ul {
-    flex-direction: column;
-    gap: 0;
-  }
-  nav.navbar ul li {
-    margin-bottom: 0.5rem;
-  }
-  nav.navbar ul li ul {
-    position: static;
-    background: transparent;
-    margin: 0.5rem 0 0 1rem;
-    padding: 0;
-    display: none !important;
-  }
-  nav.navbar ul li:hover > ul,
-  nav.navbar ul li:focus-within > ul {
-    display: block !important;
-  }
-  .menu-icon {
-    display: block;
-  }
-}
 }

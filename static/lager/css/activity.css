@@ -159,9 +159,15 @@ nav.navbar ul li ul li a:hover {
   font-size: 16px;
   color: #374151;
   line-height: 1.6;
-  white-space: pre-line;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal; /* <-- BU eng muhim */
 }
-
+@media (max-width: 768px) {
+  .activity-text {
+    max-height: none;
+  }
+}
 /* === MODAL === */
 .modal {
   display: none;

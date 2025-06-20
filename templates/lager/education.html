@@ -60,7 +60,7 @@
         {% for education in educations %}
         <div class="card">
             <a href="{% url 'uz:oquvbolim_sahifa' education.id %}">
-                <img src="{{ education.image.url }}" alt="Camp Image" style="width: 400px; height: 300px;">
+                <img src="{{ education.image.url }}" alt="Camp Image">
             </a>
             <div class="card-content">
                 <h2 class="card-title">{{ education.title|truncatechars:30 }}</h2>
@@ -69,6 +69,18 @@
             </div>
         </div>
         {% endfor %}
+    </div>
+</div>
+<div class="modal" id="newsModal">
+    <div class="modal-content" id="modalContent">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalText"></p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
     </div>
 </div>
 <!---------------------------------- card oquv bolim-------------------------- -->
@@ -151,16 +163,4 @@
 
 </script>
 </body>
-<div class="modal" id="newsModal">
-    <div class="modal-content" id="modalContent">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <h2 id="modalTitle"></h2>
-        <p id="modalText"></p>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-        </div>
-    </div>
-</div>
 </html>

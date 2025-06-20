@@ -20,6 +20,8 @@ img {
     height: auto;
     display: block;
 }
+
+/* === Header === */
 header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -157,9 +159,10 @@ nav.navbar ul li ul li a:hover {
     padding: 0.5rem 1rem;
   }
 }
+
 a {
   text-decoration: none;
-  color: inherit; /* agar kerak bo'lsa: matn rangi elementdan meros bo'lsin */
+  color: inherit;
 }
 
 /* Menyudagi linklar */
@@ -170,22 +173,15 @@ nav.navbar ul li a {
   transition: color 0.3s ease;
 }
 
-/* Hover holatda ham chiziq chiqmasin, faqat rang o'zgaradi */
 nav.navbar ul li a:hover {
   text-decoration: none;
   color: #000000;
 }
 
-/* Footer ichidagi linklar (agar kerak bo‘lsa) */
+/* Footer ichidagi linklar */
 footer a {
   text-decoration: none;
   color: inherit;
-}
-
-/* Banner ichidagi tugma (link bo'lsa) */
-.banner-button a {
-  text-decoration: none;
-  color: white;
 }
 
 /* Dropdown menyularidagi linklar */
@@ -194,24 +190,23 @@ nav.navbar ul li ul li a {
   color: white;
 }
 
-/* Dropdown link hover */
 nav.navbar ul li ul li a:hover {
   background-color: #1e3a8a;
   text-decoration: none;
 }
+
 /* === Cards === */
 .wrapper {
-    display: flex;
-    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 2rem 1rem;
 }
 
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* 3 ta kartani qatorga chiqarish */
     gap: 1.5rem;
     width: 100%;
-    max-width: 1200px;
 }
 
 .card {
@@ -309,7 +304,7 @@ nav.navbar ul li ul li a:hover {
 
 /* === Footer === */
 footer {
-  background-color: #1e293b; /* dark slate */
+  background-color: #1e293b;
   color: white;
   padding: 3rem 1rem 2rem;
   font-size: 0.9rem;
@@ -380,83 +375,38 @@ footer form input[type="email"] {
   outline: none;
 }
 
-footer form button {
+footer form input[type="submit"] {
   background-color: #2563eb;
-  border: none;
-  padding: 0.4rem 1rem;
-  border-radius: 9999px;
   color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
   cursor: pointer;
+  border: none;
+  font-weight: 600;
   margin-left: 0.5rem;
   transition: background-color 0.3s ease;
 }
 
-footer form button:hover {
-  background-color: #1d4ed8;
+footer form input[type="submit"]:hover {
+  background-color: #1e40af;
 }
 
-footer .social-icons {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-}
-
-footer .social-icons i {
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-footer .social-icons i:hover {
-  color: #2563eb;
-}
-
-footer hr {
-  border: 0.5px solid #334155;
-  margin: 2rem 0 1rem;
-}
-
-footer p.copyrigh {
-  text-align: center;
-  font-size: 0.875rem;
-  color: #94a3b8;
-}
-
-
-/* Responsive */
+/* Responsive Footer */
 @media (max-width: 768px) {
-  nav.navbar {
-    display: none;
-  }
-  #menu-bar:checked + label + nav.navbar {
-    display: block;
-    position: absolute;
-    background: white;
-    top: 96px;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  }
-  nav.navbar ul {
+  footer .row {
     flex-direction: column;
-    gap: 0;
   }
-  nav.navbar ul li {
-    margin-bottom: 0.5rem;
+}
+
+/* === Responsive for cards === */
+@media (max-width: 900px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
   }
-  nav.navbar ul li ul {
-    position: static;
-    background: transparent;
-    margin: 0.5rem 0 0 1rem;
-    padding: 0;
-    display: none !important;
-  }
-  nav.navbar ul li:hover > ul,
-  nav.navbar ul li:focus-within > ul {
-    display: block !important;
-  }
-  .menu-icon {
-    display: block;
+}
+
+@media (max-width: 600px) {
+  .card-container {
+    grid-template-columns: 1fr;
   }
 }
