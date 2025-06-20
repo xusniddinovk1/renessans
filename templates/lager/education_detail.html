@@ -21,11 +21,13 @@
         </div>
     </div>
 </main>
+
 <!-- Modal -->
-<div id="imageModal" class="modal hidden" role="dialog" aria-modal="true" tabindex="-1">
+<div id="imageModal" class="modal" role="dialog" aria-modal="true" tabindex="-1" style="display: none;">
     <span id="closeModal" role="button" aria-label="Close Modal" tabindex="0">&times;</span>
     <img id="modalImg" class="modal-content" alt="Katta rasm">
 </div>
+
 <footer>
     <div class="row">
         <div class="col">
@@ -60,5 +62,38 @@
     <hr>
     <p class="copyright">2025</p>
 </footer>
+<script>
+    function openModal(imgElement) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+
+      modalImg.src = imgElement.src;
+      modalImg.alt = imgElement.alt;
+
+      modal.style.display = 'flex'; // modalni ko'rsatish
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.style.display = 'none'; // modalni yopish
+    }
+
+    // X belgini bosganda yopish
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+
+    // ESC tugmasi orqali yopish
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Modal orqa foniga bosganda yopish
+    document.getElementById('imageModal').addEventListener('click', function (e) {
+      if (e.target.id === 'imageModal') {
+        closeModal();
+      }
+    });
+</script>
 </body>
 </html>

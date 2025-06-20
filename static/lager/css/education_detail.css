@@ -92,6 +92,8 @@ body {
 }
 
 /* === MODAL === */
+
+
 .modal {
   display: none;
   position: fixed;
@@ -102,10 +104,6 @@ body {
   z-index: 9999;
 }
 
-.modal.modal-open {
-  display: flex;
-}
-
 .modal-content {
   max-width: 95vw;
   max-height: 90vh;
@@ -113,7 +111,9 @@ body {
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
   position: relative;
 }
-
+.modal.modal-open {
+  display: flex;
+}
 #closeModal {
   position: absolute;
   top: 20px;
@@ -229,7 +229,7 @@ footer hr {
   margin-top: 2rem;
 }
 
-footer .copyrigh {
+footer .copyright {
   text-align: center;
   margin-top: 1rem;
 }
