@@ -1,706 +1,509 @@
+/* Umumiy reset va sozlashlar */
 * {
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-    text-transform: capitalize;
-    text-decoration: none;
-    }
-body{
-    min-height: 100vh;
-    background: url()no-repeat;
-    /* background: url() no-repeat; */
-    background-size: cover;
-    background-position: center;
-}
-    /* <!------------------------------------- header --------------------------------- --> */
-
-img{
-    width: 100px;
-    height: 100px;
-}
-header{
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    background: #fff;
-    padding: 0px 7%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-}
-header .logo{
-    font-weight: bolder;
-
-}
-header .navbar ul{
-    list-style: none;
-
-}
-header .navbar ul li{
-     position: relative;
-     float: left;
-     margin: auto;
-
-
-}
-header .navbar ul li a{
-    font-size: 20px;
-    padding: 20px;
-    color: #00093c;
-    display: block;
-    transition: transform 1s ease, background-color 01s ease ;
-    border-radius: 10px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
-}
-header .navbar ul li a:before,header .navbar ul li a:after{
-
-    content: "";
-    position: absolute;
-    height: 3px;
-    width: 0;
-    background-color: #000;
-    transition: 0.5s;
-}
-header .navbar ul li a:after{
-    left: 0;
-    bottom: -3px;
-
-}
-header .navbar ul li a:before{
-    right: 0;
-    top: -3px;
-}
-header .navbar ul li a:hover{
-    color: #000;
-}
-header .navbar ul li a:hover:after,
-header .navbar ul li a:hover:before{
-    width: 100%;
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-header .navbar ul li ul{
-    position: absolute;
-    left: 0;
-    width: 200px;
-    background:none;
-    life-style-type: none;
-    display: none;
-    padding: 3px;
-    /* color: #fff; */
-
-
-
-}
-header .navbar ul li ul li{
-    width: 100%;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background: #1d4ed8;
-    border: none;
-    border-radius: 20px;
-    margin-bottom: 3px;
-}
-header .navbar ul li ul li a{
-    color: #fff;
-}
-header .navbar ul li ul li ul{
-    left :200px;
-    top:0;
-    /* color:#fff */
-}
-header .navbar ul li:focus-within > ul,
-header .navbar ul li:hover > ul{
-    display: initial;
-
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #1e293b; /* dark slate */
+  line-height: 1.6;
+  padding-top: 96px; /* header balandligi uchun joy */
 }
 
-#menu-bar{
-    display: none;
-}
-header label{
-    font-size: 20px;
-    color: #333;
-    cursor: pointer;
-    display: none;
-}
-
-/* <!------------------------------------- /header --------------------------------- --> */
-/* ------------------------------main------------------------------- */
-  /* Banner */
-  .banner {
-    margin-top: 75px;
-    position: relative;
-    width: 100%;
-    height: 400px; /* Banner balandligi */
-    background-image: url('/media/asosiy_rasm.JPG'); /* Orqa fon rasm */
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    animation: fadeIn 2s forwards;
-    flex-direction: column; /* Matn va tugma vertikal tarzda joylashadi */
-
-  }
-
-  /* Banner matni - Rang o'zgarishi va animatsiya */
-  .banner-text {
-    background: rgba(255, 255, 255, 0.3); /* Shaffof oq fon */
-    backdrop-filter: blur(10px); /* Xiralik darajasi */
-    font-size: 2.5em;
-    font-weight: bold;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-    animation: textZoomBounce 2s ease-out forwards, textColorChange 3s ease-in-out infinite alternate;
-  }
-
-  /* Rang o'zgarishi animatsiyasi */
-  @keyframes textColorChange {
-    0% {
-      color: white;
-    }
-    50% {
-      color: #2d0b00; /* Redish */
-    }
-    100% {
-      color: #00093c; /* Blue */
-    }
-  }
-
-  /* Animatsiya: Banner kirish */
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
-  }
-
-  /* Zoom + Bounce animatsiyasi */
-  @keyframes textZoomBounce {
-    0% {
-      transform: scale(0);
-      opacity: 0;
-    }
-    60% {
-      transform: scale(1.1);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-/* Button (Agar kerak bo'lsa, Bannerda tugma qo'shish) */
-  .banner-button {
-    padding: 10px 20px;
-    background-color: #555;
-    color: white;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 30px; /* Tugma matndan pastda joylashadi */
-    opacity: 0;
-    animation: buttonSlideIn 2s 0.5s ease-out forwards; /* Buttonning kirish animatsiyasi */
-  }
-
-  /* Button hover */
-  .banner-button:hover {
-    background-color: white;
-    color: black;
-    border: 1px solid black;
-  }
-
-  /* Animatsiya: Button kirish */
-  @keyframes buttonSlideIn {
-    from {
-      transform: translateY(50px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  /* Mobil responsivlik */
-  @media (max-width: 768px) {
-    .banner-text {
-      font-size: 1.8em;
-    }
-
-    .banner-button {
-      font-size: 1em;
-    }
-  }
-
-
-
-/* ------------------------------/main------------------------------- */
-/* ---------------------labguage----------------------------- */
-.language-button {
-    transition: transform 0.3s ease, background-color 0.3s ease;
+/* Header */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  padding: 0 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
 }
 
-.language-button:hover {
-    transform: scale(1.1);
-    background-color: #1d4ed8;
-}
-/* -------------------------------------labguage----------------------- */
-/* ------------------------------tetx-box------------------------------- */
-
-.text-box {
-    width: 100%;
-    padding: 20px;
-    border-radius: 50px;
-    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.7);
-    border-right: #01fe87;
-    /* text-align: center; */
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-
-}
-.text-box p {
-    font-size: 15px;
-    font-weight: bold;
-    color:#000;
-    color: #00093c;
-    letter-spacing: 1px; /* Harflar orasini kengaytirish */
-    word-spacing: 2px; /* So‘zlar orasini kengaytirish */
-    font-family: cursive;
-    padding: 10px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1); /* Matn orqa foniga shaffof oq effekt */
-    display: inline-block;
-}
-/* .text-box h1{
-    color: #40E0D0; /* Yorqin ko‘k-yashil (Turquoise) */
-/* text-shadow: 2px 2px 6px rgba(64, 224, 208, 0.8),  */
-             /* 0px 0px 10px rgba(64, 224, 208, 0.6); */
-/* } */
-/* ------------------------------/text-box------------------------------- */
-/* ----------------------------------------grid-gallarey------------------------------ */
-.grid-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-    gap: 10px;
-    padding: 20px;
-  }
-  .grid-item {
-    position: relative;
-  }
-  .grid-link img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  .grid-caption {
-    text-align: center;
-    margin-top: 5px;
-    font-size: 14px;
-    color: #555;
-  }
-  .custom-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 10000;
-  }
-  .custom-overlay img {
-    width: 90%;
-    height: 600px;
-    border-radius: 8px;
-  }
-  .custom-overlay .close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 24px;
-    color: #fff;
-    cursor: pointer;
-  }
-  .custom-overlay .controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-  }
-  .custom-overlay .controls button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 32px;
-    cursor: pointer;
-    padding: 10px 20px;
-    opacity: 0.7;
-  }
-  .custom-overlay .controls button:hover {
-    opacity: 1;
-  }
-/* ----------------------------------------grid-gallarey------------------------------ */
-/* -----------------------------------------map css----------------------------- */
-.container{
-    position: bottom;
-    max-width: 90%;
-    margin: 0 auto;
-    height: 500px;
-    padding: 40px 20px;
-    background-color: #fff;
-    box-shadow: 0 4px  8px rgba(0, 0, 0.1);
-    border-radius: 10px;
-    /* margin-bottom: 20px; */
-}
-.container h1{
-    text-align: center;
-    flex: 28px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 30px;
-}
-.container .map-container{
-    position: relative;
-    width: 100%;
-    height: 50%;
-    padding-bottom: 26.25%;
-}
-.container .map-container iframe{
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 90%;
-     border: none;
-     border-radius: 10px;
-
-}
-.container a{
-    display: inline-block;
-    background: #4caf50;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    transition: background-color 0.3s ease-in-out;
-
-}
-.container a:hover{
-    background-color: #45a049;
-
-}
-/* -----------------------------------------/map css----------------------------- */
-
-
-
-/* --------------------------------footer--------------------------------------------------- */
-
-footer .row .col {
-    flex-basis: 23%;
-    padding: 10px;
-    min-width: 250px;
+header .logo img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
 }
 
-footer .row .col .logot {
-    width: 80px;
-    margin-bottom: 30px;
-    filter: brightness(0) invert(1); /* oq rangli logotip uchun */
+/* Menu toggle checkbox */
+#menu-bar {
+  display: none;
 }
 
-.col h3 {
-    font-size: 1.4rem;
-    margin-bottom: 30px;
-    position: relative;
-    text-transform: uppercase;
-    color: #66a3ff; /* yorqin ko‘k sarlavha */
+/* Hamburger icon (mobil uchun) */
+.menu-icon {
+  font-size: 1.75rem;
+  color: #475569;
+  cursor: pointer;
+  display: none;
 }
 
-.underline {
-    width: 60px;
-    height: 4px;
-    background-color: #3399ff;
-    border-radius: 3px;
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    overflow: hidden;
+/* NAVBAR Desktop */
+nav.navbar {
+  display: flex;
+  gap: 1.5rem;
 }
 
-.underline span {
-    width: 15px;
-    height: 100%;
-    background: #66a3ff;
-    border-radius: 3px;
-    position: absolute;
-    top: 0;
-    left: 10px;
-    animation: moving 2s linear infinite;
+nav.navbar ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
 }
 
-@keyframes moving {
-    0% {
-        left: -20px;
-    }
-    100% {
-        left: 100%;
-    }
+nav.navbar ul li {
+  position: relative;
 }
 
-footer p,
-footer .email-id,
-footer h4 {
-    color: #d0dfff;
-    margin: 8px 0;
+nav.navbar ul li a {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: #00093c;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
 }
 
-.email-id {
-    font-weight: 600;
-    border-bottom: 1px solid #3399ff;
-    padding-bottom: 5px;
-    width: fit-content;
+nav.navbar ul li a:hover {
+  background-color: #e0e7ff;
 }
 
-footer h4 {
-    color: #66a3ff;
-    margin-top: 12px;
+/* Submenu */
+nav.navbar ul li ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #1e40af;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0;
+  min-width: 12rem;
+  display: none;
+  z-index: 999;
 }
 
-form {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #3399ff;
-    margin-bottom: 50px;
-    padding-bottom: 10px;
+nav.navbar ul li:hover > ul,
+nav.navbar ul li:focus-within > ul {
+  display: block;
 }
 
-form .fa-solid {
-    font-size: 18px;
-    margin-right: 12px;
-    color: #3399ff;
+nav.navbar ul li ul li a {
+  color: white;
+  padding: 0.5rem 1rem;
 }
 
-form input {
-    width: 100%;
-    background: transparent;
-    color: #cdd9ff;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    padding: 8px 0;
+nav.navbar ul li ul li a:hover {
+  background-color: #1e3a8a;
 }
 
-form button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-}
-
-form button .fa-arrow-right {
-    font-size: 18px;
-    color: #3399ff;
-    transition: color 0.3s ease;
-}
-
-form button:hover .fa-arrow-right {
-    color: #66a3ff;
-}
-
-.social-icons .fa-brands {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 42px;
-    font-size: 20px;
-    color: #3399ff;
-    background: #1b2a4d;
-    margin-right: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.social-icons .fa-brands:hover {
-    color: #66a3ff;
-    background: #2d3b66;
-}
-
-hr {
-    width: 90%;
-    border: none;
-    border-bottom: 1px solid #3399ff;
-    margin: 20px auto;
-}
-
-.copyrigh {
-    text-align: center;
-    color: #99bbff;
-    font-size: 0.9rem;
-    margin-top: 10px;
-}
-
-/* --------------------------------responsive--------------------------------------- */
-@media (max-width: 991px) {
-    footer .row .col {
-        flex-basis: 48%;
-        margin-bottom: 30px;
-    }
-}
-
-@media (max-width: 700px) {
-    footer {
-        padding: 50px 20px 30px;
-        border-top-left-radius: 60px;
-    }
-
-    footer .row .col {
-        flex-basis: 100%;
-    }
-}
-/* --------------------------------footer--------------------------------------------------- */
-/*========================================= responsive================================= */
-@media(max-width:991px){
-    /* --------------------------------res header------------------------- */
-    header{
-        padding: 20px;
-    
-    }
-    header label{
-        display: initial;
-    }
-    header .navbar{
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #fff;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-        display: none;
-    }
-    header .navbar  ul li{
-        width:  100%;
-
-    }
-    header .navbar  ul li ul{
-        position: relative;
-        width: 100%;
-        list-style-type: none;
-        padding: 0;
-        
-    
-    }
-    header .navbar  ul li ul li{
-        background: #eee;
-        display: block;
-        margin-bottom: 3px;
-        
-
-    }
-    header .navbar  ul li ul li ul{
-        width: 100%;
-
-    }
-    #menu-bar:checked~.navbar{
-        display: initial;
-
-    }
-}
-    /* ------------------/header--------------- */
-    /*-------------------------------------- res text-box--------------------------- */
-    @media (max-width: 750px) {
-        .text-box {
-            width: 100%; /* Kenglikni ekranga mos qiladi */
-            padding: 15px; /* Paddingni kamaytiradi */
-        }
-    
-        .text-box p {
-            font-size: 18px; /* Matn hajmini kichikroq qiladi */
-            padding: 8px; /* Matn atrofidagi bo‘shliqni kamaytiradi */
-        }
-    }
-    
-    /* === Responsive: 480px dan kichik ekranlar uchun (mobil) === */
-    @media (max-width: 480px) {
-        .text-box {
-            padding: 12px; /* Juda kichik ekranda paddingni kamaytirish */
-        }
-    
-        .text-box p {
-            font-size: 16px; /* Mobil uchun matnni kichikroq qilish */
-            letter-spacing: 0.5px;
-        }
-    }
-    /* --------------------------res main -------------------------*/
-    @media (max-width: 750px) {
-    main .back {
-        width: 100%; /* Kichik ekranda quti kengayadi */
-        padding: 20px;
-    }
-    main .back .img-text{
-        width: 50%;
-    }
-    main .back .img-text h2 {
-        font-size: 28px;
-    }
-
-
-}
-
-@media (max-width: 480px) {
-    main .back {
-        width: 100%; /* Juda kichik ekranda quti kengayadi */
-        padding: 15px;
-    }
-    main .back .img-text h2 {
-        font-size: 20px;
-    }
-   
-}
+/* ========== Responsive ========== */
 @media (max-width: 768px) {
-    .animated-text {
-        font-size: 1.5rem;
-    }
+  .menu-icon {
+    display: block;
+  }
+
+  nav.navbar {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: white;
+    position: absolute;
+    top: 96px;
+    left: 0;
+    padding: 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  #menu-bar:checked + label + nav.navbar {
+    display: flex;
+  }
+
+  nav.navbar ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  nav.navbar ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  nav.navbar ul li ul {
+    position: static;
+    background: #1e40af;
+    margin-top: 0.25rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    display: none;
+  }
+
+  nav.navbar ul li:hover > ul,
+  nav.navbar ul li:focus-within > ul {
+    display: block;
+  }
+
+  nav.navbar ul li ul li a {
+    padding: 0.5rem 1rem;
+  }
+}
+a {
+  text-decoration: none;
+  color: inherit; /* agar kerak bo'lsa: matn rangi elementdan meros bo'lsin */
 }
 
-@media (max-width: 480px) {
-    .animated-text {
-        font-size: 1.2rem;
-    }
-    .transparent-container {
-        padding: 15px;
-    }
+/* Menyudagi linklar */
+nav.navbar ul li a {
+  text-decoration: none;
+  color: #00093c;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
-    /* --------------------------/res main -------------------------*/
-    /* --------------------res footer--------------------- */
-@media(max-width:700px){
-    footer{
-        bottom: unset;
-    }
-    footer .row .col{
-        flex-basis: 100%;
 
-    }
-    footer .row .col:nth-child(2)footer .row .col:nth-child(3){
-        flex-basis: 100%;
+/* Hover holatda ham chiziq chiqmasin, faqat rang o'zgaradi */
+nav.navbar ul li a:hover {
+  text-decoration: none;
+  color: #000000;
+}
 
-    }
-        
-    }
-    
-    /* ---------------------- /footer--------------- */
+/* Footer ichidagi linklar (agar kerak bo‘lsa) */
+footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Banner ichidagi tugma (link bo'lsa) */
+.banner-button a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Dropdown menyularidagi linklar */
+nav.navbar ul li ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Dropdown link hover */
+nav.navbar ul li ul li a:hover {
+  background-color: #1e3a8a;
+  text-decoration: none;
+}
+
+/* Banner */
+.banner {
+  background: url('/media/asosiy_rasm.jpg') center/cover no-repeat;
+  height: 550px; /* avvalgidan kattaroq balandlik */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.banner-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3); /* Yarim shaffof qora fon */
+  backdrop-filter: blur(5px);     /* Orqa fonni blur qilish */
+  -webkit-backdrop-filter: blur(5px); /* Safari uchun */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  margin-bottom: 1rem;
+}
+
+.banner-button {
+  background-color: #2563eb; /* blue-600 */
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.banner-button a {
+  color: white;
+  text-decoration: none;
+}
+
+.banner-button:hover {
+  background-color: #1d4ed8; /* blue-700 */
+}
+
+/* Text-box section */
+.text-box {
+  width: 90%;
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 1.5rem 3rem;
+  box-sizing: border-box;
+  text-align: justify;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  background-color: #f5f5f5;  /* Oqdan farq qiladigan engil fon */
+  border-radius: 8px;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.text-box h1 {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.text-box p {
+  font-size: 1.125rem;
+  color: #475569;
+  white-space: pre-line; /* linebreaks uchun */
+}
+
+/* Grid gallery */
+.grid-gallery {
+  max-width: 1200px;
+  margin: 2rem auto 4rem;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 1rem;
+}
+
+.grid-item {
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: scale(1.03);
+}
+
+.grid-item img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  border-radius: 1rem;
+}
+
+/* Custom overlay for gallery */
+.custom-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  flex-direction: column;
+}
+
+.custom-overlay img {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+}
+
+.custom-overlay .close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 900;
+  transition: color 0.3s ease;
+}
+
+.custom-overlay .close:hover {
+  color: #ef4444; /* red-500 */
+}
+
+.custom-overlay .controls {
+  margin-top: 1rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.custom-overlay .controls button {
+  background-color: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.25rem 0.8rem;
+  transition: background-color 0.3s ease;
+}
+
+.custom-overlay .controls button:hover {
+  background-color: rgba(255,255,255,0.5);
+}
+
+/* Footer */
+footer {
+  background-color: #1e293b; /* dark slate */
+  color: white;
+  padding: 3rem 1rem 2rem;
+  font-size: 0.9rem;
+}
+
+footer .row {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+footer .col {
+  flex: 1 1 250px;
+  min-width: 220px;
+}
+
+footer .col img.logot {
+  max-width: 140px;
+  margin-bottom: 1rem;
+}
+
+footer .col h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-bottom: 0.25rem;
+}
+
+footer .underline span {
+  display: block;
+  height: 3px;
+  width: 40px;
+  background-color: #2563eb;
+  border-radius: 5px;
+}
+
+footer .email-id {
+  margin-top: 0.25rem;
+  font-weight: 600;
+  color: #93c5fd;
+}
+
+footer h4 {
+  margin-top: 0.25rem;
+  font-weight: 700;
+  color: #60a5fa;
+}
+
+footer form {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+footer form i {
+  margin-right: 0.5rem;
+  color: #60a5fa;
+}
+
+footer form input[type="email"] {
+  flex: 1;
+  padding: 0.4rem 0.75rem;
+  border-radius: 9999px;
+  border: none;
+  outline: none;
+}
+
+footer form button {
+  background-color: #2563eb;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  color: white;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+footer form button:hover {
+  background-color: #1d4ed8;
+}
+
+footer .social-icons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+footer .social-icons i {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+footer .social-icons i:hover {
+  color: #2563eb;
+}
+
+footer hr {
+  border: 0.5px solid #334155;
+  margin: 2rem 0 1rem;
+}
+
+footer p.copyright {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav.navbar {
+    display: none;
+  }
+  #menu-bar:checked + label + nav.navbar {
+    display: block;
+    position: absolute;
+    background: white;
+    top: 96px;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  nav.navbar ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  nav.navbar ul li {
+    margin-bottom: 0.5rem;
+  }
+  nav.navbar ul li ul {
+    position: static;
+    background: transparent;
+    margin: 0.5rem 0 0 1rem;
+    padding: 0;
+    display: none !important;
+  }
+  nav.navbar ul li:hover > ul,
+  nav.navbar ul li:focus-within > ul {
+    display: block !important;
+  }
+  .menu-icon {
+    display: block;
+  }
+}

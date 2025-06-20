@@ -9,9 +9,7 @@
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-
             crossorigin="anonymous"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
@@ -19,62 +17,42 @@
 </head>
 <body>
 <!------------------------------------- header --------------------------------- -->
-<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-7 flex items-center justify-between">
+<header class="header">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain"/>
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img"/>
     </a>
 
-    <div class="relative">
-        <button id="languageDropdown"
-                class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
-            🌐 Language
-        </button>
-        <div id="languageMenu" class="absolute hidden bg-white shadow-lg rounded-lg mt-2 w-48">
-            <ul class="text-gray-700">
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruscha</li>
-            </ul>
-        </div>
-    </div>
-
     <input type="checkbox" id="menu-bar" class="hidden"/>
-    <label for="menu-bar" class="text-2xl text-gray-700 cursor-pointer md:hidden"><i
-            class="fa-solid fa-bars"></i></label>
+    <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
 
-    <nav class="navbar hidden md:block">
-        <ul class="flex space-x-6">
-            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Asosiy</a></li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Kampus <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Mehmon xonalar</a></li>
-                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Istirohat zona</a></li>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer">Asosiy</a></li>
+
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer">Mehmon
+                        xonalar</a></li>
+                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer">Istirohat
+                        zona</a></li>
                 </ul>
             </li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Faoliyat</a></li>
-                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">O'quv Bo'lim</a></li>
+
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer">Faoliyat</a></li>
+                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer">O'quv Bo'lim</a>
+                    </li>
                 </ul>
             </li>
-            <li><a href="{% url 'uz:yangiliklar' %}"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Yangiliklar</a></li>
+
+            <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
         </ul>
     </nav>
 </header>
+
 <!------------------------------------------ yangilikar-----------------------------  -->
 <div class="swiper news-slider">
     <div class="swiper-wrapper">
@@ -101,33 +79,26 @@
 
 <!-- -----------------------------------/Yangiliklar ---------------------------------- -->
 
-
 <!-- --------------------------------------footter----------------------------------- -->
 <footer>
     <div class="row">
         <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-            <p>Specialized educational institutions agency
-            </p>
+            <img src="/media/logo_pastki_qism.png" alt="Footer Logo" class="logot"/>
+            <p>Specialized educational institutions agency</p>
         </div>
         <div class="col">
-            <h3>office
-                <div class="underline"><span></span></div>
-            </h3>
+            <h3>Office</h3>
             <p>ITPL road</p>
             <p>Address</p>
             <p>Pochta Indeksi</p>
             <p class="email-id">renessans@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
-
         <div class="col">
-            <h3>NEWsletter
-                <div class="underline"><span></span></div>
-            </h3>
+            <h3>Newsletter</h3>
             <form>
                 <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Enter your email" required>
+                <input type="email" placeholder="Enter your email" required/>
                 <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
             </form>
             <div class="social-icons">
@@ -138,9 +109,8 @@
             </div>
         </div>
     </div>
-    <hr>
-    <p class="copyrigh">2025</p>
-    </hr>
+    <hr/>
+    <p class="copyright">2025</p>
 </footer>
 <!-- --------------------------------------/footter----------------------------------- -->
 

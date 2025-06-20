@@ -13,62 +13,39 @@
 </head>
 <body>
 <!------------------------------------- header --------------------------------- -->
-<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-7 flex items-center justify-between">
+<header class="header">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain"/>
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img" />
     </a>
 
-    <div class="relative">
-        <button id="languageDropdown"
-                class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
-            🌐 Language
-        </button>
-        <div id="languageMenu" class="absolute hidden bg-white shadow-lg rounded-lg mt-2 w-48">
-            <ul class="text-gray-700">
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruscha</li>
-            </ul>
-        </div>
-    </div>
+    <input type="checkbox" id="menu-bar" class="hidden" />
+    <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
 
-    <input type="checkbox" id="menu-bar" class="hidden"/>
-    <label for="menu-bar" class="text-2xl text-gray-700 cursor-pointer md:hidden"><i
-            class="fa-solid fa-bars"></i></label>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer">Asosiy</a></li>
 
-    <nav class="navbar hidden md:block">
-        <ul class="flex space-x-6">
-            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Asosiy</a></li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Kampus <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Mehmon xonalar</a></li>
-                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Istirohat zona</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer">Mehmon xonalar</a></li>
+                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer">Istirohat zona</a></li>
                 </ul>
             </li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Faoliyat</a></li>
-                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">O'quv Bo'lim</a></li>
+
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer">Faoliyat</a></li>
+                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer">O'quv Bo'lim</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'uz:yangiliklar' %}"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Yangiliklar</a></li>
+
+            <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
         </ul>
     </nav>
 </header>
+
 <!-- ------------------------------card slider  ----------------------------------- -->
 <div class="container">
     <div class="card__container">
@@ -102,47 +79,39 @@
 <!-- ------------------------------/card slider  ----------------------------------- -->
 
 <!-- --------------------------------------footter----------------------------------- -->
-<footer class="modern-footer">
-    <div class="footer-content">
-        <div class="footer-about">
-            <h2>Renessans</h2>
-            <p>
-                Ixtisoslashtirilgan taʼlim muassasalari agentligi — raqamli avlod
-                uchun bilim markazi.
-            </p>
+<footer>
+    <div class="row">
+        <div class="col">
+            <img src="/media/logo_pastki_qism.png" alt="Footer Logo" class="logot" />
+            <p>Specialized educational institutions agency</p>
         </div>
-
-        <div class="footer-links">
-            <h3>Bog'lanish</h3>
-            <ul>
-                <li><a href="#">ITPL ko‘chasi, Toshkent</a></li>
-                <li>
-                    <a href="mailto:renessans@gmail.com">renessans@gmail.com</a>
-                </li>
-                <li><a href="tel:+99800000000">+998 00 000 00 00</a></li>
-            </ul>
+        <div class="col">
+            <h3>Office</h3>
+            <p>ITPL road</p>
+            <p>Address</p>
+            <p>Pochta Indeksi</p>
+            <p class="email-id">renessans@gmail.com</p>
+            <h4>+99800000000</h4>
         </div>
-
-        <div class="social-icons">
-            <a href="https://facebook.com/" target="_blank"
-            ><i class="fa-brands fa-facebook-f"></i
-            ></a>
-            <a href="https://instagram.com/" target="_blank"
-            ><i class="fa-brands fa-instagram"></i
-            ></a>
-            <a href="https://t.me/" target="_blank"
-            ><i class="fa-brands fa-telegram"></i
-            ></a>
-            <a href="https://twitter.com/" target="_blank"
-            ><i class="fa-brands fa-x-twitter"></i
-            ></a>
+        <div class="col">
+            <h3>Newsletter</h3>
+            <form>
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Enter your email" required />
+                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+            <div class="social-icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-twitter"></i>
+            </div>
         </div>
     </div>
-
-    <div class="footer-bottom">
-        <p>© 2025 Renessans. Barcha huquqlar himoyalangan.</p>
-    </div>
-</footer>    <!-- --------------------------------------/footter----------------------------------- -->
+    <hr />
+    <p class="copyright">2025</p>
+</footer>
+<!-- --------------------------------------/footter----------------------------------- -->
 
 <script>
     const dropdownButton = document.getElementById('languageDropdown');

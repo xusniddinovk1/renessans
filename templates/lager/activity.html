@@ -16,16 +16,6 @@
     <a href="#" class="logo">
         <img src="/media/logo/logo.JPG" alt="Company Logo"/>
     </a>
-    <div class="language-selector">
-        <button id="languageDropdown" aria-haspopup="true" aria-expanded="false">
-            🌐 Language
-        </button>
-        <ul id="languageMenu" class="hidden">
-            <li data-lang="en" tabindex="0">English</li>
-            <li data-lang="uz" tabindex="0">O'zbek</li>
-            <li data-lang="es" tabindex="0">Ruscha</li>
-        </ul>
-    </div>
     <input type="checkbox" id="menu-bar" class="hidden"/>
     <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
@@ -55,7 +45,7 @@
     {% for activity in activities %}
     <div class="activity-card">
         <div class="activity-image">
-            <img src="{{ activity.image.url }}" alt="{{ activity.title|default:'Activity image' }}"
+            <img src="{{ activity.image.url }}" alt="{{ activity.title|default:'Activity image' }}" loading="lazy"
                  onclick="openModal(this)">
         </div>
         <div class="activity-text">
@@ -68,93 +58,108 @@
     {% endfor %}
 </main>
 
-<!-- Modal Image Preview -->
-<div id="imageModal" class="modal hidden" role="dialog" tabindex="-1">
+<!-- Modal -->
+<div id="imageModal" class="modal hidden" role="dialog" aria-modal="true" tabindex="-1">
     <span id="closeModal" role="button" aria-label="Close Modal" tabindex="0">&times;</span>
     <img id="modalImg" class="modal-content" alt="Katta rasm">
 </div>
 
 <!-- Footer -->
-<footer class="modern-footer">
-    <div class="footer-content">
-        <div class="footer-about">
-            <img src="/media/logo_pastki_qism.png" alt="Footer Logo" class="footer-logo"/>
+<footer>
+    <div class="row">
+        <div class="col">
+            <img src="/media/logo_pastki_qism.png" alt="Logo" class="logot">
             <p>Specialized educational institutions agency</p>
         </div>
-        <div class="footer-links">
-            <h3>Office</h3>
+        <div class="col">
+            <h3>Office<div class="underline"><span></span></div></h3>
             <p>ITPL road</p>
             <p>Address</p>
             <p>Pochta Indeksi</p>
             <p class="email-id">renessans@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
-        <div class="footer-social">
-            <h3>Newsletter</h3>
-            <form action="#" method="post" onsubmit="return false;">
-                <input type="email" placeholder="Enter your email" required/>
+        <div class="col">
+            <h3>Newsletter<div class="underline"><span></span></div></h3>
+            <form>
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Enter your email" required>
                 <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
             </form>
             <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-telegram"></i></a>
-                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-twitter"></i>
             </div>
         </div>
     </div>
-    <p class="footer-bottom">&copy; 2025</p>
+    <hr>
+    <p class="copyrigh">© 2025</p>
 </footer>
 
 <!-- JavaScript -->
 <script>
-    // Language dropdown
     const dropdownButton = document.getElementById('languageDropdown');
     const languageMenu = document.getElementById('languageMenu');
-    dropdownButton.addEventListener('click', () => {
-      const expanded = dropdownButton.getAttribute('aria-expanded') === 'true';
-      dropdownButton.setAttribute('aria-expanded', !expanded);
-      languageMenu.classList.toggle('hidden');
-    });
-    document.addEventListener('click', (event) => {
-      if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
-        languageMenu.classList.add('hidden');
-        dropdownButton.setAttribute('aria-expanded', false);
-      }
-    });
-    document.querySelectorAll('#languageMenu li').forEach(item => {
-      item.addEventListener('click', (e) => {
-        alert(`Language switched to: ${e.target.dataset.lang}`);
-        languageMenu.classList.add('hidden');
-        dropdownButton.setAttribute('aria-expanded', false);
-      });
-    });
 
-    // Modal functionality
+    if (dropdownButton && languageMenu) {
+        dropdownButton.addEventListener('click', () => {
+            const expanded = dropdownButton.getAttribute('aria-expanded') === 'true';
+            dropdownButton.setAttribute('aria-expanded', !expanded);
+            languageMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
+                languageMenu.classList.add('hidden');
+                dropdownButton.setAttribute('aria-expanded', false);
+            }
+        });
+
+        document.querySelectorAll('#languageMenu li').forEach(item => {
+            item.addEventListener('click', (e) => {
+                alert(`Til tanlandi: ${e.target.dataset.lang}`);
+                languageMenu.classList.add('hidden');
+                dropdownButton.setAttribute('aria-expanded', false);
+            });
+        });
+    }
+
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImg');
     const closeModal = document.getElementById('closeModal');
 
     function openModal(img) {
-      modalImg.src = img.src;
-      modal.classList.remove('hidden');
-      modal.classList.add('modal-open');
-      modal.focus();
+        modalImg.src = img.src;
+        modal.classList.remove('hidden');
+        modal.classList.add('modal-open');
+        modal.focus();
     }
+
     closeModal.addEventListener('click', () => {
-      modal.classList.remove('modal-open');
-      modal.classList.add('hidden');
-      modalImg.src = '';
+        modal.classList.remove('modal-open');
+        modal.classList.add('hidden');
+        modalImg.src = '';
     });
+
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeModal.click();
-      }
+        if (e.target === modal) {
+            closeModal.click();
+        }
     });
+
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeModal.click();
-      }
+        if (e.key === 'Escape') {
+            closeModal.click();
+        }
+    });
+
+    // Yopish menyuni link bosilganda
+    document.querySelectorAll('nav.navbar a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('menu-bar').checked = false;
+        });
     });
 </script>
 </body>

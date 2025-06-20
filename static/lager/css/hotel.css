@@ -1,491 +1,439 @@
-* {
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-    text-transform: capitalize;
-    text-decoration: none;    
-    }
-body{
-    min-height: 100vh;
-    background: url()no-repeat;
-    /* background: url() no-repeat; */
-    background-size: cover;
-    background-position: center;
-    /* display: flex;
-    flex-direction: column;
-    gap: 20px; */
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  padding: 0 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
 }
 
-    /* <!------------------------------------- header --------------------------------- --> */
+header .logo img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+}
 
-img{
-    width: 100px;
-    height: 100px;
+/* Menu toggle checkbox */
+#menu-bar {
+  display: none;
 }
-header{
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    background: #fff;
-    padding: 0px 7%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-}
-header .logo{
-    font-weight: bolder;
 
+/* Hamburger icon (mobil uchun) */
+.menu-icon {
+  font-size: 1.75rem;
+  color: #475569;
+  cursor: pointer;
+  display: none;
 }
-header .navbar ul{
-    list-style: none;
-    
-}
-header .navbar ul li{
-     position: relative;
-     float: left;
-     margin: auto;
-     
 
+/* NAVBAR Desktop */
+nav.navbar {
+  display: flex;
+  gap: 1.5rem;
 }
-header .navbar ul li a{
-    font-size: 20px;
-    padding: 20px;
-    color: #00093c;
+
+nav.navbar ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+nav.navbar ul li {
+  position: relative;
+}
+
+nav.navbar ul li a {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: #00093c;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+nav.navbar ul li a:hover {
+  background-color: #e0e7ff;
+}
+
+/* Submenu */
+nav.navbar ul li ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #1e40af;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0;
+  min-width: 12rem;
+  display: none;
+  z-index: 999;
+}
+
+nav.navbar ul li:hover > ul,
+nav.navbar ul li:focus-within > ul {
+  display: block;
+}
+
+nav.navbar ul li ul li a {
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+nav.navbar ul li ul li a:hover {
+  background-color: #1e3a8a;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .menu-icon {
     display: block;
-    transition: transform 1s ease, background-color 01s ease ;
-    border-radius: 10px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-   
-}
-header .navbar ul li a:before,header .navbar ul li a:after{
-    
-    content: "";
+  }
+
+  nav.navbar {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: white;
     position: absolute;
-    height: 3px;
-    width: 0;
-    background-color: #000;
-    transition: 0.5s;    
-}
-header .navbar ul li a:after{
+    top: 96px;
     left: 0;
-    bottom: -3px;
-    
-}
-header .navbar ul li a:before{
-    right: 0;
-    top: -3px;
-}
-header .navbar ul li a:hover{
-    color: #000;
-}
-header .navbar ul li a:hover:after,
-header .navbar ul li a:hover:before{
-    width: 100%;
+    padding: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
 
-}
+  #menu-bar:checked + label + nav.navbar {
+    display: flex;
+  }
 
-header .navbar ul li ul{
-    position: absolute;
-    left: 0;
-    width: 200px;
-    life-style-type: none;
-    background: none;
+  nav.navbar ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  nav.navbar ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  nav.navbar ul li ul {
+    position: static;
+    background: #1e40af;
+    margin-top: 0.25rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
     display: none;
-    padding: 3px;
+  }
 
-}
-header .navbar ul li ul li{
-    width: 100%;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background: #1d4ed8;
-    border: none;
-    border-radius: 20px;
-    margin-bottom: 3px;
-}
-header .navbar ul li ul li a{
-    color: #fff;
-}
-header .navbar ul li ul li ul{
-    left :200px;
-    top:0;
-}
-header .navbar ul li:focus-within > ul,
-header .navbar ul li:hover > ul{
-    display: initial;
+  nav.navbar ul li:hover > ul,
+  nav.navbar ul li:focus-within > ul {
+    display: block;
+  }
 
+  nav.navbar ul li ul li a {
+    padding: 0.5rem 1rem;
+  }
+}
+a {
+  text-decoration: none;
+  color: inherit; /* agar kerak bo'lsa: matn rangi elementdan meros bo'lsin */
 }
 
-#menu-bar{
-    display: none;
-}
-header label{
-    font-size: 20px;
-    color: #333;
-    cursor: pointer;
-    display: none;
+/* Menyudagi linklar */
+nav.navbar ul li a {
+  text-decoration: none;
+  color: #00093c;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-/* <!------------------------------------- /header --------------------------------- --> */
-/* ---------------------labguage----------------------------- */
-.language-button {
-    transition: transform 0.3s ease, background-color 0.3s ease;
+/* Hover holatda ham chiziq chiqmasin, faqat rang o'zgaradi */
+nav.navbar ul li a:hover {
+  text-decoration: none;
+  color: #000000;
 }
 
-.language-button:hover {
-    transform: scale(1.1);
-    background-color: #1d4ed8;
+/* Footer ichidagi linklar (agar kerak bo‘lsa) */
+footer a {
+  text-decoration: none;
+  color: inherit;
 }
-/* -------------------------------------labguage----------------------- */
- /*-------------------------------------- carusel mehmonxona ---------------------- */
- .carousel {
-    position: relative;
-    /* height: 800px; */
-    margin-top: auto;
-    margin: 0 auto;
-    width: 100%;
-    /* max-width: 800px; */
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
-    margin-bottom: 10px;
+
+/* Banner ichidagi tugma (link bo'lsa) */
+.banner-button a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Dropdown menyularidagi linklar */
+nav.navbar ul li ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Dropdown link hover */
+nav.navbar ul li ul li a:hover {
+  background-color: #1e3a8a;
+  text-decoration: none;
+}
+
+.carousel {
+  position: relative;
+  margin: 20px auto 10px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
 
 .carousel-slide {
-    min-width: 100%;
-    transition: opacity 0.5s ease-in-out;
+  min-width: 100%;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .carousel-slide img {
-    width: 100%;
-    display: block;
+  width: 100%;
+  display: block;
 }
 
 .carousel-buttons {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: auto; /* tugmalar bosilishi mumkin */
 }
 
 .carousel-button {
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    pointer-events: all;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
 }
 
 .carousel-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
+/* ============================== */
+/*  MAP CONTAINER */
+/* ============================== */
 
- /*-------------------------------------- carusel mehmonxona ---------------------- */
-/* -----------------------------------------map css----------------------------- */
-.container{
-    position: bottom;
-    max-width: 90%;
-    margin: 0 auto;
-    height: 500px;
-    padding: 40px 20px;
-    background-color: #fff;
-    box-shadow: 0 4px  8px rgba(0, 0, 0.1);
-    border-radius: 10px;
-    /* margin-bottom: 20px; */
-}
-.container h1{
-    text-align: center;
-    flex: 28px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 30px;
-}
-.container .map-container{
-    position: relative;
-    width: 100%;
-    height: 50%;
-    padding-bottom: 26.25%;
-}
-.container .map-container iframe{
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 90%;
-     border: none;
-     border-radius: 10px;
-
-}
-.container a{
-    display: inline-block;
-    background: #4caf50;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    transition: background-color 0.3s ease-in-out;
-
-}
-.container a:hover{
-    background-color: #45a049;
-
-}
-/* -----------------------------------------/map css----------------------------- */
-/* --------------------------------footer--------------------------------------------------- */
-
-footer .row .col {
-    flex-basis: 23%;
-    padding: 10px;
-    min-width: 250px;
+.container {
+  position: relative;
+  max-width: 90%;
+  margin: 0 auto 100px; /* pastda footer uchun bo'sh joy */
+  padding: 40px 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  /* height olib tashlandi, chunki ichidagi .map-container balandligini nisbat bilan boshqaramiz */
 }
 
-footer .row .col .logot {
-    width: 80px;
-    margin-bottom: 30px;
-    filter: brightness(0) invert(1); /* oq rangli logotip uchun */
+.container h1 {
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
 }
 
-.col h3 {
-    font-size: 1.4rem;
-    margin-bottom: 30px;
-    position: relative;
-    text-transform: uppercase;
-    color: #66a3ff; /* yorqin ko‘k sarlavha */
+.container .map-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 nisbati */
+  height: 0; /* padding-bottom orqali balandlik aniqlanadi */
+  border-radius: 10px;
+  overflow: hidden; /* radiusni iframe ga ham ta’sir qilishi uchun */
 }
 
-.underline {
-    width: 60px;
-    height: 4px;
-    background-color: #3399ff;
-    border-radius: 3px;
+.container .map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
+.container a {
+  display: inline-block;
+  background: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 10px 0;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.container a:hover {
+  background-color: #45a049;
+}
+
+/* Footer */
+footer {
+  background-color: #1e293b; /* dark slate */
+  color: white;
+  padding: 3rem 1rem 2rem;
+  font-size: 0.9rem;
+}
+
+footer .row {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+footer .col {
+  flex: 1 1 250px;
+  min-width: 220px;
+}
+
+footer .col img.logot {
+  max-width: 140px;
+  margin-bottom: 1rem;
+}
+
+footer .col h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-bottom: 0.25rem;
+}
+
+footer .underline span {
+  display: block;
+  height: 3px;
+  width: 40px;
+  background-color: #2563eb;
+  border-radius: 5px;
+}
+
+footer .email-id {
+  margin-top: 0.25rem;
+  font-weight: 600;
+  color: #93c5fd;
+}
+
+footer h4 {
+  margin-top: 0.25rem;
+  font-weight: 700;
+  color: #60a5fa;
+}
+
+footer form {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+footer form i {
+  margin-right: 0.5rem;
+  color: #60a5fa;
+}
+
+footer form input[type="email"] {
+  flex: 1;
+  padding: 0.4rem 0.75rem;
+  border-radius: 9999px;
+  border: none;
+  outline: none;
+}
+
+footer form button {
+  background-color: #2563eb;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  color: white;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+footer form button:hover {
+  background-color: #1d4ed8;
+}
+
+footer .social-icons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+footer .social-icons i {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+footer .social-icons i:hover {
+  color: #2563eb;
+}
+
+footer hr {
+  border: 0.5px solid #334155;
+  margin: 2rem 0 1rem;
+}
+
+footer p.copyright {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav.navbar {
+    display: none;
+  }
+  #menu-bar:checked + label + nav.navbar {
+    display: block;
     position: absolute;
-    bottom: -10px;
+    background: white;
+    top: 96px;
     left: 0;
-    overflow: hidden;
-}
-
-.underline span {
-    width: 15px;
-    height: 100%;
-    background: #66a3ff;
-    border-radius: 3px;
-    position: absolute;
-    top: 0;
-    left: 10px;
-    animation: moving 2s linear infinite;
-}
-
-@keyframes moving {
-    0% {
-        left: -20px;
-    }
-    100% {
-        left: 100%;
-    }
-}
-
-footer p,
-footer .email-id,
-footer h4 {
-    color: #d0dfff;
-    margin: 8px 0;
-}
-
-.email-id {
-    font-weight: 600;
-    border-bottom: 1px solid #3399ff;
-    padding-bottom: 5px;
-    width: fit-content;
-}
-
-footer h4 {
-    color: #66a3ff;
-    margin-top: 12px;
-}
-
-form {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #3399ff;
-    margin-bottom: 50px;
-    padding-bottom: 10px;
-}
-
-form .fa-solid {
-    font-size: 18px;
-    margin-right: 12px;
-    color: #3399ff;
-}
-
-form input {
-    width: 100%;
+    right: 0;
+    padding: 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  nav.navbar ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  nav.navbar ul li {
+    margin-bottom: 0.5rem;
+  }
+  nav.navbar ul li ul {
+    position: static;
     background: transparent;
-    color: #cdd9ff;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    padding: 8px 0;
+    margin: 0.5rem 0 0 1rem;
+    padding: 0;
+    display: none !important;
+  }
+  nav.navbar ul li:hover > ul,
+  nav.navbar ul li:focus-within > ul {
+    display: block !important;
+  }
+  .menu-icon {
+    display: block;
+  }
 }
-
-form button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-}
-
-form button .fa-arrow-right {
-    font-size: 18px;
-    color: #3399ff;
-    transition: color 0.3s ease;
-}
-
-form button:hover .fa-arrow-right {
-    color: #66a3ff;
-}
-
-.social-icons .fa-brands {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 42px;
-    font-size: 20px;
-    color: #3399ff;
-    background: #1b2a4d;
-    margin-right: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.social-icons .fa-brands:hover {
-    color: #66a3ff;
-    background: #2d3b66;
-}
-
-hr {
-    width: 90%;
-    border: none;
-    border-bottom: 1px solid #3399ff;
-    margin: 20px auto;
-}
-
-.copyrigh {
-    text-align: center;
-    color: #99bbff;
-    font-size: 0.9rem;
-    margin-top: 10px;
-}
-
-/* --------------------------------responsive--------------------------------------- */
-@media (max-width: 991px) {
-    footer .row .col {
-        flex-basis: 48%;
-        margin-bottom: 30px;
-    }
-}
-
-@media (max-width: 700px) {
-    footer {
-        padding: 50px 20px 30px;
-        border-top-left-radius: 60px;
-    }
-
-    footer .row .col {
-        flex-basis: 100%;
-    }
-}
-/* --------------------------------footer--------------------------------------------------- */
-
-/*========================================= responsive================================= */
-@media(max-width:991px){
-    /* --------------------------------res header------------------------- */
-    header{
-        padding: 20px;
-    
-    }
-    header label{
-        display: initial;
-    }
-    header .navbar{
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #fff;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-        display: none;
-    }
-    header .navbar  ul li{
-        width:  100%;
-
-    }
-    header .navbar  ul li ul{
-        position: relative;
-        width: 100%;
-        list-style-type: none;
-        padding: 0;
-        
-    
-    }
-    header .navbar  ul li ul li{
-        background: #eee;
-        display: block;
-        margin-bottom: 3px;
-        
-
-    }
-    header .navbar  ul li ul li ul{
-        width: 100%;
-
-    }
-    #menu-bar:checked~.navbar{
-        display: initial;
-
-    }
-}
-    /* ------------------/header--------------- */
-    /* ----------------------------responsive---------------------- */
-@media (max-width: 600px) {
-    .carousel-button {
-        padding: 8px;
-        margin-top: auto;
-    }
-}
-    /* ----------------------------/responsive---------------------- */
- 
-
-    /* --------------------res footer--------------------- */
-@media(max-width:700px){
-    footer{
-        bottom: unset;
-    }
-    footer .row .col{
-        flex-basis: 100%;
-
-    }
-    footer .row .col:nth-child(2)footer .row .col:nth-child(3){
-        flex-basis: 100%;
-
-    }
-        
-    }
-    
-    /* ---------------------- /footer--------------- */
-
