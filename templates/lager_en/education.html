@@ -20,22 +20,22 @@
     <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
         <ul>
-            <li><a href="{% url 'ru:основной' %}" target="_blank" rel="noopener noreferrer">Основной</a></li>
+            <li><a href="{% url 'en:home_page' %}" target="_blank" rel="noopener noreferrer">Home</a></li>
             <li class="dropdown">
-                <a href="#" class="dropbtn">Кампус <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul class="dropdown-content">
-                    <li><a href="{% url 'ru:гостиницы' %}" target="_blank" rel="noopener noreferrer">Гостиницы</a></li>
-                    <li><a href="{% url 'ru:зона_отдыха' %}" target="_blank" rel="noopener noreferrer">Зона Оотдыха</a></li>
+                    <li><a href="{% url 'en:hotel_section_page' %}" target="_blank" rel="noopener noreferrer">Hotels</a></li>
+                    <li><a href="{% url 'en:recreation_zone_page' %}" target="_blank" rel="noopener noreferrer">Recreation Zones</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropbtn">Мероприятия <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="#" class="dropbtn">Events <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul class="dropdown-content">
-                    <li><a href="{% url 'ru:деятельность' %}" target="_blank" rel="noopener noreferrer">Деятельность</a></li>
-                    <li><a href="{% url 'ru:академический_отдел' %}" target="_blank" rel="noopener noreferrer">Учебный отдел</a></li>
+                    <li><a href="{% url 'en:activity_page' %}" target="_blank" rel="noopener noreferrer">Activities</a></li>
+                    <li><a href="{% url 'en:education_page' %}" target="_blank" rel="noopener noreferrer">Education</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'ru:новости' %}">Новости</a></li>
+            <li><a href="{% url 'en:news_page' %}">News</a></li>
         </ul>
     </nav>
 </header>
@@ -44,13 +44,13 @@
     <div class="card-container">
         {% for education in educations %}
         <div class="card">
-            <a href="{% url 'education_detail' education.id %}">
+            <a href="{% url 'en:education_detail' education.id %}">
                 <img src="{{ education.image.url }}" alt="Camp Image" style="width: 400px; height: 300px;">
             </a>
             <div class="card-content">
                 <h2 class="card-title">{{ education.title|truncatechars:30 }}</h2>
                 <p class="card-description">{{ education.description|truncatechars:40 }}</p>
-                <a href="{% url 'education_detail' education.id %}" class="btn">More</a>
+                <a href="{% url 'en:education_detail' education.id %}" class="btn">More</a>
             </div>
         </div>
         {% endfor %}
