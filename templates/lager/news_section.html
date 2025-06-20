@@ -13,29 +13,27 @@
 <body class="bg-gray-50">
 
 <!-- ======================= HEADER ======================= -->
-<header class="fixed top-0 left-0 right-0 bg-white shadow z-50 px-7 flex items-center justify-between h-24">
+<header class="header">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain"/>
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img" />
     </a>
-    <input type="checkbox" id="menu-bar" class="hidden"/>
-    <label for="menu-bar" class="menu-icon text-2xl text-slate-700 cursor-pointer md:hidden">
-        <i class="fa-solid fa-bars"></i>
-    </label>
-    <nav class="navbar hidden md:flex gap-6">
-        <ul class="flex gap-6 list-none">
-            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank">Asosiy</a></li>
-            <li class="relative group">
+    <input type="checkbox" id="menu-bar" class="hidden" />
+    <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer">Asosiy</a></li>
+            <li class="dropdown">
                 <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                <ul class="absolute left-0 top-full hidden group-hover:block bg-blue-900 rounded p-2 min-w-[12rem] z-50">
-                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank">Mehmon xonalar</a></li>
-                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank">Istirohat zona</a></li>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer">Mehmon xonalar</a></li>
+                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer">Istirohat zona</a></li>
                 </ul>
             </li>
-            <li class="relative group">
+            <li class="dropdown">
                 <a href="#" class="dropbtn">Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                <ul class="absolute left-0 top-full hidden group-hover:block bg-blue-900 rounded p-2 min-w-[12rem] z-50">
-                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank">Faoliyat</a></li>
-                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank">O'quv Bo'lim</a></li>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer">Faoliyat</a></li>
+                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer">O'quv Bo'lim</a></li>
                 </ul>
             </li>
             <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>

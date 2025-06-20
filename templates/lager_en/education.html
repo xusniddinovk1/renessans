@@ -15,42 +15,28 @@
 <!------------------------------------- header --------------------------------- -->
 <header class="header">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain"/>
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img" />
     </a>
-    <input type="checkbox" id="menu-bar" class="hidden"/>
-    <label for="menu-bar" class="text-2xl text-gray-700 cursor-pointer md:hidden"><i
-            class="fa-solid fa-bars"></i></label>
-
-    <nav class="navbar hidden md:block">
-        <ul class="flex space-x-6">
-            <li><a href="{% url 'en:home_page' %}" target="_blank" rel="noopener noreferrer"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">Main</a></li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Kampus <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'en:hotel_section_page' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Hotels</a></li>
-                    <li><a href="{% url 'en:recreation_zone_page' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Recreation Zones</a></li>
+    <input type="checkbox" id="menu-bar" class="hidden" />
+    <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer">Asosiy</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer">Mehmon xonalar</a></li>
+                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer">Istirohat zona</a></li>
                 </ul>
             </li>
-            <li class="relative group">
-                <a href="#"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block flex items-center gap-1">
-                    Actions <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </a>
-                <ul class="absolute left-0 top-full bg-blue-700 rounded-lg mt-1 hidden group-hover:block w-48">
-                    <li><a href="{% url 'en:activity_page' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Events</a></li>
-                    <li><a href="{% url 'en:education_page' %}" target="_blank" rel="noopener noreferrer"
-                           class="block px-4 py-2 text-white hover:bg-blue-800 rounded-lg">Academic Department</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer">Faoliyat</a></li>
+                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer">O'quv Bo'lim</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'en:news_page' %}"
-                   class="text-lg text-[#00093c] hover:text-black rounded-lg px-4 py-3 block">News</a></li>
+            <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
         </ul>
     </nav>
 </header>
