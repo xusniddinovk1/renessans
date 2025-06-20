@@ -12,79 +12,69 @@
 </head>
 <body>
 <!------------------------------------- header --------------------------------- -->
-<header>
+<header class="header">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo">
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img"/>
     </a>
-    <div class="relative">
-        <button id="languageDropdown"
-                class="language-button bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg flex items-center gap-2">
-            🌐 Язык
-        </button>
-
-        <div id="languageMenu" class="absolute hidden bg-white shadow-lg rounded-lg mt-2 w-48">
-            <ul class="text-gray-700">
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="en">English</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="uz">O'zbek</li>
-                <li class="px-4 py-2 hover:bg-gray-200 cursor-pointer" data-lang="es">Ruscha</li>
-            </ul>
-        </div>
-    </div>
-    <input type="checkbox" id="menu-bar">
-    <label for="menu-bar"><i class="fa-solid fa-bars"></i></label>
+    <input type="checkbox" id="menu-bar" class="hidden"/>
+    <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
         <ul>
-            <li><a href="{% url 'ru:основной' %}" target="_blank">Основной</a></li>
-            <li><a href="#">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                <ul>
-                    <li><a href="{% url 'ru:гостиницы' %}" target="_blank">Гостиницы</a></li>
-                    <li><a href="{% url 'ru:зона_отдыха' %}" target="_blank">Зона отдыха</a></li>
+            <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer">Asosiy</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer">Mehmon
+                        xonalar</a></li>
+                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer">Istirohat
+                        zona</a></li>
                 </ul>
             </li>
-            <li><a href="#">События<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                <ul>
-                    <li><a href="{% url 'ru:деятельность' %}" target="_blank">Деятельность</a></li>
-                    <li><a href="{% url 'ru:академический_отдел' %}" target="_blank">Академический отдел</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer">Faoliyat</a></li>
+                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer">O'quv Bo'lim</a>
+                    </li>
                 </ul>
             </li>
-            <li><a href="{% url 'ru:новости' %}">Новости</a></li>
+            <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
         </ul>
     </nav>
-
 </header>
 <!------------------------------------- /header --------------------------------- -->
 <!-- -------------------------------------- main ---------------------------->
 <!-- Banner -->
 <div class="banner">
-    <div class="banner-text">Место радости, дружбы и незабываемых моментов</div>
-    <!-- Batafsil tugmasi pastda joylashadi -->
-    <button class="banner-button" id="bannerButton"><a href="{% url 'ru:академический_отдел' %}">more</a></button>
+    <div class="banner-text">Quvonch, Do`stlik va unutilmas damlar maskani</div>
+    <button class="banner-button"><a href="{% url 'uz:oquvbolim' %}">more</a></button>
 </div>
 
-<!-- ---------------------------------------/main----------------------------------- -->
-<!-- -------------------------------------------gap---------------------------------- -->
+<!-- Biz haqimizda -->
 <div id="linkkeladi" class="text-box">
     <h1>О нас</h1>
     {% if text %}
-        <p>{{ text.context|linebreaks }}</p>
+    <p>{{ text.context|linebreaks }}</p>
     {% else %}
-        <p>Информация не найдена</p>
+    <p>Информация не найдена</p>
     {% endif %}
 </div>
-<!-- -------------------------------------------gap---------------------------------- -->
-<!-- -----------------------------------grid galareya--------------------------------- -->
+
+<!-- Grid galereya -->
 <div class="grid-gallery">
     {% for photo in photos %}
     <div class="grid-item">
-        <a href="#" class="grid-link" onclick="openModal('{{ photo.image.url }}')">
-            <img src="{{ photo.image.url }}" alt="">
+        <a href="#" class="grid-link" onclick="openModal('{{ photo.image.url }}'); return false;">
+            <img src="{{ photo.image.url }}" alt="Gallery Image {{ forloop.counter }}"/>
         </a>
     </div>
     {% endfor %}
 </div>
-<div class="custom-overlay">
+
+<!-- Overlay -->
+<div class="custom-overlay" style="display: none;">
     <span class="close">&times;</span>
-    <img src="" alt="Gallery Image" id="overlayImage">
+    <img src="" alt="Gallery Image" id="overlayImage"/>
     <div class="controls">
         <button id="prevBtn">&#8592;</button>
         <button id="nextBtn">&#8594;</button>
@@ -97,28 +87,20 @@
 <footer>
     <div class="row">
         <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="" class="logot">
-            <p>Агентство специализированных образовательных учреждений
-            </p>
+            <img src="/media/logo_pastki_qism.png" alt="Footer Logo" class="logot"/>
+            <p>Ixtisoslashtirilgan ta’lim muassasalari agentligi</p>
         </div>
         <div class="col">
-            <h3>office
-                <div class="underline"><span></span></div>
-            </h3>
-            <p>ITPL road</p>
-            <p>Адрес</p>
-            <p>Почтовый индекс</p>
+            <h3>Office</h3>
+            <p>Address</p>
             <p class="email-id">renessans@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
-
         <div class="col">
-            <h3>NEWsletter
-                <div class="underline"><span></span></div>
-            </h3>
+            <h3>Newsletter</h3>
             <form>
                 <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Enter your email" required>
+                <input type="email" placeholder="Enter your email" required/>
                 <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
             </form>
             <div class="social-icons">
@@ -129,9 +111,8 @@
             </div>
         </div>
     </div>
-    <hr>
-    <p class="copyrigh">2025</p>
-    </hr>
+    <hr/>
+    <p class="copyright">2025</p>
 </footer>
 <!-- --------------------------------------/footter----------------------------------- -->
 
@@ -187,7 +168,6 @@
         }
       }
     });
-
 </script>
 </body>
 </html>
