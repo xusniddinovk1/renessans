@@ -5,20 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'lager/css/style-news.css' %}">
+    <title>Istirohat zonalari</title>
+    <link rel="stylesheet" href="{% static 'lager/css/recreation_zone.css' %}">
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-
-            crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-    <title>Document</title>
 </head>
-<body>
-<!------------------------------------- header --------------------------------- -->
+<body class="bg-gray-50">
+
+<!-- ======================= HEADER ======================= -->
 <header class="header">
     <a href="#" class="logo">
         <img src="/media/logo/logo.JPG" alt="company logo">
@@ -44,55 +38,55 @@
         </ul>
     </nav>
 </header>
-<!------------------------------------- /header --------------------------------- -->
-<!------------------------------------------ yangilikar-----------------------------  -->
-<div class="swiper news-slider">
-    <div class="swiper-wrapper">
+<!-- ======================= CARD SECTION ======================= -->
+<div class="container mt-36 px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for news in news_item %}
-        <div class="swiper-slide card">
-            <div class="swiper inner-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="{{ news.image.url }}" alt="">
-                    </div>
-                </div>
+        <article class="relative overflow-hidden group">
+            <img src="{{ news.image.url }}" alt="image" class="w-full h-52 object-cover rounded-xl shadow"/>
+            <div class="absolute bottom-[-3rem] left-1/2 transform -translate-x-1/2 group-hover:bottom-4 transition-all duration-500 bg-gradient-to-r from-blue-900 to-orange-800 text-white rounded-lg px-4 py-2 w-11/12 opacity-0 group-hover:opacity-100">
+                <span class="block text-sm font-semibold mb-1">{{ news.title }}</span>
+                <h2 class="text-sm">{{ news.content|truncatechars:20 }}</h2>
+                <button class="mt-2 bg-white text-blue-900 font-semibold px-3 py-1 rounded hover:bg-slate-200 transition text-sm"
+                        onclick="showModal('{{ news.title }}', '{{ news.content|escapejs }}')">Подробнее
+                </button>
             </div>
-            <div class="news-title">{{ news.title|truncatechars:30 }}</div>
-            <div class="news-summary">{{ news.content|truncatechars:40 }}</div>
-            <button class="btn"
-                    onclick="showModal('{{ news.title }}', '{{ news.content|escapejs }}')">
-                Подробнее
-            </button>
-        </div>
+        </article>
         {% endfor %}
     </div>
-
+</div>
+<!-- ======================= MODAL ======================= -->
+<div id="newsModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-[9999]">
+    <div class="modal-content bg-white p-6 rounded-lg max-w-xl w-11/12 relative overflow-y-auto max-h-[80vh]">
+        <span class="modal-close absolute top-3 right-4 text-2xl cursor-pointer" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle" class="text-xl font-bold mb-4"></h2>
+        <p id="modalText" class="mb-4 break-words whitespace-pre-wrap"></p>
+        <div class="flex gap-4 justify-center text-blue-600 text-xl">
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
 </div>
 
-<!-- -----------------------------------/Yangiliklar ---------------------------------- -->
-
-<!-- --------------------------------------footter----------------------------------- -->
+<!-- ======================= FOOTER ======================= -->
 <footer>
     <div class="row">
         <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="Logo" class="logot">
-            <p>Агентство специализированных учебных заведений</p>
+            <img src="/media/logo_pastki_qism.png" alt="Footer Logo" class="logot"/>
+            <p>Агентство специализированных образовательных учреждений</p>
         </div>
         <div class="col">
-            <h3>Office
-                <div class="underline"><span></span></div>
-            </h3>
+            <h3>Office</h3>
             <p>Address</p>
             <p class="email-id">renessans@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
         <div class="col">
-            <h3>Newsletter
-                <div class="underline"><span></span></div>
-            </h3>
+            <h3>Newsletter</h3>
             <form>
                 <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Enter your email" required>
+                <input type="email" placeholder="Enter your email" required/>
                 <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
             </form>
             <div class="social-icons">
@@ -103,82 +97,32 @@
             </div>
         </div>
     </div>
-    <hr>
+    <hr/>
     <p class="copyright">© 2025</p>
 </footer>
-<!-- --------------------------------------/footter----------------------------------- -->
 
+<!-- ======================= SCRIPT ======================= -->
 <script>
-    const dropdownButton = document.getElementById('languageDropdown');
-    const languageMenu = document.getElementById('languageMenu');
-    const languageItems = languageMenu.querySelectorAll('li');
+    function showModal(title, text) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalText').innerText = text;
+        document.getElementById('newsModal').classList.remove('hidden');
+        document.getElementById('newsModal').classList.add('flex');
+    }
 
-    dropdownButton.addEventListener('click', () => {
-        languageMenu.classList.toggle('hidden');
-    });
+    function closeModal() {
+        document.getElementById('newsModal').classList.add('hidden');
+        document.getElementById('newsModal').classList.remove('flex');
+    }
 
-    languageItems.forEach(item => {
-        item.addEventListener('click', (event) => {
-            const selectedLang = event.target.getAttribute('data-lang');
-            alert(`Language switched to: ${selectedLang}`);
-            languageMenu.classList.add('hidden');
-        });
-    });
-
-    // Close menu if clicked outside
-    document.addEventListener('click', (event) => {
-        if (!dropdownButton.contains(event.target) && !languageMenu.contains(event.target)) {
-            languageMenu.classList.add('hidden');
+    // Optional: For dropdown click (if needed on mobile)
+    document.addEventListener('click', function(e) {
+        const menu = document.querySelector('.navbar');
+        const checkbox = document.getElementById('menu-bar');
+        if (!menu.contains(e.target) && !checkbox.contains(e.target)) {
+            checkbox.checked = false;
         }
     });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script>
-    new Swiper(".news-slider", {
-     slidesPerView: 1,
-     spaceBetween: 20,
-     loop: true,
-     breakpoints: {
-       640: { slidesPerView: 1 }, // kichik mobilda 1 ta
-       768: { slidesPerView: 2 }, // planshetlarda 2 ta
-       1024: { slidesPerView: 3 } // katta ekranda 3 ta
-     }
-   });
-
-
-       document.querySelectorAll(".inner-swiper").forEach(el => {
-         new Swiper(el, {
-           slidesPerView: 1,
-           loop: true,
-           autoplay: {
-             delay: 2500,
-             disableOnInteraction: false
-           }
-         });
-       });
-
-       function showModal(title, text) {
-         document.getElementById('modalTitle').innerText = title;
-         document.getElementById('modalText').innerText = text;
-         document.getElementById('newsModal').style.display = 'flex';
-       }
-
-       function closeModal() {
-         document.getElementById('newsModal').style.display = 'none';
-       }
-</script>
-
 </body>
-<div class="modal" id="newsModal">
-    <div class="modal-content" id="modalContent">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <h2 id="modalTitle"></h2>
-        <p id="modalText"></p>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-        </div>
-    </div>
-</div>
 </html>

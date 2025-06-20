@@ -1,106 +1,99 @@
 <!DOCTYPE html>
 {% load static %}
 {% load humanize %}
-<html lang="uz">
+<html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="{% static 'lager/css/education_detail.css' %}"/>
+    <meta charset="UTF-8">
     <title>{{ education.title }}</title>
+    <link rel="stylesheet" href="{% static 'lager/css/education_detail.css' %}">
+    <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-<div class="container">
-    <div class="image-wrapper" id="imageThumb">
-        <img src="{{ education.image.url }}" alt="{{ education.title }}">
-    </div>
-    <div class="content">
-        <h1>{{ education.title }}</h1>
-        <p>{{ education.description }}</p>
-    </div>
-</div>
-
-<!-- Modal oynasi -->
-<div id="imageModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" id="closeModal">&times;</span>
-        <img src="{{ education.image.url }}" alt="{{ education.title }}">
-    </div>
-</div>
-
-<footer class="bg-gradient-to-r from-[#00093c] to-[#2d0b00] text-white py-16 px-6 rounded-t-[125px] text-xs leading-5">
-    <div class="row max-w-7xl mx-auto flex flex-wrap justify-between">
-        <div class="col flex-1 min-w-[250px] mb-8">
-            <img src="/media/logo_pastki_qism.png" alt="Logo" class="logot w-20 mb-8"/>
-            <p>Агентство специализированных образовательных учреждений</p>
+<main class="activities-container">
+    <div class="activity-card">
+        <div class="activity-image">
+            <img src="{{ education.image.url }}" alt="{{ education.title|default:'Education image' }}" loading="lazy"
+                 onclick="openModal(this)">
         </div>
-        <div class="col flex-1 min-w-[250px] mb-8">
-            <h3 class="relative w-fit mb-10 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[5px] after:bg-gray-500 after:rounded-sm">
-                office
+        <div class="activity-text">
+            <h1>{{ education.title }}</h1>
+            <p>{{ education.description }}</p>
+        </div>
+    </div>
+</main>
+
+<!-- Modal -->
+<div id="imageModal" class="modal" role="dialog" aria-modal="true" tabindex="-1" style="display: none;">
+    <span id="closeModal" role="button" aria-label="Close Modal" tabindex="0">&times;</span>
+    <img id="modalImg" class="modal-content" alt="Katta rasm">
+</div>
+
+<footer>
+    <div class="row">
+        <div class="col">
+            <img src="/media/logo_pastki_qism.png" alt="Logo" class="logot">
+            <p>Агентство специализированных учебных заведений</p>
+        </div>
+        <div class="col">
+            <h3>Office
+                <div class="underline"><span></span></div>
             </h3>
-            <p>ITPL road</p>
-            <p>Manzil</p>
-            <p>Pochta Indeksi</p>
-            <p class="email-id border-b border-gray-400 my-5">renessans@gmail.com</p>
+            <p>Address</p>
+            <p class="email-id">renessans@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
-        <div class="col flex-1 min-w-[250px] mb-8">
-            <h3 class="relative w-fit mb-10 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[5px] after:bg-gray-500 after:rounded-sm">
-                NEWsletter
+        <div class="col">
+            <h3>Newsletter
+                <div class="underline"><span></span></div>
             </h3>
-            <form class="flex items-center border-b border-gray-400 mb-12 pb-4">
-                <i class="fa-solid fa-envelope mr-3 text-lg"></i>
-                <input type="email" placeholder="Enter your email" required
-                       class="bg-transparent outline-none flex-grow text-gray-300"/>
-                <button type="submit" class="outline-none ml-3 cursor-pointer">
-                    <i class="fa-solid fa-arrow-right text-gray-300"></i>
-                </button>
+            <form>
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
             </form>
-            <div class="social-icons flex space-x-4">
-                <i class="fa-brands fa-facebook cursor-pointer w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-xl"></i>
-                <i class="fa-brands fa-instagram cursor-pointer w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-xl"></i>
-                <i class="fa-brands fa-telegram cursor-pointer w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-xl"></i>
-                <i class="fa-brands fa-twitter cursor-pointer w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-xl"></i>
+            <div class="social-icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-twitter"></i>
             </div>
         </div>
     </div>
-    <hr class="my-4 border-gray-400 w-11/12 mx-auto"/>
-    <p class="copyrigh text-center">2025</p>
+    <hr>
+    <p class="copyright">© 2025</p>
 </footer>
-
 <script>
-    const imageThumb = document.getElementById('imageThumb');
-    const modal = document.getElementById('imageModal');
-    const closeBtn = document.getElementById('closeModal');
+    function openModal(imgElement) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
 
-    // Rasm bosilganda modalni ochish
-    imageThumb.addEventListener('click', () => {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // orqa scrollni o'chirish
+      modalImg.src = imgElement.src;
+      modalImg.alt = imgElement.alt;
+
+      modal.style.display = 'flex'; // modalni ko'rsatish
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.style.display = 'none'; // modalni yopish
+    }
+
+    // X belgini bosganda yopish
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+
+    // ESC tugmasi orqali yopish
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
     });
 
-    // Modalni yopish tugmasi bosilganda
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    });
-
-    // Modal oynaning fon qismiga bosilganda ham yopish
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    });
-
-    // ESC tugmasi bilan yopish
-    document.addEventListener('keydown', (e) => {
-        if (e.key === "Escape" && modal.style.display === 'flex') {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+    // Modal orqa foniga bosganda yopish
+    document.getElementById('imageModal').addEventListener('click', function (e) {
+      if (e.target.id === 'imageModal') {
+        closeModal();
+      }
     });
 </script>
-
 </body>
 </html>
