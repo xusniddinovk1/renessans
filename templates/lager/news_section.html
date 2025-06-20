@@ -12,8 +12,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-    <title>Document</title>
+    <title>Yangiliklar</title>
 </head>
 <body>
 <!------------------------------------- header --------------------------------- -->
@@ -21,14 +20,11 @@
     <a href="#" class="logo">
         <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img"/>
     </a>
-
     <input type="checkbox" id="menu-bar" class="hidden"/>
     <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
-
     <nav class="navbar">
         <ul>
             <li><a href="{% url 'uz:asosiy_sahifa' %}" target="_blank" rel="noopener noreferrer">Asosiy</a></li>
-
             <li class="dropdown">
                 <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul class="dropdown-content">
@@ -38,7 +34,6 @@
                         zona</a></li>
                 </ul>
             </li>
-
             <li class="dropdown">
                 <a href="#" class="dropbtn">Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul class="dropdown-content">
@@ -47,7 +42,6 @@
                     </li>
                 </ul>
             </li>
-
             <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
         </ul>
     </nav>
@@ -74,9 +68,19 @@
         </div>
         {% endfor %}
     </div>
-
 </div>
-
+<div class="modal" id="newsModal">
+    <div class="modal-content" id="modalContent">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalText"></p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
+</div>
 <!-- -----------------------------------/Yangiliklar ---------------------------------- -->
 
 <!-- --------------------------------------footter----------------------------------- -->
@@ -88,9 +92,7 @@
         </div>
         <div class="col">
             <h3>Office</h3>
-            <p>ITPL road</p>
             <p>Address</p>
-            <p>Pochta Indeksi</p>
             <p class="email-id">renessans@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
@@ -113,7 +115,6 @@
     <p class="copyright">2025</p>
 </footer>
 <!-- --------------------------------------/footter----------------------------------- -->
-
 <script>
     const dropdownButton = document.getElementById('languageDropdown');
     const languageMenu = document.getElementById('languageMenu');
@@ -173,18 +174,5 @@
          document.getElementById('newsModal').style.display = 'none';
        }
 </script>
-
 </body>
-<div class="modal" id="newsModal">
-    <div class="modal-content" id="modalContent">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <h2 id="modalTitle"></h2>
-        <p id="modalText"></p>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-        </div>
-    </div>
-</div>
 </html>

@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="{% static 'lager/css/activity.css' %}"/>
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
-    <title>Activities</title>
+    <title>Faoliyatlar</title>
 </head>
 <body>
-
 <!-- Header -->
 <header class="header">
     <a href="#" class="logo">
@@ -39,7 +38,6 @@
         </ul>
     </nav>
 </header>
-
 <!-- Main Content -->
 <main class="activities-container">
     {% for activity in activities %}
@@ -63,7 +61,6 @@
     <span id="closeModal" role="button" aria-label="Close Modal" tabindex="0">&times;</span>
     <img id="modalImg" class="modal-content" alt="Katta rasm">
 </div>
-
 <!-- Footer -->
 <footer>
     <div class="row">
@@ -72,15 +69,17 @@
             <p>Specialized educational institutions agency</p>
         </div>
         <div class="col">
-            <h3>Office<div class="underline"><span></span></div></h3>
-            <p>ITPL road</p>
+            <h3>Office
+                <div class="underline"><span></span></div>
+            </h3>
             <p>Address</p>
-            <p>Pochta Indeksi</p>
             <p class="email-id">renessans@gmail.com</p>
             <h4>+99800000000</h4>
         </div>
         <div class="col">
-            <h3>Newsletter<div class="underline"><span></span></div></h3>
+            <h3>Newsletter
+                <div class="underline"><span></span></div>
+            </h3>
             <form>
                 <i class="fa-solid fa-envelope"></i>
                 <input type="email" placeholder="Enter your email" required>
@@ -97,7 +96,6 @@
     <hr>
     <p class="copyrigh">© 2025</p>
 </footer>
-
 <!-- JavaScript -->
 <script>
     const dropdownButton = document.getElementById('languageDropdown');

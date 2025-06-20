@@ -15,10 +15,10 @@
 <!-- ======================= HEADER ======================= -->
 <header class="fixed top-0 left-0 right-0 bg-white shadow z-50 px-7 flex items-center justify-between h-24">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain" />
+        <img src="/media/logo/logo.JPG" alt="company logo" class="w-24 h-24 object-contain"/>
     </a>
 
-    <input type="checkbox" id="menu-bar" class="hidden" />
+    <input type="checkbox" id="menu-bar" class="hidden"/>
     <label for="menu-bar" class="menu-icon text-2xl text-slate-700 cursor-pointer md:hidden">
         <i class="fa-solid fa-bars"></i>
     </label>
@@ -44,24 +44,23 @@
         </ul>
     </nav>
 </header>
-
 <!-- ======================= CARD SECTION ======================= -->
 <div class="container mt-36 px-6">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for rest_area in rest_areas %}
         <article class="relative overflow-hidden group">
-            <img src="{{ rest_area.image.url }}" alt="image" class="w-full h-52 object-cover rounded-xl shadow" />
+            <img src="{{ rest_area.image.url }}" alt="image" class="w-full h-52 object-cover rounded-xl shadow"/>
             <div class="absolute bottom-[-3rem] left-1/2 transform -translate-x-1/2 group-hover:bottom-4 transition-all duration-500 bg-gradient-to-r from-blue-900 to-orange-800 text-white rounded-lg px-4 py-2 w-11/12 opacity-0 group-hover:opacity-100">
                 <span class="block text-sm font-semibold mb-1">{{ rest_area.title }}</span>
                 <h2 class="text-sm">{{ rest_area.description|truncatechars:20 }}</h2>
                 <button class="mt-2 bg-white text-blue-900 font-semibold px-3 py-1 rounded hover:bg-slate-200 transition text-sm"
-                        onclick="showModal('{{ rest_area.title }}', '{{ rest_area.description|escapejs }}')">Batafsil</button>
+                        onclick="showModal('{{ rest_area.title }}', '{{ rest_area.description|escapejs }}')">Batafsil
+                </button>
             </div>
         </article>
         {% endfor %}
     </div>
 </div>
-
 <!-- ======================= MODAL ======================= -->
 <div id="newsModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-[9999]">
     <div class="modal-content bg-white p-6 rounded-lg max-w-xl w-11/12 relative overflow-y-auto max-h-[80vh]">
@@ -76,41 +75,36 @@
     </div>
 </div>
 <!-- ======================= FOOTER ======================= -->
-<footer class="bg-slate-800 text-white mt-20 py-12 px-6">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-        <div>
-            <img src="/media/logo_pastki_qism.png" alt="Footer Logo" class="w-36 mb-4" />
+<footer>
+    <div class="row">
+        <div class="col">
+            <img src="/media/logo_pastki_qism.png" alt="Footer Logo" class="logot" />
             <p>Specialized educational institutions agency</p>
         </div>
-        <div>
-            <h3 class="text-xl font-bold mb-2">Office</h3>
-            <p>ITPL road</p>
+        <div class="col">
+            <h3>Office</h3>
             <p>Address</p>
-            <p>Pochta Indeksi</p>
-            <p class="text-blue-300 font-semibold">renessans@gmail.com</p>
-            <h4 class="text-blue-400 mt-1 font-bold">+99800000000</h4>
+            <p class="email-id">renessans@gmail.com</p>
+            <h4>+99800000000</h4>
         </div>
-        <div>
-            <h3 class="text-xl font-bold mb-2">Newsletter</h3>
-            <form class="flex items-center gap-2 mt-2">
-                <i class="fa-solid fa-envelope text-blue-400"></i>
-                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 rounded-full text-black" required />
-                <button type="submit" class="bg-blue-600 px-4 py-2 text-white rounded-full hover:bg-blue-700 transition">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
+        <div class="col">
+            <h3>Newsletter</h3>
+            <form>
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Enter your email" required />
+                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
             </form>
-            <div class="flex gap-4 text-xl mt-4">
-                <i class="fab fa-facebook cursor-pointer hover:text-blue-400"></i>
-                <i class="fab fa-instagram cursor-pointer hover:text-pink-400"></i>
-                <i class="fab fa-telegram cursor-pointer hover:text-blue-500"></i>
-                <i class="fab fa-twitter cursor-pointer hover:text-sky-400"></i>
+            <div class="social-icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-twitter"></i>
             </div>
         </div>
     </div>
-    <hr class="my-6 border-slate-600" />
-    <p class="text-center text-sm text-slate-400">© 2025</p>
+    <hr />
+    <p class="copyright">2025</p>
 </footer>
-
 <!-- ======================= SCRIPT ======================= -->
 <script>
     function showModal(title, text) {
@@ -134,6 +128,5 @@
         }
     });
 </script>
-
 </body>
 </html>
