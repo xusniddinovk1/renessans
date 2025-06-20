@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Istirohat zonalari</title>
+    <title>News</title>
     <link rel="stylesheet" href="{% static 'lager/css/recreation_zone.css' %}">
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -51,7 +51,7 @@
                 <span class="block text-sm font-semibold mb-1">{{ news.title }}</span>
                 <h2 class="text-sm">{{ news.content|truncatechars:20 }}</h2>
                 <button class="mt-2 bg-white text-blue-900 font-semibold px-3 py-1 rounded hover:bg-slate-200 transition text-sm"
-                        onclick="showModal('{{ news.title }}', '{{ news.content|escapejs }}')">Batafsil
+                        onclick="showModal('{{ news.title }}', '{{ news.content|escapejs }}')">More
                 </button>
             </div>
         </article>

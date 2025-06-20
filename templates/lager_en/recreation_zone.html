@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="{% static 'lager/css/recreation_zone.css' %}">
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <title>Document</title>
+    <title>Recreation Zones</title>
 </head>
 <body>
 <!------------------------------------- header --------------------------------- -->
@@ -50,7 +49,7 @@
                 <span class="card__description">{{ rest_area.title }}</span>
                 <h2 class="card__title">{{ rest_area.description|truncatechars:20 }}</h2>
                 <button class="btn"
-                        onclick="showModal('{{ rest_area.title }}', '{{ rest_area.description|escapejs }}')">Batafsil
+                        onclick="showModal('{{ rest_area.title }}', '{{ rest_area.description|escapejs }}')">More
                 </button>
             </div>
         </article>
