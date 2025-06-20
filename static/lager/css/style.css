@@ -356,6 +356,7 @@ nav.navbar ul li ul li a:hover {
 }
 
 /* Footer */
+/* === FOOTER === */
 footer {
   background-color: #1e293b; /* dark slate */
   color: white;
@@ -387,14 +388,6 @@ footer .col h3 {
   margin-bottom: 0.5rem;
   position: relative;
   padding-bottom: 0.25rem;
-}
-
-footer .underline span {
-  display: block;
-  height: 3px;
-  width: 40px;
-  background-color: #2563eb;
-  border-radius: 5px;
 }
 
 footer .email-id {
@@ -468,42 +461,4 @@ footer p.copyright {
   text-align: center;
   font-size: 0.875rem;
   color: #94a3b8;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  nav.navbar {
-    display: none;
-  }
-  #menu-bar:checked + label + nav.navbar {
-    display: block;
-    position: absolute;
-    background: white;
-    top: 96px;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  }
-  nav.navbar ul {
-    flex-direction: column;
-    gap: 0;
-  }
-  nav.navbar ul li {
-    margin-bottom: 0.5rem;
-  }
-  nav.navbar ul li ul {
-    position: static;
-    background: transparent;
-    margin: 0.5rem 0 0 1rem;
-    padding: 0;
-    display: none !important;
-  }
-  nav.navbar ul li:hover > ul,
-  nav.navbar ul li:focus-within > ul {
-    display: block !important;
-  }
-  .menu-icon {
-    display: block;
-  }
 }
