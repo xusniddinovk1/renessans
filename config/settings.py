@@ -22,6 +22,7 @@ INSTALLED_APPS = [
 
     'django.contrib.humanize',
 
+    'custom_auth',
     'dashboard',
     'dashboard_en',
     'dashboard_ru',
