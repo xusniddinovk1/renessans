@@ -1,4 +1,4 @@
-/* Umumiy reset va sozlashlar */
+/* ================== RESET & GLOBAL ================== */
 * {
   margin: 0;
   padding: 0;
@@ -8,12 +8,12 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f9f9f9;
-  color: #1e293b; /* dark slate */
+  color: #1e293b; /* Dark slate */
   line-height: 1.6;
-  padding-top: 96px; /* header balandligi uchun joy */
+  padding-top: 96px; /* Header balandligi uchun joy */
 }
 
-/* Header */
+/* ================== HEADER ================== */
 header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -33,20 +33,19 @@ header .logo img {
   object-fit: contain;
 }
 
-/* Menu toggle checkbox */
+/* Menu toggle checkbox (mobile) */
 #menu-bar {
   display: none;
 }
 
-/* Hamburger icon (mobil uchun) */
 .menu-icon {
   font-size: 1.75rem;
   color: #475569;
   cursor: pointer;
-  display: none;
+  display: none; /* Faqat mobil uchun ko‘rsatish kerak */
 }
 
-/* NAVBAR Desktop */
+/* ================== NAVIGATION ================== */
 nav.navbar {
   display: flex;
   gap: 1.5rem;
@@ -56,6 +55,8 @@ nav.navbar ul {
   display: flex;
   gap: 1.5rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 nav.navbar ul li {
@@ -69,13 +70,15 @@ nav.navbar ul li a {
   color: #00093c;
   border-radius: 0.5rem;
   transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
 nav.navbar ul li a:hover {
   background-color: #e0e7ff;
+  color: #000000;
 }
 
-/* Submenu */
+/* Dropdown submenu */
 nav.navbar ul li ul {
   position: absolute;
   top: 100%;
@@ -100,9 +103,10 @@ nav.navbar ul li ul li a {
 
 nav.navbar ul li ul li a:hover {
   background-color: #1e3a8a;
+  text-decoration: none;
 }
 
-/* ========== Responsive ========== */
+/* ================== RESPONSIVE NAVIGATION ================== */
 @media (max-width: 768px) {
   .menu-icon {
     display: block;
@@ -117,7 +121,7 @@ nav.navbar ul li ul li a:hover {
     top: 96px;
     left: 0;
     padding: 1rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   }
 
   #menu-bar:checked + label + nav.navbar {
@@ -151,53 +155,35 @@ nav.navbar ul li ul li a:hover {
     padding: 0.5rem 1rem;
   }
 }
+
+/* ================== LINKS GENERAL ================== */
 a {
   text-decoration: none;
-  color: inherit; /* agar kerak bo'lsa: matn rangi elementdan meros bo'lsin */
+  color: inherit; /* matn rangi ota elementdan meros bo'lsin */
 }
 
-/* Menyudagi linklar */
 nav.navbar ul li a {
-  text-decoration: none;
-  color: #00093c;
-  font-weight: 600;
   transition: color 0.3s ease;
 }
 
-/* Hover holatda ham chiziq chiqmasin, faqat rang o'zgaradi */
 nav.navbar ul li a:hover {
-  text-decoration: none;
   color: #000000;
 }
 
-/* Footer ichidagi linklar (agar kerak bo‘lsa) */
 footer a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Banner ichidagi tugma (link bo'lsa) */
 .banner-button a {
-  text-decoration: none;
   color: white;
-}
-
-/* Dropdown menyularidagi linklar */
-nav.navbar ul li ul li a {
-  text-decoration: none;
-  color: white;
-}
-
-/* Dropdown link hover */
-nav.navbar ul li ul li a:hover {
-  background-color: #1e3a8a;
   text-decoration: none;
 }
 
-/* Banner */
+/* ================== BANNER ================== */
 .banner {
   background: url('/media/asosiy_rasm.jpg') center/cover no-repeat;
-  height: 550px; /* avvalgidan kattaroq balandlik */
+  height: 550px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -214,15 +200,15 @@ nav.navbar ul li ul li a:hover {
   color: white;
   padding: 10px 20px;
   border-radius: 10px;
-  background: rgba(0, 0, 0, 0.3); /* Yarim shaffof qora fon */
-  backdrop-filter: blur(5px);     /* Orqa fonni blur qilish */
-  -webkit-backdrop-filter: blur(5px); /* Safari uchun */
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
   margin-bottom: 1rem;
 }
 
 .banner-button {
-  background-color: #2563eb; /* blue-600 */
+  background-color: #2563eb;
   border: none;
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
@@ -232,16 +218,11 @@ nav.navbar ul li ul li a:hover {
   transition: background-color 0.3s ease;
 }
 
-.banner-button a {
-  color: white;
-  text-decoration: none;
-}
-
 .banner-button:hover {
-  background-color: #1d4ed8; /* blue-700 */
+  background-color: #1d4ed8;
 }
 
-/* Text-box section */
+/* ================== TEXT BOX ================== */
 .text-box {
   width: 90%;
   max-width: 1200px;
@@ -251,7 +232,7 @@ nav.navbar ul li ul li a:hover {
   text-align: justify;
   font-size: 1.1rem;
   line-height: 1.6;
-  background-color: #f5f5f5;  /* Oqdan farq qiladigan engil fon */
+  background-color: #f5f5f5;
   border-radius: 8px;
   color: #333;
   border: 1px solid #ccc;
@@ -266,16 +247,16 @@ nav.navbar ul li ul li a:hover {
 .text-box p {
   font-size: 1.125rem;
   color: #475569;
-  white-space: pre-line; /* linebreaks uchun */
+  white-space: pre-line;
 }
 
-/* Grid gallery */
+/* ================== GRID GALLERY ================== */
 .grid-gallery {
   max-width: 1200px;
   margin: 2rem auto 4rem;
   padding: 0 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
 }
 
@@ -299,7 +280,7 @@ nav.navbar ul li ul li a:hover {
   border-radius: 1rem;
 }
 
-/* Custom overlay for gallery */
+/* ================== CUSTOM OVERLAY FOR GALLERY ================== */
 .custom-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -331,7 +312,7 @@ nav.navbar ul li ul li a:hover {
 }
 
 .custom-overlay .close:hover {
-  color: #ef4444; /* red-500 */
+  color: #ef4444;
 }
 
 .custom-overlay .controls {
@@ -355,10 +336,9 @@ nav.navbar ul li ul li a:hover {
   background-color: rgba(255,255,255,0.5);
 }
 
-/* Footer */
-/* === FOOTER === */
+/* ================== FOOTER ================== */
 footer {
-  background-color: #1e293b; /* dark slate */
+  background-color: #1e293b;
   color: white;
   padding: 3rem 1rem 2rem;
   font-size: 0.9rem;

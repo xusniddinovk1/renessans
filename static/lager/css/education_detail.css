@@ -1,18 +1,18 @@
-/* RESET */
+/* === RESET === */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9fafb;
-    color: #333;
-    line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+  line-height: 1.6;
 }
 
-/* ==================== MAIN SECTION ==================== */
+/* === MAIN SECTION === */
 .activities-container {
   max-width: 1200px;
   margin: auto;
@@ -76,24 +76,7 @@ body {
   white-space: normal;
 }
 
-@media (max-width: 768px) {
-  .activity-text {
-    max-height: none;
-  }
-
-  .activity-card {
-    flex-direction: column;
-  }
-
-  .activity-image,
-  .activity-text {
-    max-width: 100%;
-  }
-}
-
 /* === MODAL === */
-
-
 .modal {
   display: none;
   position: fixed;
@@ -104,6 +87,10 @@ body {
   z-index: 9999;
 }
 
+.modal.modal-open {
+  display: flex;
+}
+
 .modal-content {
   max-width: 95vw;
   max-height: 90vh;
@@ -111,9 +98,7 @@ body {
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
   position: relative;
 }
-.modal.modal-open {
-  display: flex;
-}
+
 #closeModal {
   position: absolute;
   top: 20px;
@@ -123,7 +108,7 @@ body {
   cursor: pointer;
 }
 
-/* ==================== FOOTER ==================== */
+/* === FOOTER === */
 footer {
   background-color: #1e293b;
   color: white;
@@ -234,8 +219,46 @@ footer .copyright {
   margin-top: 1rem;
 }
 
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
+  /* Activity card vertical stack */
+  .activity-card {
+    flex-direction: column;
+  }
+
+  .activity-image,
+  .activity-text {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .activity-text {
+    max-height: none;
+    border-left: none;
+    border-top: 1px solid #eee;
+  }
+
+  /* Footer column stack */
   footer .row {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  footer form {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  footer form button {
+    margin-left: 0;
+  }
+}
+
+/* Modal responsive */
+@media (max-width: 500px) {
+  .modal-content {
+    width: 95%;
+    padding: 1.25rem;
   }
 }

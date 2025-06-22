@@ -11,6 +11,8 @@
 body {
   min-height: 100vh;
   background: #f8fafc;
+  font-size: 16px;
+  color: #1f2937;
 }
 
 img {
@@ -55,6 +57,7 @@ header .logo img {
   color: #475569;
   cursor: pointer;
   display: none;
+  padding: 0.25rem;
 }
 
 /* NAVBAR Desktop */
@@ -113,98 +116,7 @@ nav.navbar ul li ul li a:hover {
   background-color: #1e3a8a;
 }
 
-/* ========== Responsive ========== */
-@media (max-width: 768px) {
-  .menu-icon {
-    display: block;
-  }
-
-  nav.navbar {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background: white;
-    position: absolute;
-    top: 96px;
-    left: 0;
-    padding: 1rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  }
-
-  #menu-bar:checked + label + nav.navbar {
-    display: flex;
-  }
-
-  nav.navbar ul {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  nav.navbar ul li {
-    margin-bottom: 0.5rem;
-  }
-
-  nav.navbar ul li ul {
-    position: static;
-    background: #1e40af;
-    margin-top: 0.25rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem 0;
-    display: none;
-  }
-
-  nav.navbar ul li:hover > ul,
-  nav.navbar ul li:focus-within > ul {
-    display: block;
-  }
-
-  nav.navbar ul li ul li a {
-    padding: 0.5rem 1rem;
-  }
-}
-a {
-  text-decoration: none;
-  color: inherit; /* agar kerak bo'lsa: matn rangi elementdan meros bo'lsin */
-}
-
-/* Menyudagi linklar */
-nav.navbar ul li a {
-  text-decoration: none;
-  color: #00093c;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-/* Hover holatda ham chiziq chiqmasin, faqat rang o'zgaradi */
-nav.navbar ul li a:hover {
-  text-decoration: none;
-  color: #000000;
-}
-
-/* Footer ichidagi linklar (agar kerak bo‘lsa) */
-footer a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Banner ichidagi tugma (link bo'lsa) */
-.banner-button a {
-  text-decoration: none;
-  color: white;
-}
-
-/* Dropdown menyularidagi linklar */
-nav.navbar ul li ul li a {
-  text-decoration: none;
-  color: white;
-}
-
-/* Dropdown link hover */
-nav.navbar ul li ul li a:hover {
-  background-color: #1e3a8a;
-  text-decoration: none;
-}
-/* === Cards === */
+/* === Cards Section === */
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -258,25 +170,15 @@ nav.navbar ul li ul li a:hover {
   border-radius: 0.5rem;
   display: inline-block;
   margin-top: 0.5rem;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .btn:hover {
   background-color: #fff;
   color: #000;
   border: 1px solid black;
-}
-
-@media (max-width: 900px) {
-  .card-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .card-container {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* === Modal === */
@@ -289,6 +191,10 @@ nav.navbar ul li ul li a:hover {
   background: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
+}
+
+.modal.modal-open {
+  display: flex;
 }
 
 .modal-content {
@@ -319,13 +225,6 @@ nav.navbar ul li ul li a:hover {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@media (max-width: 500px) {
-  .modal-content {
-    width: 95%;
-    padding: 1.25rem;
   }
 }
 
@@ -427,6 +326,11 @@ footer .social-icons {
 footer .social-icons i {
   font-size: 1.2rem;
   cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+footer .social-icons i:hover {
+  color: #2563eb;
 }
 
 footer hr {
@@ -440,8 +344,125 @@ footer .copyright {
   margin-top: 1rem;
 }
 
+/* === Responsive === */
+
+/* Planshet uchun 1024px dan kichik ekranlar */
+@media (max-width: 1024px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .activity-card {
+    flex-direction: column;
+  }
+  .activity-image,
+  .activity-text {
+    max-width: 100%;
+    width: 100%;
+  }
+  .activity-text {
+    border-left: none;
+    border-top: 1px solid #eee;
+  }
+}
+
+/* Mobil uchun 768px dan kichik ekranlar */
 @media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+    font-size: 2rem;
+    padding: 0.25rem;
+  }
+
+  nav.navbar {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: white;
+    position: absolute;
+    top: 96px;
+    left: 0;
+    padding: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  #menu-bar:checked + label + nav.navbar {
+    display: flex;
+  }
+
+  nav.navbar ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  nav.navbar ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  nav.navbar ul li ul {
+    position: static;
+    background: #1e40af;
+    margin-top: 0.25rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    display: none;
+  }
+
+  nav.navbar ul li:hover > ul,
+  nav.navbar ul li:focus-within > ul {
+    display: block;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
   footer .row {
     flex-direction: column;
+  }
+}
+
+/* Juda kichik ekranlar uchun (mobil telefonlar) */
+@media (max-width: 400px) {
+  body {
+    font-size: 12px;
+  }
+
+  header .logo img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-description {
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Modal kichik ekran uchun moslashuv */
+@media (max-width: 500px) {
+  .modal-content {
+    width: 95%;
+    padding: 1.25rem;
   }
 }

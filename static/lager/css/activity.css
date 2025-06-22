@@ -11,6 +11,7 @@ body {
   color: #1e293b;
   line-height: 1.6;
   padding-top: 96px; /* header joyi */
+  font-size: 16px;
 }
 
 /* === HEADER === */
@@ -42,8 +43,10 @@ header .logo img {
   color: #475569;
   cursor: pointer;
   display: none;
+  padding: 0.25rem;
 }
 
+/* === NAVIGATION === */
 nav.navbar {
   display: flex;
   gap: 1.5rem;
@@ -161,13 +164,9 @@ nav.navbar ul li ul li a:hover {
   line-height: 1.6;
   overflow-wrap: break-word;
   word-break: break-word;
-  white-space: normal; /* <-- BU eng muhim */
+  white-space: normal;
 }
-@media (max-width: 768px) {
-  .activity-text {
-    max-height: none;
-  }
-}
+
 /* === MODAL === */
 .modal {
   display: none;
@@ -315,9 +314,27 @@ footer p.copyright {
 }
 
 /* === RESPONSIVE === */
+
+/* Hamburger menyu ko‘rsatish, nav menyuni yashirish (kichik ekranlar) */
+@media (max-width: 1024px) {
+  .activity-card {
+    flex-direction: column;
+  }
+  .activity-image, .activity-text {
+    max-width: 100%;
+    width: 100%;
+  }
+  .activity-text {
+    border-left: none;
+    border-top: 1px solid #eee;
+  }
+}
+
 @media (max-width: 768px) {
   .menu-icon {
     display: block;
+    font-size: 2rem;
+    padding: 0.25rem;
   }
 
   nav.navbar {
@@ -353,6 +370,18 @@ footer p.copyright {
     display: block;
   }
 
+  body {
+    font-size: 14px;
+  }
+
+  .activity-text h1 {
+    font-size: 20px;
+  }
+
+  .activity-text p {
+    font-size: 14px;
+  }
+
   .activity-card {
     flex-direction: column;
   }
@@ -380,5 +409,35 @@ footer p.copyright {
 
   footer form button {
     margin-left: 0;
+  }
+
+  header .logo img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .modal-content {
+    max-width: 95vw;
+    max-height: 80vh;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    font-size: 12px;
+  }
+
+  .activity-text h1 {
+    font-size: 18px;
+  }
+
+  .activity-text p {
+    font-size: 13px;
+  }
+
+  header .logo img {
+    width: 48px;
+    height: 48px;
   }
 }
