@@ -437,3 +437,14 @@ footer p.copyright {
     display: block;
   }
 }
+nav.navbar ul li ul li a {
+  color: white !important; /* mobilda ham oq bo‘lsin */
+  background-color: #1e40af;
+  display: block;
+  padding: 0.5rem 1rem;
+}
+
+nav.navbar ul li ul li a:hover {
+  background-color: #1e3a8a;
+  color: #fff;
+}
