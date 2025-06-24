@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import dj_database_url
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -10,7 +11,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', '')
 
 DEBUG = os.getenv('DEBUG', '')
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -64,7 +65,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': dj_database_url.parse(os.getenv('DATABASE_URL'))
     }
 }
 AUTH_USER_MODEL = 'custom_auth.CustomUser'
