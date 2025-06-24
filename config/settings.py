@@ -11,7 +11,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', '')
 
 DEBUG = os.getenv('DEBUG', '')
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,10 +63,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': dj_database_url.parse(os.getenv('DATABASE_URL'))
-    }
+    'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
 }
 AUTH_USER_MODEL = 'custom_auth.CustomUser'
 
