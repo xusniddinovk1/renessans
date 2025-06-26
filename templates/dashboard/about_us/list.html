@@ -34,6 +34,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Matn</th>
+                                    <th>Rasm</th>
                                     <th>Amallar</th>
                                 </tr>
                                 </thead>
@@ -41,7 +42,11 @@
                                 {% for txt in text %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
-                                    <td>{{ txt.context }}</td>
+                                    <td>{{ txt.context|truncatechars:50 }}</td>
+                                    <td>
+                                        <img src="{{ txt.image.url }}" alt="photo"
+                                             style="width: 100px; height: 100px; object-fit: cover; border-radius: 5px;">
+                                    </td>
                                     <td>
                                         <div class="table-data-feature">
                                             <a class="item" data-toggle="tooltip"
@@ -59,6 +64,7 @@
                                 </tr>
                                 {% endfor %}
                                 </tbody>
+
                             </table>
                         </div>
                     </div>

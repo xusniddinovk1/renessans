@@ -37,11 +37,17 @@
                                         {{ form.context|add_class:"form-control" }}
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="id_image" class="form-control-label">Rasm</label>
+                                        {{ form.image|add_class:"form-control" }}
+                                    </div>
+
+
                                     <div class="form-group text-right mt-4">
                                         {% if model %}
-                                            <button type="submit" class="btn btn-warning">Saqlash</button>
+                                        <button type="submit" class="btn btn-warning">Saqlash</button>
                                         {% else %}
-                                            <button type="submit" class="btn btn-success">Qo'shish</button>
+                                        <button type="submit" class="btn btn-success">Qo'shish</button>
                                         {% endif %}
                                     </div>
                                 </form>

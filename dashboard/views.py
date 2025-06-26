@@ -109,7 +109,7 @@ def about_us_list(request):
 
 @login_required_decorator
 def about_us_create(request):
-    form = AboutUsForm(request.POST or None)
+    form = AboutUsForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
         return redirect('uz-admin:bizhaqimizda')

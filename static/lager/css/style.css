@@ -221,7 +221,9 @@ footer a {
 .banner-button:hover {
   background-color: #1d4ed8;
 }
-
+#linkkeladi .col-md-6 {
+    padding: 15px;
+}
 /* ================== TEXT BOX ================== */
 .text-box {
   width: 90%;

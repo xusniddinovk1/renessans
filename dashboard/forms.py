@@ -5,10 +5,11 @@ from lager_app.models import AboutUs, Photos, Education, Activity, Hotel, Recrea
 class AboutUsForm(forms.ModelForm):
     class Meta:
         model = AboutUs
-        fields = ['context']
+        fields = ['context', 'image']
         widgets = {
             "context": forms.Textarea(
                 attrs={"class": "form-control", "rows": 5, "placeholder": "Biz haqimizda matn..."}),
+            "image": forms.FileInput(attrs={"class": "form-control", "onchange": "loadFile(event)"}),
         }
 
 

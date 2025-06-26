@@ -2,19 +2,20 @@
 {% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{% static 'lager/css/style.css' %}" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="{% static 'lager/css/style.css' %}"/>
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Renessans</title>
 </head>
 <body>
 
 <header class="header">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img" />
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img"/>
     </a>
-    <input type="checkbox" id="menu-bar" class="hidden" />
+    <input type="checkbox" id="menu-bar" class="hidden"/>
     <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
         <ul>
@@ -22,15 +23,18 @@
             <li class="dropdown">
                 <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul class="dropdown-content">
-                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer">Mehmon xonalar</a></li>
-                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer">Istirohat zona</a></li>
+                    <li><a href="{% url 'uz:mexmonxonalar' %}" target="_blank" rel="noopener noreferrer">Mehmon
+                        xonalar</a></li>
+                    <li><a href="{% url 'uz:istirohat_zona' %}" target="_blank" rel="noopener noreferrer">Istirohat
+                        zona</a></li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="dropbtn">Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul class="dropdown-content">
                     <li><a href="{% url 'uz:faoliyat' %}" target="_blank" rel="noopener noreferrer">Faoliyat</a></li>
-                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer">O'quv Bo'lim</a></li>
+                    <li><a href="{% url 'uz:oquvbolim' %}" target="_blank" rel="noopener noreferrer">O'quv Bo'lim</a>
+                    </li>
                 </ul>
             </li>
             <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
@@ -40,26 +44,49 @@
 
 <!-- Banner -->
 <div class="banner">
-    <div class="banner-text">Quvonch, Do`stlik va unutilmas damlar maskani</div>
-    <button class="banner-button"><a href="{% url 'uz:oquvbolim' %}">Batafsil</a></button>
+    <!--    <div class="banner-text">Quvonch, Do`stlik va unutilmas damlar maskani</div>-->
+    <!--    <button class="banner-button"><a href="{% url 'uz:oquvbolim' %}">Batafsil</a></button>-->
 </div>
 
 <!-- Biz haqimizda -->
-<div id="linkkeladi" class="text-box">
-    <h1>Biz haqimizda</h1>
-    {% if text %}
-        <p>{{ text.context|linebreaks }}</p>
-    {% else %}
-        <p>Ma'lumot topilmadi.</p>
-    {% endif %}
+<div id="linkkeladi" class="container-fluid my-5 px-0">
+    <div class="row g-0 min-vh-50">
+        <!-- Matn -->
+        <div class="col-md-6 d-flex align-items-stretch">
+            <div class="p-4" style="text-align: justify; word-break: break-word;">
+                <h1 class="mb-4">Biz haqimizda</h1>
+                {% if text %}
+                    <div style="font-size: 18px; line-height: 1.8;">
+                        {{ text.context|linebreaks }}
+                    </div>
+                {% else %}
+                    <p>Ma'lumot topilmadi.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Rasm -->
+        <div class="col-md-6 d-flex align-items-stretch">
+            <div class="w-100">
+                {% if text and text.image %}
+                    <img src="{{ text.image.url }}" alt="Biz haqimizda rasm"
+                         class="img-fluid h-100 w-100 rounded shadow"
+                         style="object-fit: cover;">
+                {% else %}
+                    <p class="text-center mt-5">Rasm mavjud emas</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <!-- Grid galereya -->
 <div class="grid-gallery">
     {% for photo in photos %}
     <div class="grid-item">
         <a href="#" class="grid-link" onclick="openModal('{{ photo.image.url }}'); return false;">
-            <img src="{{ photo.image.url }}" alt="Gallery Image {{ forloop.counter }}" />
+            <img src="{{ photo.image.url }}" alt="Gallery Image {{ forloop.counter }}"/>
         </a>
     </div>
     {% endfor %}
@@ -68,7 +95,7 @@
 <!-- Overlay -->
 <div class="custom-overlay" style="display: none;">
     <span class="close">&times;</span>
-    <img src="" alt="Gallery Image" id="overlayImage" />
+    <img src="" alt="Gallery Image" id="overlayImage"/>
     <div class="controls">
         <button id="prevBtn">&#8592;</button>
         <button id="nextBtn">&#8594;</button>
@@ -79,7 +106,7 @@
 <footer>
     <div class="row">
         <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="Footer Logo" class="logot" />
+            <img src="/media/logo_pastki_qism.png" alt="Footer Logo" class="logot"/>
             <p>Ixtisoslashtirilgan ta’lim muassasalari agentligi</p>
         </div>
         <div class="col">
@@ -91,8 +118,8 @@
         <div class="col">
             <h3>Newsletter</h3>
             <form>
-<!--                <i class="fa-solid fa-envelope"></i>-->
-                <input type="email" placeholder="Enter your email" required />
+                <!--                <i class="fa-solid fa-envelope"></i>-->
+                <input type="email" placeholder="Enter your email" required/>
                 <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
             </form>
             <div class="social-icons">
@@ -103,7 +130,7 @@
             </div>
         </div>
     </div>
-    <hr />
+    <hr/>
     <p class="copyright">© 2025</p>
 </footer>
 
