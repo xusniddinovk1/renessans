@@ -15,25 +15,28 @@
 <!-- ------------------------------------- header --------------------------------- -->
 <header class="header">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img" />
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img"/>
     </a>
-    <input type="checkbox" id="menu-bar" class="hidden" />
+    <input type="checkbox" id="menu-bar" class="hidden"/>
     <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
         <ul>
-            <li><a href="{% url 'ru:основной' %}" target="_blank" rel="noopener noreferrer">Основной</a></li>
+            <li><a href="{% url 'ru:основной' %}" rel="noopener noreferrer">Основной</a></li>
             <li class="dropdown">
                 <a href="#" class="dropbtn">Кампус <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul class="dropdown-content">
-                    <li><a href="{% url 'ru:гостиницы' %}" target="_blank" rel="noopener noreferrer">Гостиницы</a></li>
-                    <li><a href="{% url 'ru:зона_отдыха' %}" target="_blank" rel="noopener noreferrer">Зона Оотдыха</a></li>
+                    <li><a href="{% url 'ru:гостиницы' %}" rel="noopener noreferrer">Гостиницы</a></li>
+                    <li><a href="{% url 'ru:зона_отдыха' %}" rel="noopener noreferrer">Зона Оотдыха</a>
+                    </li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="dropbtn">Мероприятия <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul class="dropdown-content">
-                    <li><a href="{% url 'ru:деятельность' %}" target="_blank" rel="noopener noreferrer">Деятельность</a></li>
-                    <li><a href="{% url 'ru:академический_отдел' %}" target="_blank" rel="noopener noreferrer">Учебный отдел</a></li>
+                    <li><a href="{% url 'ru:деятельность' %}" rel="noopener noreferrer">Деятельность</a>
+                    </li>
+                    <li><a href="{% url 'ru:академический_отдел' %}" rel="noopener noreferrer">Учебный
+                        отдел</a></li>
                 </ul>
             </li>
             <li><a href="{% url 'ru:новости' %}">Новости</a></li>

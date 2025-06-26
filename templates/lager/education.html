@@ -1,207 +1,202 @@
 <!DOCTYPE html>
 {% load static %} {% load humanize %}
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'lager/css/education.css' %}" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'lager/css/education.css' %}"/>
     <script
-      src="https://kit.fontawesome.com/5974a913f2.js"
-      crossorigin="anonymous"
+            src="https://kit.fontawesome.com/5974a913f2.js"
+            crossorigin="anonymous"
     ></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>O'quv bo'limi</title>
-  </head>
-  <body>
-    <!-- ======================= Header ======================= -->
-    <header class="header">
-      <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img" />
-      </a>
-      <input type="checkbox" id="menu-bar" class="hidden" />
-      <label for="menu-bar" class="menu-icon"
-        ><i class="fa-solid fa-bars"></i
-      ></label>
-      <nav class="navbar">
+</head>
+<body>
+<!-- ======================= Header ======================= -->
+<header class="header">
+    <a href="#" class="logo">
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img"/>
+    </a>
+    <input type="checkbox" id="menu-bar" class="hidden"/>
+    <label for="menu-bar" class="menu-icon"
+    ><i class="fa-solid fa-bars"></i
+    ></label>
+    <nav class="navbar">
         <ul>
-          <li>
-            <a
-              href="{% url 'uz:asosiy_sahifa' %}"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Asosiy</a
-            >
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn"
-              >Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i
-            ></a>
-            <ul class="dropdown-content">
-              <li>
+            <li>
                 <a
-                  href="{% url 'uz:mexmonxonalar' %}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Mehmon xonalar</a
+                        href="{% url 'uz:asosiy_sahifa' %}"
+                        rel="noopener noreferrer"
+                >Asosiy</a
                 >
-              </li>
-              <li>
-                <a
-                  href="{% url 'uz:istirohat_zona' %}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Istirohat zona</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn"
-              >Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i
-            ></a>
-            <ul class="dropdown-content">
-              <li>
-                <a
-                  href="{% url 'uz:faoliyat' %}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Faoliyat</a
-                >
-              </li>
-              <li>
-                <a
-                  href="{% url 'uz:oquvbolim' %}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >O'quv Bo'lim</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"
+                >Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+                <ul class="dropdown-content">
+                    <li>
+                        <a
+                                href="{% url 'uz:mexmonxonalar' %}"
+                                rel="noopener noreferrer"
+                        >Mehmon xonalar</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                                href="{% url 'uz:istirohat_zona' %}"
+                                rel="noopener noreferrer"
+                        >Istirohat zona</a
+                        >
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"
+                >Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+                <ul class="dropdown-content">
+                    <li>
+                        <a
+                                href="{% url 'uz:faoliyat' %}"
+                                rel="noopener noreferrer"
+                        >Faoliyat</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                                href="{% url 'uz:oquvbolim' %}"
+                                rel="noopener noreferrer"
+                        >O'quv Bo'lim</a
+                        >
+                    </li>
+                </ul>
+            </li>
+            <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
         </ul>
-      </nav>
-    </header>
+    </nav>
+</header>
 
-    <!-- ======================= Card Section ======================= -->
-    <div class="wrapper">
-      <div class="card-container">
+<!-- ======================= Card Section ======================= -->
+<div class="wrapper">
+    <div class="card-container">
         {% for education in educations %}
         <div class="card">
-          <a href="{% url 'uz:oquvbolim_sahifa' education.id %}">
-            <img src="{{ education.image.url }}" alt="Camp Image" />
-          </a>
-          <div class="card-content">
-            <h2 class="card-title">{{ education.title|truncatechars:30 }}</h2>
-            <p class="card-description">
-              {{ education.description|truncatechars:40 }}
-            </p>
-            <a href="{% url 'uz:oquvbolim_sahifa' education.id %}" class="btn"
-              >Batafsil</a
-            >
-          </div>
+            <a href="{% url 'uz:oquvbolim_sahifa' education.id %}">
+                <img src="{{ education.image.url }}" alt="Camp Image"/>
+            </a>
+            <div class="card-content">
+                <h2 class="card-title">{{ education.title|truncatechars:30 }}</h2>
+                <p class="card-description">
+                    {{ education.description|truncatechars:40 }}
+                </p>
+                <a href="{% url 'uz:oquvbolim_sahifa' education.id %}" class="btn"
+                >Batafsil</a
+                >
+            </div>
         </div>
         {% endfor %}
-      </div>
     </div>
+</div>
 
-    <!-- ======================= Modal ======================= -->
-    <div class="modal" id="newsModal" role="dialog" aria-hidden="true">
-      <div class="modal-content" id="modalContent">
+<!-- ======================= Modal ======================= -->
+<div class="modal" id="newsModal" role="dialog" aria-hidden="true">
+    <div class="modal-content" id="modalContent">
         <span
-          class="modal-close"
-          onclick="closeModal()"
-          aria-label="Close Modal"
-          >&times;</span
+                class="modal-close"
+                onclick="closeModal()"
+                aria-label="Close Modal"
+        >&times;</span
         >
         <h2 id="modalTitle"></h2>
         <p id="modalText"></p>
         <div class="social-icons">
-          <a href="#"><i class="fab fa-telegram"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
         </div>
-      </div>
     </div>
+</div>
 
-    <!-- ======================= Footer ======================= -->
-    <footer>
-      <div class="row">
+<!-- ======================= Footer ======================= -->
+<footer>
+    <div class="row">
         <div class="col">
-          <img
-            src="/media/logo_pastki_qism.png"
-            alt="Footer Logo"
-            class="logot"
-          />
-          <h3>Ixtisoslashtirilgan ta’lim muassasalari agentligi</h3>
+            <img
+                    src="/media/logo_pastki_qism.png"
+                    alt="Footer Logo"
+                    class="logot"
+            />
+            <h3>Ixtisoslashtirilgan ta’lim muassasalari agentligi</h3>
         </div>
         <div class="col">
-          <h3>Office</h3>
-          <h3>Address</h3>
-          <h3 class="email-id">renessans@gmail.com</h3>
-          <h3>+99800000000</h3>
+            <h3>Office</h3>
+            <h3>Address</h3>
+            <h3 class="email-id">renessans@gmail.com</h3>
+            <h3>+99800000000</h3>
         </div>
         <div class="col">
-          <h3>Newsletter</h3>
-          <form>
-            <!--                <i class="fa-solid fa-envelope"></i>-->
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit">
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-          </form>
-          <div class="social-icons">
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-telegram"></i>
-            <i class="fa-brands fa-twitter"></i>
-          </div>
+            <h3>Newsletter</h3>
+            <form>
+                <!--                <i class="fa-solid fa-envelope"></i>-->
+                <input type="email" placeholder="Enter your email" required/>
+                <button type="submit">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+            <div class="social-icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-twitter"></i>
+            </div>
         </div>
-      </div>
-      <hr />
-      <p class="copyright">© 2025</p>
-    </footer>
+    </div>
+    <hr/>
+    <p class="copyright">© 2025</p>
+</footer>
 
-    <!-- ======================= Scripts ======================= -->
-    <script>
-      function showModal(title, text) {
-        document.getElementById("modalTitle").innerText = title;
-        document.getElementById("modalText").innerText = text;
-        document.getElementById("newsModal").style.display = "flex";
-      }
+<!-- ======================= Scripts ======================= -->
+<script>
+    function showModal(title, text) {
+      document.getElementById("modalTitle").innerText = title;
+      document.getElementById("modalText").innerText = text;
+      document.getElementById("newsModal").style.display = "flex";
+    }
 
-      function closeModal() {
-        document.getElementById("newsModal").style.display = "none";
-      }
+    function closeModal() {
+      document.getElementById("newsModal").style.display = "none";
+    }
 
-      // Language dropdown handler (if used in future)
-      const dropdownButton = document.getElementById("languageDropdown");
-      const languageMenu = document.getElementById("languageMenu");
+    // Language dropdown handler (if used in future)
+    const dropdownButton = document.getElementById("languageDropdown");
+    const languageMenu = document.getElementById("languageMenu");
 
-      if (dropdownButton && languageMenu) {
-        const languageItems = languageMenu.querySelectorAll("li");
+    if (dropdownButton && languageMenu) {
+      const languageItems = languageMenu.querySelectorAll("li");
 
-        dropdownButton.addEventListener("click", () => {
-          languageMenu.classList.toggle("hidden");
+      dropdownButton.addEventListener("click", () => {
+        languageMenu.classList.toggle("hidden");
+      });
+
+      languageItems.forEach((item) => {
+        item.addEventListener("click", (event) => {
+          const selectedLang = event.target.getAttribute("data-lang");
+          alert(`Language switched to: ${selectedLang}`);
+          languageMenu.classList.add("hidden");
         });
+      });
 
-        languageItems.forEach((item) => {
-          item.addEventListener("click", (event) => {
-            const selectedLang = event.target.getAttribute("data-lang");
-            alert(`Language switched to: ${selectedLang}`);
-            languageMenu.classList.add("hidden");
-          });
-        });
-
-        document.addEventListener("click", (event) => {
-          if (
-            !dropdownButton.contains(event.target) &&
-            !languageMenu.contains(event.target)
-          ) {
-            languageMenu.classList.add("hidden");
-          }
-        });
-      }
-    </script>
-  </body>
+      document.addEventListener("click", (event) => {
+        if (
+          !dropdownButton.contains(event.target) &&
+          !languageMenu.contains(event.target)
+        ) {
+          languageMenu.classList.add("hidden");
+        }
+      });
+    }
+</script>
+</body>
 </html>

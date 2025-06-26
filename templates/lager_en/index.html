@@ -2,9 +2,9 @@
 {% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{% static 'lager/css/style.css' %}" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="{% static 'lager/css/style.css' %}"/>
     <script src="https://kit.fontawesome.com/5974a913f2.js" crossorigin="anonymous"></script>
     <title>Renessans</title>
 </head>
@@ -12,25 +12,26 @@
 
 <header class="header">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img" />
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img"/>
     </a>
-    <input type="checkbox" id="menu-bar" class="hidden" />
+    <input type="checkbox" id="menu-bar" class="hidden"/>
     <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
         <ul>
-            <li><a href="{% url 'en:home_page' %}" target="_blank" rel="noopener noreferrer">Home</a></li>
+            <li><a href="{% url 'en:home_page' %}" rel="noopener noreferrer">Home</a></li>
             <li class="dropdown">
                 <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul class="dropdown-content">
-                    <li><a href="{% url 'en:hotel_section_page' %}" target="_blank" rel="noopener noreferrer">Hotels</a></li>
-                    <li><a href="{% url 'en:recreation_zone_page' %}" target="_blank" rel="noopener noreferrer">Recreation Zones</a></li>
+                    <li><a href="{% url 'en:hotel_section_page' %}" rel="noopener noreferrer">Hotels</a></li>
+                    <li><a href="{% url 'en:recreation_zone_page' %}" rel="noopener noreferrer">Recreation Zones</a>
+                    </li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="dropbtn">Events <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul class="dropdown-content">
-                    <li><a href="{% url 'en:activity_page' %}" target="_blank" rel="noopener noreferrer">Activities</a></li>
-                    <li><a href="{% url 'en:education_page' %}" target="_blank" rel="noopener noreferrer">Education</a></li>
+                    <li><a href="{% url 'en:activity_page' %}" rel="noopener noreferrer">Activities</a></li>
+                    <li><a href="{% url 'en:education_page' %}" rel="noopener noreferrer">Education</a></li>
                 </ul>
             </li>
             <li><a href="{% url 'en:news_page' %}">News</a></li>
@@ -48,9 +49,9 @@
 <div id="linkkeladi" class="text-box">
     <h1>About lager</h1>
     {% if text %}
-        <p>{{ text.context|linebreaks }}</p>
+    <p>{{ text.context|linebreaks }}</p>
     {% else %}
-        <p>Information not found</p>
+    <p>Information not found</p>
     {% endif %}
 </div>
 
@@ -59,7 +60,7 @@
     {% for photo in photos %}
     <div class="grid-item">
         <a href="#" class="grid-link" onclick="openModal('{{ photo.image.url }}'); return false;">
-            <img src="{{ photo.image.url }}" alt="Gallery Image {{ forloop.counter }}" />
+            <img src="{{ photo.image.url }}" alt="Gallery Image {{ forloop.counter }}"/>
         </a>
     </div>
     {% endfor %}
@@ -68,7 +69,7 @@
 <!-- Overlay -->
 <div class="custom-overlay" style="display: none;">
     <span class="close">&times;</span>
-    <img src="" alt="Gallery Image" id="overlayImage" />
+    <img src="" alt="Gallery Image" id="overlayImage"/>
     <div class="controls">
         <button id="prevBtn">&#8592;</button>
         <button id="nextBtn">&#8594;</button>

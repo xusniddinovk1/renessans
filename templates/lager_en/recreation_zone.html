@@ -1,226 +1,186 @@
 <!DOCTYPE html>
 {% load static %} {% load humanize %}
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link
-      rel="stylesheet"
-      href="{% static 'lager/css/recreation_zone.css' %}"
+            rel="stylesheet"
+            href="{% static 'lager/css/recreation_zone.css' %}"
     />
     <script
-      src="https://kit.fontawesome.com/5974a913f2.js"
-      crossorigin="anonymous"
+            src="https://kit.fontawesome.com/5974a913f2.js"
+            crossorigin="anonymous"
     ></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Recreation Zones</title>
-  </head>
-  <body>
-    <!------------------------------------- header --------------------------------- -->
-    <header class="header">
-      <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img" />
-      </a>
-      <input type="checkbox" id="menu-bar" class="hidden" />
-      <label for="menu-bar" class="menu-icon"
-        ><i class="fa-solid fa-bars"></i
-      ></label>
-      <nav class="navbar">
+</head>
+<body>
+<!------------------------------------- header --------------------------------- -->
+<header class="header">
+    <a href="#" class="logo">
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img"/>
+    </a>
+    <input type="checkbox" id="menu-bar" class="hidden"/>
+    <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
+    <nav class="navbar">
         <ul>
-          <li>
-            <a
-              href="{% url 'en:home_page' %}"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Home</a
-            >
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn"
-              >Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i
-            ></a>
-            <ul class="dropdown-content">
-              <li>
-                <a
-                  href="{% url 'en:hotel_section_page' %}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Hotels</a
-                >
-              </li>
-              <li>
-                <a
-                  href="{% url 'en:recreation_zone_page' %}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Recreation Zones</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn"
-              >Events <i class="fa-solid fa-arrow-up-right-from-square"></i
-            ></a>
-            <ul class="dropdown-content">
-              <li>
-                <a
-                  href="{% url 'en:activity_page' %}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Activities</a
-                >
-              </li>
-              <li>
-                <a
-                  href="{% url 'en:education_page' %}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Education</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li><a href="{% url 'en:news_page' %}">News</a></li>
+            <li><a href="{% url 'en:home_page' %}" rel="noopener noreferrer">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'en:hotel_section_page' %}" rel="noopener noreferrer">Hotels</a></li>
+                    <li><a href="{% url 'en:recreation_zone_page' %}" rel="noopener noreferrer">Recreation Zones</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Events <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'en:activity_page' %}" rel="noopener noreferrer">Activities</a></li>
+                    <li><a href="{% url 'en:education_page' %}" rel="noopener noreferrer">Education</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'en:news_page' %}">News</a></li>
         </ul>
-      </nav>
-    </header>
-    <!-- ------------------------------card slider  ----------------------------------- -->
-    <div class="container">
-      <div class="card__container">
+    </nav>
+</header>
+<!-- ------------------------------card slider  ----------------------------------- -->
+<div class="container">
+    <div class="card__container">
         {% for rest_area in rest_areas %}
         <article class="card__article">
-          <img src="{{ rest_area.image.url }}" alt="image" class="card__img" />
-          <div class="card__data">
-            <span class="card__description">{{ rest_area.title }}</span>
-            <h2 class="card__title">
-              {{ rest_area.description|truncatechars:20 }}
-            </h2>
-            <button
-              class="btn"
-              onclick="showModal('{{ rest_area.title }}', '{{ rest_area.description|escapejs }}')"
-            >
-              More
-            </button>
-          </div>
+            <img src="{{ rest_area.image.url }}" alt="image" class="card__img"/>
+            <div class="card__data">
+                <span class="card__description">{{ rest_area.title }}</span>
+                <h2 class="card__title">
+                    {{ rest_area.description|truncatechars:20 }}
+                </h2>
+                <button
+                        class="btn"
+                        onclick="showModal('{{ rest_area.title }}', '{{ rest_area.description|escapejs }}')"
+                >
+                    More
+                </button>
+            </div>
         </article>
         {% endfor %}
-      </div>
-      <!-- modal  -->
-      <div class="modal" id="newsModal">
-        <div class="modal-content" id="modalContent">
-          <span class="modal-close" onclick="closeModal()">&times;</span>
-          <h2 id="modalTitle"></h2>
-          <p id="modalText"></p>
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-          </div>
-        </div>
-      </div>
     </div>
-    <!-- ------------------------------/card slider  ----------------------------------- -->
+    <!-- modal  -->
+    <div class="modal" id="newsModal">
+        <div class="modal-content" id="modalContent">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalText"></p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------------/card slider  ----------------------------------- -->
 
-    <!-- --------------------------------------footter----------------------------------- -->
-    <footer>
-      <div class="row">
+<!-- --------------------------------------footter----------------------------------- -->
+<footer>
+    <div class="row">
         <div class="col">
-          <img src="/media/logo_pastki_qism.png" alt="Logo" class="logot" />
-          <h3>Specialized educational institutions agency</h3>
+            <img src="/media/logo_pastki_qism.png" alt="Logo" class="logot"/>
+            <h3>Specialized educational institutions agency</h3>
         </div>
         <div class="col">
-          <h3>
-            Office
-            <div class="underline"><span></span></div>
-          </h3>
-          <h3>Address</h3>
-          <h3 class="email-id">renessans@gmail.com</h3>
-          <h4>+99800000000</h4>
+            <h3>
+                Office
+                <div class="underline"><span></span></div>
+            </h3>
+            <h3>Address</h3>
+            <h3 class="email-id">renessans@gmail.com</h3>
+            <h4>+99800000000</h4>
         </div>
         <div class="col">
-          <h3>
-            Newsletter
-            <div class="underline"><span></span></div>
-          </h3>
-          <form>
-            <i class="fa-solid fa-envelope"></i>
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit">
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-          </form>
-          <div class="social-icons">
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-telegram"></i>
-            <i class="fa-brands fa-twitter"></i>
-          </div>
+            <h3>
+                Newsletter
+                <div class="underline"><span></span></div>
+            </h3>
+            <form>
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Enter your email" required/>
+                <button type="submit">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+            <div class="social-icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-twitter"></i>
+            </div>
         </div>
-      </div>
-      <hr />
-      <p class="copyright">© 2025</p>
-    </footer>
-    <!-- --------------------------------------/footter----------------------------------- -->
+    </div>
+    <hr/>
+    <p class="copyright">© 2025</p>
+</footer>
+<!-- --------------------------------------/footter----------------------------------- -->
 
-    <script>
-      const dropdownButton = document.getElementById("languageDropdown");
-      const languageMenu = document.getElementById("languageMenu");
-      const languageItems = languageMenu.querySelectorAll("li");
+<script>
+    const dropdownButton = document.getElementById("languageDropdown");
+    const languageMenu = document.getElementById("languageMenu");
+    const languageItems = languageMenu.querySelectorAll("li");
 
-      dropdownButton.addEventListener("click", () => {
-        languageMenu.classList.toggle("hidden");
+    dropdownButton.addEventListener("click", () => {
+      languageMenu.classList.toggle("hidden");
+    });
+
+    languageItems.forEach((item) => {
+      item.addEventListener("click", (event) => {
+        const selectedLang = event.target.getAttribute("data-lang");
+        alert(`Language switched to: ${selectedLang}`);
+        languageMenu.classList.add("hidden");
       });
+    });
 
-      languageItems.forEach((item) => {
-        item.addEventListener("click", (event) => {
-          const selectedLang = event.target.getAttribute("data-lang");
-          alert(`Language switched to: ${selectedLang}`);
-          languageMenu.classList.add("hidden");
-        });
-      });
+    // Close menu if clicked outside
+    document.addEventListener("click", (event) => {
+      if (
+        !dropdownButton.contains(event.target) &&
+        !languageMenu.contains(event.target)
+      ) {
+        languageMenu.classList.add("hidden");
+      }
+    });
+</script>
+<script>
+    new Swiper(".news-slider", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      breakpoints: {
+        640: { slidesPerView: 1 }, // kichik mobilda 1 ta
+        768: { slidesPerView: 2 }, // planshetlarda 2 ta
+        1024: { slidesPerView: 3 }, // katta ekranda 3 ta
+      },
+    });
 
-      // Close menu if clicked outside
-      document.addEventListener("click", (event) => {
-        if (
-          !dropdownButton.contains(event.target) &&
-          !languageMenu.contains(event.target)
-        ) {
-          languageMenu.classList.add("hidden");
-        }
-      });
-    </script>
-    <script>
-      new Swiper(".news-slider", {
+    document.querySelectorAll(".inner-swiper").forEach((el) => {
+      new Swiper(el, {
         slidesPerView: 1,
-        spaceBetween: 20,
-        breakpoints: {
-          640: { slidesPerView: 1 }, // kichik mobilda 1 ta
-          768: { slidesPerView: 2 }, // planshetlarda 2 ta
-          1024: { slidesPerView: 3 }, // katta ekranda 3 ta
+        loop: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
         },
       });
+    });
 
-      document.querySelectorAll(".inner-swiper").forEach((el) => {
-        new Swiper(el, {
-          slidesPerView: 1,
-          loop: true,
-          autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-          },
-        });
-      });
+    function showModal(title, text) {
+      document.getElementById("modalTitle").innerText = title;
+      document.getElementById("modalText").innerText = text;
+      document.getElementById("newsModal").style.display = "flex";
+    }
 
-      function showModal(title, text) {
-        document.getElementById("modalTitle").innerText = title;
-        document.getElementById("modalText").innerText = text;
-        document.getElementById("newsModal").style.display = "flex";
-      }
-
-      function closeModal() {
-        document.getElementById("newsModal").style.display = "none";
-      }
-    </script>
-  </body>
+    function closeModal() {
+      document.getElementById("newsModal").style.display = "none";
+    }
+</script>
+</body>
 </html>

@@ -1,227 +1,223 @@
 <!DOCTYPE html>
 {% load static %} {% load humanize %}
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{% static 'lager/css/activity.css' %}" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="{% static 'lager/css/activity.css' %}"/>
     <script
-      src="https://kit.fontawesome.com/5974a913f2.js"
-      crossorigin="anonymous"
+            src="https://kit.fontawesome.com/5974a913f2.js"
+            crossorigin="anonymous"
     ></script>
     <title>Faoliyatlar</title>
-  </head>
-  <body>
-    <!-- Header -->
-    <header class="header">
-      <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img" />
-      </a>
-      <input type="checkbox" id="menu-bar" class="hidden" />
-      <label for="menu-bar" class="menu-icon"
-        ><i class="fa-solid fa-bars"></i
-      ></label>
-      <nav class="navbar">
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <a href="#" class="logo">
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img"/>
+    </a>
+    <input type="checkbox" id="menu-bar" class="hidden"/>
+    <label for="menu-bar" class="menu-icon"
+    ><i class="fa-solid fa-bars"></i
+    ></label>
+    <nav class="navbar">
         <ul>
-          <li>
-            <a
-              href="{% url 'uz:asosiy_sahifa' %}"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Asosiy</a
-            >
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn"
-              >Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i
-            ></a>
-            <ul class="dropdown-content">
-              <li>
+            <li>
                 <a
-                  href="{% url 'uz:mexmonxonalar' %}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Mehmon xonalar</a
+                        href="{% url 'uz:asosiy_sahifa' %}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                >Asosiy</a
                 >
-              </li>
-              <li>
-                <a
-                  href="{% url 'uz:istirohat_zona' %}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Istirohat zona</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn"
-              >Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i
-            ></a>
-            <ul class="dropdown-content">
-              <li>
-                <a
-                  href="{% url 'uz:faoliyat' %}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Faoliyat</a
-                >
-              </li>
-              <li>
-                <a
-                  href="{% url 'uz:oquvbolim' %}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >O'quv Bo'lim</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"
+                >Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+                <ul class="dropdown-content">
+                    <li>
+                        <a
+                                href="{% url 'uz:mexmonxonalar' %}"
+                                rel="noopener noreferrer"
+                        >Mehmon xonalar</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                                href="{% url 'uz:istirohat_zona' %}"
+                                rel="noopener noreferrer"
+                        >Istirohat zona</a
+                        >
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"
+                >Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+                <ul class="dropdown-content">
+                    <li>
+                        <a
+                                href="{% url 'uz:faoliyat' %}"
+                                rel="noopener noreferrer"
+                        >Faoliyat</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                                href="{% url 'uz:oquvbolim' %}"
+                                rel="noopener noreferrer"
+                        >O'quv Bo'lim</a
+                        >
+                    </li>
+                </ul>
+            </li>
+            <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
         </ul>
-      </nav>
-    </header>
+    </nav>
+</header>
 
-    <!-- Main Content -->
-    <main class="activities-container">
-      {% for activity in activities %}
-      <div class="activity-card">
+<!-- Main Content -->
+<main class="activities-container">
+    {% for activity in activities %}
+    <div class="activity-card">
         <div class="activity-image">
-          <img
-            src="{{ activity.image.url }}"
-            alt="{{ activity.title|default:'Activity image' }}"
-            loading="lazy"
-            onclick="openModal(this)"
-          />
+            <img
+                    src="{{ activity.image.url }}"
+                    alt="{{ activity.title|default:'Activity image' }}"
+                    loading="lazy"
+                    onclick="openModal(this)"
+            />
         </div>
         <div class="activity-text">
-          <h1>{{ activity.title }}</h1>
-          <p>{{ activity.description }}</p>
+            <h1>{{ activity.title }}</h1>
+            <p>{{ activity.description }}</p>
         </div>
-      </div>
-      {% empty %}
-      <p class="no-activity">Hech qanday faoliyat mavjud emas.</p>
-      {% endfor %}
-    </main>
-    <!-- Modal -->
-    <div
-      id="imageModal"
-      class="modal hidden"
-      role="dialog"
-      aria-modal="true"
-      tabindex="-1"
-    >
-      <span id="closeModal" role="button" aria-label="Close Modal" tabindex="0"
-        >&times;</span
-      >
-      <img id="modalImg" class="modal-content" alt="Katta rasm" />
     </div>
+    {% empty %}
+    <p class="no-activity">Hech qanday faoliyat mavjud emas.</p>
+    {% endfor %}
+</main>
+<!-- Modal -->
+<div
+        id="imageModal"
+        class="modal hidden"
+        role="dialog"
+        aria-modal="true"
+        tabindex="-1"
+>
+      <span id="closeModal" role="button" aria-label="Close Modal" tabindex="0"
+      >&times;</span
+      >
+    <img id="modalImg" class="modal-content" alt="Katta rasm"/>
+</div>
 
-    <!-- Footer -->
-    <footer>
-      <div class="row">
+<!-- Footer -->
+<footer>
+    <div class="row">
         <div class="col">
-          <img
-            src="/media/logo_pastki_qism.png"
-            alt="Footer Logo"
-            class="logot"
-          />
-          <h3>Ixtisoslashtirilgan ta’lim muassasalari agentligi</h3>
+            <img
+                    src="/media/logo_pastki_qism.png"
+                    alt="Footer Logo"
+                    class="logot"
+            />
+            <h3>Ixtisoslashtirilgan ta’lim muassasalari agentligi</h3>
         </div>
         <div class="col">
-          <h3>Office</h3>
-          <h3>Address</h3>
-          <h3 class="email-id">renessans@gmail.com</h3>
-          <h3>+99800000000</h3>
+            <h3>Office</h3>
+            <h3>Address</h3>
+            <h3 class="email-id">renessans@gmail.com</h3>
+            <h3>+99800000000</h3>
         </div>
         <div class="col">
-          <h3>Newsletter</h3>
-          <form>
-            <!--                <i class="fa-solid fa-envelope"></i>-->
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit">
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-          </form>
-          <div class="social-icons">
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-telegram"></i>
-            <i class="fa-brands fa-twitter"></i>
-          </div>
+            <h3>Newsletter</h3>
+            <form>
+                <!--                <i class="fa-solid fa-envelope"></i>-->
+                <input type="email" placeholder="Enter your email" required/>
+                <button type="submit">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+            <div class="social-icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-twitter"></i>
+            </div>
         </div>
-      </div>
-      <hr />
-      <p class="copyright">© 2025</p>
-    </footer>
+    </div>
+    <hr/>
+    <p class="copyright">© 2025</p>
+</footer>
 
-    <!-- JavaScript -->
-    <script>
-      const dropdownButton = document.getElementById("languageDropdown");
-      const languageMenu = document.getElementById("languageMenu");
+<!-- JavaScript -->
+<script>
+    const dropdownButton = document.getElementById("languageDropdown");
+    const languageMenu = document.getElementById("languageMenu");
 
-      if (dropdownButton && languageMenu) {
-        dropdownButton.addEventListener("click", () => {
-          const expanded =
-            dropdownButton.getAttribute("aria-expanded") === "true";
-          dropdownButton.setAttribute("aria-expanded", !expanded);
-          languageMenu.classList.toggle("hidden");
-        });
-
-        document.addEventListener("click", (event) => {
-          if (
-            !dropdownButton.contains(event.target) &&
-            !languageMenu.contains(event.target)
-          ) {
-            languageMenu.classList.add("hidden");
-            dropdownButton.setAttribute("aria-expanded", false);
-          }
-        });
-
-        document.querySelectorAll("#languageMenu li").forEach((item) => {
-          item.addEventListener("click", (e) => {
-            alert(`Til tanlandi: ${e.target.dataset.lang}`);
-            languageMenu.classList.add("hidden");
-            dropdownButton.setAttribute("aria-expanded", false);
-          });
-        });
-      }
-
-      const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("modalImg");
-      const closeModal = document.getElementById("closeModal");
-
-      function openModal(img) {
-        modalImg.src = img.src;
-        modal.classList.remove("hidden");
-        modal.classList.add("modal-open");
-        modal.focus();
-      }
-
-      closeModal.addEventListener("click", () => {
-        modal.classList.remove("modal-open");
-        modal.classList.add("hidden");
-        modalImg.src = "";
+    if (dropdownButton && languageMenu) {
+      dropdownButton.addEventListener("click", () => {
+        const expanded =
+          dropdownButton.getAttribute("aria-expanded") === "true";
+        dropdownButton.setAttribute("aria-expanded", !expanded);
+        languageMenu.classList.toggle("hidden");
       });
 
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          closeModal.click();
+      document.addEventListener("click", (event) => {
+        if (
+          !dropdownButton.contains(event.target) &&
+          !languageMenu.contains(event.target)
+        ) {
+          languageMenu.classList.add("hidden");
+          dropdownButton.setAttribute("aria-expanded", false);
         }
       });
 
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          closeModal.click();
-        }
-      });
-
-      // Yopish menyuni link bosilganda
-      document.querySelectorAll("nav.navbar a").forEach((link) => {
-        link.addEventListener("click", () => {
-          document.getElementById("menu-bar").checked = false;
+      document.querySelectorAll("#languageMenu li").forEach((item) => {
+        item.addEventListener("click", (e) => {
+          alert(`Til tanlandi: ${e.target.dataset.lang}`);
+          languageMenu.classList.add("hidden");
+          dropdownButton.setAttribute("aria-expanded", false);
         });
       });
-    </script>
-  </body>
+    }
+
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    const closeModal = document.getElementById("closeModal");
+
+    function openModal(img) {
+      modalImg.src = img.src;
+      modal.classList.remove("hidden");
+      modal.classList.add("modal-open");
+      modal.focus();
+    }
+
+    closeModal.addEventListener("click", () => {
+      modal.classList.remove("modal-open");
+      modal.classList.add("hidden");
+      modalImg.src = "";
+    });
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeModal.click();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeModal.click();
+      }
+    });
+
+    // Yopish menyuni link bosilganda
+    document.querySelectorAll("nav.navbar a").forEach((link) => {
+      link.addEventListener("click", () => {
+        document.getElementById("menu-bar").checked = false;
+      });
+    });
+</script>
+</body>
 </html>

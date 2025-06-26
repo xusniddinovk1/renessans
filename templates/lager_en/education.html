@@ -14,25 +14,26 @@
 <!------------------------------------- header --------------------------------- -->
 <header class="header">
     <a href="#" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img" />
+        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img"/>
     </a>
-    <input type="checkbox" id="menu-bar" class="hidden" />
+    <input type="checkbox" id="menu-bar" class="hidden"/>
     <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
     <nav class="navbar">
         <ul>
-            <li><a href="{% url 'en:home_page' %}" target="_blank" rel="noopener noreferrer">Home</a></li>
+            <li><a href="{% url 'en:home_page' %}" rel="noopener noreferrer">Home</a></li>
             <li class="dropdown">
                 <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul class="dropdown-content">
-                    <li><a href="{% url 'en:hotel_section_page' %}" target="_blank" rel="noopener noreferrer">Hotels</a></li>
-                    <li><a href="{% url 'en:recreation_zone_page' %}" target="_blank" rel="noopener noreferrer">Recreation Zones</a></li>
+                    <li><a href="{% url 'en:hotel_section_page' %}" rel="noopener noreferrer">Hotels</a></li>
+                    <li><a href="{% url 'en:recreation_zone_page' %}" rel="noopener noreferrer">Recreation Zones</a>
+                    </li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="dropbtn">Events <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <ul class="dropdown-content">
-                    <li><a href="{% url 'en:activity_page' %}" target="_blank" rel="noopener noreferrer">Activities</a></li>
-                    <li><a href="{% url 'en:education_page' %}" target="_blank" rel="noopener noreferrer">Education</a></li>
+                    <li><a href="{% url 'en:activity_page' %}" rel="noopener noreferrer">Activities</a></li>
+                    <li><a href="{% url 'en:education_page' %}" rel="noopener noreferrer">Education</a></li>
                 </ul>
             </li>
             <li><a href="{% url 'en:news_page' %}">News</a></li>
