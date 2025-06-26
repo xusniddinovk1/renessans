@@ -1,5 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from lager_app.models import *
+from django.http import HttpResponse
+
+
+def contact_page(request):
+    if request.method == 'POST':
+        pass
+    return render(request, 'lager/index1.html')
 
 
 def home_page(request):
