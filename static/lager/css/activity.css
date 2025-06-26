@@ -500,7 +500,15 @@ footer p.copyright {
     box-sizing: border-box;
   }
 
+}
+@media (max-width: 768px) {
   footer .row {
-    padding: 0 1rem;
+    flex-direction: column;
+    align-items: flex-start; /* markazdan chapga surildi */
+    text-align: left; /* matn chapga */
+  }
+
+  footer .col {
+    text-align: left; /* har bir kolonkadagi matn ham chapga */
   }
 }
