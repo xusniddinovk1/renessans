@@ -29,7 +29,9 @@ a {
 /* === Header === */
 header {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   background: white;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   z-index: 50;
@@ -54,7 +56,7 @@ header .logo img {
 /* Hamburger icon (mobil uchun) */
 .menu-icon {
   font-size: 1.75rem;
-  color: #475569;
+  color: #34df12;
   cursor: pointer;
   display: none;
   padding: 0.25rem;
@@ -80,7 +82,7 @@ nav.navbar ul li a {
   display: block;
   padding: 0.75rem 1rem;
   font-weight: 600;
-  color: #00093c;
+  color: #34df12;
   border-radius: 0.5rem;
   transition: background-color 0.3s ease;
 }
@@ -94,7 +96,7 @@ nav.navbar ul li ul {
   position: absolute;
   top: 100%;
   left: 0;
-  background: #1e40af;
+  background: #34df12;
   border-radius: 0.5rem;
   padding: 0.5rem 0;
   min-width: 12rem;
@@ -113,7 +115,7 @@ nav.navbar ul li ul li a {
 }
 
 nav.navbar ul li ul li a:hover {
-  background-color: #1e3a8a;
+  background-color: #258113;
 }
 
 /* === Cards Section === */
@@ -186,8 +188,10 @@ nav.navbar ul li ul li a:hover {
   display: none;
   position: fixed;
   z-index: 50;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
@@ -230,8 +234,8 @@ nav.navbar ul li ul li a:hover {
 
 /* === Footer === */
 footer {
-  background-color: #1e293b;
-  color: white;
+  background-color: #219909;
+  color: rgb(255, 255, 255);
   padding: 3rem 1rem 2rem;
   font-size: 0.9rem;
 }
@@ -251,7 +255,7 @@ footer .col {
 }
 
 footer .col img.logot {
-  max-width: 140px;
+  max-width: 90px;
   margin-bottom: 1rem;
 }
 
@@ -262,24 +266,16 @@ footer .col h3 {
   padding-bottom: 0.25rem;
 }
 
-footer .underline span {
-  display: block;
-  height: 3px;
-  width: 40px;
-  background-color: #2563eb;
-  border-radius: 5px;
-}
-
 footer .email-id {
   margin-top: 0.25rem;
   font-weight: 600;
-  color: #93c5fd;
+  color: #ffffff;
 }
 
 footer h4 {
   margin-top: 0.25rem;
   font-weight: 700;
-  color: #60a5fa;
+  color: #ffffff;
 }
 
 footer form {
@@ -290,7 +286,7 @@ footer form {
 
 footer form i {
   margin-right: 0.5rem;
-  color: #60a5fa;
+  color: #219909;
 }
 
 footer form input[type="email"] {
@@ -302,19 +298,18 @@ footer form input[type="email"] {
 }
 
 footer form button {
-  background-color: #2563eb;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  cursor: pointer;
+  background-color: #ffffff;
   border: none;
-  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  color: white;
+  cursor: pointer;
   margin-left: 0.5rem;
   transition: background-color 0.3s ease;
 }
 
 footer form button:hover {
-  background-color: #1e40af;
+  background-color: #34df12;
 }
 
 footer .social-icons {
@@ -324,24 +319,24 @@ footer .social-icons {
 }
 
 footer .social-icons i {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
 footer .social-icons i:hover {
-  color: #2563eb;
+  color: #03ff4f;
 }
 
 footer hr {
-  border: none;
-  border-top: 1px solid #475569;
-  margin-top: 2rem;
+  border: 0.5px solid #ffffff;
+  margin: 2rem 0 1rem;
 }
 
-footer .copyright {
+footer p.copyright {
   text-align: center;
-  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #ffffff;
 }
 
 /* === Responsive === */
@@ -400,7 +395,7 @@ footer .copyright {
 
   nav.navbar ul li ul {
     position: static;
-    background: #1e40af;
+    background: #34df12;
     margin-top: 0.25rem;
     border-radius: 0.5rem;
     padding: 0.5rem 0;

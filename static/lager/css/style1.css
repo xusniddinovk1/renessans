@@ -2,8 +2,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: url("/media/img.png")
-    no-repeat center center fixed;
+  background: url("/media/img.png") no-repeat center center fixed;
   background-size: cover;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   overflow-x: hidden;
