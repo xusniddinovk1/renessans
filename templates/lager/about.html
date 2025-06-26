@@ -1,0 +1,18 @@
+{% extends 'lager/base.html' %}
+{% block title %}Biz haqimizda{% endblock %}
+
+{% block content %}
+<h2>Biz haqimizda</h2>
+
+{% for item in context %}
+<div class="mb-5">
+    <p>{{ item.matn }}</p>
+    {% if item.image %}
+    <img src="{{ item.rasm.url }}" alt="Rasm" class="img-fluid rounded shadow mt-2">
+    {% endif %}
+</div>
+{% empty %}
+<p>Hozircha ma’lumot yo‘q.</p>
+{% endfor %}
+
+{% endblock %}

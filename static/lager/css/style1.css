@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: url("/media/img.png")
+    no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+}
+
+.contacts-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.85); /* oq rang + 85% tiniqlik */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(2px); /* opsional: ozgina orqa fonni yumshatadi */
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #e74c3c;
+  margin-bottom: 30px;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.map {
+  flex: 1 1 300px;
+}
+
+.info {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.info p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.info i {
+  color: #e74c3c;
+  margin-right: 10px;
+}
+
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #e74c3c;
+}
+
+.partner-button {
+  margin-top: 15px;
+  background: #e74c3c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.partner-button i {
+  margin-right: 8px;
+}
+
+.sales {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.sales h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.working-hours {
+  margin-top: 10px;
+  background: #c2e74c;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.working-hours i {
+  margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .map iframe {
+    height: 200px;
+  }
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="uz">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Kontaktlar</title>
+    <link rel="stylesheet" href="{% static 'lager/css/style1.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+        /* Statik, markazdagi header menyu */
+        header {
+          background-color: #f8f8f8;
+          padding: 20px 0;
+          text-align: center;
+          border-bottom: 1px solid #ddd;
+        }
+
+        .header__menu ul {
+          list-style: none;
+          display: flex;
+          justify-content: center;
+          gap: 40px;
+          padding: 0;
+          margin: 0;
+        }
+
+        .header__menu ul li a {
+          text-decoration: none;
+          color: #7cc01a;
+          font-weight: 600;
+          font-size: 16px;
+        }
+
+        .header__menu ul li a:hover {
+          text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+          .header__menu ul {
+            flex-direction: column;
+            gap: 15px;
+          }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ✅ DOIM KO‘RINIB TURADIGAN HEADER -->
+<header>
+    <nav class="header__menu">
+        <ul>
+            <li><a href="{% url 'uz:bizhaqimizda'%}">Biz haqimizda</a></li>
+            <li><a href="{% url 'uz:asosiy_sahifa' %}">Asosiy sahifa</a></li>
+            <li><a href="{% url 'uz:rasmlar'%}">Rasmlar</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ✅ ASOSIY KONTENT QISMI -->
+<section class="contacts-section">
+    <h1 class="section-title">Kontaktlar</h1>
+    <div class="contact-container">
+        <div class="map">
+            <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.994355295878!2d69.24007331542227!3d41.29949577927053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef5073c4a4e25%3A0x43d1ff3b1a5021e0!2sMagic%20City!5e0!3m2!1sru!2s!4v1689709379839!5m2!1sru!2s"
+                    width="100%" height="250" style="border:0" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+
+        <div class="info">
+            <p><i class="fas fa-map-marker-alt"></i> O‘zbekiston, Toshkent, Furqat ko'chasi 165, MAGIC CITY ro‘parasida
+            </p>
+            <p><i class="fas fa-envelope"></i> info@summer.uz</p>
+            <p><i class="fab fa-telegram"></i> @happysummer</p>
+
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-odnoklassniki"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <button class="partner-button">
+                <i class="fas fa-trophy"></i> Hamkorlar
+            </button>
+        </div>
+    </div>
+
+    <div class="sales">
+        <h2>Savdo bo‘limi</h2>
+        <p>(95) 196 33 22<br>(95) 196 33 99</p>
+        <div class="working-hours">
+            <i class="far fa-smile"></i> 9:00 dan 18:00 gacha
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -9,6 +9,22 @@ def contact_page(request):
     return render(request, 'lager/index1.html')
 
 
+def about_us_page(request):
+    context = AboutUs.objects.all()
+    ctx = {
+        'context': context
+    }
+    return render(request, 'lager/about.html', ctx)
+
+
+def photos_page(request):
+    photos = Photos.objects.all()
+    ctx = {
+        'photos': photos
+    }
+    return render(request, 'lager/photos.html', ctx)
+
+
 def home_page(request):
     text = AboutUs.objects.first()
     photos = Photos.objects.all()
