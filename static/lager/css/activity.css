@@ -438,3 +438,69 @@ footer p.copyright {
     height: 48px;
   }
 }
+/* Qo'shimcha mobil optimallashtirishlar */
+@media (max-width: 600px) {
+  header {
+    padding: 0 1rem;
+    height: 80px;
+  }
+
+  header .logo img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .menu-icon {
+    font-size: 2.5rem;
+    padding: 0.5rem;
+  }
+
+  nav.navbar {
+    top: 80px;
+    padding: 1rem 0.75rem;
+  }
+
+  nav.navbar ul {
+    gap: 1rem;
+  }
+
+  nav.navbar ul li a {
+    padding: 1rem 1.25rem;
+  }
+
+  nav.navbar ul li ul {
+    display: none;
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+    max-height: 0;
+  }
+
+  nav.navbar ul li:focus-within > ul,
+  nav.navbar ul li:hover > ul {
+    display: block;
+    max-height: 500px;
+  }
+
+  .activity-text {
+    padding: 16px;
+  }
+
+  .activity-text h1 {
+    font-size: 18px;
+  }
+
+  .activity-text p {
+    font-size: 14px;
+  }
+
+  .modal-content {
+    max-width: 95vw;
+    max-height: 80vh;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  footer .row {
+    padding: 0 1rem;
+  }
+}
