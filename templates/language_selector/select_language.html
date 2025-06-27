@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tilni tanlang</title>
     <style>
-      /* Tana uchun oddiy fon va shrift */
       body {
         margin: 0;
         padding: 0;
@@ -15,51 +14,26 @@
         background-position: center center;
         background-size: cover;
         height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         color: white;
-        min-height: 100vh;
         overflow-x: hidden;
       }
 
-      /* Konteyner */
-      .container {
-        background: rgba(255, 255, 255, 0.15);
-        padding: 40px 60px;
-        border-radius: 15px;
-        box-shadow: 0 8px 32px 0 rgba(11, 214, 11, 0.37);
-        text-align: center;
-        max-width: 400px;
-        width: 90%;
-
-        /* Blur efekti kamaytirilgan: */
-        backdrop-filter: blur(3px);
-        -webkit-backdrop-filter: blur(3px); /* Safari uchun */
-
-        border: 1px solid rgba(255, 255, 255, 0.3);
-      }
-      .container h1 {
-        color: #34df12; /* Chuqur ko‘k rang */
-        /* Yoki istalgan boshqa ko‘k rangni yozishingiz mumkin */
-        /* Masalan, color: blue; */
-      }
-      /* Sarlavha */
-      h1 {
-        margin-bottom: 30px;
-        font-weight: 700;
-        font-size: 1.8rem;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+      /* Forma konteyneri (markazga va yuqoriga joylashgan) */
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* yuqoriga */
+        gap: 15px;
+        padding-top: 40px; /* yuqoridan biroz bo‘sh joy */
+        flex-wrap: wrap;
       }
 
-      /* Tugmalar */
       form button {
         background: rgba(255, 255, 255, 0.85);
         border: none;
         color: #34df12;
         font-weight: 600;
         padding: 15px 30px;
-        margin: 10px 15px;
         border-radius: 50px;
         cursor: pointer;
         font-size: 1rem;
@@ -73,27 +47,24 @@
         box-shadow: 0 6px 20px rgba(37, 117, 252, 0.7);
       }
 
-      /* Responsive uchun kichik ekranlarda tugmalar blok sifatida */
       @media (max-width: 480px) {
+        form {
+          flex-direction: column;
+          align-items: center;
+        }
+
         form button {
-          display: block;
-          width: 100%;
-          margin: 10px 0;
+          width: 80%;
         }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>Sayt tilini tanlang</h1>
-      <h1>Выберите язык сайта</h1>
-      <h1>Select site language</h1>
-      <form method="post">
-        {% csrf_token %}
-        <button type="submit" name="language" value="uz">O'zbekcha</button>
-        <button type="submit" name="language" value="ru">Русский</button>
-        <button type="submit" name="language" value="en">English</button>
-      </form>
-    </div>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" name="language" value="uz">O'zbekcha</button>
+      <button type="submit" name="language" value="ru">Русский</button>
+      <button type="submit" name="language" value="en">English</button>
+    </form>
   </body>
 </html>
