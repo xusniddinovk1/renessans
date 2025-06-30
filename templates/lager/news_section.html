@@ -15,7 +15,7 @@
 <!-- ======================= HEADER ======================= -->
 <header class="header">
     <a href="{% url 'uz:asosiy_sahifa' %}" class="logo">
-        <img src="/media/logo/logo.JPG" alt="company logo" class="logo-img" />
+        <img src="{% static 'lager/img/logo/logo.JPG'%}" alt="company logo" class="logo-img" />
     </a>
     <input type="checkbox" id="menu-bar" class="hidden" />
     <label for="menu-bar" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
@@ -76,7 +76,7 @@
 <footer>
     <div class="row">
         <div class="col">
-            <img src="/media/logo_pastki_qism.png" alt="Footer Logo" class="logot" />
+            <img src="{% static 'lager/img/logo_pastki_qism.png'%}" alt="Footer Logo" class="logot" />
             <h3>Ixtisoslashtirilgan ta’lim muassasalari agentligi</h3>
         </div>
         <div class="col">
