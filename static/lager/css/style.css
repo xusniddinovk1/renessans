@@ -184,7 +184,7 @@ footer a {
 
 /* ================== BANNER ================== */
 .banner {
-  background-image: url("/static/lager/img/asosiy_rasm.JPG"); center/cover no-repeat;
+  background: url("/static/lager/img/asosiy_rasm.JPG") center center / cover no-repeat;
   height: 550px;
   display: flex;
   flex-direction: column;
