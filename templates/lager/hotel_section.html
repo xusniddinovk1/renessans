@@ -1,200 +1,172 @@
 <!DOCTYPE html>
 {% load static %} {% load humanize %}
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{% static 'lager/css/hotel.css' %}" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="{% static 'lager/css/hotel.css' %}"/>
     <script
-      src="https://kit.fontawesome.com/5974a913f2.js"
-      crossorigin="anonymous"
+            src="https://kit.fontawesome.com/5974a913f2.js"
+            crossorigin="anonymous"
     ></script>
     <title>Mexmonxona</title>
-  </head>
-  <body>
-    <!------------------------------------- header --------------------------------- -->
-    <header class="header">
-      <a href="{% url 'uz:asosiy_sahifa' %}" class="logo">
-        <img src="{% static 'lager/img/logo/logo.JPG'%}" alt="company logo" class="logo-img" />
-      </a>
-      <input type="checkbox" id="menu-bar" class="hidden" />
-      <label for="menu-bar" class="menu-icon"
-        ><i class="fa-solid fa-bars"></i
-      ></label>
-      <nav class="navbar">
+</head>
+<body>
+<!------------------------------------- header --------------------------------- -->
+<header class="header">
+    <a href="{% url 'uz:asosiy_sahifa' %}" class="logo">
+        <img src="{% static 'lager/img/logo/logo.JPG'%}" alt="company logo" class="logo-img"/>
+    </a>
+    <input type="checkbox" id="menu-bar" class="hidden"/>
+    <label for="menu-bar" class="menu-icon"
+    ><i class="fa-solid fa-bars"></i
+    ></label>
+    <nav class="navbar">
         <ul>
-          <li>
-            <a
-              href="{% url 'uz:asosiy_sahifa' %}"
-              rel="noopener noreferrer"
-              >Asosiy</a
-            >
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn"
-              >Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i
-            ></a>
-            <ul class="dropdown-content">
-              <li>
-                <a
-                  href="{% url 'uz:mexmonxonalar' %}"
-                  rel="noopener noreferrer"
-                  >Mehmon xonalar</a
-                >
-              </li>
-              <li>
-                <a
-                  href="{% url 'uz:istirohat_zona' %}"
-                  rel="noopener noreferrer"
-                  >Istirohat zona</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn"
-              >Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i
-            ></a>
-            <ul class="dropdown-content">
-              <li>
-                <a
-                  href="{% url 'uz:faoliyat' %}"
-                  rel="noopener noreferrer"
-                  >Faoliyat</a
-                >
-              </li>
-              <li>
-                <a
-                  href="{% url 'uz:oquvbolim' %}"
-                  rel="noopener noreferrer"
-                  >O'quv bo'lim</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
+            <li>
+                <a href="{% url 'uz:asosiy_sahifa' %}" rel="noopener noreferrer">Asosiy</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Kampus <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <ul class="dropdown-content">
+                    <li>
+                        <a href="{% url 'uz:mexmonxonalar' %}" rel="noopener noreferrer">Mehmonxona bo'limi</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'uz:istirohat_zona' %}" rel="noopener noreferrer">Istirohat zona</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"
+                >Tadbirlar <i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+                <ul class="dropdown-content">
+                    <li>
+                        <a href="{% url 'uz:faoliyat' %}" rel="noopener noreferrer">Faoliyat</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'uz:oquvbolim' %}" rel="noopener noreferrer">Musobaqa va tadbirlar</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="{% url 'uz:yangiliklar' %}">Yangiliklar</a></li>
         </ul>
-      </nav>
-    </header>
+    </nav>
+</header>
 
-    <div class="carousel">
-      <div class="carousel-track">
+<div class="carousel">
+    <div class="carousel-track">
         {% for hotel in hotels %}
         <div class="carousel-slide">
-          <img src="{{ hotel.image.url }}" alt="Slide {{ forloop.counter }}" />
+            <img src="{{ hotel.image.url }}" alt="Slide {{ forloop.counter }}"/>
         </div>
         {% endfor %}
-      </div>
-      <div class="carousel-buttons">
+    </div>
+    <div class="carousel-buttons">
         <button class="carousel-button" id="prev">&#10094;</button>
         <button class="carousel-button" id="next">&#10095;</button>
-      </div>
     </div>
+</div>
 
-    <!-- maps va footer qismi o‘zgarmaydi -->
-    <div class="container">
-      <h1>Renessans Oromgohi manzili</h1>
-      <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95985.13840300929!2d69.18832734611418!3d41.25367332672317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae6005c5142bf3%3A0xe04bf246835d2d7f!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0JDRjdGA0L7Qv9C-0YDRgiDQuNC80LXQvdC4INCY0YHQu9Cw0LzQsCDQmtCw0YDQuNC80L7QstCw!5e0!3m2!1sru!2s!4v1743158064308!5m2!1sru!2s"
-          width="600"
-          height="450"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
-      <a href="#">Google Xaritada ko‘rish</a>
+<!-- maps va footer qismi o‘zgarmaydi -->
+<div class="container">
+    <h1>Renessans Oromgohi manzili</h1>
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.8911239955387!2d70.04856819999999!3d41.614866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38af130079968b31%3A0xd6ab192eb76b1597!2sRenesans%20bolalar%20oromgohi!5e0!3m2!1sru!2s!4v1751376137167!5m2!1sru!2s"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+    <a href="#">Google Xaritada ko‘rish</a>
+</div>
 
-    <footer>
-      <div class="row">
+<footer>
+    <div class="row">
         <div class="col">
-          <img
-            src="{% static 'lager/img/logo_pastki_qism'%}"
-            alt="Footer Logo"
-            class="logot"
-          />
-          <h3>Ixtisoslashtirilgan ta’lim muassasalari agentligi</h3>
+            <img
+                    src="{% static 'lager/img/logo_pastki_qism'%}"
+                    alt="Footer Logo"
+                    class="logot"
+            />
+            <h3>Ixtisoslashtirilgan ta’lim muassasalari agentligi</h3>
         </div>
         <div class="col">
-          <h3>Office</h3>
+            <h3>Office</h3>
             <h3>Toshkent viloyati Bo’stonliq tumani Yusufxona ko’chasi.</h3>
-          <h3 class="email-id">renessans@gmail.com</h3>
-          <h3>+998 55 900 54 90 </h3>
+            <h3 class="email-id">renessans@gmail.com</h3>
+            <h3>+998 55 900 54 90 </h3>
         </div>
         <div class="col">
-          <h3>Newsletter</h3>
-          <form>
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit">
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-          </form>
-          <div class="social-icons">
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-telegram"></i>
-            <i class="fa-brands fa-twitter"></i>
-          </div>
+            <h3>Newsletter</h3>
+            <form>
+                <input type="email" placeholder="Enter your email" required/>
+                <button type="submit">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+            <div class="social-icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-twitter"></i>
+            </div>
         </div>
-      </div>
-      <hr />
-      <p class="copyright">© 2025</p>
-    </footer>
+    </div>
+    <hr/>
+    <p class="copyright">© 2025</p>
+</footer>
 
-    <script>
-      const track = document.querySelector(".carousel-track");
-      const slides = Array.from(track.children);
-      const nextButton = document.getElementById("next");
-      const prevButton = document.getElementById("prev");
+<script>
+    const track = document.querySelector(".carousel-track");
+    const slides = Array.from(track.children);
+    const nextButton = document.getElementById("next");
+    const prevButton = document.getElementById("prev");
 
-      let currentIndex = 0;
+    let currentIndex = 0;
 
-      function updateCarousel() {
-        const slideWidth = slides[0].getBoundingClientRect().width;
-        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    function updateCarousel() {
+      const slideWidth = slides[0].getBoundingClientRect().width;
+      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
+
+    nextButton.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    });
+
+    prevButton.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
+
+    window.addEventListener("resize", updateCarousel);
+</script>
+<script>
+    const dropdownButton = document.getElementById("languageDropdown");
+    const languageMenu = document.getElementById("languageMenu");
+    const languageItems = languageMenu.querySelectorAll("li");
+
+    dropdownButton.addEventListener("click", () => {
+      languageMenu.classList.toggle("hidden");
+    });
+
+    languageItems.forEach((item) => {
+      item.addEventListener("click", (event) => {
+        const selectedLang = event.target.getAttribute("data-lang");
+        alert(`Language switched to: ${selectedLang}`);
+        languageMenu.classList.add("hidden");
+      });
+    });
+
+    // Close menu if clicked outside
+    document.addEventListener("click", (event) => {
+      if (
+        !dropdownButton.contains(event.target) &&
+        !languageMenu.contains(event.target)
+      ) {
+        languageMenu.classList.add("hidden");
       }
-
-      nextButton.addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel();
-      });
-
-      prevButton.addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateCarousel();
-      });
-
-      window.addEventListener("resize", updateCarousel);
-    </script>
-    <script>
-      const dropdownButton = document.getElementById("languageDropdown");
-      const languageMenu = document.getElementById("languageMenu");
-      const languageItems = languageMenu.querySelectorAll("li");
-
-      dropdownButton.addEventListener("click", () => {
-        languageMenu.classList.toggle("hidden");
-      });
-
-      languageItems.forEach((item) => {
-        item.addEventListener("click", (event) => {
-          const selectedLang = event.target.getAttribute("data-lang");
-          alert(`Language switched to: ${selectedLang}`);
-          languageMenu.classList.add("hidden");
-        });
-      });
-
-      // Close menu if clicked outside
-      document.addEventListener("click", (event) => {
-        if (
-          !dropdownButton.contains(event.target) &&
-          !languageMenu.contains(event.target)
-        ) {
-          languageMenu.classList.add("hidden");
-        }
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>
