@@ -1,123 +1,123 @@
 <!DOCTYPE html>
 {% load static %} {% load humanize %}
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>{{ education.title }}</title>
     <link
-      rel="stylesheet"
-      href="{% static 'lager/css/education_detail.css' %}"
+            rel="stylesheet"
+            href="{% static 'lager/css/education_detail.css' %}"
     />
     <script
-      src="https://kit.fontawesome.com/5974a913f2.js"
-      crossorigin="anonymous"
+            src="https://kit.fontawesome.com/5974a913f2.js"
+            crossorigin="anonymous"
     ></script>
-  </head>
-  <body>
-    <main class="activities-container">
-      <div class="activity-card">
+</head>
+<body>
+<main class="activities-container">
+    <div class="activity-card">
         <div class="activity-image">
-          <img
-            src="{{ education.image.url }}"
-            alt="{{ education.title|default:'Education image' }}"
-            loading="lazy"
-            onclick="openModal(this)"
-          />
+            <img
+                    src="{{ education.image.url }}"
+                    alt="{{ education.title|default:'Education image' }}"
+                    loading="lazy"
+                    onclick="openModal(this)"
+            />
         </div>
         <div class="activity-text">
-          <h1>{{ education.title }}</h1>
-          <p>{{ education.description }}</p>
+            <h1>{{ education.title }}</h1>
+            <p>{{ education.description }}</p>
         </div>
-      </div>
-    </main>
-
-    <!-- Modal -->
-    <div
-      id="imageModal"
-      class="modal"
-      role="dialog"
-      aria-modal="true"
-      tabindex="-1"
-      style="display: none"
-    >
-      <span id="closeModal" role="button" aria-label="Close Modal" tabindex="0"
-        >&times;</span
-      >
-      <img id="modalImg" class="modal-content" alt="Katta rasm" />
     </div>
+</main>
 
-    <footer>
-      <div class="row">
+<!-- Modal -->
+<div
+        id="imageModal"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        tabindex="-1"
+        style="display: none"
+>
+      <span id="closeModal" role="button" aria-label="Close Modal" tabindex="0"
+      >&times;</span
+      >
+    <img id="modalImg" class="modal-content" alt="Katta rasm"/>
+</div>
+
+<footer>
+    <div class="row">
         <div class="col">
-          <img
-            src="{% static 'lager/img/logo_pastki_qism.png'%}"
-            alt="Footer Logo"
-            class="logot"
-          />
-          <h3>Ixtisoslashtirilgan ta’lim muassasalari agentligi</h3>
+            <img
+                    src="{% static 'lager/img/logo_pastki_qism.png'%}"
+                    alt="Footer Logo"
+                    class="logot"
+            />
+            <h3>Ixtisoslashtirilgan ta’lim muassasalari agentligi</h3>
         </div>
         <div class="col">
-          <h3>Office</h3>
-          <h3>Address</h3>
-          <h3 class="email-id">renessans@gmail.com</h3>
-          <h3>+998 55 900 54 90 </h3>
+            <h3>Office</h3>
+            <h3>Toshkent viloyati Bo’stonliq tumani Yusufxona ko’chasi.</h3>
+            <h3 class="email-id">renessans@gmail.com</h3>
+            <h3>+998 55 900 54 90 </h3>
         </div>
         <div class="col">
-          <h3>Newsletter</h3>
-          <form>
-            <!--                <i class="fa-solid fa-envelope"></i>-->
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit">
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-          </form>
-          <div class="social-icons">
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-telegram"></i>
-            <i class="fa-brands fa-twitter"></i>
-          </div>
+            <h3>Newsletter</h3>
+            <form>
+                <!--                <i class="fa-solid fa-envelope"></i>-->
+                <input type="email" placeholder="Enter your email" required/>
+                <button type="submit">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+            <div class="social-icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-twitter"></i>
+            </div>
         </div>
-      </div>
-      <hr />
-      <p class="copyright">© 2025</p>
-    </footer>
-    <script>
-      function openModal(imgElement) {
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("modalImg");
+    </div>
+    <hr/>
+    <p class="copyright">© 2025</p>
+</footer>
+<script>
+    function openModal(imgElement) {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImg");
 
-        modalImg.src = imgElement.src;
-        modalImg.alt = imgElement.alt;
+      modalImg.src = imgElement.src;
+      modalImg.alt = imgElement.alt;
 
-        modal.style.display = "flex"; // modalni ko'rsatish
+      modal.style.display = "flex"; // modalni ko'rsatish
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("imageModal");
+      modal.style.display = "none"; // modalni yopish
+    }
+
+    // X belgini bosganda yopish
+    document
+      .getElementById("closeModal")
+      .addEventListener("click", closeModal);
+
+    // ESC tugmasi orqali yopish
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        closeModal();
       }
+    });
 
-      function closeModal() {
-        const modal = document.getElementById("imageModal");
-        modal.style.display = "none"; // modalni yopish
-      }
-
-      // X belgini bosganda yopish
-      document
-        .getElementById("closeModal")
-        .addEventListener("click", closeModal);
-
-      // ESC tugmasi orqali yopish
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
+    // Modal orqa foniga bosganda yopish
+    document
+      .getElementById("imageModal")
+      .addEventListener("click", function (e) {
+        if (e.target.id === "imageModal") {
           closeModal();
         }
       });
-
-      // Modal orqa foniga bosganda yopish
-      document
-        .getElementById("imageModal")
-        .addEventListener("click", function (e) {
-          if (e.target.id === "imageModal") {
-            closeModal();
-          }
-        });
-    </script>
-  </body>
+</script>
+</body>
 </html>
