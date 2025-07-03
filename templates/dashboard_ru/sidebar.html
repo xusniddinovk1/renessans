@@ -3,7 +3,8 @@
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
         <a href="#">
-            <img class='login_logo' src="/media/logo/logo.JPG" alt="RenessansAdmin" , width="90px" height="90px">
+            <img class='logo_lager' src="{% static 'lager/img/logo/logo.JPG'%}" alt="RenessansAdmin" width="90px"
+                 height="90px">
         </a>
     </div>
     <div class="menu-sidebar__content js-scrollbar1">
@@ -19,7 +20,8 @@
                     <a href="{% url 'ru-admin:photo_list' %}"><i class="fas fa-chart-bar"></i>Фотографии</a>
                 </li>
                 <li>
-                    <a href="{% url 'ru-admin:education_list' %}"><i class="fas fa-chart-bar"></i>Академический отдел</a>
+                    <a href="{% url 'ru-admin:education_list' %}"><i class="fas fa-chart-bar"></i>Академический
+                        отдел</a>
                 </li>
                 <li>
                     <a href="{% url 'ru-admin:activity_list' %}"><i class="fas fa-chart-bar"></i>События</a>
