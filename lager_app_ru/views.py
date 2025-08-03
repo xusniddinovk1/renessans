@@ -58,3 +58,25 @@ def hotel_section_page(request):
         "hotels": hotels
     }
     return render(request, 'lager_ru/hotel_section.html', ctx)
+
+
+def contact_page1(request):
+    if request.method == 'POST':
+        pass
+    return render(request, 'lager_ru/index1.html')
+
+
+def about_page1(request):
+    context = AboutUs2.objects.all()
+    ctx = {
+        'context': context
+    }
+    return render(request, 'lager_ru/about.html', ctx)
+
+
+def photos_page1(request):
+    photos = Photos2.objects.all()
+    ctx = {
+        'photos': photos
+    }
+    return render(request, 'lager_ru/photos.html', ctx)

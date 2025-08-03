@@ -1,8 +1,8 @@
 {% extends 'lager/base.html' %}
-{% block title %}Photos{% endblock %}
+{% block title %}Фотографии{% endblock %}
 
 {% block content %}
-<h2 class="mb-4 text-center">Photos</h2>
+<h2 class="mb-4 text-center">Фотографии</h2>
 
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
     {% for photo in photos %}
@@ -30,8 +30,8 @@
                      style="max-height: 80vh; box-shadow: 0 0 20px rgba(0,0,0,0.7);">
             </div>
             <div class="modal-footer justify-content-between border-0">
-                <button class="btn btn-light" id="prevImage">⬅ Previous </button>
-                <button class="btn btn-light" id="nextImage">Next  ➡</button>
+                <button class="btn btn-light" id="prevImage">⬅ Предыдущий </button>
+                <button class="btn btn-light" id="nextImage">Следующий  ➡</button>
             </div>
         </div>
     </div>
