@@ -5,10 +5,10 @@ from lager_app.views import activity_page, home_page, news_page, education_page,
 app_name = 'lager_app'
 
 urlpatterns = [
-    path('', contact_page, name='contact_page'),
+    path('contact/', contact_page, name='contact_page'),
     path('bizhaqimizda', about_us_page, name='bizhaqimizda'),
     path('rasmlar', photos_page, name='rasmlar'),
-    path('asosiy/', home_page, name='asosiy_sahifa'),
+    path('', home_page, name='asosiy_sahifa'),
     path('faoliyat/', activity_page, name='faoliyat'),
     path('oquvbolim/', education_page, name='oquvbolim'),
     path('oquvbolim/<int:id>/', education_detail, name='oquvbolim_sahifa'),

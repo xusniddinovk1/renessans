@@ -1,0 +1,76 @@
+{% extends 'lager/base.html' %}
+{% block title %}Photos{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">Photos</h2>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+    {% for photo in photos %}
+    <div class="col">
+        <img src="{{ photo.image.url }}"
+             class="img-fluid rounded shadow-sm gallery-image"
+             data-index="{{ forloop.counter0 }}"
+             data-url="{{ photo.image.url }}"
+             alt="{{ photo.nom }}"
+             style="cursor: pointer;">
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Modal oynasi -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+                <img id="modalImage" src="" class="img-fluid rounded" alt="Rasm"
+                     style="max-height: 80vh; box-shadow: 0 0 20px rgba(0,0,0,0.7);">
+            </div>
+            <div class="modal-footer justify-content-between border-0">
+                <button class="btn btn-light" id="prevImage">⬅ Oldingi</button>
+                <button class="btn btn-light" id="nextImage">Keyingi ➡</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const images = Array.from(document.querySelectorAll('.gallery-image'));
+    const modalImage = document.getElementById('modalImage');
+    let currentIndex = 0;
+
+    images.forEach((img, idx) => {
+        img.addEventListener('click', function() {
+            currentIndex = idx;
+            showImage(currentIndex);
+            // Bootstrap modalni ochish
+            const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+            modal.show();
+        });
+    });
+
+    document.getElementById('nextImage').addEventListener('click', () => {
+        if (currentIndex < images.length - 1) {
+            currentIndex++;
+            showImage(currentIndex);
+        }
+    });
+
+    document.getElementById('prevImage').addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            showImage(currentIndex);
+        }
+    });
+
+    function showImage(index) {
+        const url = images[index].getAttribute('data-url');
+        modalImage.src = url;
+    }
+</script>
+{% endblock %}
