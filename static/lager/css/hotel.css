@@ -1,3 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #1e293b; /* Dark slate */
+  line-height: 1.6;
+  padding-top: 96px; /* Header balandligi uchun joy */
+}
 /* Header */
 header {
   position: fixed;
