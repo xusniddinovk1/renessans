@@ -3,6 +3,7 @@ from django.db import models
 
 class AboutUs2(models.Model):
     context = models.TextField()
+    image = models.ImageField(upload_to='banner/')
 
     def __str__(self):
         return self.context[:50]

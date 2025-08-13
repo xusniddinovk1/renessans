@@ -52,13 +52,38 @@
 </div>
 
 <!-- Biz haqimizda -->
-<div id="linkkeladi" class="text-box">
-    <h1>О лагере</h1>
-    {% if text %}
-    <p>{{ text.context|linebreaks }}</p>
-    {% else %}
-    <p>Информация не найдена</p>
-    {% endif %}
+<div id="linkkeladi" class="container-fluid my-5 px-0">
+    <div class="row g-0 min-vh-50">
+        <!-- Matn -->
+        <div class="col-md-6 d-flex align-items-stretch">
+            <div class="p-4" style="text-align: justify; word-break: break-word">
+                <h1 class="mb-4">Biz haqimizda</h1>
+                {% if text %}
+                <div style="font-size: 18px; line-height: 1.8">
+                    {{ text.context|linebreaks }}
+                </div>
+                {% else %}
+                <p>Ma'lumot topilmadi.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Rasm -->
+        <div class="col-md-6 d-flex align-items-stretch">
+            <div class="w-100">
+                {% if text and text.image %}
+                <img
+                        src="{{ text.image.url }}"
+                        alt="Biz haqimizda rasm"
+                        class="img-fluid h-100 w-100 rounded shadow"
+                        style="object-fit: cover"
+                />
+                {% else %}
+                <p class="text-center mt-5">Rasm mavjud emas</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Grid galereya -->
