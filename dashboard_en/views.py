@@ -113,7 +113,7 @@ def about_us_list(request):
 
 @login_required_decorator
 def about_us_create(request):
-    form = AboutUsForm(request.POST or None)
+    form = AboutUsForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
         return redirect('en-admin:about_us_list')
@@ -126,7 +126,7 @@ def about_us_create(request):
 @login_required_decorator
 def about_us_update(request, pk):
     text = get_object_or_404(AboutUs1, pk=pk)
-    form = ActivityForm(request.POST or None, instance=text)
+    form = ActivityForm(request.POST or None, request.FILES or None, instance=text)
     if form.is_valid():
         form.save()
         return redirect('en-admin:about_us_list')

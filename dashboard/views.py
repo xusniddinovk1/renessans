@@ -122,7 +122,7 @@ def about_us_create(request):
 @login_required_decorator
 def about_us_update(request, pk):
     text = get_object_or_404(AboutUs, pk=pk)
-    form = AboutUsForm(request.POST or None, instance=text)
+    form = AboutUsForm(request.POST or None, request.FILES or None, instance=text)
     if form.is_valid():
         form.save()
         return redirect('uz-admin:bizhaqimizda')
